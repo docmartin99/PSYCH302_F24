@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Math221 Notebook"
+  navbar:
+    background: primary
+    search: true
+    left:
+    - text: "Lessons"
+      menu:
+        - text: "Course Intro"
+        - href: ./01-Course_Intro/Course_Introduction.qmd
+
+    - text: "Specific Designs"
+      menu:
+         - text: "Basic Factorial Introduction"
+
+    - text: "Broad Topics"
+      menu:
+        - text: "Factor Structure"
+
+
+    - text: "R Instructions"
+      menu:
+        - text: "Descriptive Summaries"
+
+    right:
+    - text: "Datasets"
+      menu:
+        - text: "Download Zip Data"
+
+format:
+  html:
+    theme: cerulean
+    css: styles.css
+    toc: true
+
+editor: visual
