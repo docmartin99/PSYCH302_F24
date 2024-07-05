@@ -10,7 +10,7 @@ website:
     left:
     - text: "Textbook"
       menu:
-        - text: "Lessons"
+        - text: "Course Introduction"
         - href: ./01-Course_Intro/Course_Introduction.qmd
         - text: "The Statistical Process"
         - href: ./01-Course_Intro/Stat_Process.qmd
