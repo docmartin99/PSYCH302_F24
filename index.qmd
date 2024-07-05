@@ -41,7 +41,7 @@ Here is a specific, suggested reading schedule:
   9. Introduction to Confidence Intervals
   10. Inference for a Mean
   11. Inference for Dependent Samples
-  12. Intference for Independent Samples
+  12. Inference for Independent Samples
   13. ANOVA
   14. Regression
   15. Distribution of $\hat{p}$
