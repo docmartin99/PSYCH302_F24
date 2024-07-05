@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 <a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download class="btn btn-primary">Download this .qmd file</a>
 
+<a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download="Introducing_R_Homework.qmd" class="btn btn-primary">Download this .qmd file</a>
 
 
 # Load the libraries
