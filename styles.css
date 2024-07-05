@@ -55,6 +55,33 @@
 }
 
 
+.QuestionsHeading {
+margin-left:auto;
+margin-right:auto;
+padding-top:5px;
+width:80%;
+background-color:#c0c744;
+text-align:center;
+border-top-left-radius: 12px 20px;
+border-top-right-radius: 12px 20px;
+font-size:1.3em;
+min-height: 22px;
+box-shadow: 4px 4px 5px #888888;
+}
+
+.Questions {
+margin-left:auto;
+margin-right:auto;
+padding-top:5px;
+padding-bottom:10px;
+padding-left:15px;
+width:80%;
+font-size:.95em;
+background-color: #f2f3d9;
+border-bottom-left-radius: 3px;
+border-bottom-right-radius: 3px;
+box-shadow: 4px 4px 5px #888888;
+}
 
 
 
