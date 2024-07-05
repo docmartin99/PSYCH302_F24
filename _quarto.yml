@@ -24,7 +24,8 @@ website:
 
     - text: "R Instructions"
       menu:
-        - text: "Descriptive Summaries"
+        - text: "Intro to R HW"
+        - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
 
     right:
     - text: "Datasets"
