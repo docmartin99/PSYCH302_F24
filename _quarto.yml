@@ -11,24 +11,27 @@ website:
     - text: "Textbook"
       menu:
         - text: "Course Introduction"
-        - href: ./01-Course_Intro/Course_Introduction.qmd
+        - href: ./Textbook/Course_Introduction.qmd
         - text: "The Statistical Process"
-        - href: ./01-Course_Intro/Stat_Process.qmd
+        - href: ./Textbook/Stat_Process.qmd
         - text: "Shape and Center"
-        - href: ./02-Shape_and_Center/Textbook_Shape_and_Center.qmd
+        - href: ./Textbook/Shape_and_Center.qmd
+        - text: "Measures of Spread"
+        - href: ./Textbook/Spread.qmd
         - text: "Intro to Probability"
-        - href: ./05-Probability/Intro_to_Probability.qmd
+        - href: ./Textbook/Intro_to_Probability.qmd
 
     - text: "Homework"
       menu:
-         - text: "Basic Factorial Introduction"
+         - text: "Introducing R"
+         - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
 
-    - text: "R Instructions"
+    - text: "R Help"
       menu:
         - text: "Installing R"
         - href: ./01-Course_Intro/Installing_R.qmd
-        - text: "Intro to R HW"
-        - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
+        - text: "Into the Tidyverse"
+
 
     right:
     - text: "Datasets"

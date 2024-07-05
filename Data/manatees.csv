@@ -1,0 +1,36 @@
+Fiscal Year,Power Boats (in 1000's),Manatees,Comments
+1977,436,14,Source for the Powerboat Data:
+1978,449,21,Data for 1977-1999 are based on 
+1979,470,18,"Moore and McCabe, Introduction to the Practice of Statistics"
+1980,487,19,"and regression estimation (see Lohr, Chapter 3) ."
+1981,502,24,Moore included all registered water craft including canoes.
+1982,501,18,The number of powerboats was computed by predicting the number of 
+1983,515,20,powerboats (from www.flhsmv.gov) given the total number of boats 
+1984,548,27,registered (the Moore data).
+1985,575,30,The imputation was based on total counts of boat registrations from:
+1986,604,34,http://www.flhsmv.gov/dmv/vslfacts.html.
+1987,635,31,
+1988,665,49,All other powerboat counts are taken directly from:
+1989,701,51,http://www.flhsmv.gov/dmv/vslfacts.html.
+1990,709,43,Counts for the following classes of powerboats were combined:
+1991,671,50,"Class A-1, Class A-2, Class 1, Class 2, Class 3, Class 4, and Class 5."
+1992,669,43,
+1993,668,32,Source for the Manatee Data:
+1994,686,49,http://research.myfwc.com/manatees/search_summary.asp
+1995,703,41,
+1996,722,56,Note:
+1997,745,52,The powerboat data are presented for each fiscal year.
+1998,799,57,The fiscal year begins July 1 of the previous year and ends June 30.
+1999,820,84,"For example, FY2005 = July 1, 2004 through June 30, 2005."
+2000,869,92,
+2001,932,69,"The manatee data are available monthly, so these counts were "
+2002,952,97,aggregated by fiscal year.
+2003,969,75,
+2004,974,71,The following additional resources may be helpful:
+2005,1001,71,http://www.flhsmv.gov/dmv/TaxCollDocs/vesselstats2011.pdf
+2006,1015,92,http://nsgl.gso.uri.edu/flsgp/flsgpt95004.pdf
+2007,1018,76,https://www.marinaassociation.org/FL%20Rec%20Marine%20Industry.pdf
+2008,1001,79,
+2009,975,91,
+2010,935,95,
+2011,916,77,
