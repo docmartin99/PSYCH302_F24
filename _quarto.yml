@@ -11,11 +11,13 @@ website:
     - text: "Textbook"
       menu:
         - text: "Lessons"
-        - href: ./01-Course_Intro/Course_Introduction.qmd
+        - href: /01-Course_Intro/Course_Introduction.qmd
         - text: "The Statistical Process"
-        - href: ./01-Course_Intro/Stat_Process.qmd
+        - href: /01-Course_Intro/Stat_Process.qmd
+        - text: "Shape and Center"
+        - href: /02-Shape_and_Center/Textbook_Shape_and_Center.qmd
         - text: "Intro to Probability"
-        - href: ./05-Probability/Intro_to_Probability.qmd
+        - href: /05-Probability/Intro_to_Probability.qmd
 
     - text: "Homework"
       menu:

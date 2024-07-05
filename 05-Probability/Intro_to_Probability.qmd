@@ -51,10 +51,10 @@ There is only one marked chick pea in the hat, out of 41 chick peas total. *Out 
 
 </div>
 
-</div>
-
+<br>
 
 **A Second Drawing**<br>
+
 Columbus' promise to make the pilgrimage did not stop the storm. It was determined that there should be a pilgrimage to another site they held sacred. Again, chick peas representing each member of the crew were placed in a hat and shaken up. The lot fell on a sailor...named Pedro de Villa (Caso, Adolph 1990).
 
 <div class="QuestionsHeading">Answer the following questions:</div>
@@ -88,8 +88,7 @@ $$
 
 </div>
 
-</div>
-
+<br>
 
 **Additional Drawings**<br>
 
@@ -225,8 +224,6 @@ This can be viewed as one of two problems:
 
 </div>
 
-</div>
-
 <br>
 
 In this course we are interested in experiments where the outcomes of the experiment are uncertain, yet they follow a pattern or *probabilitiy distribution.* As you read in the above questions and answers, these probability distributions follow three rules.
@@ -277,8 +274,6 @@ $$P(\text{not}~X) = 1 - P(X)$$
 <summary>Show/Hide Solution</summary>
 * Rule 2 or Rule 3
 </details>
-
-</div>
 
 </div>
 
