@@ -948,7 +948,7 @@ wrong_site$Wrong_Patient
 - To calculate the 25th percentile for the costs of surgery done on the Wrong Site:
 
 ```{r}
-quantile(wrong_site$Wrong_Patient, .25)
+quantile(wrong_site$Wrong_Site, .25, na.rm=TRUE)
 ```
 
 <br>

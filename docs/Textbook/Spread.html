@@ -1832,9 +1832,10 @@ R Instructions
 <li><p>To calculate the 25th percentile for the costs of surgery done on the Wrong Site:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Patient, .<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in quantile.default(wrong_site$Wrong_Patient, 0.25): missing values and NaN's not allowed if 'na.rm' is FALSE</code></pre>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">25</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25% 
+ NA </code></pre>
 </div>
 </div>
 <p><br></p>
