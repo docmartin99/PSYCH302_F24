@@ -6,16 +6,9 @@ author: "[your name]"
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.  
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-
-### Download Instructions
-
-  1. Right click on the download button below and save to your Homework folder.  
-  2. Change the "Save as type:" to "All Files".
-
-<a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download class="btn btn-primary">Download this .qmd file</a>
-
 
 # Load the libraries
 ```{r, echo = FALSE, eval=FALSE}

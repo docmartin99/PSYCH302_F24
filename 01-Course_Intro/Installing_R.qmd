@@ -58,7 +58,7 @@ Once the installation finishes you can use your computer’s search bar to searc
 Throughout this course, you will download many files. The collection of files will be a valuable resource if you go on to use R in the future.
 
   1. Create a folder somewhere that is easy to find. Consider naming it "M221D" or another descriptive name
-  2. Download the TestingTesting.Rmd file and save it into your folder
+  2. Download the [TestingTesting.Rmd](https://github.com/byuistats/Math221D_Course/raw/main/01-Course_Intro/TestingTesting.qmd) file and save it into your folder. 
   3. Click the "Knit" or "Render" button at the top of the file that opens up
 
 This should open up a browser window with some text and a chart. If it runs, you're technology is set up for success in this class. If not, ask Bracken or Brother Cannon for help.

@@ -24,6 +24,8 @@ website:
 
     - text: "R Instructions"
       menu:
+        - text: "Installing R"
+        - href: ./01-Course_Intro/Installing_R.qmd
         - text: "Intro to R HW"
         - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
 
