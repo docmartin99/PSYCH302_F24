@@ -18,7 +18,7 @@ Homework assignments can be viewed and downloaded from the "Homework" tab.
 
 Application Activities are designed to give you a more real-world experience dealing with data.  
 
-The section labeld "R Help" provides resources to help with R programming.  
+The section labeled "R Help" provides resources to help with R programming.  
 
 
 #### Suggested Sequence of Topics for Teaching
