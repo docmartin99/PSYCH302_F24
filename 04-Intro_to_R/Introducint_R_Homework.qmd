@@ -1,0 +1,97 @@
+---
+title: 'Introducing R'
+subtitle: 'Summarizing Quantitative Data'
+author: "[your name]"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Load the libraries
+```{r, echo = FALSE, eval=FALSE}
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+```
+
+# Read in Data
+
+```{r}
+
+old_faithful <- rio::import("https://byuistats.github.io/M221R/Data/old_faithful.xlsx")
+
+gratitude <- rio::import("https://byuistats.github.io/M221R/Data/gratitude.xlsx")
+
+
+```
+
+
+# Old Faithful
+
+## Calculate the Summary Statistics for Duration
+
+```{r}
+
+
+```
+
+What is the mean duration time of Old Faithful eruptions?
+
+What is the standard deviation of duration?
+
+
+## Create a Historgram for Duration
+
+Create a histogram and describe the shape of the distribution of duration:
+
+```{r}
+
+
+```
+
+
+
+## Calculate Summary Statistics for Wait time
+
+```{r}
+
+
+
+```
+
+What is the mean wait time between eruptions?
+
+What is the maximum wait time between eruptions?
+
+The middle 50% of wait times will be between what 2 numbers?
+
+
+# Gratitude
+
+Calculate the summary statistics for both groups:
+
+```{r}
+
+
+```
+
+Which treatment group has the highest mean?
+
+Which treatment group has the largest spread of happiness scores?
+
+Create a graph with boxplots for each group:
+
+```{r}
+
+
+```
+
+Which group has the lowest first quartile?
+
+
+
