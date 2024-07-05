@@ -932,7 +932,7 @@ library(rio)
 - Use the `import()` function to load the dataset:
 
 ```{r}
-wrong_site <- import('https://raw.github.com/byuistats/Math221D_Course/main/Data/WrongSiteWrongPatient.xlsx')
+wrong_site <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx")
 ```
 
 &nbsp;&nbsp;**To calculate percentiles and quartiles in R, do the following**

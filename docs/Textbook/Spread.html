@@ -1818,32 +1818,29 @@ R Instructions
 <li>Use the <code>import()</code> function to load the dataset:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/Coconut_E2V4.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpCKbe41\file57985ede2e58.xlsx' cannot be opened</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;<strong>To calculate percentiles and quartiles in R, do the following</strong></p>
 <ul>
 <li>Datasets loaded into R may have many columns of information. To specify which column in the dataset should be used for analysis we use the <code>$</code>. For example, if we wanted only to look at the Wrong_Patient clumn in the wrong_site dataset:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wrong_site<span class="sc">$</span>Wrong_Patient</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>wrong_site<span class="sc">$</span>Wrong_Patient</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>Use R’s <code>quantile()</code> function. This functions requires two inputs separated by a comma: the data and the desired percentile input as a decimal.</p></li>
 <li><p>To calculate the 25th percentile for the costs of surgery done on the Wrong Site:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Patient, .<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Patient, .<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'wrong_site' not found</code></pre>
+<pre><code>Error in quantile.default(wrong_site$Wrong_Patient, 0.25): missing values and NaN's not allowed if 'na.rm' is FALSE</code></pre>
 </div>
 </div>
 <p><br></p>
 </div>
 <p><br></p>
-<p>The first quartile (<span class="math inline">\(Q_1\)</span>) or 25<sup>th</sup> percentile (calculated in Excel) of the wrong-site data is: $29,496. (This result is illustrated in the figure below.) This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay $29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = $29,496. Other percentiles can be written the same way. The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.</p>
+<p>The first quartile (<span class="math inline">\(Q_1\)</span>) or 25<sup>th</sup> percentile (calculated in R) of the wrong-site data is: $29,496. (This result is illustrated in the figure below.) This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay $29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = $29,496. Other percentiles can be written the same way. The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.</p>
 <center>
 <strong>Percentiles (Calculated in Excel)</strong>
 </center>
