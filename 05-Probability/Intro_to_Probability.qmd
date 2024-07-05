@@ -223,6 +223,9 @@ This can be viewed as one of two problems:
 
 </details>
 
+</div>
+
+</div>
 
 In this course we are interested in experiments where the outcomes of the experiment are uncertain, yet they follow a pattern or *probabilitiy distribution.* As you read in the above questions and answers, these probability distributions follow three rules.
 
@@ -271,6 +274,10 @@ $$P(\text{not}~X) = 1 - P(X)$$
 <summary>Show/Hide Solution</summary>
 * Rule 2 or Rule 3
 </details>
+
+</div>
+
+</div>
 
 
 Informally, a distribution can be thought of as being "all the possible outcomes of an experiment and how often they occur."
