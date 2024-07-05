@@ -932,7 +932,7 @@ library(rio)
 - Use the `import()` function to load the dataset:
 
 ```{r}
-wrong_site <- import('https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx')
+wrong_site <- import('https://raw.github.com/byuistats/Math221D_Course/main/Data/WrongSiteWrongPatient.xlsx')
 ```
 
 &nbsp;&nbsp;**To calculate percentiles and quartiles in R, do the following**
@@ -951,21 +951,12 @@ wrong_site$Wrong_Patient
 quantile(wrong_site$Wrong_Patient, .25)
 ```
 
-
-- This R function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.
-
-The wrong-site data in the file ranges from row 2 to row 412 in column A. So, to calculate the 25<sup>th</sup> percentile of the wrong site data you should enter the following formula in a blank cell somewhere in the file:
-
-<center> =PERCENTILE.INC(A2:A412, 0.25) </center>
-<br>
-
-&nbsp;&nbsp;You may notice that some of the values for percentiles given in Excel are different from those given in other softwares. This is due to the slightly different ways in which percentiles can be calculated. In this course, be sure to use the percentiles that come from Excel's percentile.inc() function.
 <br>
 </div>
 <br>
 
 
-The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in Excel) of the wrong-site data is: \$29,496. (This result is illustrated in the figure below.)  This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay \$29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = \$29,496.  Other percentiles can be written the same way.  The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.
+The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in R) of the wrong-site data is: \$29,496. (This result is illustrated in the figure below.)  This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay \$29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = \$29,496.  Other percentiles can be written the same way.  The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.
 
 <center>**Percentiles (Calculated in Excel)**</center>
 |        &nbsp;   |  &nbsp; |

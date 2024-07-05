@@ -1818,9 +1818,9 @@ R Instructions
 <li>Use the <code>import()</code> function to load the dataset:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/Coconut_E2V4.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpecH8y6\file5e43d9b274a.xlsx' cannot be opened</code></pre>
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpCKbe41\file57985ede2e58.xlsx' cannot be opened</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;<strong>To calculate percentiles and quartiles in R, do the following</strong></p>
@@ -1840,15 +1840,7 @@ R Instructions
 <pre><code>Error in eval(expr, envir, enclos): object 'wrong_site' not found</code></pre>
 </div>
 </div>
-<ul>
-<li>This R function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.</li>
-</ul>
-<p>The wrong-site data in the file ranges from row 2 to row 412 in column A. So, to calculate the 25<sup>th</sup> percentile of the wrong site data you should enter the following formula in a blank cell somewhere in the file:</p>
-<center>
-=PERCENTILE.INC(A2:A412, 0.25)
-</center>
 <p><br></p>
-<p>&nbsp;&nbsp;You may notice that some of the values for percentiles given in Excel are different from those given in other softwares. This is due to the slightly different ways in which percentiles can be calculated. In this course, be sure to use the percentiles that come from Excel’s percentile.inc() function. <br></p>
 </div>
 <p><br></p>
 <p>The first quartile (<span class="math inline">\(Q_1\)</span>) or 25<sup>th</sup> percentile (calculated in Excel) of the wrong-site data is: $29,496. (This result is illustrated in the figure below.) This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay $29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = $29,496. Other percentiles can be written the same way. The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.</p>
