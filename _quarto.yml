@@ -8,19 +8,16 @@ website:
     background: primary
     search: true
     left:
-    - text: "Lessons"
+    - text: "Textbook"
       menu:
-        - text: "Course Intro"
+        - text: "Lessons"
         - href: ./01-Course_Intro/Course_Introduction.qmd
+        - text: "The Statistical Process"
+        - href: ./01-Course_Intro/Stat_Process.qmd
 
-    - text: "Specific Designs"
+    - text: "Homework"
       menu:
          - text: "Basic Factorial Introduction"
-
-    - text: "Broad Topics"
-      menu:
-        - text: "Factor Structure"
-
 
     - text: "R Instructions"
       menu:
