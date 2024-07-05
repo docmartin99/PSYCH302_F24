@@ -8,9 +8,13 @@ author: "[your name]"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-<a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download class="btn btn-primary">Download this .qmd file</a>
 
-<a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download="Introducing_R_Homework.qmd" class="btn btn-primary">Download this .qmd file</a>
+### Download Instructions
+
+  1. Right click on the download button below and save to your Homework folder.  
+  2. Change the "Save as type:" to "All Files".
+
+<a href="https://github.com/byuistats/Math221D_Course/raw/main/04-Intro_to_R/Introducing_R_Homework.qmd" download class="btn btn-primary">Download this .qmd file</a>
 
 
 # Load the libraries
