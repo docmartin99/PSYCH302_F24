@@ -53,4 +53,4 @@ Here is a specific, suggested reading schedule:
 
 This is an introductory book intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R. 
 
-Those who dilligently work through these materials should be well prepared for their next statistics course whether in Psychology or Fish and Wildlife Management.  
+Those who diligently work through these materials should be well prepared for their next statistics course whether in Psychology or Fish and Wildlife Management.  
