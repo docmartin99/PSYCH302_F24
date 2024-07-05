@@ -452,13 +452,11 @@ The sum of the squared deviations is 2.20.
 <div class="Questions">
 11. Suppose that the researchers had collected body temperature data on 500 bird flu patients instead of 5.  What would happen to the sum of the squared deviations, if the distribution of the data is the same for the 500 patients as the 5 patients?
 
-<a href="javascript:showhide('Q11')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q11" style="display:none;">
+<details>
+<summary>Solution</summary>
 * We would expect the sum of the squared deviations to be a lot larger than it is now.  We would be adding squared deviations for 500 observations instead of 5. So, the sum of the squared deviations would be about 100 times larger.  
 * Remember, we are trying to find a measure of the spread of a data set.  Our final measure should not be dependent on the sample size.   We need to do something else.
-</div>
-<br>
-
+</details>
 
 * Please do not go on until you have finished this exercise.
 </div>
@@ -729,10 +727,10 @@ Weight of Men Compared to Weight of Seals<br>
 
 17. Based on the histograms, who has a greater sample mean weight, men or elephant seals?
 
-<a href="javascript:showhide('Q17')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q17" style="display:none;">
+<details>
+<summary>Solution</summary>
 * The mean is a measure of the center of a distribution. The mean weight of the men is less than the mean weight of the seals. We can see this because the bulk of the data in the histogram for the men’s weight is to the left of the seals'. The center of the distribution of elephant seals is about 195 kg. The center of the distribution of men's weight is located below 100 kg on the number line.
-</div>
+</details>
 <br>
 
 18. Based on the histograms, do the weights of men or elephant seals have a larger sample standard deviation?
@@ -893,32 +891,37 @@ The home values are representative of data.  If we have a list of data, sorted i
 <div class="Questions">
 20. How many quartiles are there?
 
-<a href="javascript:showhide('Q20')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q20" style="display:none;">
+<details>
+<summary>Solution</summary>
 * There are 3 quartiles!  To divide the data into 100 equal groups, we needed 99 percentiles.  To divide the data into 4 equal groups, we need 3 quartiles.
 </div>
 &nbsp;
-</div>
+</details>
 <br>
 
 **Wrong Site/Wrong Patient Lawsuits**
 
 Percentiles can be used to describe the center and spread of any distribution and are particularly useful when the distribution is skewed or has outliers.  To explore this issue, you will use software to calculate percentiles of data on costs incurred by hospitals due to certain lawsuits. The lawsuits in question were about surgeries performed on the wrong patient, or on the right patient but the wrong part of the patient's body (the wrong site).
 
-<div class="SoftwareHeading">R Instructions</div>
-<div class="Software">
+But first, we need to learn how to load data into R.  
 
-&nbsp;&nbsp;**To calculate percentiles and quartiles in R, do the following**
+R has many built-in toolboxes.  R also has a vast array of toolboxes beyond the built-in ones that we must first install.  This is like going to the Home Depot to buy a specialized toolbox and then storing it in your garage.  We only have to "buy" it once. 
 
-- R has many built in toolboxes.  R also has a vast array of toolboxes beyond the built in ones that we must first install.  This is like going to the Home Depot to buy a specialized toolbox.  We only have to "buy" it once. We use the `install.packages("")` command to do so.
+To install a library, we use the `install.packages("")` command, where we specify the library we want in the quotes inside the parentheses.  
 
-- `rio` is a toolbox that is very useful for loading data into R.  If you haven't already done so, install the `rio` library.
+`rio` is a toolbox that is very useful for loading data into R.  If you haven't already done so, install the `rio` library.
 
 ```{r, eval=FALSE}
 install.packages('rio')
 ```
 
-- While you only have to install libraries once, you have to load them everytime you want to use one.  It's like going to the garage to get the toolbox you need for the job.  
+While you only have to install libraries once, you have to load them everytime you want to use one.  It's like going to the garage to get the toolbox you need for the job.  
+
+Now let's load the data and calculate some percentiles!
+
+<div class="SoftwareHeading">R Instructions</div>
+<div class="Software">
+
 
 - Open R and load the `rio` library:
 
@@ -926,21 +929,30 @@ install.packages('rio')
 library(rio)
 ```
 
-- Now that we've loaded the `rio` library, we can use the `import()` function to load data from the internet:
+- Use the `import()` function to load the dataset:
 
 ```{r}
+wrong_site <- import('https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx')
+```
 
+&nbsp;&nbsp;**To calculate percentiles and quartiles in R, do the following**
+
+- Datasets loaded into R may have many columns of information.  To specify which column in the dataset should be used for analysis we use the `$`.  For example, if we wanted only to look at the Wrong_Patient clumn in the wrong_site dataset:
+
+```{r, eval = FALSE}
+wrong_site$Wrong_Patient
+```
+
+- Use R's `quantile()` function.  This functions requires two inputs separated by a comma: the data and the desired percentile input as a decimal.  
+
+- To calculate the 25th percentile for the costs of surgery done on the Wrong Site:
+
+```{r}
+quantile(wrong_site$Wrong_Patient, .25)
 ```
 
 
-- You will use R's `quantile()` function.
-
-```{r}
-
-```
-
-
-- This Excel function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.
+- This R function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.
 
 The wrong-site data in the file ranges from row 2 to row 412 in column A. So, to calculate the 25<sup>th</sup> percentile of the wrong site data you should enter the following formula in a blank cell somewhere in the file:
 

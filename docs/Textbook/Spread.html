@@ -1045,15 +1045,16 @@ Answer the following questions:
 <ol start="11" type="1">
 <li>Suppose that the researchers had collected body temperature data on 500 bird flu patients instead of 5. What would happen to the sum of the squared deviations, if the distribution of the data is the same for the 500 patients as the 5 patients?</li>
 </ol>
-<a href="javascript:showhide('Q11')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q11" style="display:none;">
+<details>
+<summary>
+Solution
+</summary>
 <ul>
 <li>We would expect the sum of the squared deviations to be a lot larger than it is now. We would be adding squared deviations for 500 observations instead of 5. So, the sum of the squared deviations would be about 100 times larger.<br>
 </li>
 <li>Remember, we are trying to find a measure of the spread of a data set. Our final measure should not be dependent on the sample size. We need to do something else.</li>
 </ul>
-</div>
-<p><br></p>
+</details>
 <ul>
 <li>Please do not go on until you have finished this exercise.</li>
 </ul>
@@ -1513,12 +1514,14 @@ Solution
 <ol start="17" type="1">
 <li>Based on the histograms, who has a greater sample mean weight, men or elephant seals?</li>
 </ol>
-<a href="javascript:showhide('Q17')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q17" style="display:none;">
+<details>
+<summary>
+Solution
+</summary>
 <ul>
 <li>The mean is a measure of the center of a distribution. The mean weight of the men is less than the mean weight of the seals. We can see this because the bulk of the data in the histogram for the men’s weight is to the left of the seals’. The center of the distribution of elephant seals is about 195 kg. The center of the distribution of men’s weight is located below 100 kg on the number line.</li>
 </ul>
-</div>
+</details>
 <p><br></p>
 <ol start="18" type="1">
 <li>Based on the histograms, do the weights of men or elephant seals have a larger sample standard deviation?</li>
@@ -1779,44 +1782,66 @@ Answer the following questions:
 <ol start="20" type="1">
 <li>How many quartiles are there?</li>
 </ol>
-<a href="javascript:showhide('Q20')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q20" style="display:none;">
+<details>
+<summary>
+Solution
+</summary>
 <ul>
-<li>There are 3 quartiles! To divide the data into 100 equal groups, we needed 99 percentiles. To divide the data into 4 equal groups, we need 3 quartiles.</li>
-</ul>
-</div>
-<p>&nbsp;</p>
-</div>
+<li>There are 3 quartiles! To divide the data into 100 equal groups, we needed 99 percentiles. To divide the data into 4 equal groups, we need 3 quartiles.
+</li></ul></details></div>
+&nbsp;
+
+
 <p><br></p>
 <p><strong>Wrong Site/Wrong Patient Lawsuits</strong></p>
 <p>Percentiles can be used to describe the center and spread of any distribution and are particularly useful when the distribution is skewed or has outliers. To explore this issue, you will use software to calculate percentiles of data on costs incurred by hospitals due to certain lawsuits. The lawsuits in question were about surgeries performed on the wrong patient, or on the right patient but the wrong part of the patient’s body (the wrong site).</p>
+<p>But first, we need to learn how to load data into R.</p>
+<p>R has many built-in toolboxes. R also has a vast array of toolboxes beyond the built-in ones that we must first install. This is like going to the Home Depot to buy a specialized toolbox and then storing it in your garage. We only have to “buy” it once.</p>
+<p>To install a library, we use the <code>install.packages("")</code> command, where we specify the library we want in the quotes inside the parentheses.</p>
+<p><code>rio</code> is a toolbox that is very useful for loading data into R. If you haven’t already done so, install the <code>rio</code> library.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'rio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>While you only have to install libraries once, you have to load them everytime you want to use one. It’s like going to the garage to get the toolbox you need for the job.</p>
+<p>Now let’s load the data and calculate some percentiles!</p>
 <div class="SoftwareHeading">
 R Instructions
 </div>
 <div class="Software">
-<p>&nbsp;&nbsp;<strong>To calculate percentiles and quartiles in R, do the following</strong></p>
 <ul>
-<li><p>R has many built in toolboxes. R also has a vast array of toolboxes beyond the built in ones that we must first install. This is like going to the Home Depot to buy a specialized toolbox. We only have to “buy” it once. We use the <code>install.packages("")</code> command to do so.</p></li>
-<li><p><code>rio</code> is a toolbox that is very useful for loading data into R. If you haven’t already done so, install the <code>rio</code> library.</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'rio'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><p>While you only have to install libraries once, you have to load them everytime you want to use one. It’s like going to the garage to get the toolbox you need for the job.</p></li>
-<li><p>Open R and load the <code>rio</code> library:</p></li>
+<li>Open R and load the <code>rio</code> library:</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Now that we’ve loaded the <code>rio</code> library, we can use the <code>import()</code> function to load data from the internet:</li>
+<li>Use the <code>import()</code> function to load the dataset:</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpecH8y6\file5e43d9b274a.xlsx' cannot be opened</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;<strong>To calculate percentiles and quartiles in R, do the following</strong></p>
 <ul>
-<li>You will use R’s <code>quantile()</code> function.</li>
+<li>Datasets loaded into R may have many columns of information. To specify which column in the dataset should be used for analysis we use the <code>$</code>. For example, if we wanted only to look at the Wrong_Patient clumn in the wrong_site dataset:</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wrong_site<span class="sc">$</span>Wrong_Patient</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li>This Excel function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.</li>
+<li><p>Use R’s <code>quantile()</code> function. This functions requires two inputs separated by a comma: the data and the desired percentile input as a decimal.</p></li>
+<li><p>To calculate the 25th percentile for the costs of surgery done on the Wrong Site:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Patient, .<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'wrong_site' not found</code></pre>
+</div>
+</div>
+<ul>
+<li>This R function requires two inputs (or arguments), separated by a comma. The first input is the cell range reference. The second input is the desired percentile.</li>
 </ul>
 <p>The wrong-site data in the file ranges from row 2 to row 412 in column A. So, to calculate the 25<sup>th</sup> percentile of the wrong site data you should enter the following formula in a blank cell somewhere in the file:</p>
 <center>
