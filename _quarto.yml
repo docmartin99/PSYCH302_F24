@@ -28,7 +28,7 @@ website:
     - text: "R Help"
       menu:
         - href: ./01-Course_Intro/Installing_R.qmd
-        - href: ./10-Intro_to_Data_Wrangling/Exploring_New_Data_with_Tidyverst.qmd
+        - href: ./10-Intro_to_Data_Wrangling/Exploring_New_Data_with_Tidyverse.qmd
 
 
     right:
