@@ -1,5 +1,10 @@
 ---
 title: "Describing Quantitative Data (Spread)"
+output: 
+  html_document:
+    theme: cerulean
+    toc: true
+    toc_float: false
 ---
 
 ```{r, echo=FALSE}

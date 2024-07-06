@@ -341,12 +341,5 @@
     "title": "Describing Quantitative Data (Spread)",
     "section": "Summary",
     "text": "Summary\n\nRemember…\n\n\n\nA percentile is calculated in R using quantile(data, 0.#) where the 0.# is the percentile written as a decimal number. So the 20th percentile would be written as 0.2.\nA percentile is a number such that a specified percentage of the data are at or below this number. For example, if say 80% of college students were shorter than (or equal to) 70 inches tall in height, then the 80th percentile of heights of college students would be 70 inches.\nStandard deviation is calculated in R for a sample of data using sd(data).\nThe standard deviation is a number that describes how spread out the data typically are from the mean of that data. A larger standard deviation means the data are more spread out from their mean than data with a smaller standard deviation. The standard deviation is never negative. A standard deviation of zero implies all values in the data set are exactly the same.\nTo compute any of the five-number summary values in R, use the R function favstats(data) which also includes the mean and standard deviation.\nThe five-number summary consists of (1) the minimum value in the data, (2) the first quartile (25th percentile) of the data, (3) the median of the data (50th percentile), (4) the third quartile (75th percentile) of the data, and (5) the maximum value occurring in the data.\nTo create a boxplot in R, use the boxplot(data) or for multiple columns boxplot(data1, data2, names=c(\"Name of Column 1\", \"Name of Column 2)).\nBoxplots are a visualization of the five-number summary of a data set."
-  },
-  {
-    "objectID": "Textbook/Spread.html#navigation",
-    "href": "Textbook/Spread.html#navigation",
-    "title": "Describing Quantitative Data (Spread)",
-    "section": "Navigation",
-    "text": "Navigation\n\n\n\nPrevious Reading\nThis Reading\nNext Reading\n\n\n\n\nLesson 3:  Describing Quantitative Data (Shape and Center)\nLesson 4:  Describing Quantitative Data (Spread)\nLesson 5:  Normal Distributions"
   }
 ]
