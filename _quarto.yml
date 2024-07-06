@@ -8,22 +8,35 @@ website:
     background: primary
     search: true
     left:
-    - text: "Textbook"
+    - text: "Stats Fundamentals"
       menu:
         - href: ./Textbook/Course_Introduction.qmd
         - href: ./Textbook/Stat_Process.qmd
         - href: ./Textbook/Shape_and_Center.qmd
         - href: ./Textbook/Spread.qmd
         - href: ./Textbook/Intro_to_Probability.qmd
+        
+    - text:  "Class Notes"
+      menu:
+        - href: ./Class_Notes/Installing_R.qmd
 
     - text: "Homework"
       menu:
-         - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
+         - href: ./Homework/Introducing_R_Homework.qmd
+         - href: ./Homework/Exploring_New_Data_with_Tidyverse.qmd
+
+    - text: "Application Activities"
+      menu:
+        - href: ./Application_Activities/AA_Data_Summaries.qmd
+        - href: ./Application_Activities/AA_Unit1_Review.qmd
+        - href: ./Application_Activities/AA_Hypothesis_Conf_Int.qmd
+        - href: ./Application_Activities/AA_Unit2_Review.qmd
+        - href: ./Application_Activities/AA_Who_Shot_First_Cat_Vars.qmd
+        - href: ./Application_Activities/Semester_Project_Instructions.qmd
 
     - text: "R Help"
       menu:
-        - href: ./01-Course_Intro/Installing_R.qmd
-        - href: ./10-Intro_to_Data_Wrangling/Exploring_New_Data_with_Tidyverse.qmd
+        - href: ./Class_Notes/Installing_R.qmd
 
 
     right:
@@ -37,5 +50,4 @@ format:
     css: styles.css
     toc: true
 
-editor: visual
 output-dir: docs

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Intro to Probability</title>
+<title>Math221 Notebook - Unit 2 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -238,15 +272,44 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#probability" id="toc-probability" class="nav-link active" data-scroll-target="#probability">Probability</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#christopher-columbus-first-voyage" id="toc-christopher-columbus-first-voyage" class="nav-link" data-scroll-target="#christopher-columbus-first-voyage">Christopher Columbus’ First Voyage</a></li>
-  <li><a href="#probability-notation" id="toc-probability-notation" class="nav-link" data-scroll-target="#probability-notation">Probability Notation</a></li>
-  <li><a href="#rules-of-probability" id="toc-rules-of-probability" class="nav-link" data-scroll-target="#rules-of-probability">Rules of Probability</a></li>
-  <li><a href="#randomness" id="toc-randomness" class="nav-link" data-scroll-target="#randomness">Randomness</a></li>
+  <li><a href="#getting-to-know-a-new-dataset" id="toc-getting-to-know-a-new-dataset" class="nav-link" data-scroll-target="#getting-to-know-a-new-dataset">Getting to know a new dataset</a></li>
+  <li><a href="#load-the-libraries-and-data" id="toc-load-the-libraries-and-data" class="nav-link" data-scroll-target="#load-the-libraries-and-data">Load the Libraries and Data</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review the data</a></li>
+  <li><a href="#preparing-data-for-analysis" id="toc-preparing-data-for-analysis" class="nav-link" data-scroll-target="#preparing-data-for-analysis">Preparing data for analysis</a>
+  <ul class="collapse">
+  <li><a href="#categories-labeled-as-numbers" id="toc-categories-labeled-as-numbers" class="nav-link" data-scroll-target="#categories-labeled-as-numbers">Categories Labeled as Numbers</a>
+  <ul class="collapse">
+  <li><a href="#changing-a-column-type-in-a-dataset" id="toc-changing-a-column-type-in-a-dataset" class="nav-link" data-scroll-target="#changing-a-column-type-in-a-dataset">Changing a Column Type in a dataset</a></li>
+  <li><a href="#changing-the-variable-type-on-the-fly" id="toc-changing-the-variable-type-on-the-fly" class="nav-link" data-scroll-target="#changing-the-variable-type-on-the-fly">Changing the Variable Type “on the fly”</a></li>
+  </ul></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the Data</a></li>
+  </ul></li>
+  <li><a href="#perform-the-appropriate-analysis" id="toc-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis">Perform the Appropriate Analysis</a>
+  <ul class="collapse">
+  <li><a href="#comparing-schools" id="toc-comparing-schools" class="nav-link" data-scroll-target="#comparing-schools">Comparing Schools</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#comparing-second-period-grade-with-final-grade" id="toc-comparing-second-period-grade-with-final-grade" class="nav-link" data-scroll-target="#comparing-second-period-grade-with-final-grade">Comparing Second Period Grade with Final Grade</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#absenteeism-in-portugal" id="toc-absenteeism-in-portugal" class="nav-link" data-scroll-target="#absenteeism-in-portugal">Absenteeism in Portugal</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#the-impact-of-mothers-education-level" id="toc-the-impact-of-mothers-education-level" class="nav-link" data-scroll-target="#the-impact-of-mothers-education-level">The Impact of Mother’s Education Level</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-3" id="toc-hypothesis-test-3" class="nav-link" data-scroll-target="#hypothesis-test-3">Hypothesis Test</a></li>
+  </ul></li>
+  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -255,7 +318,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to Probability</h1>
+<h1 class="title">Unit 2 Review</h1>
+<p class="subtitle lead">Application Activity</p>
 </div>
 
 
@@ -272,364 +336,230 @@ window.Quarto = {
 </header>
 
 
-<section id="probability" class="level2">
-<h2 class="anchored" data-anchor-id="probability">Probability</h2>
-<p>Probability is a way of numerically quantifying how likely an event is to happen or not happen. The following historical account demonstrates this idea and shows how fractions (like 1/2 or 3/4) or percentages (like 50% or 75%) can be used to represent probabilities.</p>
-<section id="christopher-columbus-first-voyage" class="level3">
-<h3 class="anchored" data-anchor-id="christopher-columbus-first-voyage">Christopher Columbus’ First Voyage</h3>
-<p><img src="../Images/Columbus_taking_possession_of_the_new_country.jpg"></p>
-<p>On August 3, 1492, Columbus set sail from Spain for his intended destination: the Indies (Caso, Adolph 1990). He was on the Santa Maria, which had a crew of approximately 41 men (“Cristobal colon” 1991; “Christopher Columbus”). Several other men were aboard the Nina and the Pinta (“Cristobal colon” 1991). On October 12, he landed on an island in the Bahamas he called San Salvador.</p>
-<p>The return trip was not without challenges. The Santa Maria ran aground on Christmas Day, 1492, and was abandoned on the island we now call Hispaniola (home to Haiti and the Dominican Republic). Following this incident, Columbus sailed for Spain. Severe storms made the journey difficult. A particularly bad storm on February 14, 1493 made the crew fear for their lives. By morning, the storm was even worse!</p>
-<p>Recognizing his dependence upon God, Columbus ordered that a pilgrimage should be made to a particular shrine upon their safe arrival in Spain. He decided that they would use random chance to determine who would make the pilgrimage. They took one chick pea for each man on board. A knife was used to mark one of the chick peas with a cross. The chick peas were placed in a hat and shaken up. Each man was to draw a chick pea, and the one who had the cross would make the pilgrimage.</p>
-<p>“The first who put in his hand was [Columbus,] and he drew out the bean with a cross, so the lot fell on him; and he was bound to go on the pilgrimage and fulfil the vow” (Caso, Adolph 1990).</p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this activity, you will use everything we’ve covered in Unit 2 including:</p>
+<ul>
+<li>Data manipulation using tidyverse functions</li>
+<li>Hypothesis tests
+<ul>
+<li>1-Sample t-test</li>
+<li>2-sample dependent t-test</li>
+<li>2-sample independent t-test</li>
+<li>ANOVA</li>
+</ul></li>
+<li>Confidence Intervals where applicable</li>
+</ul>
+<p>We will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.</p>
+<section id="getting-to-know-a-new-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="getting-to-know-a-new-dataset">Getting to know a new dataset</h2>
+<p>In class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:</p>
+<ul>
+<li><strong>Read in the data</strong><br>
+</li>
+<li><strong>Explore the dataset as a whole</strong>:
+<ul>
+<li>What are the column names? What do they mean? Where can I find information about them?</li>
+<li>What is the response/dependent variable? Could there be more than one?</li>
+<li>What are some factors that may impact the response variable? Which are likely the most important?</li>
+</ul></li>
+<li><strong>Explore specific columns</strong>
+<ul>
+<li>Start with the response variable. Are there any outliers? Obtain summary statistics (<code>favstats()</code>), visualize the data (<code>histogram()</code>, <code>boxplot()</code>).</li>
+<li>Explore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (<code>unique()</code>)</li>
+</ul></li>
+<li><strong>Formalize statistical hypotheses</strong>. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?</li>
+<li><strong>Prepare data for analysis</strong>. You may need to clean the data (eg. <code>data %&gt;% filter() %&gt;% select()</code>)</li>
+<li><strong>Perform the appropriate analysis</strong> (<code>t.test()</code>, <code>aov()</code>)</li>
+</ul>
+<p>All these activities are important, but we may spend more or less time on any one of them depending on the state of the data.</p>
+</section>
+<section id="load-the-libraries-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-libraries-and-data">Load the Libraries and Data</h2>
+</section>
+</section>
+<section id="review-the-data" class="level1">
+<h1>Review the data</h1>
+<p>Take some time to familiarize yourself with the data. Check the <a href="https://www.kaggle.com/datasets/whenamancodes/student-performance">website</a> to see what the columns are.</p>
+<p>What is the response variable?</p>
+<p>Create a histogram of the response variable.</p>
+<p>What do you notice about the shape of the distribution?</p>
+<p>What anomalies, if any, do you notice?</p>
+<p>Calculate summary statistics for the response variable.</p>
+<p>What is the minimum?</p>
+<p>What is the maximum?</p>
+<p>How many students participated in the survey?</p>
+<p>Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:</p>
 <ol type="1">
-<li>Remember, there were 41 men aboard his ship. What is the probability that Columbus would draw out the marked chick pea? Express your answer as a fraction, and then convert it to a decimal.</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
 </ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-There is only one marked chick pea in the hat, out of 41 chick peas total. <em>Out of</em> is expressed arithmetically by division. The probability is <span class="math inline">\(\frac{1}{41} = 0.0244\)</span>. (Note: this is about 2%.)
-</details>
-<ol start="2" type="1">
-<li>Based on your answer to the previous question, how likely is it that Columbus would draw out the marked chick pea?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>There is only about a 2% chance that Columbus will draw out the marked Chick Pea. This is not very likely.</li>
-</ul>
-</details>
-</div>
-<p><br></p>
-<p><strong>A Second Drawing</strong><br></p>
-<p>Columbus’ promise to make the pilgrimage did not stop the storm. It was determined that there should be a pilgrimage to another site they held sacred. Again, chick peas representing each member of the crew were placed in a hat and shaken up. The lot fell on a sailor…named Pedro de Villa (Caso, Adolph 1990).</p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol start="3" type="1">
-<li>What is the probability that Columbus would not draw out the marked chick pea? Express your answer as a fraction, and then covert it to a decimal?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>There are 40 other men on board plus Columbus. So, the probability that Columbus would not draw out the marked chick pea is: <span class="math inline">\(\frac{40}{41} = 0.9756\)</span>. (Note: this is almost 98%.)</li>
-</ul>
-</details>
-<ol start="4" type="1">
-<li>Based on your answer to the previous question, how likely is it that Columbus would not draw out the marked chick pea?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>It is very likely that Columbus would not draw out the marked chick pea. This result is not surprising.</li>
-</ul>
-</details>
-<ol start="5" type="1">
-<li>In this second drawing, either Columbus would draw out the marked chick pea, or he would not. Add the probability that Columbus would draw out the marked chick pea and the probability that he would not draw out the marked chick pea. What is the value of this sum?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The sum of the probabilities is 1:</li>
-</ul>
-<span class="math display">\[
-\frac{1}{41} + \frac{40}{41} = \frac{41}{41} = 1
-\]</span>
-</details>
-</div>
-<p><br></p>
-<p><strong>Additional Drawings</strong><br></p>
-<p>After the drawing in which Pedro de Villa was chosen to make a pilgrimage, two additional drawings were held. In both cases, Columbus drew out the marked chick pea (Caso, Adolph 1990). In all, Christopher Columbus drew the marked chick pea in three of the four drawings. It can be shown that the probability that this would occur due to chance is very small: 0.0000566.</p>
-<p><strong>Bonus material. Read only if you are interested.</strong></p>
-<p>This calculation is more involved than the calculations you will be required to make in this course this semester. But if you are still interested, read on.</p>
-<p>In each individual drawing, there was a 1/41 chance of Columbus getting the marked chick pea. Similarly, there was a 40/41 chance of not getting it. Since there were four drawings total, and the goal is to measure the probability of “three of those drawings” resulting in Columbus getting the marked chick pea, it becomes important to think about all of the orders in which Columbus could have gotten 3 out of 4.</p>
-<table class="table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 18%">
-<col style="width: 19%">
-<col style="width: 19%">
-<col style="width: 19%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Possible Outcome</th>
-<th>First Drawing</th>
-<th>Second Drawing</th>
-<th>Third Drawing</th>
-<th>Fourth Drawing</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>What actually happened…</td>
-<td>Got it.</td>
-<td>Didn’t get it.</td>
-<td>Got it.</td>
-<td>Got it.</td>
-</tr>
-<tr class="even">
-<td>But he could have…</td>
-<td>Got it.</td>
-<td>Got it.</td>
-<td>Didn’t get it.</td>
-<td>Got it.</td>
-</tr>
-<tr class="odd">
-<td>Or he could have…</td>
-<td>Got it.</td>
-<td>Got it.</td>
-<td>Got it.</td>
-<td>Didn’t get it.</td>
-</tr>
-<tr class="even">
-<td>Or he could have…</td>
-<td>Didn’t get it.</td>
-<td>Got it.</td>
-<td>Got it.</td>
-<td>Got it.</td>
-</tr>
-</tbody>
-</table>
-<p>In each of the above cases, notice that Columbus <em>would have</em> gotten the marked chick pea a total of 3 out of 4 times. So, this tells us there are four diffent ways to get the chick pea 3 out of 4 times.</p>
-<p>The probability of what actually happened to Columbus <em>in the order in which it happened</em> would be computed by multiplying the individual probabilities of each drawing together.</p>
-<p><span class="math display">\[
-  \frac{1}{41} \cdot \frac{40}{41} \cdot \frac{1}{41} \cdot \frac{1}{41} \approx 0.00001415548
-\]</span></p>
-<p>But then, we must also add to this the other “possible” scenarios that would also lead to getting the chick pea 3 out of 4 times, but as shown below, because multiplication is commutative (the order doesn’t matter) these “different” situations result in the same probability as the first.</p>
-<p><span class="math display">\[
-  \frac{1}{41} \cdot \frac{1}{41} \cdot \frac{40}{41} \cdot \frac{1}{41} \approx 0.00001415548
-\]</span></p>
-<p><span class="math display">\[
-  \frac{1}{41} \cdot \frac{1}{41} \cdot \frac{1}{41} \cdot \frac{40}{41} \approx 0.00001415548
-\]</span></p>
-<p><span class="math display">\[
-  \frac{40}{41} \cdot \frac{1}{41} \cdot \frac{1}{41} \cdot \frac{1}{41} \approx 0.00001415548
-\]</span></p>
-<p>Thus, all that is needed is to multiply the first probability of roughly 0.00001415548 by 4 to get <span class="math inline">\(0.00001415548 \cdot 4 = 0.00005662192\)</span>.</p>
-<p><strong>End of Bonus Material.</strong></p>
-</section></section></main></div>
-<p>To put some perspective on this, a high school athlete in the United States is over 26 times more likely to play professional sports than Columbus was to draw the three marked peas! (Fields, Mike 2008) Consider how you might explain the occurrence of this extremely unlikely event. (While no response is required of you right now, this kind of question will be very important later, so take a little time to ponder it.) In fact, it is worth restating the question, “How might you explain the occurrence of this extremely unlikely event?”</p>
-<p>Now, take a moment to practice what you have read by answering the following questions.</p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol start="6" type="1">
-<li>If a fair, six-sided die* is rolled, what is the probability of rolling a 6?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The probability of rolling a 6 on a die is <span class="math inline">\(\displaystyle{ \frac{1}{6}} = 0.1667\)</span>. This is because a six-sided die has 6 sides total and only 1 side that has a “6” on it. Thus, 1/6 represents the chance of getting a “six” divided by the “total number of possibilities on the die” in the denominator (6).</li>
-</ul>
-</details>
-<ol start="7" type="1">
-<li>If a fair, six-sided die is rolled, what is the probability of not rolling a 6?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The probability of not rolling a 6 on a die is <span class="math inline">\(\displaystyle{\frac{5}{6}} = 0.8333.\)</span> This is because there are five sides on the die that are “not a 6” (the sides representing 1, 2, 3, 4, and 5) and six total sides, so 5 out of 6 sides will yield something other than a “six.”</li>
-</ul>
-</details>
-<ol start="8" type="1">
-<li>When a die is rolled, what is the sum of the probability of rolling a 6 and the probability of not rolling a six?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The probability of rolling a six is <span class="math inline">\(\displaystyle{\frac{1}{6}}\)</span> and the probability of not rolling a six is <span class="math inline">\(\displaystyle{\frac{5}{6}}\)</span>. These things cannot happen at the same time, so the probability of either rolling a six or not rolling a six is <span class="math display">\[ \frac{1}{6} + \frac{5}{6} = \frac{6}{6} = 1 \]</span></li>
-</ul>
-*The only possible outcomes in this case are that you either roll a six or that you do not roll a six. The probability that one of these will happen is 1. If we list all the possible outcomes, the probability that at least one of them will occur is 1.
-</details>
-<ol start="9" type="1">
-<li>In general, if we know the probability that a particular outcome will occur, how could we calculate the probability that it will not occur?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>If we know the probability that an event will occur, we can subtract this probability from 1 to find the probability that the event will not occur. This is because the sum of the probabilities that the event will occur and that the event will not occur must be 1.</li>
-</ul>
-</details>
-<p><span class="math inline">\(*\)</span><em>Note: The word “die” is the singular form of the word “dice.” When we refer to a die, we are talking about a fair, six-sided die.</em></p>
-</div>
-<p><br></p>
-
-<section id="probability-notation" class="level3">
-<h3 data-anchor-id="probability-notation">Probability Notation</h3>
-<p>You may already have a good understanding of the basics of probability. It is worth noting that there is a special notation used to denote probabilities. The probability that an event, <span class="math inline">\(x\)</span>, will occur is written <span class="math inline">\(P(x)\)</span> and pronounced as “probability-of-event-x.” As an example, the probability that you will roll a 6 on a fair six-sided die can be written as</p>
-<p><span class="math display">\[
-P\text{(Roll a "six" on a fair six-sided die)}= \frac{1}{6} = \frac{\text{number of sides that show a "six"}}{\text{total number of sides on the die}}
-\]</span></p>
+<p><strong>NOTE</strong>: Some of the above variables may be quantitative, which is great! Next unit will cover how to analyze those relationships. This assignment, however, focuses on comparing differences between groups and only considers categorical explanatory variables variables.</p>
 </section>
-<section id="rules-of-probability" class="level3">
-<h3 data-anchor-id="rules-of-probability">Rules of Probability</h3>
-<p>Probabilities follow patterns, called <strong>probability distributions,</strong> or just <em>distributions</em>, for short. There are three rules that a probability distribution must follow. Answer the following questions to explore what these three rules might be.</p>
-<div class="QuestionsHeading">
-Answer the following questions:
+<section id="preparing-data-for-analysis" class="level1">
+<h1>Preparing data for analysis</h1>
+<section id="categories-labeled-as-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="categories-labeled-as-numbers">Categories Labeled as Numbers</h2>
+<p>Sometimes even correct data can have issues that must be addressed. For example, categories are often labeled as numbers. Software can’t guess when numbers are supposed to be categories, so we have to tell R when a number should be treated as a category.</p>
+<p>To force a variable to be a category, we use the <code>factor()</code> function in R. We can change the variable type in the data itself or change it in the analysis. We demonstrate both methods below.</p>
+<section id="changing-a-column-type-in-a-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="changing-a-column-type-in-a-dataset">Changing a Column Type in a dataset</h3>
+<p>Father’s education, <code>Fedu</code>, shows up as a number in R. The website suggests that the numbers represent categories (0 = none, 1 = primary education (4th grade), 2 = 5th to 9th grade, 3 = secondary education or 4 = higher education).</p>
+<p>To change the data type in the data itself, we can use a mutate statement in the following manner:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset called fedu_data that begins with the clean data and adds a column that we called Fedu_factor, which is the factorized column, Fedu:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> student <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fedu_factor =</span> <span class="fu">factor</span>(Fedu))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the column names of the new dataset.  Notice the new column</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(new_data)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse() shows us data types.  Notice after Fedu_factor, the &lt;fct&gt;, which shows us that this is in fact, a factor variable type.  &lt;dbl&gt; stands for "double" and is a numeric variable type</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="Questions">
-<ol start="10" type="1">
-<li>As an answer to a homework problem, a student reported, The probability of finding life on Mars is -0.35. What is wrong with this statement?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>Probabilities cannot be negative because they represent the “number of ways something specific can happen” (like how many planets that are “just like” Mars and do have life on them) divided by “the total number of possibilities” (in this case, the total number of planets that exist that are “just like” Mars). The fewest planets there could be that are “just like” Mars and have life on them is zero. So the lowest a probability can go is zero.</li>
-</ul>
-</details>
-<ol start="11" type="1">
-<li>A student in an introductory statistics class wrote the following statement on an exam: The probability that the event will occur is 1.25 (i.e.&nbsp;125%). What is wrong with this statement?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>Probabilities cannot be larger than 1 (or 100%). This is because probabilities represent frequencies of occurrence, and the most something can happen is “all the time” or 100% of the time.</li>
-</ul>
-</details>
-<ol start="12" type="1">
-<li>A student estimated that the probability that he would finish his homework is 0.45 (i.e., 45%), and the probability that he would not finish his homework is 0.35 (i.e., 35%). What is wrong with this student’s statement?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<p>This can be viewed as one of two problems:</p>
-<ol type="1">
-<li><p>The probabilities for all the events do not add up to 1 (or 100%.)</p></li>
-<li><p>The probability that he does not finish his homework is actually 1 minus the probability that he will finish his homework or 0.55 (i.e., 55%).</p></li>
-</ol>
-</details>
-</div>
-<p><br></p>
-<p>In this course we are interested in experiments where the outcomes of the experiment are uncertain, yet they follow a pattern or <em>probabilitiy distribution.</em> As you read in the above questions and answers, these probability distributions follow three rules.</p>
-<div class="Emphasis">
-<p>&nbsp;&nbsp;<strong>The three rules of probability are:</strong></p>
-<ul>
-<li><strong>Rule 1</strong>: The probability of an event <span class="math inline">\(X\)</span> is a number between 0 and 1.</li>
-</ul>
-<p><span class="math display">\[0 \leq P(X) \leq 1\]</span></p>
-<ul>
-<li><strong>Rule 2</strong>: If you list all the outcomes of an experiment (such as rolling a die) the probability that one of these outcomes will occur is 1. In other words, the sum of the probabilities of all the possible outcomes of any experiment is 1.</li>
-</ul>
-<p><span class="math display">\[\sum P(X) = 1\]</span></p>
-<ul>
-<li><strong>Rule 3</strong>: (Complement Rule) The probability that an event <span class="math inline">\(X\)</span> will not occur is 1 minus the probability that it will occur.</li>
-</ul>
-<p><span class="math display">\[P(\text{not}~X) = 1 - P(X)\]</span></p>
-<p>&nbsp;&nbsp;You may have noticed that the Complement Rule is just a combination of the first two rules.</p>
-</div>
-<p><br></p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol start="13" type="1">
-<li>Which of the probability rules was violated by the statement in Question 10?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>Rule 1</li>
-</ul>
-</details>
-<ol start="14" type="1">
-<li>Which of the probability rules was violated by the statement in Question 11?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>Rule 1</li>
-</ul>
-</details>
-<ol start="15" type="1">
-<li>Which of the probability rules was violated by the statement in Question 12?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>Rule 2 or Rule 3</li>
-</ul>
-</details>
-</div>
-<p><br></p>
-<p>Informally, a distribution can be thought of as being “all the possible outcomes of an experiment and how often they occur.”</p>
 </section>
-<section id="randomness" class="level3">
-<h3 data-anchor-id="randomness">Randomness</h3>
-<p>A BYU-Idaho student was overhead saying, “I went shopping and bought some <em>random</em> items.” Did the person actually take a random sample of the items at the store? Did they write all the items down and randomly select the items for purchase? Of course not!</p>
-<p>What did the student mean? That the items they bought seemed unrelated. When we consciously or subconsciously choose a sample, it is not random.</p>
-<p>So, what does it mean to be random? When something is random, it is not just haphazard, with no pattern. A random process follows a very distinct pattern over time—the distribution of its outcomes. For example, if you roll a die thousands of times, about one-sixth of the time you will roll a four. This is a very clear pattern, or part of a pattern. The entire pattern (or, the entire distribution) is that each number on the die is rolled about one-sixth of the time.</p>
-<p>But there’s something different about the patterns followed by random processes than other kinds of patterns. Other kinds of patterns can be very predictable, such as a color pattern of the red, yellow, blue, red, yellow, blue, and so on. If you’re following this pattern and happen to see yellow, you know the next color will be blue. By contrast, you never know what you will get on the next roll of a six-sided die. You <em>do</em> know that in the long run you will roll fours about one-sixth of the time.</p>
-<p>When something is random, we can be sure that it follows a long-term pattern. This long-term pattern is called its <em>probability distribution</em>. However, what makes “randomness” interesting is that despite knowing the long-term pattern, or how often something will occur over time, we still never know what the outcome of the <em>next</em> experiment will be.</p>
-<p><br></p>
-</section>
-
-<section id="conclusion" class="level2">
-<h2 data-anchor-id="conclusion">Conclusion</h2>
-<p>As with all the classes you take at BYU-Idaho, it is up to you to decide what you want to get out of this class. If you choose to approach the things you study in class with an open mind, if you prepare diligently and work hard to complete all the learning activities, and if you humbly seek the Lord’s help to understand the intellectual and spiritual truths discussed in this course and in other courses, you will have an outstanding educational experience that will be a blessing to you throughout your life. May you enjoy the journey this semester into statistics!</p>
-<p><br></p>
-</section>
-<section id="summary" class="level2">
-<h2 data-anchor-id="summary">Summary</h2>
-<div class="SummaryHeading">
-Remember…
+<section id="changing-the-variable-type-on-the-fly" class="level3">
+<h3 class="anchored" data-anchor-id="changing-the-variable-type-on-the-fly">Changing the Variable Type “on the fly”</h3>
+<p>You may not want to bother changing all the variable types for each potential analysis. Fortunately, you can create a factor “on the fly” within the analysis function itself.</p>
+<p>Because there are more than 2 levels of Father’s Education, I will demonstrate how this is done in an ANOVA:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Force Fedu to be treated like a category in ANOVA:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fedu_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(student<span class="sc">$</span>G3 <span class="sc">~</span> <span class="fu">factor</span>(student<span class="sc">$</span>Fedu))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fedu_anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      Df Sum Sq Mean Sq F value Pr(&gt;F)  
+factor(student$Fedu)   4    238   59.53   2.891 0.0222 *
+Residuals            390   8032   20.59                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="Summary">
-<ol type="1">
-<li>In this class you will use the online textbook that has been written for you by your statistics teachers. All of the assignments and quizzes, available in I-Learn, will be based on the readings, so study it well. Most weeks will cover two lessons.</li>
-<li>You have successfully located the online textbook. Ensure you have also located the course in I-Learn and can access the quizzes and assignments that are there.</li>
-<li>Ensure you have located the contact information for your instructor in the I-Learn course. Recording the contact information of peers from class would also be a wise idea.</li>
-<li>This course uses MS Excel for all statistical analysis. Check that you have access to the software on your computer. If not, see I-Learn for details on how to obtain it through the University for free.</li>
-<li>By doing the work, staying on schedule, and living the Honor Code you <em>will</em> succeed in this class.</li>
-<li>The three <strong>rules of probability</strong> are:
-<ol type="1">
-<li>A probability is a number between 0 and 1. <span class="math display">\[0 \leq P(X) \leq 1\]</span></li>
-<li>If you list all the outcomes of a probability experiment (such as rolling a die) the probability that one of these outcomes will occur is 1. In other words, the sum of the probabilities in any probability is 1. <span class="math display">\[\sum P(X) = 1\]</span></li>
-<li>The probability that an outcome will not occur is 1 minus the probability that it will occur. <span class="math display">\[P(\text{not}~X) = 1 - P(X)\]</span></li>
-</ol></li>
-</ol>
-<p><br></p>
 </div>
-<p><br></p>
+<p>This works with most analysis functions including <code>t.test()</code> and <code>aov()</code>.</p>
+<p><strong>NOTE</strong>: You only have to do this for variables in a dataset that are categories labeled as numbers. If the categories are text, <code>t.test()</code> and <code>aov()</code> automatically recognizes the variable as categorical. However, it does no harm to put a column with text into a <code>factor()</code> statement.</p>
+</section>
+</section>
+<section id="cleaning-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the Data</h2>
+<p>While exploring the data, you may have noticed a few students ended up with a final grade of zero. While it may be interesting to explore what factors lead to an incomplete grade, we want to make conclusions about students who completed the course.</p>
+<p>Create a clean dataset called, <code>clean</code>, that excludes zeros for G3. This will be used for the following analyses.</p>
+</section>
+</section>
+<section id="perform-the-appropriate-analysis" class="level1">
+<h1>Perform the Appropriate Analysis</h1>
+<section id="comparing-schools" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-schools">Comparing Schools</h2>
+<p>Suppose the Gabriel Pereira school (GP) has more stringent admissions requirements. We suspect this would lead to higher grades, on average.</p>
+<p>Create a side-by-side boxplot of the final grades for each school. Change the y-axis label to read “Final Grade out of 20”, the x-axis label to read “School”, and add a title.</p>
+<p>What do you notice?</p>
+<p>Create a table of summary statistics of final grade for each school:</p>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>Create a qqPlot to look at the normality of both groups:</p>
+<p>Do the grades look normally distributed for both groups? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypotheses and significance level.</p>
+<p><strong>NOTE</strong>: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>What is the P-value?</p>
+<p>What is your conclusion in context of the research question?</p>
+</section>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval and explain it in context of the research question.</p>
+</section>
+</section>
+<section id="comparing-second-period-grade-with-final-grade" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-second-period-grade-with-final-grade">Comparing Second Period Grade with Final Grade</h2>
+<p>We suspect there is a difference between the second period and the final grade, though we do not know if they go up or down. Carry out a hypothesis test to evaluate this suspicion.</p>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Choose how you will define the difference between final grade and second period grade, and create a new object called <code>diff</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diff &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What does a negative number mean?</p>
+<p>Create a qqPlot of <code>diff</code> and check for normality:</p>
+<p>Do the grade differences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypothesis and choose a significance level:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate analysis.</p>
+<p>What is the P-value?</p>
+<p>What conclusion do you make in context of this research question?</p>
+</section>
+<section id="confidence-interval-1" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the differences and explain it in context of the research question.</p>
+</section>
+</section>
+<section id="absenteeism-in-portugal" class="level2">
+<h2 class="anchored" data-anchor-id="absenteeism-in-portugal">Absenteeism in Portugal</h2>
+<p>In 2021, Portugal <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Secondary_education_statistics#Out-of-school_rates">reported</a> having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).</p>
+<section id="hypothesis-test-2" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h3>
+<p>Create a qqPlot for absences.</p>
+<p>Do absences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypotheses and choose a significance level:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate analysis.</p>
+<p>State your conclusion in context of the research question.</p>
+</section>
+<section id="confidence-interval-2" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for average absences and interpret it in context of the problem.</p>
+</section>
+</section>
+<section id="the-impact-of-mothers-education-level" class="level2">
+<h2 class="anchored" data-anchor-id="the-impact-of-mothers-education-level">The Impact of Mother’s Education Level</h2>
+<p>The level of education of the mother in the home is thought to have a significant impact on student success.</p>
+<p>Create a side-by-side boxplot of final grades for each level of mother’s education.</p>
+<p>Create a table of summary statistics of final grades for each level of mother’s education.</p>
+<p>How many respondents have a mother with no formal education (level 0)?</p>
+<p>Create a new dataset, <code>clean_medu</code>, that does not include mother’s education level 0.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean_medu &lt;- clean %&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create another boxplot with the new dataset that excludes level 0.</p>
+<p>Create a summary table of final grades for each level of a mother’s education with the new dataset.</p>
+<p>What is the maximum standard deviation?</p>
+<p>What is the minimum standard deviation?</p>
+<p>Verify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.</p>
+<section id="hypothesis-test-3" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis Test</h3>
+<p>State your null and alternative hypotheses and pick alpha:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate statistical test.</p>
+<p>What is the test statistic?</p>
+<p>What is the P-value?</p>
+<p>Check the normality of the residuals.</p>
+<p>Do the residuals appear roughly normally distributed?</p>
+<p>Can we trust the P-value.</p>
+<p>State your conclusion.</p>
+</section>
+</section>
+<section id="choose-your-own-adventure" class="level2">
+<h2 class="anchored" data-anchor-id="choose-your-own-adventure">Choose your own adventure</h2>
+<p>Pick another variable that was not analyzed above.</p>
+<p>Create a side-by-side boxplot. Be sure to properly label the graph and add sufficient information so readers can know what they are looking at without having to search through the report or code.</p>
+<p>Perform the appropriate analysis. Be sure to include a concise conclusion in the context of the research question, including a hypothesis test (and confidence interval if applicable.)</p>
 
 
 </section>
+</section>
 
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1017,7 +947,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 

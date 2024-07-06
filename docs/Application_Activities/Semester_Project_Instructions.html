@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Semester Project Instructions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,37 +67,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -107,7 +78,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -123,23 +94,23 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-stats-fundamentals">    
         <li>
-    <a class="dropdown-item" href="./Textbook/Course_Introduction.html">
+    <a class="dropdown-item" href="../Textbook/Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Stat_Process.html">
+    <a class="dropdown-item" href="../Textbook/Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Shape_and_Center.html">
+    <a class="dropdown-item" href="../Textbook/Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Spread.html">
+    <a class="dropdown-item" href="../Textbook/Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Intro_to_Probability.html">
+    <a class="dropdown-item" href="../Textbook/Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
     </ul>
@@ -150,7 +121,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -161,11 +132,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
         <li>
-    <a class="dropdown-item" href="./Homework/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Homework/Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
     </ul>
@@ -176,27 +147,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-application-activities">    
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit1_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit1_Review.html">
  <span class="dropdown-text">Unit 1 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Hypothesis Tests and Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit2_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit2_Review.html">
  <span class="dropdown-text">Unit 2 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../Application_Activities/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
     </ul>
@@ -207,7 +178,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -238,11 +209,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links">Helpful Links</a></li>
   </ul></li>
-  <li><a href="#book-scope" id="toc-book-scope" class="nav-link" data-scroll-target="#book-scope">Book Scope</a></li>
+  <li><a href="#report" id="toc-report" class="nav-link" data-scroll-target="#report">Report</a>
+  <ul class="collapse">
+  <li><a href="#define-the-problem" id="toc-define-the-problem" class="nav-link" data-scroll-target="#define-the-problem">1. Define the Problem</a></li>
+  <li><a href="#collect-the-data" id="toc-collect-the-data" class="nav-link" data-scroll-target="#collect-the-data">2. Collect the Data</a></li>
+  <li><a href="#describe-the-data" id="toc-describe-the-data" class="nav-link" data-scroll-target="#describe-the-data">3. Describe the Data</a></li>
+  <li><a href="#analyze-the-data" id="toc-analyze-the-data" class="nav-link" data-scroll-target="#analyze-the-data">4. Analyze the Data</a></li>
+  <li><a href="#take-action" id="toc-take-action" class="nav-link" data-scroll-target="#take-action">5. Take Action</a></li>
+  </ul></li>
+  <li><a href="#what-to-turn-in" id="toc-what-to-turn-in" class="nav-link" data-scroll-target="#what-to-turn-in">What to Turn In</a></li>
   </ul>
 </nav>
     </div>
@@ -251,7 +230,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Semester Project Instructions</h1>
 </div>
 
 
@@ -268,50 +247,64 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This book is meant to be a starting point for you to learn the fundamentals of statistics and to become familiar with data. You should feel free to edit the markdown files so that the book becomes your own.</p>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>The digital textbook is a great reference for all topics that will be covered in class. Each lesson consists of background readings, example code, and an opportunity to practice.</p>
-<p>Homework assignments can be viewed from the “Homework” tab.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math326 Design and Analysis of Experiments class at BYU-Idaho, as it stands in 2022. BYU-I follows a 14 week semester. After introducing some foundational principles of experimental design, the recommended sequence follows the general pattern of</p>
-<ul>
-<li>Introduce a specific design: suitability/benefits of the design, explanation of the design, factor structure and decomposition, steps for analysis (including R code)</li>
-<li>Discuss new topics/complexities/considerations associated with that design located in the Broad Topics list.</li>
-</ul>
-<p>Here is a specific, suggested reading schedule:</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>For this project, you will create an html report that is an original analysis based on data that you find.</p>
+<p>Start with a research question that interests you. It can be about any topic (finance, music, video games, hunting, weather, mental health, AI…seriously anything!)</p>
+<p>For this project, a good research question will be interesting to you AND <em>feasible</em> to find available data. You can certainly think of exciting research questions for which the data are impossible to find or collect. Expect to refine your research question as you begin the data search.</p>
+<p>Once you have a research question in mind, start looking for data relating to it. Below are some links that might be helpful for finding datasets.</p>
+<section id="helpful-links" class="level2">
+<h2 class="anchored" data-anchor-id="helpful-links">Helpful Links</h2>
+<p>Google actually has a search engine specifically for <a href="https://datasetsearch.research.google.com/">datasets</a></p>
+<p><a href="https://www.statista.com/">Statista</a> has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.</p>
+<p><a href="https://www.kaggle.com/datasets">Kaggle</a> runs competitions for companies who outsource data challenges. It has also compiled a large library of datasets on a range of topics. Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face.</p>
+</section>
+</section>
+<section id="report" class="level1">
+<h1>Report</h1>
+<p>Your report can follow the steps of the Statistical Process, including at least one paragraph for each step.</p>
+<section id="define-the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-problem">1. Define the Problem</h2>
+<p>Include an introduction that describes why you were interested in the topic and what you envisioned for an analysis. Some questions to address:</p>
 <ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
+<li>What is the population of your research?</li>
+<li>What do you think is the nature of the relationship you hope to discover?</li>
+<li>What type of data are you looking for (quantitative? categorical?)<br>
+</li>
+<li>What type of analysis are you expecting to do (t-test, regression? ANOVA? Chi-square test for independence? etc.)</li>
 </ol>
 </section>
+<section id="collect-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="collect-the-data">2. Collect the Data</h2>
+<p>Talk about the process of how you found the data and whether you had to make adjustments to your research question.</p>
+</section>
+<section id="describe-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-data">3. Describe the Data</h2>
+<p>Include summary statistics (favstats, proportions, contingency tables, etc.)</p>
+<p>Include GGPlot visualizations (boxplots, histograms/density plots, bar charts, etc.). Make the charts as understandable as possible without having to read the text description. That means make sure:</p>
+<ol type="1">
+<li>Axes are labeled appropriately</li>
+<li>It has a descriptive title</li>
+<li>Label lines or points that are highlighted in the graph</li>
+</ol>
+</section>
+<section id="analyze-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="analyze-the-data">4. Analyze the Data</h2>
+<p>Perform the appropriate analysis for the data collected (t-test, F-test, regression, Chi-square, etc.)</p>
+</section>
+<section id="take-action" class="level2">
+<h2 class="anchored" data-anchor-id="take-action">5. Take Action</h2>
+<p>Based on your statistical inference, what recommendations or actions would you take?</p>
 </section>
 </section>
-<section id="book-scope" class="level2">
-<h2 class="anchored" data-anchor-id="book-scope">Book Scope</h2>
-<p>This is an introductory book intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials should be well prepared for their next statistics course whether in Psychology or Fish and Wildlife Management.</p>
+<section id="what-to-turn-in" class="level1">
+<h1>What to Turn In</h1>
+<p>Knit your RMD file to produce a nice looking html report. Submit the .html file into Canvas. Be sure to check the following:</p>
+<ul>
+<li>Give your report a proper title in the YAML. It should not be titled “Semester Project”</li>
+<li>Include your name as the author</li>
+<li>While this is not a writing class, the report should look professional</li>
+</ul>
 
 
 </section>

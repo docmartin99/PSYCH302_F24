@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Unit 1 Review</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -97,7 +131,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -107,7 +141,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -123,23 +157,23 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-stats-fundamentals">    
         <li>
-    <a class="dropdown-item" href="./Textbook/Course_Introduction.html">
+    <a class="dropdown-item" href="../Textbook/Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Stat_Process.html">
+    <a class="dropdown-item" href="../Textbook/Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Shape_and_Center.html">
+    <a class="dropdown-item" href="../Textbook/Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Spread.html">
+    <a class="dropdown-item" href="../Textbook/Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Intro_to_Probability.html">
+    <a class="dropdown-item" href="../Textbook/Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
     </ul>
@@ -150,7 +184,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -161,11 +195,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
         <li>
-    <a class="dropdown-item" href="./Homework/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Homework/Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
     </ul>
@@ -176,27 +210,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-application-activities">    
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit1_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit1_Review.html">
  <span class="dropdown-text">Unit 1 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Hypothesis Tests and Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit2_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit2_Review.html">
  <span class="dropdown-text">Unit 2 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../Application_Activities/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
     </ul>
@@ -207,7 +241,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -238,11 +272,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#assessment-objectives" id="toc-assessment-objectives" class="nav-link active" data-scroll-target="#assessment-objectives">Assessment Objectives</a></li>
+  <li><a href="#design-the-study" id="toc-design-the-study" class="nav-link" data-scroll-target="#design-the-study">Design the Study</a></li>
+  <li><a href="#describesummarize-the-data" id="toc-describesummarize-the-data" class="nav-link" data-scroll-target="#describesummarize-the-data">Describe/Summarize the Data</a>
   <ul class="collapse">
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#housing-prices-in-rexburg" id="toc-housing-prices-in-rexburg" class="nav-link" data-scroll-target="#housing-prices-in-rexburg">Housing Prices in Rexburg</a></li>
   </ul></li>
-  <li><a href="#book-scope" id="toc-book-scope" class="nav-link" data-scroll-target="#book-scope">Book Scope</a></li>
+  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a>
+  <ul class="collapse">
+  <li><a href="#hair-color" id="toc-hair-color" class="nav-link" data-scroll-target="#hair-color">Hair Color</a></li>
+  <li><a href="#social-media-use" id="toc-social-media-use" class="nav-link" data-scroll-target="#social-media-use">Social Media Use</a></li>
+  <li><a href="#faculty-salaries" id="toc-faculty-salaries" class="nav-link" data-scroll-target="#faculty-salaries">Faculty Salaries</a></li>
+  <li><a href="#normal-probability-calculations" id="toc-normal-probability-calculations" class="nav-link" data-scroll-target="#normal-probability-calculations">Normal Probability Calculations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -251,7 +293,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Unit 1 Review</h1>
 </div>
 
 
@@ -268,52 +310,203 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This book is meant to be a starting point for you to learn the fundamentals of statistics and to become familiar with data. You should feel free to edit the markdown files so that the book becomes your own.</p>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>The digital textbook is a great reference for all topics that will be covered in class. Each lesson consists of background readings, example code, and an opportunity to practice.</p>
-<p>Homework assignments can be viewed from the “Homework” tab.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math326 Design and Analysis of Experiments class at BYU-Idaho, as it stands in 2022. BYU-I follows a 14 week semester. After introducing some foundational principles of experimental design, the recommended sequence follows the general pattern of</p>
+<section id="assessment-objectives" class="level1">
+<h1>Assessment Objectives</h1>
 <ul>
-<li>Introduce a specific design: suitability/benefits of the design, explanation of the design, factor structure and decomposition, steps for analysis (including R code)</li>
-<li>Discuss new topics/complexities/considerations associated with that design located in the Broad Topics list.</li>
+<li>Apply the 3 rules of probability in different scenarios</li>
+<li>Describe the 5 steps of the statistical process</li>
+<li>Differentiate between an observational study and an experiment</li>
+<li>Differentiate between a population and a sample</li>
+<li>Describe the 4 random sampling schemes</li>
+<li>Explain importance of random sampling <br></li>
+<li>Distinguish between quantitative and categorical variables</li>
+<li>Create graphical summaries of data (boxplots, histograms) and be able to make conclusions based on the graphs</li>
+<li>Create numerical summaries of data (mean, sd, 5 number summary, percentiles) and compare groups (centers, spreads)</li>
+<li>Distinguish between a parameter and a statistic</li>
+<li>Determine the 5 number summary from a boxplot <br></li>
+<li>State the properties of a normal distribution</li>
+<li>Calculate the z-score for an individual from a normal population with mean, <span class="math inline">\(\mu\)</span>, and std. dev, <span class="math inline">\(\sigma\)</span></li>
+<li>Calculate probabilities (&gt;, &lt;, between) of certain values given <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> <br></li>
+<li>Describe the concept of a sampling distribution of the sample mean</li>
+<li>State the Central Limit Theorem</li>
+<li>Determine the mean of the sampling distribution of the sample mean given <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></li>
+<li>Determine the std. dev. of the sampling distribution of the sample mean given <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></li>
+<li>Determine the <em>shape</em> of the sampling distribution given a sample size, n, and <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></li>
+<li>State the Law of Large Numbers</li>
 </ul>
-<p>Here is a specific, suggested reading schedule:</p>
+</section>
+<section id="design-the-study" class="level1">
+<h1>Design the Study</h1>
+<p>You and a colleague are interested in studying the relationship between social media use and mental health among youth ages 18-24. You decide to use the Psychological Wellbeing Scale (PWB) developed by Stanford University as your metric for comparison (the response variable).</p>
+<p><strong>Q1.1:</strong></p>
+<p>List 5 factors (explanatory variables) related to social media use that might impact Wellbeing.</p>
+<p>Include whether or not the factors are quantitative or categorical (include at least one of each):</p>
 <ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
 </ol>
+<p><strong>Q1.2:</strong></p>
+<p>What is the population of the study?</p>
+<p><strong>Q1.3:</strong></p>
+<p>Suppose you are <em>not</em> resource limited. Briefly describe the sampling scheme you would use and why you would choose it to best represent the population:</p>
+<p><strong>Q1.4:</strong></p>
+<p>Give a brief description of the other 3 types of sampling schemes and explain why they don’t make sense in this situation:</p>
+<p><strong>Q1.5:</strong></p>
+<p>Suppose it is impractical to sample from the population described in Q1.2. What population might be more feasible to sample from?</p>
+<p><strong>Q1.6:</strong></p>
+<p>How would modifying the population of interest impact your sampling scheme?</p>
+<p><strong>Q1.7:</strong></p>
+<p>Suppose you sent out a Facebook survey to all of your followers and asked them to respond if they are in your target demographic. How might this impact the conclusions of your study?</p>
+</section>
+<section id="describesummarize-the-data" class="level1">
+<h1>Describe/Summarize the Data</h1>
+<p>For this section you will program in R. Don’t forget to load the libraries first:</p>
+<section id="housing-prices-in-rexburg" class="level2">
+<h2 class="anchored" data-anchor-id="housing-prices-in-rexburg">Housing Prices in Rexburg</h2>
+<p>You are interested housing prices in Rexburg, Idaho. Load the housing data and respond to the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>housing <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/MadisonCountyRealEstate.xlsx'</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(ListPrice, Bedrooms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Q2.1:</strong></p>
+<p>Create a histogram of listing price.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(housing<span class="sc">$</span>ListPrice <span class="sc">~</span> housing<span class="sc">$</span>Bedrooms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  housing$Bedrooms    min     Q1 median      Q3     max     mean        sd  n
+1                2  96900 108175 117450  129675  160000 119984.6  15206.23 26
+2                3 109900 142150 184700  213650  499999 199120.8  79099.36 48
+3                4 119900 157000 174900  228000  369000 200642.1  71075.72 19
+4                5 137000 189900 219900  275000  924500 250483.8 131359.88 37
+5                6 179900 281500 319000  364000  699000 340740.0 118103.19 15
+6                7 199000 454675 717450 1040000 1475000 777225.0 545108.00  4
+  missing
+1       0
+2       0
+3       0
+4       0
+5       0
+6       0</code></pre>
+</div>
+</div>
+<p>What is the shape of the distribution of list prices for homes in Rexburg.</p>
+<p><strong>Q2.2:</strong></p>
+<p>Calculate the mean, standard deviation, 5 number summary and sample size of housing prices for each number of bedrooms.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(housing<span class="sc">$</span>ListPrice <span class="sc">~</span> housing<span class="sc">$</span>Bedrooms, <span class="at">col=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>), <span class="at">xlab =</span> <span class="st">"Number of Bedrooms"</span>, <span class="at">ylab =</span> <span class="st">"Housing Price"</span>, <span class="at">main =</span> <span class="st">"blah"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="AA_Unit1_Review_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong><em>bold italics</em></strong></p>
+<p>What is the standard deviation of homes with 3 bedrooms?</p>
+<p>How do you interpret that number?</p>
+<p><strong>Q2.3:</strong></p>
+<p>What is the maximum value home price for a 2 bedroom house?</p>
+<p>Suppose there was a typo in the data and the maximum price for a 2 bedroom house was accidentally entered as $1,700,000.</p>
+<p>How would the median change?</p>
+<p>How would the mean change?</p>
+<p>How would the standard deviation change?</p>
+<p><strong>Q2.4:</strong></p>
+<p>Create a side-by-side boxplot of housing prices for each group. <strong>Modify the color scheme so that each boxplot is a different color</strong>.</p>
+<p>What trends do you notice?</p>
+<p>Why might the box plot for 7 bedroom homes look so different than the others?</p>
 </section>
 </section>
+<section id="probability" class="level1">
+<h1>Probability</h1>
+<section id="hair-color" class="level2">
+<h2 class="anchored" data-anchor-id="hair-color">Hair Color</h2>
+<p>Brother Cannon has been collecting hair color data about his students for the last several semesters. The proportion of students with each hair color are as follows:</p>
+<p>(run the following R chunk to see the table more clearly)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">tibble</span>(<span class="at">Red=</span><span class="st">"???"</span>, <span class="at">Brown=</span>.<span class="dv">37</span>, <span class="at">Black=</span>.<span class="dv">35</span>, <span class="at">Blond =</span> .<span class="dv">22</span>, <span class="at">Other=</span>.<span class="dv">02</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Red</th>
+<th style="text-align: right;">Brown</th>
+<th style="text-align: right;">Black</th>
+<th style="text-align: right;">Blond</th>
+<th style="text-align: right;">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">???</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Q3.1:</strong></p>
+<p>What percent of Brother Cannon’s students have red hair?</p>
+<p><strong>Q3.2:</strong></p>
+<p>What’s the probability that a randomly selected student has either black or brown hair?</p>
 </section>
-<section id="book-scope" class="level2">
-<h2 class="anchored" data-anchor-id="book-scope">Book Scope</h2>
-<p>This is an introductory book intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials should be well prepared for their next statistics course whether in Psychology or Fish and Wildlife Management.</p>
+<section id="social-media-use" class="level2">
+<h2 class="anchored" data-anchor-id="social-media-use">Social Media Use</h2>
+<p><strong>Q4.1:</strong></p>
+<p>The number of hours students spend on social media a week is known to be left skewed with a mean of 12 hours and a standard deviation 1.5.</p>
+<p>Suppose we take a random sample of 50 students and calculate the average time they spend on social media.</p>
+<p><strong>Q4.2:</strong></p>
+<p>What is the mean of the distribution of sample means for this sample size?</p>
+<p><strong>Q4.3:</strong></p>
+<p>What is the standard deviation of sample means for this sample size?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.5</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.212132</code></pre>
+</div>
+</div>
+<p><strong>Q4.4:</strong></p>
+<p>What is the shape of the distribution of sample means for this sample size and why?</p>
+</section>
+<section id="faculty-salaries" class="level2">
+<h2 class="anchored" data-anchor-id="faculty-salaries">Faculty Salaries</h2>
+<p>Faculty salaries at a university are known to be normally distributed with a mean of $108,552 and a standard deviation of $13,277.</p>
+<p>You randomly sample n=15 faculty members and calculate their average salary.</p>
+<p><strong>Q5.1:</strong></p>
+<p>What is the mean of the distribution of sample means for this sample size?</p>
+<p><strong>Q5.2:</strong></p>
+<p>What is the standard deviation of sample means for this sample size?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">13277</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3428.107</code></pre>
+</div>
+</div>
+<p><strong>Q5.3:</strong></p>
+<p>What is the shape of the distribution of sample means for this sample size and why?</p>
+</section>
+<section id="normal-probability-calculations" class="level2">
+<h2 class="anchored" data-anchor-id="normal-probability-calculations">Normal Probability Calculations</h2>
+<p>High blood pressure is strongly associated with a host of diseases and increases risk of cardiac arrest (hear attacks) in older patients.</p>
+<p>Suppose that systolic blood pressure in the US is normally distributed with a mean = 128 and a standard deviation of 11.</p>
+<p>Use the following calculator to answer the questions below:</p>
+<p><strong>Q6.1:</strong></p>
+<p>What is the probability that a randomly selected person in the US has a systolic blood pressure of greater than 145?</p>
+<p><strong>Q6.2</strong></p>
+<p>What is the probability that a randomly selected group of 10 people in the US have an <em>average</em> blood pressure less than 130?</p>
+<p><strong>Q6.3:</strong></p>
+<p>Your doctor says you’re in great shape, and that you are in the 20th percentile for systolic blood pressure.</p>
+<p>What does it mean that you are the 20th percentile?</p>
+<p>What is your blood pressure?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Summarizing Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,37 +101,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -107,7 +112,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -123,23 +128,23 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-stats-fundamentals">    
         <li>
-    <a class="dropdown-item" href="./Textbook/Course_Introduction.html">
+    <a class="dropdown-item" href="../Textbook/Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Stat_Process.html">
+    <a class="dropdown-item" href="../Textbook/Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Shape_and_Center.html">
+    <a class="dropdown-item" href="../Textbook/Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Spread.html">
+    <a class="dropdown-item" href="../Textbook/Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Textbook/Intro_to_Probability.html">
+    <a class="dropdown-item" href="../Textbook/Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
     </ul>
@@ -150,7 +155,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -161,11 +166,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
         <li>
-    <a class="dropdown-item" href="./Homework/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Homework/Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
     </ul>
@@ -176,27 +181,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-application-activities">    
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit1_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit1_Review.html">
  <span class="dropdown-text">Unit 1 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Hypothesis Tests and Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Unit2_Review.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit2_Review.html">
  <span class="dropdown-text">Unit 2 Review</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Application_Activities/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../Application_Activities/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
     </ul>
@@ -207,7 +212,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href="./Class_Notes/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
     </ul>
@@ -238,11 +243,23 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data">Summarizing Data</a>
   <ul class="collapse">
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a></li>
   </ul></li>
-  <li><a href="#book-scope" id="toc-book-scope" class="nav-link" data-scroll-target="#book-scope">Book Scope</a></li>
+  <li><a href="#what-factors-impact-uptake" id="toc-what-factors-impact-uptake" class="nav-link" data-scroll-target="#what-factors-impact-uptake">What Factors Impact Uptake?</a>
+  <ul class="collapse">
+  <li><a href="#impact-of-plant-type-on-uptake" id="toc-impact-of-plant-type-on-uptake" class="nav-link" data-scroll-target="#impact-of-plant-type-on-uptake">Impact of Plant Type on Uptake</a></li>
+  <li><a href="#impact-of-treatment-on-uptake" id="toc-impact-of-treatment-on-uptake" class="nav-link" data-scroll-target="#impact-of-treatment-on-uptake">Impact of Treatment on Uptake</a></li>
+  <li><a href="#impact-of-ambient-co2-concentration-on-uptake" id="toc-impact-of-ambient-co2-concentration-on-uptake" class="nav-link" data-scroll-target="#impact-of-ambient-co2-concentration-on-uptake">Impact of Ambient CO2 Concentration on Uptake</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-this-an-experiment" id="toc-what-makes-this-an-experiment" class="nav-link" data-scroll-target="#what-makes-this-an-experiment">What makes this an experiment?</a></li>
+  <li><a href="#what-is-the-population-of-this-study" id="toc-what-is-the-population-of-this-study" class="nav-link" data-scroll-target="#what-is-the-population-of-this-study">What is the Population of this study?</a></li>
+  <li><a href="#what-are-your-recommendations" id="toc-what-are-your-recommendations" class="nav-link" data-scroll-target="#what-are-your-recommendations">What are your recommendations?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -251,7 +268,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Summarizing Data</h1>
+<p class="subtitle lead">CO2 Uptake Experiment</p>
 </div>
 
 
@@ -268,52 +286,95 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This book is meant to be a starting point for you to learn the fundamentals of statistics and to become familiar with data. You should feel free to edit the markdown files so that the book becomes your own.</p>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>The digital textbook is a great reference for all topics that will be covered in class. Each lesson consists of background readings, example code, and an opportunity to practice.</p>
-<p>Homework assignments can be viewed from the “Homework” tab.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math326 Design and Analysis of Experiments class at BYU-Idaho, as it stands in 2022. BYU-I follows a 14 week semester. After introducing some foundational principles of experimental design, the recommended sequence follows the general pattern of</p>
-<ul>
-<li>Introduce a specific design: suitability/benefits of the design, explanation of the design, factor structure and decomposition, steps for analysis (including R code)</li>
-<li>Discuss new topics/complexities/considerations associated with that design located in the Broad Topics list.</li>
-</ul>
-<p>Here is a specific, suggested reading schedule:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
+<section id="background" class="level1">
+<h1>Background</h1>
+<p>This example is taken from an experiment listed in the R help files under <code>?CO2</code>.</p>
+<p>“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.</p>
+<p>Ignoring the Plant ID for a moment, there are three factors that possibly effect the <code>uptake</code> of a plant. These include <code>Type</code>, <code>Treatment</code>, and <code>conc</code>. The factor <code>Type</code> has two levels, <strong>Quebec</strong> and <strong>Mississippi</strong>. The factor <code>Treatment</code> has two levels <strong>chilled</strong> and <strong>nonchilled</strong> and the factor <code>conc</code> has seven levels 95, 175, 250, 350, 500, 675, and 1000.</p>
+<p>Conc is related to the ambient concentration of CO2.</p>
+</section>
+<section id="summarizing-data" class="level1">
+<h1>Summarizing Data</h1>
+<p>Our main interest in CO2 uptake and how the other factors impact it. We will first do a univariate analysis of uptake.</p>
+<section id="univariate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h2>
+<p>Create a table with the overall summary statistics for uptake:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is NEW!  if you tell R to knit the favstats output using the "kable" function, it will look a lot nicer when the document is rendered.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">favstats</span>(CO2<span class="sc">$</span>uptake))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">17.9</td>
+<td style="text-align: right;">28.3</td>
+<td style="text-align: right;">37.125</td>
+<td style="text-align: right;">45.5</td>
+<td style="text-align: right;">27.2131</td>
+<td style="text-align: right;">10.81441</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Create a histogram of the uptake data:</p>
 </section>
 </section>
+<section id="what-factors-impact-uptake" class="level1">
+<h1>What Factors Impact Uptake?</h1>
+<p>We will now look at how other factors might impact CO2 uptake.</p>
+<section id="impact-of-plant-type-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-plant-type-on-uptake">Impact of Plant Type on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each type of plants used in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each type of plants used in the experiment.</p>
 </section>
-<section id="book-scope" class="level2">
-<h2 class="anchored" data-anchor-id="book-scope">Book Scope</h2>
-<p>This is an introductory book intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials should be well prepared for their next statistics course whether in Psychology or Fish and Wildlife Management.</p>
+<section id="impact-of-treatment-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-treatment-on-uptake">Impact of Treatment on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each treatment used in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each treatment used in the experiment.</p>
+</section>
+<section id="impact-of-ambient-co2-concentration-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-ambient-co2-concentration-on-uptake">Impact of Ambient CO2 Concentration on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each level of CO2 found in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each level of CO2 found used in the experiment.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<section id="what-makes-this-an-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-this-an-experiment">What makes this an experiment?</h2>
+<p>The background suggests this study was an experiment. In your own words, describe the difference between an experiment and an observational study.</p>
+<p>What would this study have looked like if it had been an observational study?</p>
+</section>
+<section id="what-is-the-population-of-this-study" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-population-of-this-study">What is the Population of this study?</h2>
+<p>Describe in your own words what the population of this study could be. How broad can we make our conclusions?</p>
+</section>
+<section id="what-are-your-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-your-recommendations">What are your recommendations?</h2>
+<p>If you were to recommend a planting scenario to maximize CO2 uptake, what would you recommend based on the summaries provided?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

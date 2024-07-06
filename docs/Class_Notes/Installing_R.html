@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Introducing the Tidyverse - Part 1</title>
+<title>Math221 Notebook - Installing R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,40 +18,6 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
-}
-
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-}
-pre.numberSource { margin-left: 3em; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -4657,7 +4623,7 @@ vertical-align: -.125em;
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -4672,10 +4638,10 @@ vertical-align: -.125em;
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-textbook" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Textbook</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-stats-fundamentals" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Stats Fundamentals</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-textbook">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-stats-fundamentals">    
         <li>
     <a class="dropdown-item" href="../Textbook/Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
@@ -4699,13 +4665,59 @@ vertical-align: -.125em;
     </ul>
   </li>
   <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-class-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Class Notes</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
+        <li>
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
+ <span class="dropdown-text">Installing R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homework" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Homework</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
         <li>
-    <a class="dropdown-item" href="../04-Intro_to_R/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
+ <span class="dropdown-text">Into The Tidyverse</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-application-activities" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Application Activities</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-application-activities">    
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/AA_Data_Summaries.html">
+ <span class="dropdown-text">Summarizing Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit1_Review.html">
+ <span class="dropdown-text">Unit 1 Review</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/AA_Hypothesis_Conf_Int.html">
+ <span class="dropdown-text">Hypothesis Tests and Confidence Intervals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/AA_Unit2_Review.html">
+ <span class="dropdown-text">Unit 2 Review</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
+ <span class="dropdown-text">Categorical Data Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Application_Activities/Semester_Project_Instructions.html">
+ <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
     </ul>
   </li>
@@ -4715,12 +4727,8 @@ vertical-align: -.125em;
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href="../01-Course_Intro/Installing_R.html">
+    <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../10-Intro_to_Data_Wrangling/Exploring_New_Data_with_Tidyverse.html">
- <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
     </ul>
   </li>
@@ -4742,7 +4750,23 @@ vertical-align: -.125em;
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Installing R</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -4750,1113 +4774,71 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cleaning-messy-data" id="toc-cleaning-messy-data" class="nav-link active" data-scroll-target="#cleaning-messy-data">Cleaning Messy Data</a></li>
-  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse">The Tidyverse</a>
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link active" data-scroll-target="#installing-r-and-rstudio">Installing R and RStudio</a>
   <ul class="collapse">
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#detailed-instructions" id="toc-detailed-instructions" class="nav-link" data-scroll-target="#detailed-instructions">Detailed Instructions</a></li>
   </ul></li>
-  <li><a href="#fundamentals" id="toc-fundamentals" class="nav-link" data-scroll-target="#fundamentals">Fundamentals</a>
+  <li><a href="#testing-r-studio" id="toc-testing-r-studio" class="nav-link" data-scroll-target="#testing-r-studio">Testing R-Studio</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
   <ul class="collapse">
-  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a>
-  <ul class="collapse">
-  <li><a href="#quantitative-variables" id="toc-quantitative-variables" class="nav-link" data-scroll-target="#quantitative-variables">Quantitative Variables</a></li>
-  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical Variables</a></li>
+  <li><a href="#mac-processing-chip" id="toc-mac-processing-chip" class="nav-link" data-scroll-target="#mac-processing-chip">Mac Processing Chip</a></li>
   </ul></li>
-  <li><a href="#ceci-nest-pas-une-pipe" id="toc-ceci-nest-pas-une-pipe" class="nav-link" data-scroll-target="#ceci-nest-pas-une-pipe">Ceci n’est pas une pipe</a></li>
-  </ul></li>
-  <li><a href="#basic-tidyverse-functions" id="toc-basic-tidyverse-functions" class="nav-link" data-scroll-target="#basic-tidyverse-functions">Basic Tidyverse Functions</a>
-  <ul class="collapse">
-  <li><a href="#removing-rows---filter" id="toc-removing-rows---filter" class="nav-link" data-scroll-target="#removing-rows---filter">Removing Rows - <code>filter()</code></a></li>
-  <li><a href="#adding-columns---mutate" id="toc-adding-columns---mutate" class="nav-link" data-scroll-target="#adding-columns---mutate">Adding Columns - <code>mutate()</code></a></li>
-  <li><a href="#selecting-columns---select" id="toc-selecting-columns---select" class="nav-link" data-scroll-target="#selecting-columns---select">Selecting Columns - <code>select()</code></a></li>
-  <li><a href="#summarising-data---group_by-summarise" id="toc-summarising-data---group_by-summarise" class="nav-link" data-scroll-target="#summarising-data---group_by-summarise">Summarising Data - <code>group_by()</code> + <code>summarise()</code></a></li>
-  </ul></li>
-  <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Introducing the Tidyverse - Part 1</h1>
-<p class="subtitle lead">The Basics</p>
-</div>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="cleaning-messy-data" class="level1">
-<h1>Cleaning Messy Data</h1>
-<p>In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease. This is a terrible disservice to anyone who will deal with data outside of the classroom.</p>
-<p>Anyone who works with data will have to do some data wrangling. Data wrangling is an appropriate description of cleaning, sorting, filtering, summarizing, transforming, and a whole host of other activities to make data usable for a specific purpose.</p>
-<p>In this document, we introduce a moderately messy dataset and demonstrate basic programming commands to help us get data ready for analysis or visualization.</p>
-</section>
-<section id="the-tidyverse" class="level1">
-<h1>The Tidyverse</h1>
-<p>All semester, we have been loading a library called <code>tidyverse</code>. Tidyverse is a library of libraries that provides a vast array of tools and a syntax that make wrangling data as simple as possible.</p>
-<p><strong>NOTE</strong>: Good scientists <strong>NEVER</strong> delete data from original records. The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs and visualizations without losing any of the original data.</p>
-<p>The <code>tidyverse</code> can be daunting to learn, but it is easier to demonstrate than to explain. We will work through several examples and have opportunities to practice.</p>
-<section id="additional-resources" class="level2">
-<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
-<p>Below are 2 great resources for digging a little deeper into data manipulation in R.</p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Tidyverse Cheat Sheet</a></p>
-<p><a href="https://r4ds.had.co.nz/transform.html">R for Data Science</a></p>
-<p>Next, we will explain a few programming fundamentals that will help make</p>
-</section>
-</section>
-<section id="fundamentals" class="level1">
-<h1>Fundamentals</h1>
-<p>We will use a survey of high school students as our motivating example for cleaning data. Load the libraries and data in the code chunk below.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="logical-operators" class="level2">
-<h2 class="anchored" data-anchor-id="logical-operators">Logical Operators</h2>
-<p>Logical operators are used extensively in computer programming to determine if a certain condition is met. They always return a “True” or a “False”, but we can treat them like a 0 for false and 1 for true.</p>
-<p>We can tell a computer to determine a conditional statement (typically “less than”, “greater than” or “not equal to”) for specific variables, and it will return a <code>TRUE</code> if the statement is true and <code>FALSE</code> if not.</p>
-<section id="quantitative-variables" class="level3">
-<h3 class="anchored" data-anchor-id="quantitative-variables">Quantitative Variables</h3>
-<p>Let’s examine the height_cm column in the survey data.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
- 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The maximum is 999 cm, which is around 33 Feet! We know this is not a possible value.</p>
-<p>It is very unlikely that a high school student is taller than 7 feet. We can use a logical operator to see which students are taller than 7 feet (213.36 cm):</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
- [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[193] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-[301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To illustrate, the below code puts the Survey column, Height_cm, along with the TRUE/FALSE logical</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Height_cm =</span>survey<span class="sc">$</span>Height_cm, <span class="at">logical =</span> survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span>)[<span class="dv">73</span><span class="sc">:</span><span class="dv">84</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Height_cm logical
-73     162.0   FALSE
-74     172.0   FALSE
-75     160.0   FALSE
-76     175.0   FALSE
-77     182.8   FALSE
-78     153.0   FALSE
-79     184.0   FALSE
-80     170.0   FALSE
-81     150.0   FALSE
-82     177.8   FALSE
-83     999.0    TRUE
-84     172.7   FALSE</code></pre>
-</div>
-</div>
-<p>What does the above code return?</p>
-<p>A list of <code>TRUE</code> and <code>FALSE</code> for every line of the data. It is as long as the number of rows in the dataset.</p>
-</section>
-<section id="categorical-variables" class="level3">
-<h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
-<p>We can also use logical operators for categorical data. For example, if we wanted to see how many people are ambidextrous, we can run the following:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What are unique values in of the respondents?</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Left-Handed&quot;  &quot;Right-Handed&quot; &quot;Ambidextrous&quot;</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a logical operator to get TRUE and FALSE for students who responded &quot;Ambidextrous&quot; on the survey question about handedness</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">&quot;Ambidextrous&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Handed =</span> survey<span class="sc">$</span>Handed, <span class="at">logical =</span> survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">&#39;Ambidextrous&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>          Handed logical
-1    Left-Handed   FALSE
-2   Right-Handed   FALSE
-3   Right-Handed   FALSE
-4   Right-Handed   FALSE
-5    Left-Handed   FALSE
-6   Right-Handed   FALSE
-7   Ambidextrous    TRUE
-8   Right-Handed   FALSE
-9   Right-Handed   FALSE
-10  Right-Handed   FALSE
-11  Right-Handed   FALSE
-12   Left-Handed   FALSE
-13  Right-Handed   FALSE
-14  Right-Handed   FALSE
-15  Right-Handed   FALSE
-16  Right-Handed   FALSE
-17  Right-Handed   FALSE
-18  Right-Handed   FALSE
-19  Right-Handed   FALSE
-20   Left-Handed   FALSE
-21  Right-Handed   FALSE
-22   Left-Handed   FALSE
-23  Right-Handed   FALSE
-24  Right-Handed   FALSE
-25  Right-Handed   FALSE
-26  Right-Handed   FALSE
-27  Right-Handed   FALSE
-28  Ambidextrous    TRUE
-29  Right-Handed   FALSE
-30  Right-Handed   FALSE
-31  Right-Handed   FALSE
-32  Right-Handed   FALSE
-33  Right-Handed   FALSE
-34  Right-Handed   FALSE
-35   Left-Handed   FALSE
-36  Right-Handed   FALSE
-37  Right-Handed   FALSE
-38   Left-Handed   FALSE
-39  Right-Handed   FALSE
-40  Right-Handed   FALSE
-41  Right-Handed   FALSE
-42  Right-Handed   FALSE
-43  Right-Handed   FALSE
-44  Right-Handed   FALSE
-45  Right-Handed   FALSE
-46  Right-Handed   FALSE
-47  Right-Handed   FALSE
-48  Ambidextrous    TRUE
-49  Right-Handed   FALSE
-50  Right-Handed   FALSE
-51  Right-Handed   FALSE
-52  Right-Handed   FALSE
-53  Right-Handed   FALSE
-54  Right-Handed   FALSE
-55  Right-Handed   FALSE
-56   Left-Handed   FALSE
-57  Right-Handed   FALSE
-58  Right-Handed   FALSE
-59  Right-Handed   FALSE
-60  Right-Handed   FALSE
-61  Right-Handed   FALSE
-62  Right-Handed   FALSE
-63  Right-Handed   FALSE
-64  Right-Handed   FALSE
-65  Right-Handed   FALSE
-66  Right-Handed   FALSE
-67  Right-Handed   FALSE
-68  Right-Handed   FALSE
-69  Right-Handed   FALSE
-70  Right-Handed   FALSE
-71  Right-Handed   FALSE
-72  Right-Handed   FALSE
-73  Right-Handed   FALSE
-74   Left-Handed   FALSE
-75   Left-Handed   FALSE
-76  Right-Handed   FALSE
-77  Right-Handed   FALSE
-78  Right-Handed   FALSE
-79  Right-Handed   FALSE
-80   Left-Handed   FALSE
-81  Right-Handed   FALSE
-82   Left-Handed   FALSE
-83  Ambidextrous    TRUE
-84  Right-Handed   FALSE
-85  Right-Handed   FALSE
-86   Left-Handed   FALSE
-87  Right-Handed   FALSE
-88  Right-Handed   FALSE
-89   Left-Handed   FALSE
-90  Right-Handed   FALSE
-91   Left-Handed   FALSE
-92  Right-Handed   FALSE
-93  Right-Handed   FALSE
-94  Right-Handed   FALSE
-95  Right-Handed   FALSE
-96  Right-Handed   FALSE
-97  Right-Handed   FALSE
-98  Right-Handed   FALSE
-99  Right-Handed   FALSE
-100 Right-Handed   FALSE
-101 Right-Handed   FALSE
-102 Right-Handed   FALSE
-103 Right-Handed   FALSE
-104 Right-Handed   FALSE
-105 Right-Handed   FALSE
-106 Right-Handed   FALSE
-107 Right-Handed   FALSE
-108 Right-Handed   FALSE
-109 Right-Handed   FALSE
-110 Right-Handed   FALSE
-111 Right-Handed   FALSE
-112 Right-Handed   FALSE
-113 Right-Handed   FALSE
-114 Right-Handed   FALSE
-115 Right-Handed   FALSE
-116 Right-Handed   FALSE
-117 Right-Handed   FALSE
-118 Right-Handed   FALSE
-119 Right-Handed   FALSE
-120 Right-Handed   FALSE
-121 Right-Handed   FALSE
-122 Right-Handed   FALSE
-123 Right-Handed   FALSE
-124 Right-Handed   FALSE
-125 Right-Handed   FALSE
-126 Right-Handed   FALSE
-127 Right-Handed   FALSE
-128 Right-Handed   FALSE
-129 Right-Handed   FALSE
-130 Right-Handed   FALSE
-131  Left-Handed   FALSE
-132 Right-Handed   FALSE
-133 Right-Handed   FALSE
-134 Right-Handed   FALSE
-135 Right-Handed   FALSE
-136 Right-Handed   FALSE
-137 Right-Handed   FALSE
-138 Right-Handed   FALSE
-139 Right-Handed   FALSE
-140 Right-Handed   FALSE
-141 Right-Handed   FALSE
-142 Right-Handed   FALSE
-143 Ambidextrous    TRUE
-144 Right-Handed   FALSE
-145 Right-Handed   FALSE
-146 Right-Handed   FALSE
-147 Right-Handed   FALSE
-148 Right-Handed   FALSE
-149  Left-Handed   FALSE
-150 Right-Handed   FALSE
-151 Right-Handed   FALSE
-152 Right-Handed   FALSE
-153 Right-Handed   FALSE
-154 Right-Handed   FALSE
-155 Right-Handed   FALSE
-156 Right-Handed   FALSE
-157 Right-Handed   FALSE
-158 Right-Handed   FALSE
-159 Right-Handed   FALSE
-160 Right-Handed   FALSE
-161 Right-Handed   FALSE
-162 Right-Handed   FALSE
-163  Left-Handed   FALSE
-164 Right-Handed   FALSE
-165 Right-Handed   FALSE
-166 Right-Handed   FALSE
-167  Left-Handed   FALSE
-168 Right-Handed   FALSE
-169  Left-Handed   FALSE
-170  Left-Handed   FALSE
-171 Right-Handed   FALSE
-172 Right-Handed   FALSE
-173 Right-Handed   FALSE
-174 Right-Handed   FALSE
-175 Right-Handed   FALSE
-176 Right-Handed   FALSE
-177 Right-Handed   FALSE
-178 Right-Handed   FALSE
-179 Right-Handed   FALSE
-180 Right-Handed   FALSE
-181 Right-Handed   FALSE
-182 Right-Handed   FALSE
-183 Right-Handed   FALSE
-184 Right-Handed   FALSE
-185 Ambidextrous    TRUE
-186 Right-Handed   FALSE
-187 Right-Handed   FALSE
-188 Right-Handed   FALSE
-189 Right-Handed   FALSE
-190 Right-Handed   FALSE
-191 Right-Handed   FALSE
-192 Right-Handed   FALSE
-193 Right-Handed   FALSE
-194 Right-Handed   FALSE
-195 Right-Handed   FALSE
-196 Right-Handed   FALSE
-197 Right-Handed   FALSE
-198 Right-Handed   FALSE
-199 Right-Handed   FALSE
-200 Right-Handed   FALSE
-201 Right-Handed   FALSE
-202 Right-Handed   FALSE
-203 Right-Handed   FALSE
-204 Right-Handed   FALSE
-205 Right-Handed   FALSE
-206  Left-Handed   FALSE
-207 Ambidextrous    TRUE
-208 Right-Handed   FALSE
-209 Ambidextrous    TRUE
-210 Right-Handed   FALSE
-211 Right-Handed   FALSE
-212 Right-Handed   FALSE
-213 Right-Handed   FALSE
-214 Right-Handed   FALSE
-215 Right-Handed   FALSE
-216 Right-Handed   FALSE
-217 Right-Handed   FALSE
-218 Right-Handed   FALSE
-219 Right-Handed   FALSE
-220 Right-Handed   FALSE
-221 Right-Handed   FALSE
-222 Right-Handed   FALSE
-223 Right-Handed   FALSE
-224  Left-Handed   FALSE
-225  Left-Handed   FALSE
-226 Right-Handed   FALSE
-227 Right-Handed   FALSE
-228 Right-Handed   FALSE
-229 Right-Handed   FALSE
-230 Right-Handed   FALSE
-231 Right-Handed   FALSE
-232 Right-Handed   FALSE
-233 Right-Handed   FALSE
-234 Right-Handed   FALSE
-235 Right-Handed   FALSE
-236  Left-Handed   FALSE
-237 Right-Handed   FALSE
-238  Left-Handed   FALSE
-239 Right-Handed   FALSE
-240  Left-Handed   FALSE
-241 Right-Handed   FALSE
-242 Right-Handed   FALSE
-243 Right-Handed   FALSE
-244  Left-Handed   FALSE
-245 Right-Handed   FALSE
-246 Right-Handed   FALSE
-247 Right-Handed   FALSE
-248 Right-Handed   FALSE
-249 Right-Handed   FALSE
-250 Right-Handed   FALSE
-251  Left-Handed   FALSE
-252 Right-Handed   FALSE
-253 Right-Handed   FALSE
-254 Right-Handed   FALSE
-255 Right-Handed   FALSE
-256 Right-Handed   FALSE
-257 Right-Handed   FALSE
-258 Right-Handed   FALSE
-259 Right-Handed   FALSE
-260 Right-Handed   FALSE
-261 Right-Handed   FALSE
-262 Right-Handed   FALSE
-263 Right-Handed   FALSE
-264 Right-Handed   FALSE
-265 Right-Handed   FALSE
-266 Right-Handed   FALSE
-267 Right-Handed   FALSE
-268 Right-Handed   FALSE
-269 Right-Handed   FALSE
-270 Right-Handed   FALSE
-271 Right-Handed   FALSE
-272 Right-Handed   FALSE
-273 Right-Handed   FALSE
-274 Right-Handed   FALSE
-275 Right-Handed   FALSE
-276  Left-Handed   FALSE
-277 Right-Handed   FALSE
-278 Right-Handed   FALSE
-279 Right-Handed   FALSE
-280  Left-Handed   FALSE
-281 Right-Handed   FALSE
-282 Right-Handed   FALSE
-283 Right-Handed   FALSE
-284 Right-Handed   FALSE
-285  Left-Handed   FALSE
-286 Right-Handed   FALSE
-287 Right-Handed   FALSE
-288 Ambidextrous    TRUE
-289  Left-Handed   FALSE
-290 Right-Handed   FALSE
-291  Left-Handed   FALSE
-292 Right-Handed   FALSE
-293 Right-Handed   FALSE
-294 Right-Handed   FALSE
-295 Right-Handed   FALSE
-296 Right-Handed   FALSE
-297 Right-Handed   FALSE
-298 Right-Handed   FALSE
-299  Left-Handed   FALSE
-300 Right-Handed   FALSE
-301 Right-Handed   FALSE
-302 Right-Handed   FALSE
-303 Right-Handed   FALSE
-304 Right-Handed   FALSE
-305 Right-Handed   FALSE
-306 Right-Handed   FALSE
-307  Left-Handed   FALSE
-308 Right-Handed   FALSE
-309 Right-Handed   FALSE
-310 Right-Handed   FALSE
-311 Right-Handed   FALSE
-312 Right-Handed   FALSE</code></pre>
-</div>
-</div>
-<p>We will show you why this is useful when we introduce tidyverse functions.</p>
-</section>
-</section>
-<section id="ceci-nest-pas-une-pipe" class="level2">
-<h2 class="anchored" data-anchor-id="ceci-nest-pas-une-pipe">Ceci n’est pas une pipe</h2>
-<p>The tidyverse organizes actions to data sequentially. We separate steps by what is called a “pipe” which is programmed <code>%&gt;%</code>.</p>
-<p><strong>HINT</strong>: The shortkey for adding a “pipe” is <code>ctrl+shift+m</code> for Windows, and <code>cmd+shift+m</code> on Mac. Learn this because we use them a lot!</p>
-</section>
-</section>
-<section id="basic-tidyverse-functions" class="level1">
-<h1>Basic Tidyverse Functions</h1>
-<p>The most frequently used actions used for wrangling data are:</p>
+<section id="installing-r-and-rstudio" class="level1">
+<h1>Installing R and RStudio</h1>
+<p>In this course, we will use R and RStudio to perform necessary calculations. This will allow us to focus on the statistical principles.</p>
+<p>If you have not already installed R and RStudio on your computer, please follow these instructions to do so.</p>
 <ol type="1">
-<li><strong>Filtering rows</strong> - eliminate rows based on certain criteria (logical operators)</li>
-<li><strong>Selecting columns</strong> - narrow the dataset to the specific <em>columns</em> required for the analysis or visualization</li>
-<li><strong>Creating new columns</strong> - create new columns based on the provided data. This could be as simple as changing a height from inches to centimeters.</li>
-<li><strong>Summarizing data</strong> - create customized data summaries, often by specific groups</li>
+<li>Install R: Install the latest version of R <a href="https://cran.r-project.org/">link</a></li>
+<li>Install RStudio: (<a href="https://download1.rstudio.org/desktop/macos/RStudio-1.4.1106.dmg">Mac OS X</a> | <a href="https://download1.rstudio.org/desktop/windows/RStudio-1.4.1106.exe">PC</a>)</li>
 </ol>
-<p>You have already used <code>favstats()</code> to do (4) above, but we’ll learn how to do so with more flexibility with the tidyverse.</p>
-<section id="removing-rows---filter" class="level2">
-<h2 class="anchored" data-anchor-id="removing-rows---filter">Removing Rows - <code>filter()</code></h2>
-<p>Logical operators are useful when removing rows from a dataset. The most common logical operators used to filter rows are:</p>
-<ul>
-<li><code>&lt;</code> and <code>&lt;=</code> means “less than” and “less than or equal to” respectively</li>
-<li><code>&gt;</code> and <code>&gt;=</code> means “greater than” and “greater than or equal to” respectively</li>
-<li><code>==</code> means “equal to” (NOTE: we use double equals because in most computer languages, a single <code>=</code> is an assignment operator. This avoids ambiguity)</li>
-<li><code>!=</code> means “not equal to”; this one is useful if you want to eliminate one level of a variable</li>
-<li><code>%in%</code> is useful for defining a list of levels that you want to include</li>
-</ul>
-<p>We typically begin with the raw dataset, then “pipe” that dataset into a sequence of functions using the “pipe” operator, <code>%&gt;%</code>.</p>
-<p>Let’s begin by filtering out rows we think have legitimate heights:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 310 × 60
-   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
-   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1 USA     FL         2022         12 Male         18 Left-Handed        182
- 2 USA     IN         2022         12 Male         17 Right-Handed       190
- 3 USA     GA         2022         12 Female       17 Right-Handed       172
- 4 USA     NC         2022         11 Female       15 Right-Handed       163
- 5 USA     CO         2022         12 Female       17 Left-Handed         51
- 6 USA     MO         2022         11 Male         17 Right-Handed       181
- 7 USA     NC         2022         11 Male         17 Ambidextrous       175
- 8 USA     SC         2022         11 Female       18 Right-Handed       160
- 9 USA     WA         2022         11 Female       16 Right-Handed       156
-10 USA     WA         2022         12 Female       17 Right-Handed       169
-# ℹ 300 more rows
-# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
-#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
-#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
-#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
-#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
-#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
-</div>
-</div>
-<p>The above code will return a new dataset without the outliers.</p>
-<p>How many rows does the original dataset have?</p>
-<p>How many rows does the filtered dataset have?</p>
-<p>Suppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the <code>filter()</code> function separated by a comma:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Left-Handed&quot;  &quot;Right-Handed&quot; &quot;Ambidextrous&quot;</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 302 × 60
-   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
-   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1 USA     FL         2022         12 Male         18 Left-Handed        182
- 2 USA     IN         2022         12 Male         17 Right-Handed       190
- 3 USA     GA         2022         12 Female       17 Right-Handed       172
- 4 USA     NC         2022         11 Female       15 Right-Handed       163
- 5 USA     CO         2022         12 Female       17 Left-Handed         51
- 6 USA     MO         2022         11 Male         17 Right-Handed       181
- 7 USA     SC         2022         11 Female       18 Right-Handed       160
- 8 USA     WA         2022         11 Female       16 Right-Handed       156
- 9 USA     WA         2022         12 Female       17 Right-Handed       169
-10 USA     WA         2022         11 Male         18 Right-Handed       160
-# ℹ 292 more rows
-# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
-#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
-#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
-#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
-#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
-#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalently we can use %in% instead of the !=</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Left-Handed&quot;</span>, <span class="st">&quot;Right-Handed&quot;</span>),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;MO&quot;</span>, <span class="st">&quot;FL&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 27 × 60
-   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
-   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
- 1 USA     FL         2022         12 Male         18 Left-Handed       182 
- 2 USA     MO         2022         11 Male         17 Right-Handed      181 
- 3 USA     MO         2022         11 Female       17 Right-Handed      151 
- 4 USA     FL         2022         12 Female       18 Right-Handed      170 
- 5 USA     FL         2022         12 Male         18 Right-Handed      180 
- 6 USA     FL         2022         12 Female       18 Right-Handed      173.
- 7 USA     FL         2022         12 Male         18 Right-Handed      175 
- 8 USA     FL         2022         12 Male         17 Right-Handed      180 
- 9 USA     MO         2022         11 Male         17 Right-Handed      164 
-10 USA     FL         2022         12 Female       17 Right-Handed      166 
-# ℹ 17 more rows
-# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
-#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
-#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
-#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
-#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
-#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Left-Handed&quot;</span>, <span class="st">&quot;Right-Handed&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
- [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [25]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
- [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
- [85]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [97]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[121]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
-[145]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[157]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[169]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[181]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[205]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[217]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[229]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[241]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[253]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[265]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[277]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
-[289]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-</div>
-</div>
-<p>How many rows does our latest dataset have?</p>
-</section>
-<section id="adding-columns---mutate" class="level2">
-<h2 class="anchored" data-anchor-id="adding-columns---mutate">Adding Columns - <code>mutate()</code></h2>
-<p>The <code>mutate()</code> statement is used to add new columns to a dataset.</p>
-<p>To create a new column, “pipe” the previous steps into the <code>mutate()</code> statement. Inside the parentheses, give the new column a name and set it equal to what you want that column to be.</p>
-<p>EXAMPLE: Create a column of the ratio of Height to armspan called, ht_to_span, by using a <code>mutate()</code> statement:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">ht_in =</span> Height_cm <span class="sc">/</span> <span class="fl">2.54</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, ht_to_span, ht_in)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Notice we no longer have to use <code>$</code> to access specific columns! The tidyverse lives up to its name!</p>
-</section>
-<section id="selecting-columns---select" class="level2">
-<h2 class="anchored" data-anchor-id="selecting-columns---select">Selecting Columns - <code>select()</code></h2>
-<p>There are now over 60 columns in this dataset. Suppose we are only interested in reaction times and height-to-armspan ratio as they related to handedness. To tidy up the data even further, select only the columns we are interested in (Handed, Reaction_time, and ht_to_span):</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 302 × 3
-   Handed       Reaction_time ht_to_span
-   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;
- 1 Left-Handed          0.349      1.28 
- 2 Right-Handed         0.358      0.990
- 3 Right-Handed         0.447      1.03 
- 4 Right-Handed         0.438      1.02 
- 5 Left-Handed          0.542      0.981
- 6 Right-Handed         0.428      0.968
- 7 Right-Handed         0.427      1.01 
- 8 Right-Handed         0.412      1.10 
- 9 Right-Handed         0.346      1.04 
-10 Right-Handed         0.391      1    
-# ℹ 292 more rows</code></pre>
-</div>
-</div>
-<p>See how much we can do in just a few short, sequential lines of code? Let’s name out clean dataset, <code>clean</code>, and create a boxplot of reaction times comparing left and right handed students:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the code to remove outliers in Reaction_time and remake the boxplot</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAA8FBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZrY6AAA6AGY6OgA6Ojo6OmY6OpA6Zjo6ZmY6ZpA6ZrY6kJA6kLY6kNtmAABmOgBmOjpmOmZmZjpmZmZmZpBmkJBmkLZmkNtmtrZmtttmtv+QOgCQOjqQZgCQZjqQZmaQkJCQkLaQtraQttuQtv+Q29uQ2/+2ZgC2Zjq2kDq2kGa2kLa2tpC2tra2ttu225C227a229u22/+2/9u2///bkDrbkGbbtmbbtpDbtrbbttvb25Db27bb29vb2//b/7bb/9vb////tmb/25D/27b/29v//7b//9v///+xXqchAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3de3/TWJ7gYZnLkCX0FsxymUk1MxTTVHcxQ+h0hRnYSgEzhF5CwHn/72YlW7blCyT65fgosp/nj67EOLI/lvVtXY+KMwBCiq7fAEBfCShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShA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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="summarising-data---group_by-summarise" class="level2">
-<h2 class="anchored" data-anchor-id="summarising-data---group_by-summarise">Summarising Data - <code>group_by()</code> + <code>summarise()</code></h2>
-<p>The above data might be adequate for a visualization or analysis, but we can calculate summary statistics tables like we did with <code>favstats()</code> using the tidyverse.</p>
-<p>The <code>summarise()</code> (or equivalently, <code>summarize()</code>) function is like the mutate statement. We create a name for the new column and set it equal to what we want.</p>
-<p>Let’s name the new dataset, <code>clean</code>, and see how to make summaries using tidyverse.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(survey<span class="sc">$</span>Reaction_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>, </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>, </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>         ClassGrade <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  mn_react_time med_react_time mn_ratio
-          &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;
-1         0.397          0.366     1.27</code></pre>
-</div>
-</div>
-<p>Notice that the mn_ratio is <code>Inf</code>.</p>
-<p>Why might that be the case?</p>
-<p>Modify the code chunk to exclude rows where arm span is 0:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>,</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mean Reaction Time</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_react_time =</span> <span class="fu">min</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Mean Reaction Time</th>
-<th style="text-align: right;">med_react_time</th>
-<th style="text-align: right;">mn_ratio</th>
-<th style="text-align: right;">min_react_time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.4205068</td>
-<td style="text-align: right;">0.388</td>
-<td style="text-align: right;">Inf</td>
-<td style="text-align: right;">0.067</td>
-</tr>
-</tbody>
-</table>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  clean$Handed   min      Q1 median      Q3   max      mean        sd   n
-1  Left-Handed 0.274 0.34825 0.4415 0.53850 0.895 0.4741471 0.1691585  34
-2 Right-Handed 0.067 0.33825 0.3845 0.44775 0.995 0.4134380 0.1302318 258
-  missing
-1       0
-2       0</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    min        Q1   median       Q3 max mean  sd   n missing
- 0.0168 0.9841579 1.006519 1.052681 Inf  Inf NaN 292       0</code></pre>
-</div>
-</div>
-<p>If we want to get means for separate groups, we can add a <code>group_by()</code> statement to tell which variable(s) we want to group by:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>,</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 20%">
-<col style="width: 22%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 8%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Handed</th>
-<th style="text-align: right;">mn_react_time</th>
-<th style="text-align: right;">med_react_time</th>
-<th style="text-align: right;">mn_ratio</th>
-<th style="text-align: right;">max_react</th>
-<th style="text-align: right;">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Left-Handed</td>
-<td style="text-align: right;">0.4741471</td>
-<td style="text-align: right;">0.4415</td>
-<td style="text-align: right;">1.266468</td>
-<td style="text-align: right;">0.895</td>
-<td style="text-align: right;">34</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Right-Handed</td>
-<td style="text-align: right;">0.4133891</td>
-<td style="text-align: right;">0.3840</td>
-<td style="text-align: right;">1.260190</td>
-<td style="text-align: right;">0.995</td>
-<td style="text-align: right;">257</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The <code>n()</code> is very useful for counting up the number of observations in each group.</p>
-<p>If we were only interested in the summary statistics table, we can do everything in one series of steps:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>summary_stats_table <span class="ot">&lt;-</span>  survey <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    Handed <span class="sc">!=</span> <span class="st">&quot;Ambidextrous&quot;</span>,</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span) <span class="sc">%&gt;%</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>summary_stats_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  Handed       mn_react_time med_react_time mn_ratio max_react count
-  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;
-1 Left-Handed          0.474          0.442     1.27     0.895    34
-2 Right-Handed         0.413          0.384     1.26     0.995   257</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="practice-together" class="level1">
-<h1>Practice Together</h1>
-<p>Suppose we want to see who gets more sleep on non-school nights, males or females whose chosen superpower is telepathy.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Sleep_Hours_Non_Schoolnight, Superpower) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower<span class="sc">==</span><span class="st">&quot;Telepathy&quot;</span>)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(telepaths<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data:image/png;base64,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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_sleep_hours =</span> <span class="fu">mean</span>(Sleep_Hours_Non_Schoolnight)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Gender</th>
-<th style="text-align: right;">mn_sleep_hours</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: right;">8.733333</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Male</td>
-<td style="text-align: right;">8.190476</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Also, create a column that is the ratio of sleep hours on non-school nights to 8. This calculates the percent of recommended sleep on non-school nights.</p>
+<p>If you are using a Chromebook or other “web browsing only” computer that will not allow you to install software, then set up an account at <a href="https://rstudio.cloud/">RStudio Cloud</a> instead of installing R and RStudio as shown here. Use your BYU-I</p>
+<p>Just accept all of the default options when installing.</p>
+<section id="detailed-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-instructions">Detailed Instructions</h2>
+<p>To install the statistical analysis program <strong>RStudio</strong> you will first need to install a piece of software called <strong>R</strong>. Funny name, right? (There was originally a software called “S” for statistics, and then “R” was invented later on. Part of the reason they used “R” was to claim that “R” was a “leap ahead” of “S.”)</p>
+<p>Install the R Software by clicking:</p>
 <ol type="1">
-<li><p>Create a dataset that includes columns Gender, Superpower, Sleep_Hours_Non-Schoolnight, and the ratio of non-schoolnight sleep hours divided by 8, for Males and Females who choose Telepathy as their superpower.</p></li>
-<li><p>Create a summary table comparing males and females whose preferred super power is telepathy that includes:</p></li>
+<li>Mac OS X <a href="https://cran.r-project.org/bin/macosx/R-4.0.5.pkg">M1-3 Chip</a> (Most Common)</li>
+<li>Mac OS X <a href="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.1-x86_64.pkg">Intel Chip</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/base/release.html">PC</a></li>
 </ol>
-<pre><code>a. Use `favstats()` to get the mean, median, standard deviation, and sample size of Sleep Hours on non-school nights 
-b. Use `group_by()` to get the mean, median, standard deviation, and sample size of the percent of recommended sleep</code></pre>
-<p><strong>HINT</strong>: Use the <code>unique()</code> function to see what the options are for a given categorical variable.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sleep_ratio =</span> Sleep_Hours_Non_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Superpower, Sleep_Hours_Non_Schoolnight, sleep_ratio) <span class="sc">%&gt;%</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower <span class="sc">==</span> <span class="st">&quot;Telepathy&quot;</span>)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="sc">%&gt;%</span></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ratio =</span> <span class="fu">mean</span>(sleep_ratio),</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median_Ratio =</span> <span class="fu">median</span>(sleep_ratio),</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ratio =</span> <span class="fu">sd</span>(sleep_ratio),</span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">n</span>()</span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  Gender Mean_Ratio Median_Ratio SD_Ratio Count
-  &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
-1 Female       1.09         1.12    0.235    60
-2 Male         1.02         1.12    0.295    21</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(telepaths2<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths2<span class="sc">$</span>Gender)[<span class="fu">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&#39;sd&#39;</span>, <span class="st">&#39;n&#39;</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      mean median       sd  n
-1 8.733333      9 1.876407 60
-2 8.190476      9 2.358369 21</code></pre>
-</div>
-</div>
+<p>Once that download finishes, open the resulting file.</p>
+<p>Click “Continue” or “Okay” or “Accept” for all of the several various windows that will appear.</p>
+<p>Now that R is properly installed on your computer, we need to install RStudio. RStudio is an app that runs R inside of it and provides you with many other tools that go way beyond what R can do. This is why R must be installed first, so that RStudio can use it. You will never need to open R yourself. Just use RStudio. But without R, RStudio won’t work properly.</p>
+<p>Install the RStudio app by clicking here: (<a href="https://download1.rstudio.org/desktop/macos/RStudio-1.4.1106.dmg">Mac OS X</a> | <a href="https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe">Windows</a>).</p>
+<p>Once the RStudio installer downloads, open the resulting file.</p>
+<p>Again, work through the installation process, agreeing with all the defaults and terms of conditions.</p>
+<p>Once the installation finishes you can use your computer’s search bar to search for “RStudio” in your apps.</p>
 </section>
-<section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<p>Use the above <code>tidyverse</code> functions to answer the following questions:</p>
+</section>
+<section id="testing-r-studio" class="level1">
+<h1>Testing R-Studio</h1>
+<p>Throughout this course, you will download many files. The collection of files will be a valuable resource if you go on to use R in the future.</p>
 <ol type="1">
-<li>How many vegetarians say meat is their favorite food?</li>
+<li>Create a folder somewhere that is easy to find. Consider naming it “M221D” or another descriptive name</li>
+<li>Download the <a href="https://github.com/byuistats/Math221D_Course/raw/main/01-Course_Intro/TestingTesting.qmd">TestingTesting.Rmd</a> file and save it into your folder.</li>
+<li>Click the “Knit” or “Render” button at the top of the file that opens up</li>
 </ol>
-<p><strong>HINT</strong>: This can be done with a filter statement</p>
-<ol start="2" type="1">
-<li>Compare mean, median, and standard deviation of heights and the sample size between those who are vegetarian and those who aren’t.</li>
-</ol>
-<p>Be sure to filter out any major outliers in heights first.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Vegetarian)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;No&quot;  &quot;Yes&quot;</code></pre>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Create a dataset that:
-<ol type="a">
-<li><p>Includes a column that is <em>percent of recommended sleep</em> (Sleep_Hours_Schoolnight divided by 8 using a mutate statement)</p></li>
-<li><p>Includes only columns for Favourite_physical_activity, Reaction_time, percent_recommended_sleep (part a)</p></li>
-<li><p>Includes only students whose favorite physical activity is Walking/Hiking, Basketball, Swimming, Soccer</p></li>
-<li><p>Filters Reaction Times to be less than 1 second</p></li>
-</ol></li>
-</ol>
-<p>Use the clean dataset to:</p>
-<ol start="4" type="1">
-<li><p>Create a side-by-side boxplot for the percent of recommended sleep for each favorite physical activity</p></li>
-<li><p>Create a side-by-side boxplot for the reaction times for each favorite physical activity</p></li>
-</ol>
+<p>This should open up a browser window with some text and a chart. If it runs, you’re technology is set up for success in this class. If not, ask Bracken or Brother Cannon for help.</p>
+</section>
+<section id="troubleshooting" class="level1">
+<h1>Troubleshooting</h1>
+<section id="mac-processing-chip" class="level2">
+<h2 class="anchored" data-anchor-id="mac-processing-chip">Mac Processing Chip</h2>
+<p>For Macs, Which version of R-Studio you download depends on which processing chip you have. If you followed the instructions above and R-Studio opens but gives you a big error, you need to download the other version of R linked above.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
