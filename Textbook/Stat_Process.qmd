@@ -1,6 +1,5 @@
 ---
 title: "The Statistical Process"
-warning: false
 ---
 
 ## Lesson Outcomes
