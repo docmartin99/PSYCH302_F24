@@ -911,11 +911,11 @@ To install a library, we use the `install.packages("")` command, where we specif
 
 `rio` is a toolbox that is very useful for loading data into R.  If you haven't already done so, install the `rio` library.
 
-```{r, eval=FALSE}
+```
 install.packages('rio')
 ```
 
-While you only have to install libraries once, you have to load them everytime you want to use one.  It's like going to the garage to get the toolbox you need for the job.  
+While you only have to install libraries once, you have to load them every time you want to use one.  It's like going to the garage to get the toolbox you need for the job.  
 
 Now let's load the data and calculate some percentiles!
 
@@ -939,7 +939,7 @@ wrong_site <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data
 
 - Datasets loaded into R may have many columns of information.  To specify which column in the dataset should be used for analysis we use the `$`.  For example, if we wanted only to look at the Wrong_Patient clumn in the wrong_site dataset:
 
-```{r, eval = FALSE}
+```{r, echo = FALSE}
 wrong_site$Wrong_Patient
 ```
 
@@ -949,6 +949,7 @@ wrong_site$Wrong_Patient
 
 ```{r}
 quantile(wrong_site$Wrong_Site, .25, na.rm=TRUE)
+# Note: the na.rm=TRUE removes the missing values from the dataset
 ```
 
 <br>
@@ -975,12 +976,14 @@ The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in R) of th
 <div class="Questions">
 21. What is the 13<sup>th</sup> percentile of the wrong site data?
 
-<a href="javascript:showhide('Q21')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q21" style="display:none;">
+<details>
+<summary>Solution</summary>
 * $6343.40
-<!--::{{Course_Filter|course=B C|content=?5946.72}}-->
-</div>
-<br>
+```{r}
+quantile(wrong_site$Wrong_Site, .13, na.rm=TRUE)
+```
+</details>
+
 
 22. How would you interpret the 13<sup>th</sup> percentile (assuming the 13<sup>th</sup> percentile is $6343.40)?
 * a. 100 of the lawsuits cost more than 13%.
@@ -988,52 +991,62 @@ The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in R) of th
 * c. In 13% of the wrong-site lawsuits, hospitals had to pay $6343.40 or less.
 * d. For 13% of the wrong-site lawsuits, the hospitals had to pay $6343.40 to the patient.
 
-<a href="javascript:showhide('Q22')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q22" style="display:none;">
+<details>
+<summary>Solution</summary>
 * Correct Answer: C
-</div>
+</details>
 <br>
 
 23. Find P<sub>90</sub>.
 
-<a href="javascript:showhide('Q23')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q23" style="display:none;">
+<details>
+<summary>Solution</summary>
 * $149,963.00
-<!--::{{Course_Filter|course=B C|content=?149,992.60}}-->
-</div>
+```{r}
+quantile(wrong_site$Wrong_Site, .9, na.rm=TRUE)
+```
+</details>
 <br>
 
 24. The quartiles divide a sorted list of data into four equal groups. So, each group contains 25% of the data. The first quartile is the value that is greater than or equal to 25% of the data.  What is another name for this number?
 
-<a href="javascript:showhide('Q24')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q24" style="display:none;">
+<details>
+<summary>Solution</summary>
 * The 25th percentile.
-</div>
+</details>
 <br>
 
 25. What is the value of the third quartile?
 
-<a href="javascript:showhide('Q25')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q25" style="display:none;">
+<details>
+<summary>Solution</summary>
 * $124,280.00
-<!--::{{Course_Filter|course=B C|content=?124,513.00}}-->
-</div>
+```{r}
+quantile(wrong_site$Wrong_Site, .75, na.rm=TRUE)
+```
+
+</details>
 <br>
 
 26. Half of the wrong-site lawsuits judgments were less than or equal to what value?
 
-<a href="javascript:showhide('Q26')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q26" style="display:none;">
+<details>
+<summary>Solution</summary>
 * $68,552.00
-</div>
+```{r}
+quantile(wrong_site$Wrong_Site, .5, na.rm=TRUE)
+#Or
+median(wrong_site$Wrong_Site)
+```
+</details>
 <br>
 
 27. The median is the middle observation in a sorted list of data. What percentile is always equal to the median?
 
-<a href="javascript:showhide('Q27')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q27" style="display:none;">
+<details>
+<summary>Solution</summary>
 * The 50th percentile
-</div>
+</details>
 &nbsp;
 </div>
 <br>
@@ -1042,22 +1055,32 @@ The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in R) of th
 
 Another way to summarize data is with the five-number summary.  **The five-number summary** is comprised of the minimum, the first quartile, the second quartile (or median), the third quartile, and the maximum.  
 
-Statistical packages can give different results for some computations.  This is because there are several reasonable ways to define certain quantities, such as the quartiles. As such, you may find that some of the values that are given in Excel<!--{{Course_Filter|course=B C|content=SPSS}}--> are different than what other software may give.
+There is a very easy way to get the Five-Number Summary along with the mean and standard deviation.  The `favstats()` function in the `mosaic` library gives us all of our **fav**orite **stat**istic**s**. 
 
-<!--Please be sure to use the values that you calculate using the software designated for your particular class ({{Course_Filter|course=A|content=Excel}}{{Course_Filter|course=B C|content=SPSS}}-->
+As before, we will have to install the `mosaic` library once, then load it when we want to use it.  
 
-<div class="SoftwareHeading">Excel Instructions</div>
+<div class="SoftwareHeading">R Instructions</div>
 <div class="Software">
 
-&nbsp;&nbsp;**To find the values for a five-number summary in Excel, do the following**
+&nbsp;&nbsp;**To find the values for a five-number summary in R, do the following**
 
-- Open the data file you are using. For this example, open the file [WrongSiteWrongPatient.xlsx](./Data/WrongSiteWrongPatient.xlsx).
+- Install the `mosaic` library (Only Once):
+```
+install.packages("mosaic")
+```
 
-- You can use the function **=percentile.inc()** in Excel to find the 1<sup>st</sup> quartile, median and 3<sup>rd</sup> quartile (otherwise known as the 25<sup>th</sup>, 50<sup>th</sup>, and 75<sup>th</sup> percentiles respectively).
+- Load the Library:
+```{r}
+library(mosaic)
+```
 
-- Type the following into a blank cell of the WrongSiteWrongPatient.xlsx worksheet
-    - to find the minimum wrong-site value: =min(A2:A412)
-    - to find the maximum wrong-site value: =max(A2:A412)
+
+- Input the data into the `favstats()` function:
+
+```{r}
+favstats(wrong_site$Wrong_Site)
+```
+
 <br>
 </div>
 <br>
@@ -1065,15 +1088,14 @@ Statistical packages can give different results for some computations.  This is 
 
 <div class="QuestionsHeading">Answer the following questions:</div>
 <div class="Questions">
-28. Give the five-number summary for the Wrong Site data.
 
-<a href="javascript:showhide('Q28')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q28" style="display:none;">
+28. Give the five-number summary for the Wrong Site data.
+<details>
+<summary>Solution</summary>
 <center>
 $$\displaystyle{\$0,~~\$29,496;~~\$68,552;~~\$124,280;~~\$780,575}$$
-<!--::{{Course_Filter|course=B C|content=$ \displaystyle{\$0,~~\$29,379,~~\$68,552,~~\$124,513,~~\$780,575} $}}-->
 </center>
-</div>
+</details>
 &nbsp;
 </div>
 <br>
@@ -1091,9 +1113,7 @@ Follow the steps below to learn how a boxplot relates to the five-number summary
 
 **Step 01:** To draw a boxplot, start with a number line.
 
-
 <img src="/Images/Lesson_2_Activity_6_BoxPlot_1.jpg">
-
 
 
 **Step 02:** Draw a vertical line segment above each of the quartiles.
@@ -1126,16 +1146,24 @@ Follow the steps below to learn how a boxplot relates to the five-number summary
 
 <br>
 
-<div class="SoftwareHeading">Excel Instructions</div>
+<div class="SoftwareHeading">R Instructions</div>
 <div class="Software" style="padding:10px;">
 
 **To create a boxplot in Excel, do the following**
 
-- Open the data file you are using. For this example, open the file [WrongSiteWrongPatient.xlsx](./Data/WrongSiteWrongPatient.xlsx).
+- Load the data file. For this example, open the file [WrongSiteWrongPatient.xlsx](./Data/WrongSiteWrongPatient.xlsx).
+```{r}
+wrong_site <-  import("https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx")
+```
 
-- Highlight the data you want to plot (in this case, cells A2 to A412 contain the wrong-site lawsuit data).  
-- Go to the Insert ribbon in Excel and select the histogram icon from the "Charts" section of the ribbon. Then select the only option under the Box and Whisker category.
-<img src="/Images/Lesson_03_boxplot.png" width=80%>
+- Use the `boxplot()` function to get a boxplot: 
+```{r}
+boxplot(wrong_site$Wrong_Site)
+
+# We can make it a little nicer by adding labels to the x and y axes and adding a title as follows:
+
+boxplot(wrong_site$Wrong_Site, xlab="Wrong Site", ylab="Cost in $", main="Boxplot of Costs of Operating on the Wrong Site")
+```
 
 <br>
 </div>
@@ -1143,6 +1171,7 @@ Follow the steps below to learn how a boxplot relates to the five-number summary
 
 <div class="QuestionsHeading">Answer the following questions:</div>
 <div class="Questions">
+
 29. Create a histogram of the **wrong-patient** lawsuit data, located in column B of  the file [WrongSiteWrongPatient.xlsx](./Data/WrongSiteWrongPatient.xlsx). What is the shape of the wrong-patient data?
 
 a. Skewed left
@@ -1152,69 +1181,43 @@ d. Multi-modal
 e. Uniform
 
 
-<a href="javascript:showhide('Q29')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q29" style="display:none;">
-To create the histogram, highlight the data. Then go to the Insert ribbon of Excel. Select the histogram icon and then choose the first option under the Histogram category.
+<details>
+<summary>Solution</summary>
+To create the histogram, use the `histogram()` function on the data:
+```{r}
+histogram(wrong_site$Wrong_Patient)
+```
 
-<div style="padding-left:35px;"><img src="/Images/Lesson_03_wrong-patient_histogram.png" width=80%>
-</div>
+From the histogram we clearly see most values bunched near the left and gradually fewer values as we move to the right along the number line, so the correct answer is 'c. Skewed right'.
 
-From the histogram we clearly see most values bunched near the left and gradually fewer values as we move to the right along the numer line, so the correct answer is 'c. Skewed right'.
-
-</div>
+</details>
 <br>
-
-30. Create a boxplot of the **wrong-patient** lawsuit data.
-
-<a href="javascript:showhide('Q30')"><span style="font-size:8pt;">Solution</span></a>
-<div id="Q30" style="display:none;">
-
-
-<div style="padding-left:35px;"><img src="/Images/Lesson_03_wrong-patient_boxplot.png" width=90%>
-</div>
-
 
 </div>
 &nbsp;
 </div>
 <br>
 
-Side-by-side boxplots are a powerful way to compare data from different samples visually. For example, we may be interested in comparing the results of wrong-site lawsuits and wrong-patient lawsuits.
-
-<img src="/Images/Lesson_03_boxplot_side-by-side.png" width=80%>
+Histograms are preferred to boxplots when visualizing one set of data.  But side-by-side boxplots are a powerful way to compare data from different samples visually. For example, we may be interested in comparing the results of wrong-site lawsuits and wrong-patient lawsuits.
 
 In the plot we can quickly see that a wrong-patient lawsuit resulted in the largest cost to the hospital, more than $1.2 million. However, in general, wrong-patient lawsuits tend to result in a lower cost to the hospital than wrong-site lawsuits.
 
-<div class="SoftwareHeading">Excel Instructions</div>
+<div class="SoftwareHeading">R Instructions</div>
 <div class="Software" style="padding:10px;">
 
 **To create side-by-side boxplots in Excel, do the following**
 
-Open the data file you are using. For this example, open the file [WrongSiteWrongPatient.xlsx](./Data/WrongSiteWrongPatient.xlsx). Since these two datasets are next to each other in the file, the easiest way to create side-by-side boxplots plots is to highlight both columns of data. Then follow the same steps as for a single boxplot.
+- Using the previously loaded data, `wrong_site`, use the `boxplot()` function with the column names separated by a comma, and add labels:
 
-To make a side-by-side boxplot plot easier to understand you can add a legend. This is most easily done by clicking the green '+' near the upper right corner of the plot that appears when the plot is selected. Then, in the menu that appears, ensure the "legend" box is checked.
+```{r}
+boxplot(wrong_site$Wrong_Patient, wrong_site$Wrong_Site, names=c("Wrong Patient", "Wrong Site"))
+```
 
-Alternatively, if the green '+' is not visible to you, follow these steps shown in the image below. After selecting the plot go to the Design ribbon and select Add Chart Element. In the menu that appears select Legend, and then choose where you would like the legend to appear on the plot, as shown below.
-
-<div style="padding-left:35px;"><img src="/Images/Lesson_03_boxplot_legend.png" width=85%>
-</div>
-
-Additional formatting can be applied to further improve the appearance of the chart.
+We will cover how to improve your charts even more a little later.
 
 <br>
 </div>
 <br>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1233,32 +1236,21 @@ Additional formatting can be applied to further improve the appearance of the ch
 <div class="SummaryHeading">Remember...</div>
 <div class="Summary">
 
-1. A **percentile** is calculated in Excel using `=PERCENTILE(..., 0.#)` where the `0.#` is the percentile written as a decimal number. So the 20th percentile would be written as 0.2.
+1. A **percentile** is calculated in R using `quantile(data, 0.#)` where the `0.#` is the percentile written as a decimal number. So the 20th percentile would be written as 0.2.
 
 2. A **percentile** is a number such that a specified percentage of the data are at or below this number. For example, if say 80% of college students were shorter than (or equal to) 70 inches tall in height, then the 80th percentile of heights of college students would be 70 inches.
 
-3. **Standard deviation** is calculated in Excel for a sample of data using `=STDEV.S(...)`.
+3. **Standard deviation** is calculated in R for a sample of data using `sd(data)`.
 
 4. The **standard deviation** is a number that describes how spread out the data typically are from the mean of that data. A larger standard deviation means the data are more spread out from their mean than data with a smaller standard deviation. The standard deviation is never negative. A standard deviation of zero implies all values in the data set are exactly the same.
 
-5. To compute any of the **five-number summary** values in Excel, use the Excel function `=QUARTILE.INC(..., #)` where `#` is either a 0 (gives the minimum), 1 (gives the first quartile), 2 (gives the second quartile, i.e., median), 3 (gives the third quartile), or 4 (gives the maximum).
+5. To compute any of the **five-number summary** values in R, use the R function `favstats(data)` which also includes the mean and standard deviation.
 
 6. The **five-number summary** consists of (1) the minimum value in the data, (2) the first quartile (25th percentile) of the data, (3) the median of the data (50th percentile), (4) the third quartile (75th percentile) of the data, and (5) the maximum value occurring in the data.
 
-7. To create a **boxplot** in Excel, highlight the data, go to *Insert* on the menu ribbon, choose the *histogram icon*, select the *Boxplot* option from the menu that appears.
+7. To create a **boxplot** in R, use the `boxplot(data)` or for multiple columns `boxplot(data1, data2, names=c("Name of Column 1", "Name of Column 2))`.  
 
 8. **Boxplots** are a visualization of the five-number summary of a data set.
 
 </div>
-<br>
-
-
-## Navigation
-
-| **Previous Reading** | **This Reading** | **Next Reading** |
-| :------------------: | :--------------: | :--------------: |
-| [Lesson 3: <br> Describing Quantitative Data (Shape and Center)](Lesson03.html) | Lesson 4: <br> Describing Quantitative Data (Spread) | [Lesson 5: <br> Normal Distributions](Lesson05.html) |
-
-<br>
-
 <br>
