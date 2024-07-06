@@ -1,9 +1,8 @@
 ---
-title: "Happiness in the Tidyverse"
-subtitle: "Homework"
+title: "Into The Tidyverse"
 ---
 
-```{r}
+```{r, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
