@@ -10,15 +10,15 @@ website:
     left:
     - text: "Textbook"
       menu:
-        - text: "Course Introduction"
+        #- text: "Course Introduction"
         - href: ./Textbook/Course_Introduction.qmd
-        - text: "The Statistical Process"
+        #- text: "The Statistical Process"
         - href: ./Textbook/Stat_Process.qmd
-        - text: "Shape and Center"
+        #- text: "Shape and Center"
         - href: ./Textbook/Shape_and_Center.qmd
-        - text: "Measures of Spread"
+        #- text: "Measures of Spread"
         - href: ./Textbook/Spread.qmd
-        - text: "Intro to Probability"
+        #- text: "Intro to Probability"
         - href: ./Textbook/Intro_to_Probability.qmd
 
     - text: "Homework"
