@@ -58,9 +58,13 @@ website:
       menu:
         - text: "Download Zip Data"
 
-format:
+format:  
   html:
-    theme: cerulean
+    theme:
+      light: flatly
+      dark: darkly
+      #light: cosmo
+      #dark: [cosmo, theme-dark.scss]
     css: styles.css
     toc: true
 
