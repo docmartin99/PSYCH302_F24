@@ -23,14 +23,12 @@ website:
 
     - text: "Homework"
       menu:
-         - text: "Introducing R"
          - href: ./04-Intro_to_R/Introducing_R_Homework.qmd
 
     - text: "R Help"
       menu:
-        - text: "Installing R"
         - href: ./01-Course_Intro/Installing_R.qmd
-        - text: "Into the Tidyverse"
+        - href: ./10-Intro_to_Data_Wrangling/Exploring_New_Data_with_Tidyverst.qmd
 
 
     right:
