@@ -97,16 +97,15 @@ With an understanding of the background of the situation, Daniel proposed an exp
 
 1. What is Daniel's hypothesis?
 
-<a href="javascript:showhide('Q1')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
+<details>
+<summary>Solution</summary>
 
-<div id="Q1" style="display:none;">
 Daniel's hypothesis is that the Israelite children who eat pulse and drink water will appear healthier in just ten days, compared to those who eat the king's meat and drink his wine.
-</div>
+</details>
 
 </div>
 
 <br/>
-
 
 
 
@@ -186,11 +185,12 @@ The study designed by the Old Testament prophet Daniel provides an ancient examp
 
 2. Why was it important that Daniel's experiment included a control group?
 
-<a href="javascript:showhide('Q2')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
 
-<div id="Q2" style="display:none;">
+<details>
+<summary>Solution</summary>
+
 If there was no control group, then there would be no way to compare the effect of the diets (the treatments). Having a control group allows a researcher to see the effect of not taking any action. For Daniel, the control group (who ate the king's meat and drank his wine) provided a basis for comparing the effect of the new treatment (i.e. eating pulse and drinking water.)
-</div>
+</details>
 &nbsp;
 </div>
 
@@ -240,21 +240,21 @@ Because the children were assigned to the groups randomly, the two groups should
 <div class="Questions">
 3. Some children can be identified as having a higher risk of developing polio. Would it have been better if they were assigned to the treatment group so they could get the vaccine?
 
-<a href="javascript:showhide('Q3')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q3" style="display:none;">
+<details>
+<summary>Solution</summary>
+
 - No. The two groups need to be as similar as possible. Specifically, the people in the treatment group need to have the same potential (on average) of contracting polio as the people in the control group. If we put the people who are at a higher risk of developing polio in the treatment group, we run the risk of having more people in the treatment group getting polio simply because they are more likely to get it, *whether they are vaccinated or not.* Likewise, we might have fewer people in the control group getting polio just because they are less likely to get it, *whether they are vaccinated or not.*
 
 - These two effects would create a bias against the vaccine, by making the vaccine look like it doesn't work, or doesn't work as well as it does. It might also make it appear that people who aren't vaccinated stay healthy and the vaccine is not needed. There is even a chance that people will conclude that the vaccine actually gives people polio.
 
 - Randomly assigning subjects to the two groups tends to yield groups with similar characteristics---in this example, similar potential for contracting polio. Randomly assigning subjects to groups therefore defends us against problems like those mentioned in the previous paragraph.
 
-</div>
-<br>
+</details>
 
 4. Why is it important for the subject and those who assess the health of the subject to be unaware of whether or not that child received the vaccine?
 
-<a href="javascript:showhide('Q4')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q4" style="display:none;">
+<details>
+<summary>Solution</summary>
 
 - **Subjects:** Suppose a subject in the study thinks they're being treated. It has been documented that subjects with such knowledge tend to show improvement whether they are receiving the treatment or not. To see why, consider how you might feel and act if you were told you had been vaccinated. You might have a more hopeful outlook, leading to healthier living habits such as better hygiene and nutrition. Such changes would tend to reduce your chance of contracting polio *whether you've received the vaccine or not.* This might make the vaccine look like it works better than it does. It also might make the vaccine look like it works, even if it doesn't.
 
@@ -267,10 +267,8 @@ Because the children were assigned to the groups randomly, the two groups should
 - There are other effects of knowing to which group the subject belongs, such as doctors treating or advising the patient differently than they would without such knowledge. Such differences can make it harder to tell whether the vaccine works, and how well.
 
 - To reduce bias caused by such effects, those assessing the health of the subjects should not be told to which group the subject belongs.
+</details>
 </div>
-&nbsp;
-</div>
-<br>
 
 
 <img src="/Images/Step2.png" width="100px;">
@@ -318,26 +316,24 @@ $$ \frac{57}{200745} = 0.000~283~9 $$
 
 <div class="QuestionsHeading">Answer the following questions:</div>
 <div class="Questions">
+
 5. Calculate the proportion of children in the placebo group that developed polio during the study period.
 
-<a href="javascript:showhide('Q5')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q5" style="display:none;">
+<details>
+<summary>Solution</summary>
 <center>
 $$ \displaystyle{\frac{142}{201229} = 0.000~705~7} $$
 </center>
-</div>
-<br>
+</details>
 
 6. Compare the two proportions. What do you observe?
 
-<a href="javascript:showhide('Q6')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
+<details>
+<summary>Solution</summary>
 
-<div id="Q6" style="display:none;">
 - The proportion of children in the placebo group that develop polio during the study period  was more than double the proportion of children in the treatment group that developed polio during the study period. That suggests that the treatment is effective in reducing the proportion of children that will develop polio.
+</details>
 </div>
-<br>
-</div>
-<br>
 
 
 <img src="/Images/Step4.png" width="100px;">
@@ -394,7 +390,7 @@ There are several procedures that can be used to select a random sample from a p
 A **simple random sample (SRS)** is the best method for obtaining a sample from a population. This method allows each possible sample of a certain size an equal chance at being selected as the chosen sample. A difficulty of this method is that a list of all of the items in the population must be accessible before the sample is taken. Often, we obtain a SRS by allowing a computer to randomly select a certain number of items from the full list of the population. It is akin to the idea of putting all of the names into a hat, shaking them up, and randomly drawing out a few.
 
 <div style="padding-left:30px;">
-For example, suppose there are 18,000 students in the population of a certain university. School officials can use a computer to randomly choose values between 1 and 18,000 to identify which students are to be selected to complete a survey. In Excel, the command to obtain a random number between 1 and 18,000 is =*RANDBETWEEN(1,18000)*. A simple random sample can be obtained any time there is a complete list of the items to be sampled and they are all accessible. All the statistical procedures in this course assume that simple random sampling has been used. But in practice, the SRS is often difficult (or impossible) to implement.
+For example, suppose there are 18,000 students in the population of a certain university. School officials can use a computer to randomly choose values between 1 and 18,000 to identify which students are to be selected to complete a survey. In Excel, the command to obtain a random number between 1 and 18,000 is *sample(1:18000, 1)*. A simple random sample can be obtained any time there is a complete list of the items to be sampled and they are all accessible. All the statistical procedures in this course assume that simple random sampling has been used. But in practice, the SRS is often difficult (or impossible) to implement.
 </div>
 
 A **stratified sample** is when the items to be sampled are organized in groups of homogeneous (similar) items called strata, then a simple random sample is drawn from each of these strata. Stratified sampling works well when the items are similar within each stratum and tend to differ from one stratum to another. We often use stratified sampling in order to obtain a sample in such a way that we can make comparisons between each of the groups (or strata).
@@ -439,37 +435,29 @@ Returning to the sample accounts receivable record, we find this data to have in
 <div class="Questions">
 7. For each of the following variables taken from this accounts receivable record, indicate whether the variable is quantitative or categorical.
 
-<!--:a. Customer
 
-<a href="javascript:showhide('Q2')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q2" style="display:none;">
-The variable "Customer" is categorical. It classifies the customer.
-</div>  -->
 a. Terms
 
-<a href="javascript:showhide('Q7')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q7" style="display:none;">
+<details>
+<summary>Solution</summary>
 - The variable "Terms" is categorical. It classifies the invoice by the terms of payment for that invoice.
-</div>
-<br>
+</details>
 
 b. Account number
 
-<a href="javascript:showhide('Q8')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q8" style="display:none;">
+<details>
+<summary>Solution</summary>
 - The variable "Account number" is categorical. Even though the account number is given a number, it is actually functioning as a label. It is not something that is counted or measured. It does not make sense to do arithmetic operations (like adding 1 or multiplying by 2) to the account number.
-</div>
-<br>
+</details>
 
 c. Invoice amount
 
-<a href="javascript:showhide('Q9')"><span style="font-size:8pt;">Show/Hide Solution</span></a>
-<div id="Q9" style="display:none;">
+<details>
+<summary>Solution</summary>
 - The variable "Invoice amount" is quantitative. It makes sense to do arithmetic operations to this value. For example, the amount of Invoice 5745 (which is \$990.00) is somewhat more than twice as much as that of Invoice 2378 (which is \$478.00).
-</div>
+</details>
 &nbsp;
 </div>
-<br>
 
 
 <img src="/Images/Step3.png" width="100px;">
