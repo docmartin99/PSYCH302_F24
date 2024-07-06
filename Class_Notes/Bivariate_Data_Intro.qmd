@@ -1,0 +1,88 @@
+---
+title: "Introducing the Bivariate Data"
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+
+geyser <- import('https://byuistats.github.io/BYUI_M221_Book/Data/OldFaithful.xlsx')
+names(geyser)
+
+math <- import('https://byuistats.github.io/BYUI_M221_Book/Data/MathSelfEfficacy.xlsx')
+names(math)
+
+```
+
+
+# Correlation Coefficients
+
+What does the correlation coefficient, r, quantify?
+
+What does it mean if the correlation coefficient, r, is negative?
+
+
+# Geyser Data
+
+## Scatter plot
+
+Make a scatter plot showing the relationship between wait time and the duration of the next eruption.
+
+Which variable is the Explanatory variable?  Which is the Response?
+
+```{r}
+
+plot(Duration ~ Wait, data = geyser)
+
+```
+
+Before looking at the Correlation Coefficient, r, describe in words the direction and strength of the relationship.  Does it look linear?
+
+## Correlation Coefficient
+
+```{r}
+
+cor(Duration ~ Wait, data = geyser)
+
+```
+
+
+
+# Geyser Data
+
+## Scatter plot
+
+Make a scatter plot showing the relationship between the self reported confidence rating and their test score.
+
+Which variable is the Explanatory variable?  Which is the Response?
+
+
+```{r}
+
+plot(Score ~ ConfidenceRatingMean, data = math)
+
+```
+
+Before looking at the Correlation Coefficient, r, describe in words the direction and strength of the relationship.  Does it look linear?
+
+## Correlation Coefficient
+
+```{r}
+
+cor(Score ~ ConfidenceRatingMean, data = math)
+
+```
+
+
+
+
+
+
+

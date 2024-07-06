@@ -19,7 +19,21 @@ website:
     - text:  "Class Notes"
       menu:
         - href: ./Class_Notes/Installing_R.qmd
-
+        - href: ./Class_Notes/Summarizing_Data_Multiple_Groups.qmd
+        - href: ./Class_Notes/Normal_Distribution.qmd
+        - href: ./Class_Notes/CLT_Normal_Prob_for_Means.qmd
+        - href: ./Class_Notes/Inference_for_mean_sigma_unknown.qmd
+        - href: ./Class_Notes/Paired_ttest.qmd
+        - href: ./Class_Notes/Independent_2_sample_ttest.qmd
+        - href: ./Class_Notes/ANOVA_Intro.qmd
+        - href: ./Class_Notes/Assessing_Normality.qmd
+        - href: ./Class_Notes/Bivariate_Data_Intro.qmd
+        - href: ./Class_Notes/Linear_Regression_Intro.qmd
+        - href: ./Class_Notes/Distribution_of_Phat.qmd
+        - href: ./Class_Notes/One_Sample_Proportion_Ztest.qmd
+        - href: ./Class_Notes/Two_Sample_Proportion_Ztest.qmd
+        - href: ./Class_Notes/Chi_Square_Intro.qmd
+        
     - text: "Homework"
       menu:
          - href: ./Homework/Introducing_R_Homework.qmd
