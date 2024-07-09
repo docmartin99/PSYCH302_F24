@@ -368,6 +368,7 @@ border-top:7px solid #FFCC66;
 border-radius:8px;
 width: 95%;
 box-shadow: 4px 4px 5px #888888;
+color: black !important;
 }
 
 .QuestionsHeading {
@@ -396,6 +397,7 @@ background-color: #f2f3d9;
 border-bottom-left-radius: 3px;
 border-bottom-right-radius: 3px;
 box-shadow: 4px 4px 5px #888888;
+color: black !important;
 }
 
 .DocHeading {
@@ -421,6 +423,7 @@ background-color: #F8F8FF;
 border-bottom-left-radius: 3px;
 border-bottom-right-radius: 3px;
 box-shadow: 4px 4px 5px #888888;
+color: black !important;
 }
 
 .SummaryHeading {
@@ -446,6 +449,7 @@ box-shadow: 4px 4px 5px #888888;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
         box-shadow: 4px 4px 5px #888888;
+        color: black !important;
 }
 
 .RecapHeading {
@@ -486,4 +490,6 @@ padding-top:5px;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
         box-shadow: 4px 4px 5px #888888;
+        color: black !important;
+
 }
