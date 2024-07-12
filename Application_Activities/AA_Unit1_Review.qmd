@@ -1,6 +1,10 @@
 ---
 title: "Unit 1 Review"
+subtitle: "Statistical Foundations"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
 
 # Assessment Objectives
 

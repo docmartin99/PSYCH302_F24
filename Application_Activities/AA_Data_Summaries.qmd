@@ -2,6 +2,9 @@
 title: "Summarizing Data"
 subtitle: "CO2 Uptake Experiment"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
 
 # Background
 
@@ -34,7 +37,7 @@ Conc is related to the ambient concentration of CO2.
 
 # Summarizing Data
 
-Our main interest in CO2 uptake and how the other factors impact it.  We will first do a univariate analysis of uptake.
+Our main interest is CO2 uptake and how the other factors impact it.  We will first do a univariate analysis of uptake.
 
 ## Univariate Analysis
 

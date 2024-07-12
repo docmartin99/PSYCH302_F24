@@ -16,7 +16,7 @@ website:
         - href: ./Textbook/Spread.qmd
         - href: ./Textbook/Intro_to_Probability.qmd
         
-    - text:  "Class Notes"
+    - text:  "Workbook"
       menu:
         - href: ./Class_Notes/Installing_R.qmd
         - href: ./Class_Notes/Summarizing_Data_Multiple_Groups.qmd
@@ -34,10 +34,10 @@ website:
         - href: ./Class_Notes/Two_Sample_Proportion_Ztest.qmd
         - href: ./Class_Notes/Chi_Square_Intro.qmd
         
-    - text: "Homework"
+    - text: "Practice Problems"
       menu:
-         - href: ./Homework/Introducing_R_Homework.qmd
-         - href: ./Homework/Exploring_New_Data_with_Tidyverse.qmd
+         - href: ./Practice/Introducing_R_Homework.qmd
+         - href: ./Practice/Exploring_New_Data_with_Tidyverse.qmd
 
     - text: "Application Activities"
       menu:

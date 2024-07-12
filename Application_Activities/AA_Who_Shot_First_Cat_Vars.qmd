@@ -2,6 +2,9 @@
 title: "Categorical Data Analysis"
 subtitle: "Application Activity"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
 
 # Introduction
 
