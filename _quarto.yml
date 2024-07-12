@@ -38,6 +38,7 @@ website:
       menu:
          - href: ./Practice/Introducing_R_Homework.qmd
          - href: ./Practice/Exploring_New_Data_with_Tidyverse.qmd
+         - href: ./Practice/Regression_Problems.qmd
 
     - text: "Application Activities"
       menu:

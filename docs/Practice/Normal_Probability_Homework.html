@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Introducing R</title>
+<title>Math221 Notebook - Normal Probability Homework</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -152,10 +181,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-class-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Class Notes</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workbook" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workbook</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-workbook">    
         <li>
     <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
@@ -219,17 +248,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homework" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Homework</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-problems" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Problems</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-problems">    
         <li>
-    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Practice/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../Practice/Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Practice/Regression_Problems.html">
+ <span class="dropdown-text">Regression Practice</span></a>
   </li>  
     </ul>
   </li>
@@ -302,15 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-the-libraries" id="toc-load-the-libraries" class="nav-link active" data-scroll-target="#load-the-libraries">Load the libraries</a></li>
-  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in Data</a></li>
-  <li><a href="#old-faithful" id="toc-old-faithful" class="nav-link" data-scroll-target="#old-faithful">Old Faithful</a>
-  <ul class="collapse">
-  <li><a href="#calculate-the-summary-statistics-for-duration" id="toc-calculate-the-summary-statistics-for-duration" class="nav-link" data-scroll-target="#calculate-the-summary-statistics-for-duration">Calculate the Summary Statistics for Duration</a></li>
-  <li><a href="#create-a-historgram-for-duration" id="toc-create-a-historgram-for-duration" class="nav-link" data-scroll-target="#create-a-historgram-for-duration">Create a Historgram for Duration</a></li>
-  <li><a href="#calculate-summary-statistics-for-wait-time" id="toc-calculate-summary-statistics-for-wait-time" class="nav-link" data-scroll-target="#calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</a></li>
-  </ul></li>
-  <li><a href="#gratitude" id="toc-gratitude" class="nav-link" data-scroll-target="#gratitude">Gratitude</a></li>
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link active" data-scroll-target="#the-normal-distribution">The Normal Distribution</a></li>
+  <li><a href="#normal-probability-calculator" id="toc-normal-probability-calculator" class="nav-link" data-scroll-target="#normal-probability-calculator">Normal Probability Calculator</a></li>
   </ul>
 </nav>
     </div>
@@ -319,8 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducing R</h1>
-<p class="subtitle lead">Summarizing Quantitative Data</p>
+<h1 class="title">Normal Probability Homework</h1>
 </div>
 
 
@@ -337,42 +362,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="load-the-libraries" class="level1">
-<h1>Load the libraries</h1>
+<section id="the-normal-distribution" class="level1">
+<h1>The Normal Distribution</h1>
+<p>Recall that the normal distribution is a probability distribution defined by its center (<span class="math inline">\(\mu\)</span>) and its spread (<span class="math inline">\(\sigma\)</span>).</p>
+<p>[Insert examples of normal distributions with different means and standard deviations]</p>
 </section>
-<section id="read-in-data" class="level1">
-<h1>Read in Data</h1>
+<section id="normal-probability-calculator" class="level1">
+<h1>Normal Probability Calculator</h1>
+<p>Use the calculator below to calculate the probabilities using the normal distribution.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gratitude <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/gratitude.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Value</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">161</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesized Mean</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">150.8</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Standard deviation</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">8.8</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score:  number of standard deviations above the mean</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> sigma</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.159091</code></pre>
 </div>
-</section>
-<section id="old-faithful" class="level1">
-<h1>Old Faithful</h1>
-<section id="calculate-the-summary-statistics-for-duration" class="level2">
-<h2 class="anchored" data-anchor-id="calculate-the-summary-statistics-for-duration">Calculate the Summary Statistics for Duration</h2>
-<p>What is the mean duration time of Old Faithful eruptions?</p>
-<p>What is the standard deviation of duration?</p>
-</section>
-<section id="create-a-historgram-for-duration" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-historgram-for-duration">Create a Historgram for Duration</h2>
-<p>Create a histogram and describe the shape of the distribution of duration:</p>
-</section>
-<section id="calculate-summary-statistics-for-wait-time" class="level2">
-<h2 class="anchored" data-anchor-id="calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</h2>
-<p>What is the mean wait time between eruptions?</p>
-<p>What is the maximum wait time between eruptions?</p>
-<p>The middle 50% of wait times will be between what 2 numbers?</p>
-</section>
-</section>
-<section id="gratitude" class="level1">
-<h1>Gratitude</h1>
-<p>Calculate the summary statistics for both groups:</p>
-<p>Which treatment group has the highest mean?</p>
-<p>Which treatment group has the largest spread of happiness scores?</p>
-<p>Create a graph with boxplots for each group:</p>
-<p>Which group has the lowest first quartile?</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score LESS THAN the one we observed (left tail)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8767904</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score GREATER THAN the one we observed (Right Tail)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1232096</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For calculating the area between 2 numbers</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fl">61.5</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">68.5</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.287516e-21</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the X_bar associated with a spceific percentile</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144.8645</code></pre>
+</div>
+</div>
+<div class="quiz">
+<p>What is the capital of France?</p>
+<ol type="1">
+<li>( ) London</li>
+<li><label><input type="checkbox">Berlin</label></li>
+<li><label><input type="checkbox" checked="">Paris</label></li>
+<li><label><input type="checkbox">Madrid</label></li>
+</ol>
+</div>
 
 
 </section>

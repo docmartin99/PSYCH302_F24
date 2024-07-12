@@ -19,7 +19,7 @@ This book is designed to be a digital workbook.  You can download the Workbooks,
 Each lesson will typically include:
   * Background readings (either from Stats Fundamentals or Workbooks)
   * Example code (mostly in Workbooks)
-  * Opportunities to practice (Practice Problems and Application Activities)
+  * Opportunities to practice (Workbooks, Practice Problems and Application Activities)
   
 Stats Fundamentals is a great reference for the core principles which are used throughout the course.  
 

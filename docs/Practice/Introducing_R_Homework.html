@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Into The Tidyverse</title>
+<title>Math221 Notebook - Introducing R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,10 +152,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-class-notes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Class Notes</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-workbook" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Workbook</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-class-notes">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-workbook">    
         <li>
     <a class="dropdown-item" href="../Class_Notes/Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
@@ -219,17 +219,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-homework" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Homework</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-practice-problems" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Practice Problems</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-homework">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-practice-problems">    
         <li>
-    <a class="dropdown-item" href="../Homework/Introducing_R_Homework.html">
+    <a class="dropdown-item" href="../Practice/Introducing_R_Homework.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../Homework/Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../Practice/Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Practice/Regression_Problems.html">
+ <span class="dropdown-text">Regression Practice</span></a>
   </li>  
     </ul>
   </li>
@@ -302,19 +306,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#where-do-i-start" id="toc-where-do-i-start" class="nav-link" data-scroll-target="#where-do-i-start">Where do I start?</a>
+  <li><a href="#load-the-libraries" id="toc-load-the-libraries" class="nav-link active" data-scroll-target="#load-the-libraries">Load the libraries</a></li>
+  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in Data</a></li>
+  <li><a href="#old-faithful" id="toc-old-faithful" class="nav-link" data-scroll-target="#old-faithful">Old Faithful</a>
   <ul class="collapse">
-  <li><a href="#loading-data-and-libraries" id="toc-loading-data-and-libraries" class="nav-link" data-scroll-target="#loading-data-and-libraries">1. Loading Data and Libraries</a></li>
-  <li><a href="#data-exploration-and-hypothesis-generation" id="toc-data-exploration-and-hypothesis-generation" class="nav-link" data-scroll-target="#data-exploration-and-hypothesis-generation">2. Data Exploration and Hypothesis Generation</a></li>
-  <li><a href="#drill-down-into-specific-columns" id="toc-drill-down-into-specific-columns" class="nav-link" data-scroll-target="#drill-down-into-specific-columns">Drill down into specific columns</a></li>
-  <li><a href="#generate-hypotheses" id="toc-generate-hypotheses" class="nav-link" data-scroll-target="#generate-hypotheses">Generate Hypotheses</a></li>
+  <li><a href="#calculate-the-summary-statistics-for-duration" id="toc-calculate-the-summary-statistics-for-duration" class="nav-link" data-scroll-target="#calculate-the-summary-statistics-for-duration">Calculate the Summary Statistics for Duration</a></li>
+  <li><a href="#create-a-historgram-for-duration" id="toc-create-a-historgram-for-duration" class="nav-link" data-scroll-target="#create-a-historgram-for-duration">Create a Historgram for Duration</a></li>
+  <li><a href="#calculate-summary-statistics-for-wait-time" id="toc-calculate-summary-statistics-for-wait-time" class="nav-link" data-scroll-target="#calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</a></li>
   </ul></li>
-  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">3. Prepare the Data</a>
-  <ul class="collapse">
-  <li><a href="#lying" id="toc-lying" class="nav-link" data-scroll-target="#lying">Lying</a></li>
-  </ul></li>
-  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
+  <li><a href="#gratitude" id="toc-gratitude" class="nav-link" data-scroll-target="#gratitude">Gratitude</a></li>
   </ul>
 </nav>
     </div>
@@ -323,7 +323,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Into The Tidyverse</h1>
+<h1 class="title">Introducing R</h1>
+<p class="subtitle lead">Summarizing Quantitative Data</p>
 </div>
 
 
@@ -340,302 +341,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Statistics is only as interesting as the research questions we create. However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.</p>
-<p>The more time we spend digging into the data and noticing irregularities, the more likely we are to make better research questions and more appropriate conclusions. It doesn’t matter how sophisticated our analysis becomes if it’s based on bad data.</p>
-<p>In this activity, you will explore a survey about happiness and related factors. By reviewing the data at a high level and then drilling into specific variables, you will gain a better idea about what this survey contains, generate interesting research questions and, with clean data, make better-informed answers to those questions.</p>
+<section id="load-the-libraries" class="level1">
+<h1>Load the libraries</h1>
 </section>
-<section id="where-do-i-start" class="level1">
-<h1>Where do I start?</h1>
-<p>For experienced statisticians, getting a new dataset is like Christmas; we can’t wait to unwrap it and see what it’s hiding. For a novice, this can feel overwhelming.</p>
-<p>In this section, we discuss 4 general guidelines that are useful regardless of subject matter.</p>
-<ol type="1">
-<li>Load the data (and necessary libraries if using R)</li>
-<li>Explore the data and generate hypotheses</li>
-<li>Prepare the data for analysis</li>
-<li>Perform the appropriate analysis</li>
-</ol>
-<section id="loading-data-and-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="loading-data-and-libraries">1. Loading Data and Libraries</h3>
-<p>So far, this step has been taken for granted. You simply <code>import()</code> a dataset from a web source using the <code>rio</code> library. In the real world, this step can be quite complicated. There are different data sources, file types, permissions and more that can make loading the data more difficult.</p>
-<p>Fortunately for you, that level of complexity is beyond the scope of this class. However, it is important to call this out as an important step in data analysis.</p>
-<p>Load the data and libraries:</p>
-</section>
-<section id="data-exploration-and-hypothesis-generation" class="level3">
-<h3 class="anchored" data-anchor-id="data-exploration-and-hypothesis-generation">2. Data Exploration and Hypothesis Generation</h3>
-<p>Knowing what to look for when you get a new dataset takes experience and curiosity. Generally, we start by looking at the whole dataset at a high level, then drill down into specific columns.</p>
-<section id="viewing-the-whole-dataset" class="level4">
-<h4 class="anchored" data-anchor-id="viewing-the-whole-dataset">Viewing the whole dataset</h4>
-<p>There are several ways to look at the data at a high level:</p>
-<ol type="a">
-<li><code>View(data)</code> opens up the whole dataset in a new window</li>
-<li><code>glimpse(data)</code> shows you a list of columns and a few examples. It also shows the data types of each column. This is useful because sometimes columns that should be number show up as a category and vice versa. This can occur when there are typos in the dataset or categories as labeled as a number.</li>
-<li><code>head(data)</code> prints out the first few rows of data</li>
-</ol>
+<section id="read-in-data" class="level1">
+<h1>Read in Data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(happiness)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(happiness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,004
-Columns: 18
-$ Gender                     &lt;chr&gt; "female", "female", "female", "female", "fe…
-$ Age                        &lt;int&gt; 20, 19, 20, 22, 20, 20, 20, 19, 18, 19, 19,…
-$ Height                     &lt;int&gt; 163, 163, 176, 172, 170, 186, 177, 184, 166…
-$ Weight                     &lt;int&gt; 48, 58, 67, 59, 59, 77, 50, 90, 55, 60, 60,…
-$ Number_of_siblings         &lt;int&gt; 1, 2, 2, 1, 1, 1, 1, 1, 1, 3, 2, 1, 10, 1, …
-$ Dominant_hand              &lt;chr&gt; "right handed", "right handed", "right hand…
-$ Education                  &lt;chr&gt; "college/bachelor degree", "college/bachelo…
-$ Only_child                 &lt;chr&gt; "no", "no", "no", "yes", "no", "no", "no", …
-$ Fear_score                 &lt;int&gt; 38, 32, 22, 72, 36, 38, 40, 56, 64, 80, 34,…
-$ Religiosity_score          &lt;int&gt; 60, 33, 83, 50, 77, 53, 73, 60, 60, 83, 60,…
-$ Smoking                    &lt;chr&gt; "never smoked", "never smoked", "tried smok…
-$ Alcohol                    &lt;chr&gt; "drink a lot", "drink a lot", "drink a lot"…
-$ I_live_a_healthy_lifestyle &lt;chr&gt; "Agree", "Neither Agree nor Disagree", "Nei…
-$ I_like_music               &lt;chr&gt; "Strongly Agree", "Agree", "Strongly Agree"…
-$ Music_diversity_score      &lt;int&gt; 33, 44, 63, 34, 51, 58, 48, 43, 38, 58, 46,…
-$ Punctuality                &lt;chr&gt; "i am always on time", "i am often early", …
-$ Lying                      &lt;chr&gt; "never", "sometimes", "sometimes", "only to…
-$ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 10, 9…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#head(happiness)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>PRO TIP</strong>: Ask a ton of questions throughout this process! You are not always the subject matter expert for an analysis. Find someone who is and learn as much as you can from them.</p>
-<p>As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response. Start to <strong>mentally rank</strong> which factors you think might be most impactful.</p>
-<p><strong>QUESTIONS</strong>: For our data, what do you think will be our response variable? Happiness</p>
-<p>What other factors do you think might impact the response variable? Fear, Healthy</p>
-<p>Keep in mind that there may be multiple response variables to explore.</p>
-</section>
-</section>
-<section id="drill-down-into-specific-columns" class="level3">
-<h3 class="anchored" data-anchor-id="drill-down-into-specific-columns">Drill down into specific columns</h3>
-<p>Next we want to look at specific columns, checking for outliers or impossible values.</p>
-<p>We usually begin with the response variable then work through the explanatory variables we think are most likely to impact the response variable.</p>
-<p><strong>NOTE</strong>: It is not always necessary to dig into every column in the data. Sometimes there are dozens (or hundreds) of columns. We need to prioritize based on our own hypotheses or the suggestions of the data provider.</p>
-<p>A few commonly used functions for exploring specific columns are:</p>
-<ul>
-<li><code>unique()</code> prints out a list of all possible values of a categorical variable</li>
-<li><code>table()</code> prints out a list of all possible values of a categorical variable AND the number of times that value occurs</li>
-<li><code>histogram()</code> - Making a histogram of a quantitative variable can show if the values are within an expected range</li>
-<li><code>favstats()</code> can be used to evaluate if the max and min values are in an acceptable range.</li>
-</ul>
-<p><strong>NOTE</strong>: We may not always know what “acceptable range” means, but it is our responsibility to find out either by asking a subject matter expert or relying on personal experience.</p>
-<p>Make a histogram of happiness score and see if everything looks in order.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Check <code>favstats()</code> to look at the max an min:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> min Q1 median Q3 max     mean       sd    n missing
- -40  9     11 12  75 10.59661 3.218161 1004       0</code></pre>
-</div>
-</div>
-<p>Look at the unique values of <code>Gender</code>, <code>Alcohol</code> and <code>Lying</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "female"         "male"           "nunya business"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "drink a lot"    "social drinker" "never"          "nunya business"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "never"                         "sometimes"                    
-[3] "only to avoid hurting someone" "everytime it suits me"        
-[5] "#N/A"                         </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-        female           male nunya business 
-           591            412              1 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-   drink a lot          never nunya business social drinker 
-           222            120              5            657 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                         #N/A         everytime it suits me 
-                            2                           137 
-                        never only to avoid hurting someone 
-                           50                           270 
-                    sometimes 
-                          545 </code></pre>
-</div>
-</div>
-<p>Are there any values we may need to filter out?</p>
-<p>Excel uses <code>#N/A</code> as a missing value, but in R this is treated like another possible value.</p>
-<p>Pick 2 more <em>categorical</em> variables and list their unique values:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "college/bachelor degree"          "secondary school"                
-[3] "primary school"                   "masters degree"                  
-[5] "doctorate degree"                 "currently a primary school pupil"
-[7] "nunya business"                  </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Dominant_hand)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "right handed" "left handed"  "#N/A"        </code></pre>
-</div>
-</div>
-<p><strong>NOTE</strong>: For now, we are focusing on categorical explanatory variables. Later in the semester we will learn how to compare 2 quantitative variables.</p>
-</section>
-<section id="generate-hypotheses" class="level3">
-<h3 class="anchored" data-anchor-id="generate-hypotheses">Generate Hypotheses</h3>
-<p>Now that we’ve spent time with the data, we can formalize our hypotheses and get ready to prepare the data to perform the proper analysis.</p>
-<p><strong>QUESTION</strong>: Which explanatory variables do you think have the biggest impact on happiness?</p>
-</section>
-</section>
-<section id="prepare-the-data" class="level1">
-<h1>3. Prepare the Data</h1>
-<p>We noticed some irregularities that may need to be addressed to get the most appropriate analysis.</p>
-<p>Let’s begin by seeing if there are differences in happiness for different levels of alcohol use.</p>
-<p><strong>Review</strong>: What are the irregularities in happiness score and alcohol use?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> min Q1 median Q3 max     mean       sd    n missing
- -40  9     11 12  75 10.59661 3.218161 1004       0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min = -40, max = 75</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "drink a lot"    "social drinker" "never"          "nunya business"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Includes response:   "nunya business"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Suppose Happiness Scores are supposed to be between 0 and 15.</p>
-<p>We also want to compare those who “drink a lot” and those who “never drink”.</p>
-<p>Replace the blanks below to create a new dataset called <code>alcohol_use</code> that removes the incorrect happiness scores and includes only those who “drink a lot” and “never drink” and includes only those 2 columns</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>alcohol_use <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         Alcohol <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"drink a lot"</span>, <span class="st">"never"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Alcohol, Happiness_score)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#View(alcohol_use)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Check the histogram of happiness scores in the alcohol_use data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(alcohol_use<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>How would you describe the shape of the distribution?</p>
-<p>Create a side-by-side boxplot and summary statistics table for each level of alcohol use:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(alcohol_use<span class="sc">$</span>Happiness_score <span class="sc">~</span> alcohol_use<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>How different do the happiness scores appear to be between these two groups?</p>
-<p>Are you disappointed?</p>
-<p>It’s important to understand that sometimes finding nothing is finding something.</p>
-<section id="lying" class="level2">
-<h2 class="anchored" data-anchor-id="lying">Lying</h2>
-<p>Repeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying. http://127.0.0.1:41855/graphics/e18505de-f3d7-47b3-b868-2c638e36eb4c.png</p>
-<ol type="1">
-<li>Create a new dataset called <code>lying</code> that excludes the <code>#N/A</code> values in <code>Lying</code> and the Happiness scores outliers, and includes only “Happiness_score” and “Lying”:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>steve <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>         Lying <span class="sc">!=</span> <span class="st">"#N/A"</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Happiness_score, Lying)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(steve)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Create a side-by-side boxplot and summary statistics (using <code>favstats()</code>) table for each attitude about Lying:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Happiness_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(steve<span class="sc">$</span>Happiness_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                    steve$Lying min Q1 median Q3 max     mean       sd   n
-1         everytime it suits me   5  9     10 11  15 10.05839 2.175284 137
-2                         never   4  9     11 12  15 10.80000 2.138090  50
-3 only to avoid hurting someone   3  9     11 12  15 10.54444 1.997179 270
-4                     sometimes   3 10     11 12  15 10.71639 1.764933 543
-  missing
-1       0
-2       0
-3       0
-4       0</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gratitude <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/gratitude.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="old-faithful" class="level1">
+<h1>Old Faithful</h1>
+<section id="calculate-the-summary-statistics-for-duration" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-the-summary-statistics-for-duration">Calculate the Summary Statistics for Duration</h2>
+<p>What is the mean duration time of Old Faithful eruptions?</p>
+<p>What is the standard deviation of duration?</p>
 </section>
-<section id="choose-your-own-adventure" class="level1">
-<h1>Choose your own adventure</h1>
-<p>Pick another <strong>categorical variable</strong> with multiple groups that may impact happiness score.</p>
-<p>Be sure to clean out any ‘nunya business’ or ‘#N/A’ that might be there and clean out the outliers in happiness:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>steve <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>         Lying <span class="sc">!=</span> <span class="st">"#N/A"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>         Age <span class="sc">&lt;</span> <span class="dv">100</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>         Age <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Happiness_score, Religiosity_score, Lying, Age)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Religiosity_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Age<span class="sc">~</span>steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>What conclusions can you make?</p>
+<section id="create-a-historgram-for-duration" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-historgram-for-duration">Create a Historgram for Duration</h2>
+<p>Create a histogram and describe the shape of the distribution of duration:</p>
+</section>
+<section id="calculate-summary-statistics-for-wait-time" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</h2>
+<p>What is the mean wait time between eruptions?</p>
+<p>What is the maximum wait time between eruptions?</p>
+<p>The middle 50% of wait times will be between what 2 numbers?</p>
+</section>
+</section>
+<section id="gratitude" class="level1">
+<h1>Gratitude</h1>
+<p>Calculate the summary statistics for both groups:</p>
+<p>Which treatment group has the highest mean?</p>
+<p>Which treatment group has the largest spread of happiness scores?</p>
+<p>Create a graph with boxplots for each group:</p>
+<p>Which group has the lowest first quartile?</p>
 
 
 </section>
