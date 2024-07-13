@@ -1,10 +1,5 @@
 ---
 title: "Regression Practice"
-format:
-  html:
-    self-contained: true
-    code-fold: true
-warning: false
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -39,7 +34,7 @@ library(car)
 </p>
 
 
-You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters.  You found what you think is a good deal based on a low-mileage 2020 model but you'd like to be sure.  You go on Autotrader.com and randomly select 23 Acura MDX's and collect Price and Mileage information.
+You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters.  You found what you think is a good deal for on a low-mileage 2020 model but you'd like to be sure.  You go on Autotrader.com and randomly select 23 Acura MDX's and collect Price and Mileage information.
 
 Load the data and use R to answer the questions below.  
 

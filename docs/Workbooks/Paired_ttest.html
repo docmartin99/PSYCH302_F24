@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Regression Practice</title>
+<title>Math221 Notebook - Paired T-test Class Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -306,24 +335,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#car-prices-and-mileage" id="toc-car-prices-and-mileage" class="nav-link" data-scroll-target="#car-prices-and-mileage">Car Prices and Mileage</a>
+  <li><a href="#introduction-to-matched-pairs" id="toc-introduction-to-matched-pairs" class="nav-link active" data-scroll-target="#introduction-to-matched-pairs">Introduction to Matched Pairs</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r" id="toc-plot-the-data-and-calculate-r" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements" id="toc-check-model-requirements" class="nav-link" data-scroll-target="#check-model-requirements">Check Model Requirements</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  <li><a href="#requirements-for-a-matched-pairs-analysis" id="toc-requirements-for-a-matched-pairs-analysis" class="nav-link" data-scroll-target="#requirements-for-a-matched-pairs-analysis">Requirements for a Matched Pairs Analysis</a></li>
+  <li><a href="#watchouts" id="toc-watchouts" class="nav-link" data-scroll-target="#watchouts">Watchouts</a></li>
   </ul></li>
-  <li><a href="#manatee-deaths-and-motorboat-registrations-in-florida" id="toc-manatee-deaths-and-motorboat-registrations-in-florida" class="nav-link" data-scroll-target="#manatee-deaths-and-motorboat-registrations-in-florida">Manatee Deaths and Motorboat Registrations in Florida</a>
+  <li><a href="#weight-loss-example" id="toc-weight-loss-example" class="nav-link" data-scroll-target="#weight-loss-example">Weight Loss Example</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-1" id="toc-plot-the-data-and-calculate-r-1" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-1">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-1" id="toc-fit-a-linear-regression-model-1" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-1">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-1" id="toc-check-model-requirements-1" class="nav-link" data-scroll-target="#check-model-requirements-1">Check Model Requirements</a></li>
+  <li><a href="#step-1-read-in-data" id="toc-step-1-read-in-data" class="nav-link" data-scroll-target="#step-1-read-in-data">Step 1: Read in Data</a></li>
+  <li><a href="#step-2-explore-the-data-and-generate-hypotheses" id="toc-step-2-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</a></li>
+  <li><a href="#step-3-prepare-the-data-for-analysis" id="toc-step-3-prepare-the-data-for-analysis" class="nav-link" data-scroll-target="#step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analysis" id="toc-step-4-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
-  <li><a href="#mcat-score-and-gpa" id="toc-mcat-score-and-gpa" class="nav-link" data-scroll-target="#mcat-score-and-gpa">MCAT Score and GPA</a>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-2" id="toc-plot-the-data-and-calculate-r-2" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-2">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-2" id="toc-fit-a-linear-regression-model-2" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-2">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-2" id="toc-check-model-requirements-2" class="nav-link" data-scroll-target="#check-model-requirements-2">Check Model Requirements</a></li>
+  <li><a href="#step-1-read-in-data-1" id="toc-step-1-read-in-data-1" class="nav-link" data-scroll-target="#step-1-read-in-data-1">Step 1: Read in Data</a></li>
+  <li><a href="#step-2-check-data" id="toc-step-2-check-data" class="nav-link" data-scroll-target="#step-2-check-data">Step 2: Check Data</a></li>
+  <li><a href="#step-3-prepare-data-for-analysis" id="toc-step-3-prepare-data-for-analysis" class="nav-link" data-scroll-target="#step-3-prepare-data-for-analysis">Step 3: Prepare Data for Analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analysis-1" id="toc-step-4-perform-the-appropriate-analysis-1" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis-1">Step 4: Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regression Practice</h1>
+<h1 class="title">Paired T-test Class Notes</h1>
 </div>
 
 
@@ -350,159 +388,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this assignment, you will practice regression analysis including:</p>
-<ul>
-<li>Plotting bivariate data with a regression line</li>
-<li>Calculating and interpreting the correlation coefficient, r</li>
-<li>Fitting a linear regression analysis</li>
-<li>Verifying if a linear model is model is adequate:
-<ul>
-<li>Checking for linearity (scatterplot)</li>
-<li>Checking for constant variance (<code>plot(lm_output, which=1)</code>)</li>
-<li>Checking for normality of residuals (<code>qqPlot(lm_output$residuals)</code>)</li>
-</ul></li>
-</ul>
+<section id="introduction-to-matched-pairs" class="level1">
+<h1>Introduction to Matched Pairs</h1>
+<p>A matched pairs design is used in statistics to compare 2 treatments or conditions measured on subjects that are logically connected in a meaningful way. In the simplest case, measurements are collected on the same subject as in a before-and-after evaluation.</p>
+<p>Matched pairs designs are often called “dependent samples” because knowing who or what is in the first treatment group determines who will be in the second. In the case of a before-and-after situation, if you are selected to be in the “pre” group, then you will also be in the “post” group. But pairs are not always the same subjects.</p>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<ol type="1">
+<li>You want to study the difference in salaries between husbands and wives. If one spouse is selected for the study it automatically determines that the other spouse will be in the other group.</li>
+<li>An ACT preparation course gives you a test before you take the course and after to see if the course improved test score</li>
+<li>A weight loss program takes your weight at the beginning and after the 12 weeks in the program to see if the program reduced weight.</li>
+<li>Comparing prices of a specific set of items between Walmart and Dierbergs. Because we are comparing the same items, we can take the difference between prices for each item.</li>
+</ol>
+</section>
+<section id="requirements-for-a-matched-pairs-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="requirements-for-a-matched-pairs-analysis">Requirements for a Matched Pairs Analysis</h2>
+<p>As with the one-sample t-test, we have to make sure that the either the pairs are normally distributed or we have a large enough sample size.</p>
+<p>With smaller sample sizes, create a <code>qqPlot()</code> using the <code>car</code> library to check for normality.</p>
+</section>
+<section id="watchouts" class="level2">
+<h2 class="anchored" data-anchor-id="watchouts">Watchouts</h2>
+<p>When we perform a matched pairs analysis, we will be doing a 1-sample t-test based on the <em>differences</em> between the connected observations. One challenge is that we can define the difference either way: before - after or after - before.</p>
+<p>A good convention for defining differences so that a negative number means “loss” and a positive number means “gain”.</p>
+<p>For example, if we believe our weight loss program reduces weight, then defining <code>post_weight - pre_weight</code> should give a negative number, meaning weight lost during the program.</p>
+<p>If you believe Walmart is cheaper than Dierbergs, defining the difference <code>Dierbergs - Walmart</code> gives a positive number, meaning how much you can save, on average, for shopping at Walmart.</p>
+<p>Mathematically, it doesn’t matter which way we define the difference as long as we keep track of what a negative number and a postive number mean. <strong>This will define which alternative hypothesis we use.</strong></p>
+</section>
+</section>
+<section id="weight-loss-example" class="level1">
+<h1>Weight Loss Example</h1>
+<p>Weight data (in kg) were collected on 27 subjects before and after participation in a weight loss study.</p>
+<p>Use the data to create a hypothesis test and confidence interval for the true mean weight loss on the program.</p>
+<p>A “matched pairs” analysis takes advantage of the fact that there are 2 measurements on the same subjects.</p>
+<section id="step-1-read-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-read-in-data">Step 1: Read in Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>weight_loss <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/weight_loss.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="car-prices-and-mileage" class="level1">
-<h1>Car Prices and Mileage</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png" width="310" height="200">
-</p>
-<p>You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters. You found what you think is a good deal for on a low-mileage 2020 model but you’d like to be sure. You go on Autotrader.com and randomly select 23 Acura MDX’s and collect Price and Mileage information.</p>
-<p>Load the data and use R to answer the questions below.</p>
+<section id="step-2-explore-the-data-and-generate-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</h2>
+<p>Create histograms summary statistics for the pre and post weight measurements:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/acuraMDX_price_vs_mileage.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(weight_loss)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-weight histogram</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(weight_loss<span class="sc">$</span>pre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Paired_ttest_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<section id="plot-the-data-and-calculate-r" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(weight_loss<span class="sc">$</span>pre)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min    Q1 median   Q3  max mean       sd  n missing
+ 60.7 72.75     77 80.7 99.6 76.9 10.20671 27       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Post-weight histogram</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(weight_loss<span class="sc">$</span>post)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Paired_ttest_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(weight_loss<span class="sc">$</span>post)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min    Q1 median   Q3 max    mean       sd  n missing
+ 53.3 63.45   69.9 75.2  97 70.0963 10.63273 27       0</code></pre>
+</div>
+</div>
 </section>
-<section id="fit-a-linear-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
+<section id="step-3-prepare-the-data-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</h2>
+<p>Decide how you’re going to define the difference (post - pre or pre - post).</p>
+<p><strong>Q</strong>: What does a negative number mean based on your definition?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Decide which column to subtract from the other</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> weight_loss<span class="sc">$</span>post <span class="sc">-</span> weight_loss<span class="sc">$</span>pre</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Add the regression line to your chart:</p>
+<p>Create a histogram and a qqPlot of the differences to determine if you will be able to trust the statsitical analyses:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to run the whole chunk with plot() and the abline() together:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plot()</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(lm_output$coefficients)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram of the differences</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Paired_ttest_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p>Interpret the confidence interval.</p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   min   Q1 median   Q3  max      mean       sd  n missing
+ -13.6 -8.9   -6.7 -4.2 -1.6 -6.803704 3.172051 27       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the differences are normally distributed:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Paired_ttest_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14 18</code></pre>
+</div>
+</div>
 </section>
-<section id="check-model-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+<section id="step-4-perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>State your null and alternative hypotheses.</p>
+<p><span class="math display">\[ H_0: \mu_{differences} = 0\]</span></p>
+<p><span class="math display">\[H_a:  \mu_{differences} &lt; 0\]</span></p>
+<p><span class="math display">\[ \alpha = 0.01\]</span></p>
+<p>Questions to consider:</p>
+<ol type="1">
+<li>How did you define your difference?</li>
+<li>Based on your decision for the difference, what does a negative number mean? a positive number?</li>
+<li>Are you expecting the difference to be greater than, less than, or not equal to 0?</li>
+</ol>
+<p>Perform a t-test of the differences:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesis t.test()</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(diff, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  diff
+t = -11.145, df = 26, p-value = 1.059e-11
+alternative hypothesis: true mean is less than 0
+95 percent confidence interval:
+     -Inf -5.76249
+sample estimates:
+mean of x 
+-6.803704 </code></pre>
 </div>
-<p>Lastly, the car you’re interested in buying has around 100,000 miles and costs $11,200. Could this be considered a good deal? Why?</p>
+</div>
+<p>State your conclusion in context of the research question:</p>
+<p>Because P-value &lt; 0.01 we reject the null hypothesis. We have SUFFICIENT evidence to suggest that participation in the weight loss program led to weight loss.</p>
 </section>
-</section>
-<section id="manatee-deaths-and-motorboat-registrations-in-florida" class="level1">
-<h1>Manatee Deaths and Motorboat Registrations in Florida</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png" width="300" height="300">
-</p>
-<p>Florida is a fabulous place for experiencing wildlife and recreation. Unfortunately, sometimes those two activities conflict.</p>
-<p>Researchers collected over 30 years of data about water craft registrations (motor and non-motor boats) and manatee deaths. The goal of the research is to evaluate the relationship between boat registrations and manatee deaths.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manatees <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confidence interval using t.test()</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(diff, <span class="at">conf.level =</span> .<span class="dv">99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -8.500002 -5.107405
+attr(,"conf.level")
+[1] 0.99</code></pre>
 </div>
-<section id="plot-the-data-and-calculate-r-1" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-1">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
+</div>
+<p>I am 99% confident that the true average weight loss during the program was between -8.5 and -5.11 kilograms.</p>
 </section>
-<section id="fit-a-linear-regression-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-1">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
+</section>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>A study was conducted at a major northeastern American medical center regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days after the heart attack and again four days after the heart attack. Researchers want to see if cholesterol levels reduced significantly four days after the attack versus two days after the attack. Use the level of significance of 0.05.</p>
+<section id="step-1-read-in-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-read-in-data-1">Step 1: Read in Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cholesterol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/cholesterol.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
 </section>
-<section id="check-model-requirements-1" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-1">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+<section id="step-2-check-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-check-data">Step 2: Check Data</h2>
+<p>Review the data to see if the variables look correct. Calculate summary statistics and histograms for chol_day2 and chol_day4.</p>
 </section>
+<section id="step-3-prepare-data-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-data-for-analysis">Step 3: Prepare Data for Analysis</h2>
+<p>Decide how to define your difference. What does a negative number indicate? a positive number?</p>
+<p>Create a histogram and summary statistics of the differences:</p>
+<p>Because we <span class="math inline">\(n &lt; 30\)</span> we need to check the <code>qqPlot()</code> to assess the normality of the differences.</p>
 </section>
-<section id="mcat-score-and-gpa" class="level1">
-<h1>MCAT Score and GPA</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png" width="300" height="200">
-</p>
-<p>The MCAT is an entrance exam for medical schools. It seems likely that there is a relationship between your undergraduate GPA and how well you do on the MCAT.</p>
-<p>GPA and MCAT score data were collected on 55 prospective medical students.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mcat <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="plot-the-data-and-calculate-r-2" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-2">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
+<section id="step-4-perform-the-appropriate-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis-1">Step 4: Perform the appropriate analysis</h2>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>State your null and alternative hypotheses.</p>
+<p>What is your confidence level, ($= $)?</p>
+<p>Perform a matched pairs t-test for the difference in cholesterol at day 2 and day 4:</p>
+<p>State your conclusion:</p>
 </section>
-<section id="fit-a-linear-regression-model-2" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-2">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-2" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-2">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+<section id="confidence-interval-1" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h3>
+<p>Calculate a confidence interval for the average difference.</p>
+<p>State your conclusions and interpret the confidence interval in context of the research question.</p>
 
 
+</section>
 </section>
 </section>
 

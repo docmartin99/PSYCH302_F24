@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Regression Practice</title>
+<title>Math221 Notebook - Downloading Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -274,8 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href=".././Class_Notes/Installing_R.qmd">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="../Workbooks/Installing_R.html">
+ <span class="dropdown-text">Installing R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_Resources/Importing_Data.html">
+ <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
   </li>
@@ -307,23 +311,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#car-prices-and-mileage" id="toc-car-prices-and-mileage" class="nav-link" data-scroll-target="#car-prices-and-mileage">Car Prices and Mileage</a>
+  <li><a href="#importing-data-from-the-internet" id="toc-importing-data-from-the-internet" class="nav-link" data-scroll-target="#importing-data-from-the-internet">Importing Data from the Internet</a></li>
+  <li><a href="#importing-a-file-from-your-computer" id="toc-importing-a-file-from-your-computer" class="nav-link" data-scroll-target="#importing-a-file-from-your-computer">Importing a File From Your Computer</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r" id="toc-plot-the-data-and-calculate-r" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements" id="toc-check-model-requirements" class="nav-link" data-scroll-target="#check-model-requirements">Check Model Requirements</a></li>
-  </ul></li>
-  <li><a href="#manatee-deaths-and-motorboat-registrations-in-florida" id="toc-manatee-deaths-and-motorboat-registrations-in-florida" class="nav-link" data-scroll-target="#manatee-deaths-and-motorboat-registrations-in-florida">Manatee Deaths and Motorboat Registrations in Florida</a>
-  <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-1" id="toc-plot-the-data-and-calculate-r-1" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-1">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-1" id="toc-fit-a-linear-regression-model-1" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-1">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-1" id="toc-check-model-requirements-1" class="nav-link" data-scroll-target="#check-model-requirements-1">Check Model Requirements</a></li>
-  </ul></li>
-  <li><a href="#mcat-score-and-gpa" id="toc-mcat-score-and-gpa" class="nav-link" data-scroll-target="#mcat-score-and-gpa">MCAT Score and GPA</a>
-  <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-2" id="toc-plot-the-data-and-calculate-r-2" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-2">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-2" id="toc-fit-a-linear-regression-model-2" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-2">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-2" id="toc-check-model-requirements-2" class="nav-link" data-scroll-target="#check-model-requirements-2">Check Model Requirements</a></li>
+  <li><a href="#mac-instructions" id="toc-mac-instructions" class="nav-link" data-scroll-target="#mac-instructions">Mac Instructions:</a></li>
+  <li><a href="#pc-instructions" id="toc-pc-instructions" class="nav-link" data-scroll-target="#pc-instructions">PC Instructions:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regression Practice</h1>
+<h1 class="title">Downloading Data</h1>
 </div>
 
 
@@ -352,155 +344,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this assignment, you will practice regression analysis including:</p>
-<ul>
-<li>Plotting bivariate data with a regression line</li>
-<li>Calculating and interpreting the correlation coefficient, r</li>
-<li>Fitting a linear regression analysis</li>
-<li>Verifying if a linear model is model is adequate:
-<ul>
-<li>Checking for linearity (scatterplot)</li>
-<li>Checking for constant variance (<code>plot(lm_output, which=1)</code>)</li>
-<li>Checking for normality of residuals (<code>qqPlot(lm_output$residuals)</code>)</li>
-</ul></li>
-</ul>
-<div class="cell">
+<p>So far in class, we have encountered only fairly clean data examples carefully managed and stored in an easy to access location. We have been able to use the <code>import()</code> function from the <code>rio</code> library with a link to a well-contained data resource.</p>
+<p>When we encounter data in the wild, it can be much more complicated to extract and clean up. However, good research should be transparent, with data sources cited and, where possible, published. We can often find links to raw data for graphs.</p>
+<p>In these notes we will see how we can use tools we’ve already used to import data directly from the internet (or a saved file on your computer) and learn some new skills about how to clean up the data for specific needs.</p>
+</section>
+<section id="importing-data-from-the-internet" class="level1">
+<h1>Importing Data from the Internet</h1>
+<p>We will first look at an example of downloading data from the internet and then loading the data into R using <code>import()</code>.</p>
+<p><a href="https://ourworldindata.org/">Our World in Data</a> collects a wide range of data from various sources, typically government-published statistics. They publish research and create thousands of graphs. They also allow users to access the raw data relating to their research and visualizations.</p>
+<ol type="1">
+<li><p>Click through Our World in Data and find a graph that looks interesting. Most graphs on this site will have a Download button below the visualization.</p></li>
+<li><p>Click the <em>Download</em> button usually at the bottom of a chart. This site opens up another window that asks if you want to download the image or the Full data.</p></li>
+<li><p>Instead of <em>left</em> clicking the download button for the raw data, <em>right</em> click and select <em>Save As</em>. This allows you to decide where to save the file. It is a best practice to save the file into the same directory as the R file you’re working in. So if you have a Math221D folder, save it there. The important thing is that you are able to find it.</p></li>
+</ol>
+<p>Once it is in a folder on your computer, you can use <code>import()</code> to read it in from that location.</p>
+</section>
+<section id="importing-a-file-from-your-computer" class="level1">
+<h1>Importing a File From Your Computer</h1>
+<section id="mac-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="mac-instructions">Mac Instructions:</h2>
+<ol type="1">
+<li>Open Finder, which is the smiley face icon located on the bottom of your screen.</li>
+<li>Navigate to the folder where your file is located by clicking through the folders.</li>
+<li>Once you’ve found your file, right-click on it (or hold down the Control key while clicking), and select “Get Info”.</li>
+<li>In the window that pops up, you’ll see a field called “Where:”, which shows you the file path. It looks something like <code>/Users/YourUsername/Documents/YourFile.csv</code>. You can copy this path by selecting it and pressing Command + C.</li>
+</ol>
+</section>
+<section id="pc-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="pc-instructions">PC Instructions:</h2>
+<ol type="1">
+<li>Open File Explorer, which is usually the folder icon located on your taskbar or in the Start menu.</li>
+<li>Navigate to the folder where your file is located by clicking through the folders.</li>
+<li>Once you’ve found your file, right-click on it and select “Properties”.</li>
+<li>In the Properties window, you’ll see a field called “Location” or “Location:” which shows you the file path. It looks something like <code>C:\Users\YourUsername\Documents\YourFile.csv</code>. You can copy this path by selecting it and pressing Ctrl + C.</li>
+</ol>
+<p>In both cases, the file path tells the computer where to find your file, similar to how a street address tells someone where to find a physical location. You can use this file path to access your file from anywhere on your computer.</p>
+<p>Unfortunately, R doesn’t like single backslashes, <code>\</code>. If you’re on a PC you can either add a second <code>\</code> or switch them to <code>/</code></p>
+<div class="cell" data-ignore="true">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>war <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">paulccannon</span><span class="sc">\\</span><span class="st">OneDrive - BYU-Idaho</span><span class="sc">\\</span><span class="st">Math221inR</span><span class="sc">\\</span><span class="st">countries-in-conflict-data.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>war <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'C:/Users/paulccannon/OneDrive - BYU-Idaho/Math221inR/countries-in-conflict-data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="car-prices-and-mileage" class="level1">
-<h1>Car Prices and Mileage</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png" width="310" height="200">
-</p>
-<p>You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters. You found what you think is a good deal for on a low-mileage 2020 model but you’d like to be sure. You go on Autotrader.com and randomly select 23 Acura MDX’s and collect Price and Mileage information.</p>
-<p>Load the data and use R to answer the questions below.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/acuraMDX_price_vs_mileage.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<section id="plot-the-data-and-calculate-r" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to run the whole chunk with plot() and the abline() together:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plot()</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(lm_output$coefficients)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p>Interpret the confidence interval.</p>
-</section>
-<section id="check-model-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Lastly, the car you’re interested in buying has around 100,000 miles and costs $11,200. Could this be considered a good deal? Why?</p>
-</section>
-</section>
-<section id="manatee-deaths-and-motorboat-registrations-in-florida" class="level1">
-<h1>Manatee Deaths and Motorboat Registrations in Florida</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png" width="300" height="300">
-</p>
-<p>Florida is a fabulous place for experiencing wildlife and recreation. Unfortunately, sometimes those two activities conflict.</p>
-<p>Researchers collected over 30 years of data about water craft registrations (motor and non-motor boats) and manatee deaths. The goal of the research is to evaluate the relationship between boat registrations and manatee deaths.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manatees <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="plot-the-data-and-calculate-r-1" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-1">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-1">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-1" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-1">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
-</section>
-</section>
-<section id="mcat-score-and-gpa" class="level1">
-<h1>MCAT Score and GPA</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png" width="300" height="200">
-</p>
-<p>The MCAT is an entrance exam for medical schools. It seems likely that there is a relationship between your undergraduate GPA and how well you do on the MCAT.</p>
-<p>GPA and MCAT score data were collected on 55 prospective medical students.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mcat <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="plot-the-data-and-calculate-r-2" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-2">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model-2" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-2">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-2" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-2">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+<p>The <code>rio::import()</code> function can handle many different types data types (.xlsx, .xls, .csv, .txt, and many others). If you run into a data file type that <code>rio</code> can’t import, there are other libraries that have similar functions that can do the same thing. But we limit the scope for this class to sources that <code>rio</code> can handle.</p>
 
 
 </section>

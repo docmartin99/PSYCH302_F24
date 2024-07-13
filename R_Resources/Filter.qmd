@@ -1,0 +1,116 @@
+---
+title: "Filtering Data"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+We here demonstrate how to define certain criteria for determining which rows are included in the analysis.  We will refer to the `survey` data, which consists of responses to 60 questions from 312 high school students.  
+
+```{r}
+
+# Load libraries and data
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+survey <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %>% tibble()
+
+```
+
+
+# Choosing Rows - `filter()`
+
+Good scientists **NEVER** delete data from original records.  The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data. 
+
+## Logical Operators
+
+Logical operators are used extensively in computer programming to evaluate if a specified condition is met.  They return a "True" or a "False", but are often treated as 1 for true and 0 for false. 
+
+The most common logical operators used to filter rows are:
+
+  * `<` and `<=` means "less than" and "less than or equal to" respectively
+  * `>` and `>=` means "greater than" and "greater than or equal to" respectively
+  * `==` means "equal to" (NOTE:  we use double equals because in most computer languages, a single `=` is an assignment operator.  This avoids ambiguity)
+  * `!=` means "not equal to"; this one is useful if you want to eliminate one level of a variable
+  * `%in%` is useful for defining a list of levels that you want to include
+
+We typically begin with the raw dataset, then "pipe" that dataset into a sequence of functions using the "pipe" operator, `%>%`.
+
+Notice that in our dataset we have someone input their height in centimeters as 999.  This is an impossible value we may not want to include in a visualization or analysis.  
+
+We can create a new dataset, `clean`, that omits responses of people who are taller than 250cm (about 8 feet):
+
+```{r}
+
+clean <- survey %>% 
+  filter(Height_cm < 250)
+
+# the dim() function shows us how many rows and columns in a dataset
+dim(survey)
+dim(clean)
+
+```
+
+The above code will return a new dataset without the outliers.
+
+__How many rows does the original dataset have?__
+
+__How many rows does the filtered dataset have?__
+
+## Filtering on Categorical Data
+
+Suppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous).  We can add multiple conditions in the `filter()` function separated by a comma:
+
+
+```{r}
+
+# See what the distinct values are in the Handed column
+unique(survey$Handed)
+
+survey %>%
+  filter(Height_cm < 250,
+         Handed != "Ambidextrous")
+
+# We could also try using %in% instead of the !=
+
+survey %>%
+  filter(Height_cm < 250,
+         Handed %in% c("Left-Handed", "Right-Handed"))
+
+```
+
+__NOTE__: Using the `%in%` and the `!=` will not always give you the same results.  If there are misspellings or other options, using `%in%` will limit the data to only those with the exact spelling in the list provided. For example,  "left.handed", would be omitted.  Misspellings would, however, be included if I use `!= "Ambitextrous"` because that only takes out rows written exactly that way.  Things like, `ambidextrious` or `RightHanded` would still be included.  
+
+I could further limit my data to students from Florida and Missouri:
+
+```{r}
+new_data <- survey %>%
+  filter(Height_cm < 250,
+         Handed %in% c("Left-Handed", "Right-Handed"),
+         Region %in% c("MO", "FL"))
+
+dim(new_data)
+```
+
+__How many rows does our latest dataset have?__
+
+# Your turn
+
+How many vegetarians in the survey say that meat is their favorite food?
+
+The `Vegetarian` column has "Yes" and "No" as possible options.
+
+The `Favorite_Food` column has "Meat", "Pizza/Pasta", "Breads/Sandwiches", "Rice/Noodle dishes", "Poultry", "Seafood", "Vegetables", "Desserts", "Fruit", "Salads", "No favorite", "Other" and "Soups" as options.
+
+```{r}
+vegetarians <- survey %>%
+  filter()
+```
+
+

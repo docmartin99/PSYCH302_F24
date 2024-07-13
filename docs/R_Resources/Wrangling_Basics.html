@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Regression Practice</title>
+<title>Math221 Notebook - Data Wrangling Topics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -274,8 +240,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
         <li>
-    <a class="dropdown-item" href=".././Class_Notes/Installing_R.qmd">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="../Workbooks/Installing_R.html">
+ <span class="dropdown-text">Installing R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_Resources/Wrangling_Basics.html">
+ <span class="dropdown-text">Data Wrangling Topics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_Resources/Filter.html">
+ <span class="dropdown-text">Filtering Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../R_Resources/Importing_Data.html">
+ <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
   </li>
@@ -306,25 +284,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#car-prices-and-mileage" id="toc-car-prices-and-mileage" class="nav-link" data-scroll-target="#car-prices-and-mileage">Car Prices and Mileage</a>
+  <li><a href="#cleaning-messy-data" id="toc-cleaning-messy-data" class="nav-link active" data-scroll-target="#cleaning-messy-data">Cleaning Messy Data</a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
+  <li><a href="#basic-tidyverse-functions" id="toc-basic-tidyverse-functions" class="nav-link" data-scroll-target="#basic-tidyverse-functions">Basic Tidyverse Functions</a></li>
+  <li><a href="#tidy-basics" id="toc-tidy-basics" class="nav-link" data-scroll-target="#tidy-basics">Tidy Basics</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r" id="toc-plot-the-data-and-calculate-r" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements" id="toc-check-model-requirements" class="nav-link" data-scroll-target="#check-model-requirements">Check Model Requirements</a></li>
+  <li><a href="#the-pipe-in-action" id="toc-the-pipe-in-action" class="nav-link" data-scroll-target="#the-pipe-in-action">The Pipe in Action</a></li>
   </ul></li>
-  <li><a href="#manatee-deaths-and-motorboat-registrations-in-florida" id="toc-manatee-deaths-and-motorboat-registrations-in-florida" class="nav-link" data-scroll-target="#manatee-deaths-and-motorboat-registrations-in-florida">Manatee Deaths and Motorboat Registrations in Florida</a>
-  <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-1" id="toc-plot-the-data-and-calculate-r-1" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-1">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-1" id="toc-fit-a-linear-regression-model-1" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-1">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-1" id="toc-check-model-requirements-1" class="nav-link" data-scroll-target="#check-model-requirements-1">Check Model Requirements</a></li>
-  </ul></li>
-  <li><a href="#mcat-score-and-gpa" id="toc-mcat-score-and-gpa" class="nav-link" data-scroll-target="#mcat-score-and-gpa">MCAT Score and GPA</a>
-  <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-2" id="toc-plot-the-data-and-calculate-r-2" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-2">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-2" id="toc-fit-a-linear-regression-model-2" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-2">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-2" id="toc-check-model-requirements-2" class="nav-link" data-scroll-target="#check-model-requirements-2">Check Model Requirements</a></li>
-  </ul></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
     </div>
@@ -333,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regression Practice</h1>
+<h1 class="title">Data Wrangling Topics</h1>
 </div>
 
 
@@ -350,160 +317,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this assignment, you will practice regression analysis including:</p>
-<ul>
-<li>Plotting bivariate data with a regression line</li>
-<li>Calculating and interpreting the correlation coefficient, r</li>
-<li>Fitting a linear regression analysis</li>
-<li>Verifying if a linear model is model is adequate:
-<ul>
-<li>Checking for linearity (scatterplot)</li>
-<li>Checking for constant variance (<code>plot(lm_output, which=1)</code>)</li>
-<li>Checking for normality of residuals (<code>qqPlot(lm_output$residuals)</code>)</li>
-</ul></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="cleaning-messy-data" class="level1">
+<h1>Cleaning Messy Data</h1>
+<p>In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease. This is a terrible disservice to anyone who will deal with data outside of the classroom.</p>
+<p>Anyone who works with data will have to do some data wrangling. Data wrangling is an appropriate description of cleaning, sorting, filtering, summarizing, transforming, and a whole host of other activities to make data usable for a specific purpose.</p>
+<p>In this document, we introduce a moderately messy dataset and demonstrate basic programming commands to help us get data ready for analysis or visualization.</p>
 </section>
-<section id="car-prices-and-mileage" class="level1">
-<h1>Car Prices and Mileage</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png" width="310" height="200">
-</p>
-<p>You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters. You found what you think is a good deal for on a low-mileage 2020 model but you’d like to be sure. You go on Autotrader.com and randomly select 23 Acura MDX’s and collect Price and Mileage information.</p>
-<p>Load the data and use R to answer the questions below.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/acuraMDX_price_vs_mileage.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<section id="plot-the-data-and-calculate-r" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
+<section id="tidy-data" class="level1">
+<h1>Tidy Data</h1>
+<p>Hadley Wickham designed a <a href="https://vita.had.co.nz/papers/tidy-data.pdf">philosophy</a> of data structures that helps organize and manipulate data. He created a whole R library which contains a multitude of functions to make data wrangling approachable. The library is called ‘tidyverse’.</p>
 </section>
-<section id="fit-a-linear-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to run the whole chunk with plot() and the abline() together:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plot()</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(lm_output$coefficients)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p>Interpret the confidence interval.</p>
+<section id="basic-tidyverse-functions" class="level1">
+<h1>Basic Tidyverse Functions</h1>
+<p>The most frequently used actions used for wrangling data are:</p>
+<ol type="1">
+<li><strong>Filtering rows</strong> - select rows based on certain user-defined criteria. This is done using the <code>filter()</code> operator.</li>
+<li><strong>Selecting columns</strong> - narrow the dataset to include specific <em>columns</em> required for the analysis or visualization. This is done using the <code>select()</code> operator.</li>
+<li><strong>Creating new columns</strong> - create new columns based on the provided data. This could be as simple as changing a height from inches to centimeters. We add new columns using the <code>mutate()</code> operator.</li>
+<li><strong>Summarizing data</strong> - create customized data summaries, often by specific groups. This is typically some combination of defining which groups we want to summarize by using the <code>group_by()</code> operator then using the <code>summarize()</code> function to create our customizable data summaries.</li>
+</ol>
+<p>You have already used <code>favstats()</code> to do (4) above, but we’ll learn how to do so with more flexibility with the tidyverse.</p>
 </section>
-<section id="check-model-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Lastly, the car you’re interested in buying has around 100,000 miles and costs $11,200. Could this be considered a good deal? Why?</p>
+<section id="tidy-basics" class="level1">
+<h1>Tidy Basics</h1>
+<p>Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset. We use what is called a “pipe” to tell the computer what to pass on to the next step. This “pipe” is typed: <code>%&gt;%</code>. I will demonstrate the use of the pipe with the <code>filter()</code> function, but see <a href="./R_Resources/Filter.qmd">here</a> for more in-depth explanation of <code>filter()</code>.</p>
+<section id="the-pipe-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe-in-action">The Pipe in Action</h2>
+<p>Suppose we have a dataset, <code>marital_status_data</code>, with 2 columns: <code>age</code> and <code>marital_status</code>. We expect the <code>marital_status</code> to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.</p>
+<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more <a href="./R_Resources/Filter.qmd##Logical-Operators">here</a>):</p>
+<pre><code>marital_Status_data %&gt;% filter(marital_status != "It's complicated")</code></pre>
+<p><strong>NOTE</strong>: The <code>!=</code> is read “not equal to”, and is a common <a href="">logical operator</a> used in computer programming. So the above code returns a subset of the original data omitting the rows.</p>
+<p>I can use pipes sequantially to do quite complicated data wrangling in a very short few lines of code.</p>
 </section>
 </section>
-<section id="manatee-deaths-and-motorboat-registrations-in-florida" class="level1">
-<h1>Manatee Deaths and Motorboat Registrations in Florida</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png" width="300" height="300">
-</p>
-<p>Florida is a fabulous place for experiencing wildlife and recreation. Unfortunately, sometimes those two activities conflict.</p>
-<p>Researchers collected over 30 years of data about water craft registrations (motor and non-motor boats) and manatee deaths. The goal of the research is to evaluate the relationship between boat registrations and manatee deaths.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manatees <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="plot-the-data-and-calculate-r-1" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-1">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-1">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-1" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-1">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
-</section>
-</section>
-<section id="mcat-score-and-gpa" class="level1">
-<h1>MCAT Score and GPA</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png" width="300" height="200">
-</p>
-<p>The MCAT is an entrance exam for medical schools. It seems likely that there is a relationship between your undergraduate GPA and how well you do on the MCAT.</p>
-<p>GPA and MCAT score data were collected on 55 prospective medical students.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mcat <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="plot-the-data-and-calculate-r-2" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-2">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model-2" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-2">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-2" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-2">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+<section id="resources" class="level1">
+<h1>Resources</h1>
+<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Tidyverse Cheat Sheet</a></p>
+<p><a href="https://r4ds.had.co.nz/transform.html">R for Data Science</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

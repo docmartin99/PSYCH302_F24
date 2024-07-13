@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Regression Practice</title>
+<title>Math221 Notebook - Chi-square Test of Independence</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -306,24 +335,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#car-prices-and-mileage" id="toc-car-prices-and-mileage" class="nav-link" data-scroll-target="#car-prices-and-mileage">Car Prices and Mileage</a>
+  <li><a href="#comparing-categorical-data-with-multiple-categories" id="toc-comparing-categorical-data-with-multiple-categories" class="nav-link active" data-scroll-target="#comparing-categorical-data-with-multiple-categories">Comparing Categorical Data with Multiple Categories</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r" id="toc-plot-the-data-and-calculate-r" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements" id="toc-check-model-requirements" class="nav-link" data-scroll-target="#check-model-requirements">Check Model Requirements</a></li>
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom">Degrees of Freedom</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
   </ul></li>
-  <li><a href="#manatee-deaths-and-motorboat-registrations-in-florida" id="toc-manatee-deaths-and-motorboat-registrations-in-florida" class="nav-link" data-scroll-target="#manatee-deaths-and-motorboat-registrations-in-florida">Manatee Deaths and Motorboat Registrations in Florida</a>
+  <li><a href="#tests-for-independence-in-r" id="toc-tests-for-independence-in-r" class="nav-link" data-scroll-target="#tests-for-independence-in-r">Tests for Independence in R</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-1" id="toc-plot-the-data-and-calculate-r-1" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-1">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-1" id="toc-fit-a-linear-regression-model-1" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-1">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-1" id="toc-check-model-requirements-1" class="nav-link" data-scroll-target="#check-model-requirements-1">Check Model Requirements</a></li>
+  <li><a href="#test-requirements" id="toc-test-requirements" class="nav-link" data-scroll-target="#test-requirements">Test Requirements</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
   </ul></li>
-  <li><a href="#mcat-score-and-gpa" id="toc-mcat-score-and-gpa" class="nav-link" data-scroll-target="#mcat-score-and-gpa">MCAT Score and GPA</a>
+  <li><a href="#summarized-data" id="toc-summarized-data" class="nav-link" data-scroll-target="#summarized-data">Summarized Data</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
   <ul class="collapse">
-  <li><a href="#plot-the-data-and-calculate-r-2" id="toc-plot-the-data-and-calculate-r-2" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-2">Plot the Data and calculate r</a></li>
-  <li><a href="#fit-a-linear-regression-model-2" id="toc-fit-a-linear-regression-model-2" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-2">Fit a Linear Regression Model</a></li>
-  <li><a href="#check-model-requirements-2" id="toc-check-model-requirements-2" class="nav-link" data-scroll-target="#check-model-requirements-2">Check Model Requirements</a></li>
+  <li><a href="#homework-grades-and-classroom-type" id="toc-homework-grades-and-classroom-type" class="nav-link" data-scroll-target="#homework-grades-and-classroom-type">Homework: Grades and Classroom Type</a></li>
+  </ul></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">BONUS</a>
+  <ul class="collapse">
+  <li><a href="#heart-disease-among-australian-women-and-men" id="toc-heart-disease-among-australian-women-and-men" class="nav-link" data-scroll-target="#heart-disease-among-australian-women-and-men">Heart Disease among Australian Women and Men</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regression Practice</h1>
+<h1 class="title">Chi-square Test of Independence</h1>
 </div>
 
 
@@ -350,157 +379,339 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this assignment, you will practice regression analysis including:</p>
-<ul>
-<li>Plotting bivariate data with a regression line</li>
-<li>Calculating and interpreting the correlation coefficient, r</li>
-<li>Fitting a linear regression analysis</li>
-<li>Verifying if a linear model is model is adequate:
-<ul>
-<li>Checking for linearity (scatterplot)</li>
-<li>Checking for constant variance (<code>plot(lm_output, which=1)</code>)</li>
-<li>Checking for normality of residuals (<code>qqPlot(lm_output$residuals)</code>)</li>
-</ul></li>
-</ul>
+<section id="comparing-categorical-data-with-multiple-categories" class="level1">
+<h1>Comparing Categorical Data with Multiple Categories</h1>
+<p>When working through statistical inference for means, we progressed from learning 1-sample t-tests to 2-sample t-tests. When we wanted to compare a quantitative variable between multiple groups, we introduced ANOVA. The hypothesis test changed and we introduced the F-statistic.</p>
+<p>Recall that the F-statistics was based on a ratio of squared quantities and was therefore always positive and skewed right.</p>
+<p>Similarly, when we want to compare a <em>categorical</em> variable across multiple groups, we must modify the hypothesis test from the 2-sample proportion z-test and introduce a new test statistic: <span class="math inline">\(\chi^2\)</span>. The Greek letter, <span class="math inline">\(\chi\)</span>, is pronounced like “ki” in “kite”, <strong>not</strong> like “chi” in “tai chi”.</p>
+<p>As can be seen from its name, <span class="math inline">\(\chi^2\)</span> is a squared value and is thus always positive and right skewed like the F-statistic.</p>
+<section id="degrees-of-freedom" class="level2">
+<h2 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h2>
+<p>The <span class="math inline">\(\chi^2\)</span> distribution also has degrees of freedom that determine its shape.</p>
+<p><span class="math display">\[df = (r-1)*(c-1)\]</span> Where r is the number of rows and c is the number of columns in a summary table.</p>
+</section>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>The null and alternative hypotheses test for <span class="math inline">\(\chi^2\)</span> test for independence are always the same.</p>
+<p><span class="math display">\[H_0: \text{The row variable is independent of the column variable}\]</span> <span class="math display">\[H_A: \text{The row variable is not independent of the column variable}\]</span> While not a fan of the double negative, it serves a technical purpose. Mathematically, we get the same test statistic and p-value if we swap rows and columns. We cannot say the row variable depends on the column variable without also saying that the column variable depends on the row variable.</p>
+<p>Think of Alice at the Mad Hatter’s tea party:</p>
+<blockquote class="blockquote">
+<p>“Then you should say what you mean,” the March Hare went on. “I do,” Alice hastily replied; “at least-at least I mean what I say-that’s the same thing, you know.”</p>
+<p>“Not the same thing a bit!” said the Hatter. “Why, you might just as well say that ‘I see what I eat’ is the same thing as ‘I eat what I see’!”</p>
+<p>“You might just as well say,” added the March Hare, “that ‘I like what I get’ is the same thing as ‘I get what I like’!”</p>
+<p>“You might just as well say,” added the Dormouse, which seemed to be talking in its sleep, “that ‘I breathe when I sleep’ is the same thing as ‘I sleep when I breathe’!”</p>
+<p>“It is the same thing with you.” said the Hatter,”</p>
+</blockquote>
+<p>So we are resigned to conclude that we have sufficient/insufficient evidence that they are not independent.</p>
+</section>
+</section>
+<section id="tests-for-independence-in-r" class="level1">
+<h1>Tests for Independence in R</h1>
+<p>The R code for <span class="math inline">\(\chi^2\)</span> tests for independence is simple, especially when we have raw data. We can easily create a table using the <code>table_name &lt;- table(col1, col2)</code> function, then insert <code>table_name</code> into the <code>chisq.test(table_name)</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>chiropractic <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chiropractic,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   location motivation
+1    Europe   Wellness
+2    Europe   Wellness
+3    Europe   Wellness
+4    Europe   Wellness
+5    Europe   Wellness
+6    Europe   Wellness
+7    Europe   Wellness
+8    Europe   Wellness
+9    Europe   Wellness
+10   Europe   Wellness
+11   Europe   Wellness
+12   Europe   Wellness
+13   Europe   Wellness
+14   Europe   Wellness
+15   Europe   Wellness</code></pre>
 </div>
-</section>
-<section id="car-prices-and-mileage" class="level1">
-<h1>Car Prices and Mileage</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png" width="310" height="200">
-</p>
-<p>You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters. You found what you think is a good deal for on a low-mileage 2020 model but you’d like to be sure. You go on Autotrader.com and randomly select 23 Acura MDX’s and collect Price and Mileage information.</p>
-<p>Load the data and use R to answer the questions below.</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(chiropractic<span class="sc">$</span>location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Europe"        "Australia"     "United States"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(chiropractic<span class="sc">$</span>motivation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Wellness"   "Prevention" "At Risk"    "Sick Role"  "Self Care" </code></pre>
+</div>
+</div>
+<p>In this dataset, we have a column with “location” indicating the region of the respondents, and the motivation for visiting a chiropractor. Our null and alternative hypotheses are:</p>
+<p><span class="math display">\[H_0: \text{Why you go to a chirpractor is independent of where you live}\]</span> <span class="math display">\[H_0: \text{Why you go to a chirpractor is not independent of where you live}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/acuraMDX_price_vs_mileage.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chiro_table <span class="ot">&lt;-</span> <span class="fu">table</span>(chiropractic<span class="sc">$</span>location, chiropractic<span class="sc">$</span>motivation)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chiro_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               
+                At Risk Prevention Self Care Sick Role Wellness
+  Australia          83         59       188        68       71
+  Europe             59         28        95        77       23
+  United States      65         76       252        82       90</code></pre>
 </div>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<section id="plot-the-data-and-calculate-r" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chiro_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  chiro_table
+X-squared = 49.743, df = 8, p-value = 4.58e-08</code></pre>
+</div>
+</div>
+<p>We have sufficient evidence to conclude that why you go to the chiropractor is not independent of where you live.</p>
+<section id="test-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="test-requirements">Test Requirements</h2>
+<p>Recall that 2-sample tests for proportions needed an at least 10 expected successes and at least 10 expected failures (<span class="math inline">\(np \ge 10\)</span> and <span class="math inline">\(n(1-p)\ge10\)</span>) for the test statistic to be valid.</p>
+<p>For a <span class="math inline">\(\chi^2\)</span> test we need to check the expected counts for all the different combinations.</p>
+<p>We don’t need to fret about the math behind the expected count calculation. Intuitively, if there was no relationship between the two variables you would expect all the row totals to be proportionally distributed across the column groups.</p>
+<p>We only need to check that all expected counts are greater than <strong>5</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chiro_table)<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               
+                At Risk Prevention Self Care Sick Role Wellness
+  Australia        TRUE       TRUE      TRUE      TRUE     TRUE
+  Europe           TRUE       TRUE      TRUE      TRUE     TRUE
+  United States    TRUE       TRUE      TRUE      TRUE     TRUE</code></pre>
 </div>
-<p>Add the regression line to your chart:</p>
+</div>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>We can use <code>ggplot()</code> to create nice bar charts to help interpret the results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to run the whole chunk with plot() and the abline() together:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#plot()</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#abline(lm_output$coefficients)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chiropractic, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">fill =</span> motivation)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chi_Square_Intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p>Interpret the confidence interval.</p>
+</div>
+</div>
 </section>
-<section id="check-model-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+</section>
+<section id="summarized-data" class="level1">
+<h1>Summarized Data</h1>
+<p>Sometimes we only get a summarized table instead of raw data in columns. When this happens, we have to type in the data into a format in R that the <code>chisq.test()</code> function can recognize.</p>
+<p>Suppose we have a summary table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(chiro_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">At Risk</th>
+<th style="text-align: right;">Prevention</th>
+<th style="text-align: right;">Self Care</th>
+<th style="text-align: right;">Sick Role</th>
+<th style="text-align: right;">Wellness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Australia</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">71</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">252</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">90</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>Lastly, the car you’re interested in buying has around 100,000 miles and costs $11,200. Could this be considered a good deal? Why?</p>
-</section>
-</section>
-<section id="manatee-deaths-and-motorboat-registrations-in-florida" class="level1">
-<h1>Manatee Deaths and Motorboat Registrations in Florida</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png" width="300" height="300">
-</p>
-<p>Florida is a fabulous place for experiencing wildlife and recreation. Unfortunately, sometimes those two activities conflict.</p>
-<p>Researchers collected over 30 years of data about water craft registrations (motor and non-motor boats) and manatee deaths. The goal of the research is to evaluate the relationship between boat registrations and manatee deaths.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
+</div>
+<p>We can type in the data into a matrix format as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manatees <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">83</span>, <span class="dv">59</span>, <span class="dv">188</span>, <span class="dv">68</span>, <span class="dv">71</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">59</span>, <span class="dv">28</span>, <span class="dv">95</span>, <span class="dv">77</span>, <span class="dv">23</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">65</span>, <span class="dv">76</span>, <span class="dv">252</span>, <span class="dv">82</span>, <span class="dv">90</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>table_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]   83   59  188   68   71
+[2,]   59   28   95   77   23
+[3,]   65   76  252   82   90</code></pre>
 </div>
-<section id="plot-the-data-and-calculate-r-1" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-1">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(table_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  table_data
+X-squared = 49.743, df = 8, p-value = 4.58e-08</code></pre>
+</div>
+</div>
+<p>This gives the same test statistic and p-value.</p>
+<p>Be sure to <strong>EXCLUDE</strong> row and column totals if they are included in the summary table.</p>
 </section>
-<section id="fit-a-linear-regression-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-1">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>A public opinion poll surveyed a simple random sample of 1000 voters. Respondents were classified by gender (female or male) and by voting preference (Republican, Democrat, or Independent). The results are presented here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>), </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">200</span>),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">300</span>, <span class="dv">150</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">50</span>))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"Republican"</span>, <span class="st">"Democrat"</span>, <span class="st">"Independent"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
-</section>
-<section id="check-model-requirements-1" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-1">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
-</section>
-</section>
-<section id="mcat-score-and-gpa" class="level1">
-<h1>MCAT Score and GPA</h1>
-<p align="center">
-<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png" width="300" height="200">
-</p>
-<p>The MCAT is an entrance exam for medical schools. It seems likely that there is a relationship between your undergraduate GPA and how well you do on the MCAT.</p>
-<p>GPA and MCAT score data were collected on 55 prospective medical students.</p>
-<p>Before you begin:</p>
-<p><strong>What is the response/dependent variable?</strong></p>
-<p><strong>What is the explanatory variable</strong></p>
-<p><strong>What do you think is the nature of the relationship between the two?</strong></p>
-<p><strong>How strong do you think the relationship is?</strong></p>
-<p>Load the data:</p>
+</div>
+<p>Do men’s voting preferences differ significantly from women’s voting preferences?</p>
+<p>Use a level of significance of <span class="math inline">\(\alpha = 0.05\)</span></p>
+<ol type="1">
+<li><p>State the null and alternative hypothesis:</p></li>
+<li><p>What are the degrees of freedom for this hypothesis test?</p></li>
+<li><p>Perform a hypothesis test:</p></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mcat <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in the table information by row, separating the values with a comma</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>table_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fill in data here</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="co">#fill in number of rows)</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>table_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:12:0: unexpected end of input
+10: 
+11: 
+   ^</code></pre>
 </div>
-<section id="plot-the-data-and-calculate-r-2" class="level2">
-<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-2">Plot the Data and calculate r</h2>
-<p><strong>Does the relationship look linear?</strong></p>
-<p><strong>What is the correlation coefficient, r?</strong></p>
-<p><strong>What does this r show?</strong></p>
-</section>
-<section id="fit-a-linear-regression-model-2" class="level2">
-<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-2">Fit a Linear Regression Model</h2>
-<p>Add the regression line to your chart:</p>
+</div>
+<ol start="4" type="1">
+<li><p>What is the test statistic for this test?</p></li>
+<li><p>What is the p-value?</p></li>
+<li><p>What is your conclusion?</p></li>
+</ol>
+<section id="homework-grades-and-classroom-type" class="level2">
+<h2 class="anchored" data-anchor-id="homework-grades-and-classroom-type">Homework: Grades and Classroom Type</h2>
+<p>This is the raw data for the Homework Quiz. Use it to answer the homework questions, but also create a Bar Chart using ggplot().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sometimes you have to do the plot() and the abline() in one chunk and run the whole thing:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>course <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/course_type_by_grade.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>What is the slope of the regression line, and what does it mean?</strong></p>
-<p><strong>What is the intercept and what does it mean?</strong></p>
-<p><strong>What is your p-value?</strong></p>
-<p><strong>What is your conclusion?</strong></p>
-<p><strong>What is the confidence interval for the slope?</strong></p>
-<p><strong>Interpret the confidence interval:</strong></p>
+<p>Create a Bar Chart using ggplot()</p>
+<p>Perform the <span class="math inline">\(\chi^2\)</span> test of independence.</p>
+<p>Are the requirements for a <span class="math inline">\(\chi^2\)</span> test satisfied?</p>
+<p>What are the null and alternative hypotheses?</p>
+<p>What is the test statistic, <span class="math inline">\(\chi^2\)</span>?</p>
+<p>How many degrees of freedom does this test have?</p>
+<p>What is the P-value?</p>
 </section>
-<section id="check-model-requirements-2" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-requirements-2">Check Model Requirements</h2>
-<p>Check the normality of the residuals:</p>
-<p>Check for constant variance (Residual by Predicted plot):</p>
+</section>
+<section id="bonus" class="level1">
+<h1>BONUS</h1>
+<p>Categorical data analysis and visualization is usually easier to work with raw data. We can input <code>table()</code> into <code>chisq.test()</code> and use <code>ggplot()</code> directly.</p>
+<p>Sometimes we only have a summary table. Below you will find a few new functions that might help if the imported data are shaped as a summary table.</p>
+<section id="heart-disease-among-australian-women-and-men" class="level2">
+<h2 class="anchored" data-anchor-id="heart-disease-among-australian-women-and-men">Heart Disease among Australian Women and Men</h2>
+<p>In 1982 in Western Australia, 1317 males and 854 females died of ischemic heart disease, 1119 males and 828 females died of cancer, 371 males and 460 females died of cerebral vascular disease, and 346 males and 147 females died of accidents. A medical researcher wanted to see if gender and cause of death are independent using a level of significance of 0.05.</p>
+<p>The data read in below are a summary table of counts. One way to create a bar chart to compare heart disease deaths between men and women is to take this data and make it “longer”. This stacks the columns with count data in them and makes 2 new columns, one for the counts and one for the category of cardiovascular death.</p>
+<p>I will comment the code below to walk through each step.</p>
+<p>The <code>%&gt;%</code> “pipe” below comes from the <code>tidyverse</code> library. You can think of this like making a series of steps where everything before the <code>%&gt;%</code> is pushed to the next step. For example, we assign aussie_death the original data table then move the table into the <code>pivot_long()</code> function which is the function that stacks the data. The output of that function becomes a new data shape, aussie_death.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the table data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>aussie_death_table <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/aussie_death.csv"</span>) </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>aussie_death_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      V1 heart_disease cancer vascular_disease accident
+1 female           854    828              460      147
+2   male          1371   1119              371      346</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipe the original table into the pivot_longer() function</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot_longer needs to know which columns to "stack" which is input by the 'cols = ' argument.</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We also need to give a name to the new column containing the count information.  The 'values_to=' argument names the column that will have the values, in this case we use "count".  </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The 'names_to = ' argument names the column that will contain the labels of each category</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the code and see if you can follow what happened</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>aussie_death <span class="ot">&lt;-</span> aussie_death_table <span class="sc">%&gt;%</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">'heart_disease'</span>, <span class="st">'cancer'</span>, <span class="st">'vascular_disease'</span>, <span class="st">'accident'</span>), <span class="at">values_to =</span> <span class="st">'count'</span>, <span class="at">names_to =</span> <span class="st">"reason"</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>aussie_death</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+  V1     reason           count
+  &lt;chr&gt;  &lt;chr&gt;            &lt;int&gt;
+1 female heart_disease      854
+2 female cancer             828
+3 female vascular_disease   460
+4 female accident           147
+5 male   heart_disease     1371
+6 male   cancer            1119
+7 male   vascular_disease   371
+8 male   accident           346</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># V1 was the default label and really represents "Gender" in this study.  We could change the name or leave it as is and fix it in the graphs</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># When using raw data, 'geom_bar()' creates the counts automatically from the categorical columns in a raw dataset.  The data in aussie_death is still a summary.  If we have the counts already, then we use the `geom_col()` function and have to specify a y variable to define how high to make the bars (in our case "count")</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(aussie_death, <span class="fu">aes</span>(<span class="at">x =</span> reason, <span class="at">y =</span> count, <span class="at">fill =</span> V1)) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chi_Square_Intro_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
