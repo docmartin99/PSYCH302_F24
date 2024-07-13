@@ -43,9 +43,9 @@ We would begin with the raw data, "pipe" it into the `filter()` function and tel
 ```
 marital_Status_data %>% filter(marital_status != "It's complicated")
 ```
-__NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../R_Resources/Filter.qmd#choosing-rows---filter##logical-operator) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
+__NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../R_Resources/Filter.qmd#choosing-rows---filter##logical-operators) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
 
-I can use pipes sequantially to do quite complicated data wrangling in a very short few lines of code.  
+I can use pipes sequentially to do quite complicated data wrangling in a very short few lines of code.  
 
 # Resources
 
