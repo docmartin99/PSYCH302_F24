@@ -54,6 +54,9 @@ website:
         - href: ./Workbooks/Installing_R.qmd
         - href: ./R_Resources/Wrangling_Basics.qmd
         - href: ./R_Resources/Filter.qmd
+        - href: ./R_Resources/Select.qmd
+        - href: ./R_Resources/Mutate.qmd
+        - href: ./R_Resources/GroupBy_Summarise.qmd
         - href: ./R_Resources/Importing_Data.qmd
 
 

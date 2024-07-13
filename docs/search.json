@@ -329,375 +329,18 @@
     "text": "The Pipe in Action\nSuppose we have a dataset, marital_status_data, with 2 columns: age and marital_status. We expect the marital_status to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.\nWe would begin with the raw data, “pipe” it into the filter() function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more here):\nmarital_Status_data %&gt;% filter(marital_status != \"It's complicated\")\nNOTE: The != is read “not equal to”, and is a common logical operator used in computer programming. So the above code returns a subset of the original data omitting the rows.\nI can use pipes sequentially to do quite complicated data wrangling in a very short few lines of code."
   },
   {
-    "objectID": "R_Resources/Filter.html",
-    "href": "R_Resources/Filter.html",
-    "title": "Filtering Data",
+    "objectID": "R_Resources/Mutate.html",
+    "href": "R_Resources/Mutate.html",
+    "title": "mutate()",
     "section": "",
-    "text": "We here demonstrate how to define certain criteria for determining which rows are included in the analysis. We will refer to the survey data, which consists of responses to 60 questions from 312 high school students.\n\n# Load libraries and data\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nsurvey &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %&gt;% tibble()"
+    "text": "Adding Columns\nIf we want to create a new column in our dataset, we use the tidy function, mutate(). Consider again the High School survey data with 60 columns and 312 respondents.\n\n# Load libraries and data\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nsurvey &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %&gt;% tibble()\n\nTo create a new column, “pipe” the raw data into the mutate() statement. Inside the parentheses, give the new column a name and set it equal to what you want that column to be.\nEXAMPLE: It is widely known that arm span is typically very close to one’s height. Let’s create a column of the ratio of Height (Height_cm) to armspan (Armspan_cm) and call the new column, ht_to_span. If common knowledge is correct, we would expect the ratio to be close to 1 on average.\n\nclean &lt;- survey %&gt;%\n  mutate(ht_to_span = Height_cm / Armspan_cm)\n\nmean(clean$ht_to_span)\n\n[1] Inf\n\n\nNotice that the mean is Inf which means infinity, or undefined. This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero. This is where filter() comes in handy. We can filter out the rows where Armspan_cm is 0:\n\nclean &lt;- survey %&gt;%\n  filter(Armspan_cm &gt; 0) %&gt;%\n  mutate(ht_to_span = Height_cm / Armspan_cm)\n\nhistogram(clean$ht_to_span, xlab = \"Height / Armspan\", main = \"Distribution of Height to Armspan Ratio\")\n\n\n\n\n\n\n\n\nIt’s difficult to imagine someone who is 40 times taller than his or her arm span. But this is sufficient to illustrate the mutate() function.\nEXAMPLE: Now let’s make a new column that converts Height_cm into inches:\n\nclean &lt;- survey %&gt;%\n  mutate(ht_to_span = Height_cm / Armspan_cm,\n         Height_in = Height_cm / 2.54)\n\n\nCombining Tidy Functions\n\n\n\nClick to see how to filter outliers of ht_to_wt ratio and select only the columns of interest.\n\n\n\nClick to see\n\n\nclean &lt;- survey %&gt;%\n  filter(Armspan_cm &gt; 0) %&gt;%\n  mutate(ht_to_span = Height_cm / Armspan_cm,\n         Height_in = Height_cm / 2.54) %&gt;%\n  select(Height_cm, Armspan_cm, ht_to_span, Height_in) %&gt;% \n  filter(ht_to_span &lt; 1.5,\n         ht_to_span &gt; .5)\nclean\n\n# A tibble: 268 × 4\n   Height_cm Armspan_cm ht_to_span Height_in\n       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;\n 1       182       142       1.28       71.7\n 2       190       192       0.990      74.8\n 3       172       167       1.03       67.7\n 4       163       160       1.02       64.2\n 5        51        52       0.981      20.1\n 6       181       187       0.968      71.3\n 7       160       159       1.01       63.0\n 8       156       142.      1.10       61.4\n 9       169       162       1.04       66.5\n10       160       160       1          63.0\n# ℹ 258 more rows\n\nhistogram(clean$ht_to_span, xlab = \"Height / Armspan\", main = \"Distribution of Height to Armspan Ratio\")\n\n\n\n\n\n\n\n\nI decided on 1.5 and .5 as the filter values by trial and error. There are better ways to determine outliers. But I suspect it is rare indeed for someone to be 50% taller than their armspan or 50% shorter."
   },
   {
-    "objectID": "R_Resources/Filter.html#logical-operators",
-    "href": "R_Resources/Filter.html#logical-operators",
-    "title": "Filtering Data",
-    "section": "Logical Operators",
-    "text": "Logical Operators\nLogical operators are used extensively in computer programming to evaluate if a specified condition is met. They return a “True” or a “False”, but are often treated as 1 for true and 0 for false.\nThe most common logical operators used to filter rows are:\n\n&lt; and &lt;= means “less than” and “less than or equal to” respectively\n&gt; and &gt;= means “greater than” and “greater than or equal to” respectively\n== means “equal to” (NOTE: we use double equals because in most computer languages, a single = is an assignment operator. This avoids ambiguity)\n!= means “not equal to”; this one is useful if you want to eliminate one level of a variable\n%in% is useful for defining a list of levels that you want to include\n\nWe typically begin with the raw dataset, then “pipe” that dataset into a sequence of functions using the “pipe” operator, %&gt;%.\nNotice that in our dataset we have someone input their height in centimeters as 999. This is an impossible value we may not want to include in a visualization or analysis.\nWe can create a new dataset, clean, that omits responses of people who are taller than 250cm (about 8 feet):\n\nclean &lt;- survey %&gt;% \n  filter(Height_cm &lt; 250)\n\n# the dim() function shows us how many rows and columns in a dataset\ndim(survey)\n\n[1] 312  60\n\ndim(clean)\n\n[1] 310  60\n\n\nThe above code will return a new dataset without the outliers.\nHow many rows does the original dataset have?\nHow many rows does the filtered dataset have?"
-  },
-  {
-    "objectID": "R_Resources/Filter.html#filtering-on-categorical-data",
-    "href": "R_Resources/Filter.html#filtering-on-categorical-data",
-    "title": "Filtering Data",
-    "section": "Filtering on Categorical Data",
-    "text": "Filtering on Categorical Data\nSuppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the filter() function separated by a comma:\n\n# See what the distinct values are in the Handed column\nunique(survey$Handed)\n\n[1] \"Left-Handed\"  \"Right-Handed\" \"Ambidextrous\"\n\nsurvey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed != \"Ambidextrous\")\n\n# A tibble: 302 × 60\n   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm\n   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;\n 1 USA     FL         2022         12 Male         18 Left-Handed        182\n 2 USA     IN         2022         12 Male         17 Right-Handed       190\n 3 USA     GA         2022         12 Female       17 Right-Handed       172\n 4 USA     NC         2022         11 Female       15 Right-Handed       163\n 5 USA     CO         2022         12 Female       17 Left-Handed         51\n 6 USA     MO         2022         11 Male         17 Right-Handed       181\n 7 USA     SC         2022         11 Female       18 Right-Handed       160\n 8 USA     WA         2022         11 Female       16 Right-Handed       156\n 9 USA     WA         2022         12 Female       17 Right-Handed       169\n10 USA     WA         2022         11 Male         18 Right-Handed       160\n# ℹ 292 more rows\n# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,\n#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,\n#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,\n#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,\n#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,\n#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …\n\n# We could also try using %in% instead of the !=\n\nsurvey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed %in% c(\"Left-Handed\", \"Right-Handed\"))\n\n# A tibble: 302 × 60\n   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm\n   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;\n 1 USA     FL         2022         12 Male         18 Left-Handed        182\n 2 USA     IN         2022         12 Male         17 Right-Handed       190\n 3 USA     GA         2022         12 Female       17 Right-Handed       172\n 4 USA     NC         2022         11 Female       15 Right-Handed       163\n 5 USA     CO         2022         12 Female       17 Left-Handed         51\n 6 USA     MO         2022         11 Male         17 Right-Handed       181\n 7 USA     SC         2022         11 Female       18 Right-Handed       160\n 8 USA     WA         2022         11 Female       16 Right-Handed       156\n 9 USA     WA         2022         12 Female       17 Right-Handed       169\n10 USA     WA         2022         11 Male         18 Right-Handed       160\n# ℹ 292 more rows\n# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,\n#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,\n#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,\n#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,\n#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,\n#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …\n\n\nNOTE: Using the %in% and the != will not always give you the same results. If there are misspellings or other options, using %in% will limit the data to only those with the exact spelling in the list provided. For example, “left.handed”, would be omitted. Misspellings would, however, be included if I use != \"Ambitextrous\" because that only takes out rows written exactly that way. Things like, ambidextrious or RightHanded would still be included.\nI could further limit my data to students from Florida and Missouri:\n\nnew_data &lt;- survey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed %in% c(\"Left-Handed\", \"Right-Handed\"),\n         Region %in% c(\"MO\", \"FL\"))\n\ndim(new_data)\n\n[1] 27 60\n\n\nHow many rows does our latest dataset have?"
-  },
-  {
-    "objectID": "Practice/Normal_Probability_Homework.html",
-    "href": "Practice/Normal_Probability_Homework.html",
-    "title": "Normal Probability Homework",
-    "section": "",
-    "text": "The Normal Distribution\nRecall that the normal distribution is a probability distribution defined by its center (\\(\\mu\\)) and its spread (\\(\\sigma\\)).\n[Insert examples of normal distributions with different means and standard deviations]\n\n\nNormal Probability Calculator\nUse the calculator below to calculate the probabilities using the normal distribution.\n\n# Value\nx &lt;- 161\n\n# Hypothesized Mean\nmu &lt;- 150.8\n\n# Population Standard deviation\nsigma &lt;- 8.8\n\n# Z-score:  number of standard deviations above the mean\nz &lt;- (x-mu) / sigma\nz\n\n[1] 1.159091\n\n# Probability of observing a z-score LESS THAN the one we observed (left tail)\npnorm(z)\n\n[1] 0.8767904\n\n# Probability of observing a z-score GREATER THAN the one we observed (Right Tail)\n1-pnorm(z)\n\n[1] 0.1232096\n\n# For calculating the area between 2 numbers\nA &lt;- 61.5\nB &lt;- 68.5\npnorm(B, mu, sigma) - pnorm(A, mu, sigma)\n\n[1] 4.287516e-21\n\n# Find the X_bar associated with a spceific percentile\nqnorm(.25, mu, sigma)\n\n[1] 144.8645\n\n\n\nWhat is the capital of France?\n\n( ) London\nBerlin\nParis\nMadrid"
-  },
-  {
-    "objectID": "Practice/Exploring_New_Data_with_Tidyverse.html",
-    "href": "Practice/Exploring_New_Data_with_Tidyverse.html",
-    "title": "Into The Tidyverse",
-    "section": "",
-    "text": "Statistics is only as interesting as the research questions we create. However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.\nThe more time we spend digging into the data and noticing irregularities, the more likely we are to make better research questions and more appropriate conclusions. It doesn’t matter how sophisticated our analysis becomes if it’s based on bad data.\nIn this activity, you will explore a survey about happiness and related factors. By reviewing the data at a high level and then drilling into specific variables, you will gain a better idea about what this survey contains, generate interesting research questions and, with clean data, make better-informed answers to those questions."
-  },
-  {
-    "objectID": "Practice/Exploring_New_Data_with_Tidyverse.html#lying",
-    "href": "Practice/Exploring_New_Data_with_Tidyverse.html#lying",
-    "title": "Into The Tidyverse",
-    "section": "Lying",
-    "text": "Lying\nRepeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying. http://127.0.0.1:41855/graphics/e18505de-f3d7-47b3-b868-2c638e36eb4c.png\n\nCreate a new dataset called lying that excludes the #N/A values in Lying and the Happiness scores outliers, and includes only “Happiness_score” and “Lying”:\n\n\nsteve &lt;- happiness %&gt;%\n  filter(Happiness_score &lt;= 15, \n         Happiness_score &gt;= 0, \n         Lying != \"#N/A\"\n  ) %&gt;%\n  select(Happiness_score, Lying)\n\n#View(steve)\n\n\nCreate a side-by-side boxplot and summary statistics (using favstats()) table for each attitude about Lying:\n\n\nboxplot(steve$Happiness_score ~ steve$Lying)\n\n\n\n\n\n\n\nfavstats(steve$Happiness_score ~ steve$Lying)\n\n                    steve$Lying min Q1 median Q3 max     mean       sd   n\n1         everytime it suits me   5  9     10 11  15 10.05839 2.175284 137\n2                         never   4  9     11 12  15 10.80000 2.138090  50\n3 only to avoid hurting someone   3  9     11 12  15 10.54444 1.997179 270\n4                     sometimes   3 10     11 12  15 10.71639 1.764933 543\n  missing\n1       0\n2       0\n3       0\n4       0"
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html",
-    "href": "Application_Activities/Semester_Project_Instructions.html",
-    "title": "Semester Project Instructions",
-    "section": "",
-    "text": "For this project, you will create an html report that is an original analysis based on data that you find.\nStart with a research question that interests you. It can be about any topic (finance, music, video games, hunting, weather, mental health, AI…seriously anything!)\nFor this project, a good research question will be interesting to you AND feasible to find available data. You can certainly think of exciting research questions for which the data are impossible to find or collect. Expect to refine your research question as you begin the data search.\nOnce you have a research question in mind, start looking for data relating to it. Below are some links that might be helpful for finding datasets.\n\n\nGoogle actually has a search engine specifically for datasets\nStatista has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.\nKaggle runs competitions for companies who outsource data challenges. It has also compiled a large library of datasets on a range of topics. Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face."
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#helpful-links",
-    "href": "Application_Activities/Semester_Project_Instructions.html#helpful-links",
-    "title": "Semester Project Instructions",
-    "section": "",
-    "text": "Google actually has a search engine specifically for datasets\nStatista has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.\nKaggle runs competitions for companies who outsource data challenges. It has also compiled a large library of datasets on a range of topics. Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face."
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#define-the-problem",
-    "href": "Application_Activities/Semester_Project_Instructions.html#define-the-problem",
-    "title": "Semester Project Instructions",
-    "section": "1. Define the Problem",
-    "text": "1. Define the Problem\nInclude an introduction that describes why you were interested in the topic and what you envisioned for an analysis. Some questions to address:\n\nWhat is the population of your research?\nWhat do you think is the nature of the relationship you hope to discover?\nWhat type of data are you looking for (quantitative? categorical?)\n\nWhat type of analysis are you expecting to do (t-test, regression? ANOVA? Chi-square test for independence? etc.)"
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#collect-the-data",
-    "href": "Application_Activities/Semester_Project_Instructions.html#collect-the-data",
-    "title": "Semester Project Instructions",
-    "section": "2. Collect the Data",
-    "text": "2. Collect the Data\nTalk about the process of how you found the data and whether you had to make adjustments to your research question."
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#describe-the-data",
-    "href": "Application_Activities/Semester_Project_Instructions.html#describe-the-data",
-    "title": "Semester Project Instructions",
-    "section": "3. Describe the Data",
-    "text": "3. Describe the Data\nInclude summary statistics (favstats, proportions, contingency tables, etc.)\nInclude GGPlot visualizations (boxplots, histograms/density plots, bar charts, etc.). Make the charts as understandable as possible without having to read the text description. That means make sure:\n\nAxes are labeled appropriately\nIt has a descriptive title\nLabel lines or points that are highlighted in the graph"
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#analyze-the-data",
-    "href": "Application_Activities/Semester_Project_Instructions.html#analyze-the-data",
-    "title": "Semester Project Instructions",
-    "section": "4. Analyze the Data",
-    "text": "4. Analyze the Data\nPerform the appropriate analysis for the data collected (t-test, F-test, regression, Chi-square, etc.)"
-  },
-  {
-    "objectID": "Application_Activities/Semester_Project_Instructions.html#take-action",
-    "href": "Application_Activities/Semester_Project_Instructions.html#take-action",
-    "title": "Semester Project Instructions",
-    "section": "5. Take Action",
-    "text": "5. Take Action\nBased on your statistical inference, what recommendations or actions would you take?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html",
-    "href": "Application_Activities/AA_Unit2_Review.html",
-    "title": "Unit 2 Review",
-    "section": "",
-    "text": "In this activity, you will use everything we’ve covered in Unit 2 including:\n\nData manipulation using tidyverse functions\nHypothesis tests\n\n1-Sample t-test\n2-sample dependent t-test\n2-sample independent t-test\nANOVA\n\nConfidence Intervals where applicable\n\nWe will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.\n\n\nIn class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:\n\nRead in the data\n\nExplore the dataset as a whole:\n\nWhat are the column names? What do they mean? Where can I find information about them?\nWhat is the response/dependent variable? Could there be more than one?\nWhat are some factors that may impact the response variable? Which are likely the most important?\n\nExplore specific columns\n\nStart with the response variable. Are there any outliers? Obtain summary statistics (favstats()), visualize the data (histogram(), boxplot()).\nExplore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (unique())\n\nFormalize statistical hypotheses. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?\nPrepare data for analysis. You may need to clean the data (eg. data %&gt;% filter() %&gt;% select())\nPerform the appropriate analysis (t.test(), aov())\n\nAll these activities are important, but we may spend more or less time on any one of them depending on the state of the data."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#getting-to-know-a-new-dataset",
-    "href": "Application_Activities/AA_Unit2_Review.html#getting-to-know-a-new-dataset",
-    "title": "Unit 2 Review",
-    "section": "",
-    "text": "In class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:\n\nRead in the data\n\nExplore the dataset as a whole:\n\nWhat are the column names? What do they mean? Where can I find information about them?\nWhat is the response/dependent variable? Could there be more than one?\nWhat are some factors that may impact the response variable? Which are likely the most important?\n\nExplore specific columns\n\nStart with the response variable. Are there any outliers? Obtain summary statistics (favstats()), visualize the data (histogram(), boxplot()).\nExplore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (unique())\n\nFormalize statistical hypotheses. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?\nPrepare data for analysis. You may need to clean the data (eg. data %&gt;% filter() %&gt;% select())\nPerform the appropriate analysis (t.test(), aov())\n\nAll these activities are important, but we may spend more or less time on any one of them depending on the state of the data."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#categories-labeled-as-numbers",
-    "href": "Application_Activities/AA_Unit2_Review.html#categories-labeled-as-numbers",
-    "title": "Unit 2 Review",
-    "section": "Categories Labeled as Numbers",
-    "text": "Categories Labeled as Numbers\nSometimes even correct data can have issues that must be addressed. For example, categories are often labeled as numbers. Software can’t guess when numbers are supposed to be categories, so we have to tell R when a number should be treated as a category.\nTo force a variable to be a category, we use the factor() function in R. We can change the variable type in the data itself or change it in the analysis. We demonstrate both methods below.\n\nChanging a Column Type in a dataset\nFather’s education, Fedu, shows up as a number in R. The website suggests that the numbers represent categories (0 = none, 1 = primary education (4th grade), 2 = 5th to 9th grade, 3 = secondary education or 4 = higher education).\nTo change the data type in the data itself, we can use a mutate statement in the following manner:\n\n# Create a new dataset called fedu_data that begins with the clean data and adds a column that we called Fedu_factor, which is the factorized column, Fedu:\n\nnew_data &lt;- student %&gt;%\n  mutate(Fedu_factor = factor(Fedu))\n\n# Check the column names of the new dataset.  Notice the new column\nnames(new_data)\n\n# glimpse() shows us data types.  Notice after Fedu_factor, the &lt;fct&gt;, which shows us that this is in fact, a factor variable type.  &lt;dbl&gt; stands for \"double\" and is a numeric variable type\n\nglimpse(new_data)\n\n\n\nChanging the Variable Type “on the fly”\nYou may not want to bother changing all the variable types for each potential analysis. Fortunately, you can create a factor “on the fly” within the analysis function itself.\nBecause there are more than 2 levels of Father’s Education, I will demonstrate how this is done in an ANOVA:\n\n# Force Fedu to be treated like a category in ANOVA:\nfedu_anova &lt;- aov(student$G3 ~ factor(student$Fedu))\n\nsummary(fedu_anova)\n\n                      Df Sum Sq Mean Sq F value Pr(&gt;F)  \nfactor(student$Fedu)   4    238   59.53   2.891 0.0222 *\nResiduals            390   8032   20.59                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThis works with most analysis functions including t.test() and aov().\nNOTE: You only have to do this for variables in a dataset that are categories labeled as numbers. If the categories are text, t.test() and aov() automatically recognizes the variable as categorical. However, it does no harm to put a column with text into a factor() statement."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#cleaning-the-data",
-    "href": "Application_Activities/AA_Unit2_Review.html#cleaning-the-data",
-    "title": "Unit 2 Review",
-    "section": "Cleaning the Data",
-    "text": "Cleaning the Data\nWhile exploring the data, you may have noticed a few students ended up with a final grade of zero. While it may be interesting to explore what factors lead to an incomplete grade, we want to make conclusions about students who completed the course.\nCreate a clean dataset called, clean, that excludes zeros for G3. This will be used for the following analyses."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#comparing-schools",
-    "href": "Application_Activities/AA_Unit2_Review.html#comparing-schools",
-    "title": "Unit 2 Review",
-    "section": "Comparing Schools",
-    "text": "Comparing Schools\nSuppose the Gabriel Pereira school (GP) has more stringent admissions requirements. We suspect this would lead to higher grades, on average.\nCreate a side-by-side boxplot of the final grades for each school. Change the y-axis label to read “Final Grade out of 20”, the x-axis label to read “School”, and add a title.\nWhat do you notice?\nCreate a table of summary statistics of final grade for each school:\n\nHypothesis Test\nCreate a qqPlot to look at the normality of both groups:\nDo the grades look normally distributed for both groups? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypotheses and significance level.\nNOTE: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.\nHo:\nHa:\n\\(\\alpha = 0.\\)\nWhat is the P-value?\nWhat is your conclusion in context of the research question?\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval and explain it in context of the research question."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#comparing-second-period-grade-with-final-grade",
-    "href": "Application_Activities/AA_Unit2_Review.html#comparing-second-period-grade-with-final-grade",
-    "title": "Unit 2 Review",
-    "section": "Comparing Second Period Grade with Final Grade",
-    "text": "Comparing Second Period Grade with Final Grade\nWe suspect there is a difference between the second period and the final grade, though we do not know if they go up or down. Carry out a hypothesis test to evaluate this suspicion.\n\nHypothesis Test\nChoose how you will define the difference between final grade and second period grade, and create a new object called diff:\n\n# diff &lt;- \n\nWhat does a negative number mean?\nCreate a qqPlot of diff and check for normality:\nDo the grade differences look normally distributed? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypothesis and choose a significance level:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate analysis.\nWhat is the P-value?\nWhat conclusion do you make in context of this research question?\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval for the differences and explain it in context of the research question."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#absenteeism-in-portugal",
-    "href": "Application_Activities/AA_Unit2_Review.html#absenteeism-in-portugal",
-    "title": "Unit 2 Review",
-    "section": "Absenteeism in Portugal",
-    "text": "Absenteeism in Portugal\nIn 2021, Portugal reported having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).\n\nHypothesis Test\nCreate a qqPlot for absences.\nDo absences look normally distributed? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypotheses and choose a significance level:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate analysis.\nState your conclusion in context of the research question.\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval for average absences and interpret it in context of the problem."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#the-impact-of-mothers-education-level",
-    "href": "Application_Activities/AA_Unit2_Review.html#the-impact-of-mothers-education-level",
-    "title": "Unit 2 Review",
-    "section": "The Impact of Mother’s Education Level",
-    "text": "The Impact of Mother’s Education Level\nThe level of education of the mother in the home is thought to have a significant impact on student success.\nCreate a side-by-side boxplot of final grades for each level of mother’s education.\nCreate a table of summary statistics of final grades for each level of mother’s education.\nHow many respondents have a mother with no formal education (level 0)?\nCreate a new dataset, clean_medu, that does not include mother’s education level 0.\n\n# clean_medu &lt;- clean %&gt;%\n\nCreate another boxplot with the new dataset that excludes level 0.\nCreate a summary table of final grades for each level of a mother’s education with the new dataset.\nWhat is the maximum standard deviation?\nWhat is the minimum standard deviation?\nVerify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.\n\nHypothesis Test\nState your null and alternative hypotheses and pick alpha:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate statistical test.\nWhat is the test statistic?\nWhat is the P-value?\nCheck the normality of the residuals.\nDo the residuals appear roughly normally distributed?\nCan we trust the P-value.\nState your conclusion."
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit2_Review.html#choose-your-own-adventure",
-    "href": "Application_Activities/AA_Unit2_Review.html#choose-your-own-adventure",
-    "title": "Unit 2 Review",
-    "section": "Choose your own adventure",
-    "text": "Choose your own adventure\nPick another variable that was not analyzed above.\nCreate a side-by-side boxplot. Be sure to properly label the graph and add sufficient information so readers can know what they are looking at without having to search through the report or code.\nPerform the appropriate analysis. Be sure to include a concise conclusion in the context of the research question, including a hypothesis test (and confidence interval if applicable.)"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "",
-    "text": "In this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Brother Cannon’s Math 221 students.\nBegin by describing the population of this analysis. This will determine how broad our conclusions can be. Also include a table of the summary statistics and any visualizations that might tell a story about the data.\nThen, for each personality trait, include:\n\nA statement of the null and alternative hypotheses and why you chose the alternative you did.\nChoose alpha $= $\nCheck that your test requirements are satisfied (n &gt; 30 or qqPlot(respons_variable))\nRun the one-sample t-test and state your conclusion\nCalculate a \\(1-\\alpha\\) level confidence interval and describe in words what it means\n\nRecall that we can use “favstats()” to get summary statistics, boxplot() and histogram() to get visualizations, and the t.test() function to get hypothesis tests and confidence intervals. Be sure to label your plots’ axes and include a title.\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-1",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-1",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-2",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-2",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-3",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-3",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-4",
-    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-4",
-    "title": "Hypothesis Tests and Confidence Intervals",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html",
-    "href": "Application_Activities/AA_Data_Summaries.html",
+    "objectID": "R_Resources/GroupBy_Summarise.html",
+    "href": "R_Resources/GroupBy_Summarise.html",
     "title": "Summarizing Data",
     "section": "",
-    "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nIgnoring the Plant ID for a moment, there are three factors that possibly effect the uptake of a plant. These include Type, Treatment, and conc. The factor Type has two levels, Quebec and Mississippi. The factor Treatment has two levels chilled and nonchilled and the factor conc has seven levels 95, 175, 250, 350, 500, 675, and 1000.\nConc is related to the ambient concentration of CO2."
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#univariate-analysis",
-    "href": "Application_Activities/AA_Data_Summaries.html#univariate-analysis",
-    "title": "Summarizing Data",
-    "section": "Univariate Analysis",
-    "text": "Univariate Analysis\nCreate a table with the overall summary statistics for uptake:\n\n# This is NEW!  if you tell R to knit the favstats output using the \"kable\" function, it will look a lot nicer when the document is rendered.\n\nknitr::kable(favstats(CO2$uptake))\n\n\n\n\n\nmin\nQ1\nmedian\nQ3\nmax\nmean\nsd\nn\nmissing\n\n\n\n\n\n7.7\n17.9\n28.3\n37.125\n45.5\n27.2131\n10.81441\n84\n0\n\n\n\n\n\nCreate a histogram of the uptake data:"
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
-    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
-    "title": "Summarizing Data",
-    "section": "Impact of Plant Type on Uptake",
-    "text": "Impact of Plant Type on Uptake\nCreate a table of summary statistics of uptake for each type of plants used in the experiment.\nCreate a side-by-side boxplot of uptake for each type of plants used in the experiment."
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-treatment-on-uptake",
-    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-treatment-on-uptake",
-    "title": "Summarizing Data",
-    "section": "Impact of Treatment on Uptake",
-    "text": "Impact of Treatment on Uptake\nCreate a table of summary statistics of uptake for each treatment used in the experiment.\nCreate a side-by-side boxplot of uptake for each treatment used in the experiment."
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
-    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
-    "title": "Summarizing Data",
-    "section": "Impact of Ambient CO2 Concentration on Uptake",
-    "text": "Impact of Ambient CO2 Concentration on Uptake\nCreate a table of summary statistics of uptake for each level of CO2 found in the experiment.\nCreate a side-by-side boxplot of uptake for each level of CO2 found used in the experiment."
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#what-makes-this-an-experiment",
-    "href": "Application_Activities/AA_Data_Summaries.html#what-makes-this-an-experiment",
-    "title": "Summarizing Data",
-    "section": "What makes this an experiment?",
-    "text": "What makes this an experiment?\nThe background suggests this study was an experiment. In your own words, describe the difference between an experiment and an observational study.\nWhat would this study have looked like if it had been an observational study?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#what-is-the-population-of-this-study",
-    "href": "Application_Activities/AA_Data_Summaries.html#what-is-the-population-of-this-study",
-    "title": "Summarizing Data",
-    "section": "What is the Population of this study?",
-    "text": "What is the Population of this study?\nDescribe in your own words what the population of this study could be. How broad can we make our conclusions?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Data_Summaries.html#what-are-your-recommendations",
-    "href": "Application_Activities/AA_Data_Summaries.html#what-are-your-recommendations",
-    "title": "Summarizing Data",
-    "section": "What are your recommendations?",
-    "text": "What are your recommendations?\nIf you were to recommend a planting scenario to maximize CO2 uptake, what would you recommend based on the summaries provided?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html",
-    "href": "Application_Activities/AA_Unit1_Review.html",
-    "title": "Unit 1 Review",
-    "section": "",
-    "text": "Apply the 3 rules of probability in different scenarios\nDescribe the 5 steps of the statistical process\nDifferentiate between an observational study and an experiment\nDifferentiate between a population and a sample\nDescribe the 4 random sampling schemes\nExplain importance of random sampling \nDistinguish between quantitative and categorical variables\nCreate graphical summaries of data (boxplots, histograms) and be able to make conclusions based on the graphs\nCreate numerical summaries of data (mean, sd, 5 number summary, percentiles) and compare groups (centers, spreads)\nDistinguish between a parameter and a statistic\nDetermine the 5 number summary from a boxplot \nState the properties of a normal distribution\nCalculate the z-score for an individual from a normal population with mean, \\(\\mu\\), and std. dev, \\(\\sigma\\)\nCalculate probabilities (&gt;, &lt;, between) of certain values given \\(\\mu\\) and \\(\\sigma\\) \nDescribe the concept of a sampling distribution of the sample mean\nState the Central Limit Theorem\nDetermine the mean of the sampling distribution of the sample mean given \\(\\mu\\) and \\(\\sigma\\)\nDetermine the std. dev. of the sampling distribution of the sample mean given \\(\\mu\\) and \\(\\sigma\\)\nDetermine the shape of the sampling distribution given a sample size, n, and \\(\\mu\\) and \\(\\sigma\\)\nState the Law of Large Numbers"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html#housing-prices-in-rexburg",
-    "href": "Application_Activities/AA_Unit1_Review.html#housing-prices-in-rexburg",
-    "title": "Unit 1 Review",
-    "section": "Housing Prices in Rexburg",
-    "text": "Housing Prices in Rexburg\nYou are interested housing prices in Rexburg, Idaho. Load the housing data and respond to the following questions.\n\n# Load the data:\nhousing &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/MadisonCountyRealEstate.xlsx') %&gt;% select(ListPrice, Bedrooms)\n\nQ2.1:\nCreate a histogram of listing price.\n\nfavstats(housing$ListPrice ~ housing$Bedrooms)\n\n  housing$Bedrooms    min     Q1 median      Q3     max     mean        sd  n\n1                2  96900 108175 117450  129675  160000 119984.6  15206.23 26\n2                3 109900 142150 184700  213650  499999 199120.8  79099.36 48\n3                4 119900 157000 174900  228000  369000 200642.1  71075.72 19\n4                5 137000 189900 219900  275000  924500 250483.8 131359.88 37\n5                6 179900 281500 319000  364000  699000 340740.0 118103.19 15\n6                7 199000 454675 717450 1040000 1475000 777225.0 545108.00  4\n  missing\n1       0\n2       0\n3       0\n4       0\n5       0\n6       0\n\n\nWhat is the shape of the distribution of list prices for homes in Rexburg.\nQ2.2:\nCalculate the mean, standard deviation, 5 number summary and sample size of housing prices for each number of bedrooms.\n\nboxplot(housing$ListPrice ~ housing$Bedrooms, col=c(2,3,4,5,6,7), xlab = \"Number of Bedrooms\", ylab = \"Housing Price\", main = \"blah\")\n\n\n\n\n\n\n\n\nbold italics\nWhat is the standard deviation of homes with 3 bedrooms?\nHow do you interpret that number?\nQ2.3:\nWhat is the maximum value home price for a 2 bedroom house?\nSuppose there was a typo in the data and the maximum price for a 2 bedroom house was accidentally entered as $1,700,000.\nHow would the median change?\nHow would the mean change?\nHow would the standard deviation change?\nQ2.4:\nCreate a side-by-side boxplot of housing prices for each group. Modify the color scheme so that each boxplot is a different color.\nWhat trends do you notice?\nWhy might the box plot for 7 bedroom homes look so different than the others?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html#hair-color",
-    "href": "Application_Activities/AA_Unit1_Review.html#hair-color",
-    "title": "Unit 1 Review",
-    "section": "Hair Color",
-    "text": "Hair Color\nBrother Cannon has been collecting hair color data about his students for the last several semesters. The proportion of students with each hair color are as follows:\n(run the following R chunk to see the table more clearly)\n\nknitr::kable(tibble(Red=\"???\", Brown=.37, Black=.35, Blond = .22, Other=.02))\n\n\n\n\nRed\nBrown\nBlack\nBlond\nOther\n\n\n\n\n???\n0.37\n0.35\n0.22\n0.02\n\n\n\n\n\nQ3.1:\nWhat percent of Brother Cannon’s students have red hair?\nQ3.2:\nWhat’s the probability that a randomly selected student has either black or brown hair?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html#social-media-use",
-    "href": "Application_Activities/AA_Unit1_Review.html#social-media-use",
-    "title": "Unit 1 Review",
-    "section": "Social Media Use",
-    "text": "Social Media Use\nQ4.1:\nThe number of hours students spend on social media a week is known to be left skewed with a mean of 12 hours and a standard deviation 1.5.\nSuppose we take a random sample of 50 students and calculate the average time they spend on social media.\nQ4.2:\nWhat is the mean of the distribution of sample means for this sample size?\nQ4.3:\nWhat is the standard deviation of sample means for this sample size?\n\n1.5 / sqrt(50)\n\n[1] 0.212132\n\n\nQ4.4:\nWhat is the shape of the distribution of sample means for this sample size and why?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html#faculty-salaries",
-    "href": "Application_Activities/AA_Unit1_Review.html#faculty-salaries",
-    "title": "Unit 1 Review",
-    "section": "Faculty Salaries",
-    "text": "Faculty Salaries\nFaculty salaries at a university are known to be normally distributed with a mean of $108,552 and a standard deviation of $13,277.\nYou randomly sample n=15 faculty members and calculate their average salary.\nQ5.1:\nWhat is the mean of the distribution of sample means for this sample size?\nQ5.2:\nWhat is the standard deviation of sample means for this sample size?\n\n13277/sqrt(15)\n\n[1] 3428.107\n\n\nQ5.3:\nWhat is the shape of the distribution of sample means for this sample size and why?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Unit1_Review.html#normal-probability-calculations",
-    "href": "Application_Activities/AA_Unit1_Review.html#normal-probability-calculations",
-    "title": "Unit 1 Review",
-    "section": "Normal Probability Calculations",
-    "text": "Normal Probability Calculations\nHigh blood pressure is strongly associated with a host of diseases and increases risk of cardiac arrest (hear attacks) in older patients.\nSuppose that systolic blood pressure in the US is normally distributed with a mean = 128 and a standard deviation of 11.\nUse the following calculator to answer the questions below:\nQ6.1:\nWhat is the probability that a randomly selected person in the US has a systolic blood pressure of greater than 145?\nQ6.2\nWhat is the probability that a randomly selected group of 10 people in the US have an average blood pressure less than 130?\nQ6.3:\nYour doctor says you’re in great shape, and that you are in the 20th percentile for systolic blood pressure.\nWhat does it mean that you are the 20th percentile?\nWhat is your blood pressure?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html",
-    "title": "Categorical Data Analysis",
-    "section": "",
-    "text": "Use the Star Wars dataset to answer the following questions:\n\nDo less than 20% of respondents feel Very Favorably towards Emperor Palpatine? (1-sample Z test for proportion)\nWhat is the difference in proportions of females and males who are Very Favorable towards Jar-Jar Binks? (2-sample Proportion)\nCome up with one other 2-sample proportion test using anything from the Star Wars dataset.\nTest to see if income and response to “Which Character Shot First?” are Independent (Chi-square)\n\nFor the proportion tests:\n\nDefine the null and alternative hypotheses\nInclude an explanation and conclusion for hypothesis tests\nInclude Confidence intervals and a sentence explaining each\nCheck the requirements for the hypothesis test and the confidence intervals\n\nFor the Chi-square test:\n\nDefine the null and alternative hypotheses\nInclude an explanation of the conclusion for\nBe sure to check the hypothesis requirements for a test of independence"
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#explore-the-data",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#explore-the-data",
-    "title": "Categorical Data Analysis",
-    "section": "Explore the data",
-    "text": "Explore the data\n\nnames(sw)\n\n [1] \"Are You a Fan of SW?\"               \"Favorability_Han Solo\"             \n [3] \"Favorability_Luke Skywalker\"        \"Favorability_Princess Leia Organa\" \n [5] \"Favorability_Anakin Skywalker\"      \"Favorability_Obi Wan Kenobi\"       \n [7] \"Favorability_Emperor Palpatine\"     \"Favorability_Darth Vader\"          \n [9] \"Favorability_Lando Calrissian\"      \"Favorability_Boba Fett\"            \n[11] \"Favorability_C-3P0\"                 \"Favorability_R2 D2\"                \n[13] \"Favorability_Jar Jar Binks\"         \"Favorability_Padme Amidala\"        \n[15] \"Favorability_Yoda\"                  \"who_shot_first\"                    \n[17] \"Familiar_with_expanded_universe\"    \"are_you_a_fan_of_expanded_universe\"\n[19] \"fan_of_star_trek\"                   \"Gender\"                            \n[21] \"Age\"                                \"Household.Income\"                  \n[23] \"Education\"                          \"Location\"                          \n\ntable(sw$`Favorability_Han Solo`)\n\n\n                                            \n                                          5 \nNeither favorably nor unfavorably (neutral) \n                                         44 \n                         Somewhat favorably \n                                        151 \n                       Somewhat unfavorably \n                                          8 \n                           Unfamiliar (N/A) \n                                         15 \n                             Very favorably \n                                        610 \n                           Very unfavorably \n                                          1 \n\naddmargins(table(sw$`Favorability_Han Solo`, sw$Gender))\n\n                                             \n                                                  Female Male Sum\n                                                0      2    3   5\n  Neither favorably nor unfavorably (neutral)   1     22   21  44\n  Somewhat favorably                            4     71   76 151\n  Somewhat unfavorably                          1      3    4   8\n  Unfamiliar (N/A)                              0      9    6  15\n  Very favorably                               10    289  311 610\n  Very unfavorably                              0      0    1   1\n  Sum                                          16    396  422 834\n\naddmargins(table(sw$`Favorability_Emperor Palpatine`))\n\n\n                                            \n                                         20 \nNeither favorably nor unfavorably (neutral) \n                                        213 \n                         Somewhat favorably \n                                        143 \n                       Somewhat unfavorably \n                                         68 \n                           Unfamiliar (N/A) \n                                        156 \n                             Very favorably \n                                        110 \n                           Very unfavorably \n                                        124 \n                                        Sum \n                                        834"
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#one-sample-proportion-test",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#one-sample-proportion-test",
-    "title": "Categorical Data Analysis",
-    "section": "One-sample Proportion Test",
-    "text": "One-sample Proportion Test\nWhat proportion of respondents are very favorable towards Emperor Palpatine?\nIs this significantly less than 20%?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#two-sample-proportion-test",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#two-sample-proportion-test",
-    "title": "Categorical Data Analysis",
-    "section": "Two-sample Proportion Test",
-    "text": "Two-sample Proportion Test\nWhat percent of female respondents are favorable towards Jar-Jar Binks?\nWhat percent of male respondents are favorable towards Jar-Jar Binks?\nAre they significantly different?"
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#choose-your-own-adventure",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#choose-your-own-adventure",
-    "title": "Categorical Data Analysis",
-    "section": "Choose your own adventure",
-    "text": "Choose your own adventure\nCompare 2 proportions of your choosing and perform a prop.test()."
-  },
-  {
-    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#chi-square-test-for-independence",
-    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#chi-square-test-for-independence",
-    "title": "Categorical Data Analysis",
-    "section": "Chi-square Test for Independence",
-    "text": "Chi-square Test for Independence\nTest to see if how you responded to the question “Who Shot First” is independent of income category.\nState your conclusion:"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BYU-Idaho Math 221: Introduction to Statistics in R",
-    "section": "",
-    "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.\n\n\nEach lesson will typically include: * Background readings (either from Stats Fundamentals or Workbooks) * Example code (mostly in Workbooks) * Opportunities to practice (Workbooks, Practice Problems and Application Activities)\nStats Fundamentals is a great reference for the core principles which are used throughout the course.\nWorkbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.\nThe Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.\nApplication Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.\nThe section labeled “R Help” provides resources to help with R programming.\n\n\nThis book was specifically designed for the Math 221D section, Intro to Stats In R.\nAfter introducing some foundational principles of Statistics, the recommended sequence:\n\nCourse Introduction, including R installation\nSummarizing Data - Shape and Center\nSummarizing Data - Measures of Spread\nProbability\nNormal Distribution\nDistribution of Sample Means\nProbability Calculations for Means\nIntroduction to Hypothesis Testing\nIntroduction to Confidence Intervals\nInference for a Mean\nInference for Dependent Samples\nInference for Independent Samples\nANOVA\nRegression\nDistribution of \\(\\hat{p}\\)\nInference for 1 Proportion\nInference for 2 Proportions\nChi Square Test for Independence"
-  },
-  {
-    "objectID": "index.html#a-customizable-textbook",
-    "href": "index.html#a-customizable-textbook",
-    "title": "BYU-Idaho Math 221: Introduction to Statistics in R",
-    "section": "",
-    "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.\n\n\nEach lesson will typically include: * Background readings (either from Stats Fundamentals or Workbooks) * Example code (mostly in Workbooks) * Opportunities to practice (Workbooks, Practice Problems and Application Activities)\nStats Fundamentals is a great reference for the core principles which are used throughout the course.\nWorkbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.\nThe Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.\nApplication Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.\nThe section labeled “R Help” provides resources to help with R programming.\n\n\nThis book was specifically designed for the Math 221D section, Intro to Stats In R.\nAfter introducing some foundational principles of Statistics, the recommended sequence:\n\nCourse Introduction, including R installation\nSummarizing Data - Shape and Center\nSummarizing Data - Measures of Spread\nProbability\nNormal Distribution\nDistribution of Sample Means\nProbability Calculations for Means\nIntroduction to Hypothesis Testing\nIntroduction to Confidence Intervals\nInference for a Mean\nInference for Dependent Samples\nInference for Independent Samples\nANOVA\nRegression\nDistribution of \\(\\hat{p}\\)\nInference for 1 Proportion\nInference for 2 Proportions\nChi Square Test for Independence"
-  },
-  {
-    "objectID": "Practice/Introducing_R_Homework.html#calculate-the-summary-statistics-for-duration",
-    "href": "Practice/Introducing_R_Homework.html#calculate-the-summary-statistics-for-duration",
-    "title": "Introducing R",
-    "section": "Calculate the Summary Statistics for Duration",
-    "text": "Calculate the Summary Statistics for Duration\nWhat is the mean duration time of Old Faithful eruptions?\nWhat is the standard deviation of duration?"
-  },
-  {
-    "objectID": "Practice/Introducing_R_Homework.html#create-a-historgram-for-duration",
-    "href": "Practice/Introducing_R_Homework.html#create-a-historgram-for-duration",
-    "title": "Introducing R",
-    "section": "Create a Historgram for Duration",
-    "text": "Create a Historgram for Duration\nCreate a histogram and describe the shape of the distribution of duration:"
-  },
-  {
-    "objectID": "Practice/Introducing_R_Homework.html#calculate-summary-statistics-for-wait-time",
-    "href": "Practice/Introducing_R_Homework.html#calculate-summary-statistics-for-wait-time",
-    "title": "Introducing R",
-    "section": "Calculate Summary Statistics for Wait time",
-    "text": "Calculate Summary Statistics for Wait time\nWhat is the mean wait time between eruptions?\nWhat is the maximum wait time between eruptions?\nThe middle 50% of wait times will be between what 2 numbers?"
+    "text": "group_by() + summarise()\nConsider the High School survey data with 60 columns and 312 respondents.\n\n# Load libraries and data\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nsurvey &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %&gt;% tibble()\n\nThe mosaic library is great for numerical summaries of quantitative variables using the favstats() function. We can create tables of the 5 number summary, mean, standard deviation, sample size, and number of missing values with one line of code:\n\nfavstats(survey$Height_cm)\n\n  min  Q1 median      Q3 max     mean       sd   n missing\n 1.68 161    170 178.125 999 169.2412 53.54382 312       0\n\n\nWe can add a grouping variable to get the same summary for each level of a group, using ~\n\nfavstats(survey$Height_cm ~ survey$Gender)\n\n  survey$Gender  min  Q1 median     Q3   max     mean       sd   n missing\n1        Female 5.50 160  162.5 167.15 182.8 158.6461 24.53056 152       0\n2          Male 1.68 172  177.9 182.80 999.0 179.3065 69.47610 160       0\n\n\nThis works great if you want to do one response/dependent variable at a time. But we often want specific summaries of data (often by groups) of more than one variable in the dataset.\nWe can use a combination of tidyverse functions, group_by() and summarise() to create custom summary tables.\nThe group_by() signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses. We can then “pipe” the grouped dataset into a summarize function and define what summary statistics we would like. summarise() works very much like the mutate() function in that we create a name for our summary and tell R how to make it.\nEXAMPLE: Let’s calculate the means for Height_cm, Reaction_time, and Social_Websites_Hours for Males and Females:\n\nclean &lt;- survey %&gt;%\n  group_by(Gender) %&gt;%\n  summarise(\n    mean_height = mean(Height_cm, na.rm=TRUE),\n    mean_react_time = mean(Reaction_time, na.rm=TRUE),\n    mean_social_media_hrs = mean(Social_Websites_Hours, na.rm=TRUE)\n  )\n\nclean\n\n# A tibble: 2 × 4\n  Gender mean_height mean_react_time mean_social_media_hrs\n  &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;\n1 Female        159.           0.717                  14.4\n2 Male          179.           0.639                  14.0\n\n\nPro Tip: Recall that the mean() function returns “NA” when there are missing values in the data. Adding na.rm=TRUE to your functions will make sure that you get a mean value.\nEXAMPLE: Let’s do the same means but for handedness:\n\nclean &lt;- survey %&gt;%\n  group_by(Handed) %&gt;%\n  summarise(\n    mean_height = mean(Height_cm),\n    mean_react_time = mean(Reaction_time),\n    mean_social_media_hrs = mean(Social_Websites_Hours)\n  )\n\nclean\n\n# A tibble: 3 × 4\n  Handed       mean_height mean_react_time mean_social_media_hrs\n  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;\n1 Ambidextrous        255.           0.352                  20.2\n2 Left-Handed         164.           1.45                   14.5\n3 Right-Handed        167.           0.583                  13.9\n\n\n\nCombining Tidy Functions\n\n\n\nClick to see how to filter outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).\n\n\n\nClick to see\n\n\nclean &lt;- survey %&gt;%\n  filter(Height_cm &lt; 214,\n         Reaction_time &lt; 1,\n         Social_Websites_Hours &lt; 100) %&gt;%\n  select(Gender, Height_cm, Reaction_time, Social_Websites_Hours)\n\n# Pipe the new clean dataset into the group_by() and summarise() as above:\n\nclean %&gt;%\n  group_by(Gender) %&gt;%\n  summarise(\n    mean_height = mean(Height_cm),\n    mean_react_time = mean(Reaction_time),\n    mean_social_media_hrs = mean(Social_Websites_Hours)\n  )\n\n# A tibble: 2 × 4\n  Gender mean_height mean_react_time mean_social_media_hrs\n  &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;\n1 Female        158.           0.444                  12.9\n2 Male          174.           0.395                  12.5"
   },
   {
     "objectID": "Practice/Regression_Problems.html",
@@ -770,6 +413,377 @@
     "text": "Check Model Requirements\nCheck the normality of the residuals:\nCheck for constant variance (Residual by Predicted plot):"
   },
   {
+    "objectID": "Practice/Introducing_R_Homework.html#calculate-the-summary-statistics-for-duration",
+    "href": "Practice/Introducing_R_Homework.html#calculate-the-summary-statistics-for-duration",
+    "title": "Introducing R",
+    "section": "Calculate the Summary Statistics for Duration",
+    "text": "Calculate the Summary Statistics for Duration\nWhat is the mean duration time of Old Faithful eruptions?\nWhat is the standard deviation of duration?"
+  },
+  {
+    "objectID": "Practice/Introducing_R_Homework.html#create-a-historgram-for-duration",
+    "href": "Practice/Introducing_R_Homework.html#create-a-historgram-for-duration",
+    "title": "Introducing R",
+    "section": "Create a Historgram for Duration",
+    "text": "Create a Historgram for Duration\nCreate a histogram and describe the shape of the distribution of duration:"
+  },
+  {
+    "objectID": "Practice/Introducing_R_Homework.html#calculate-summary-statistics-for-wait-time",
+    "href": "Practice/Introducing_R_Homework.html#calculate-summary-statistics-for-wait-time",
+    "title": "Introducing R",
+    "section": "Calculate Summary Statistics for Wait time",
+    "text": "Calculate Summary Statistics for Wait time\nWhat is the mean wait time between eruptions?\nWhat is the maximum wait time between eruptions?\nThe middle 50% of wait times will be between what 2 numbers?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BYU-Idaho Math 221: Introduction to Statistics in R",
+    "section": "",
+    "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.\n\n\nEach lesson will typically include: * Background readings (either from Stats Fundamentals or Workbooks) * Example code (mostly in Workbooks) * Opportunities to practice (Workbooks, Practice Problems and Application Activities)\nStats Fundamentals is a great reference for the core principles which are used throughout the course.\nWorkbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.\nThe Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.\nApplication Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.\nThe section labeled “R Help” provides resources to help with R programming.\n\n\nThis book was specifically designed for the Math 221D section, Intro to Stats In R.\nAfter introducing some foundational principles of Statistics, the recommended sequence:\n\nCourse Introduction, including R installation\nSummarizing Data - Shape and Center\nSummarizing Data - Measures of Spread\nProbability\nNormal Distribution\nDistribution of Sample Means\nProbability Calculations for Means\nIntroduction to Hypothesis Testing\nIntroduction to Confidence Intervals\nInference for a Mean\nInference for Dependent Samples\nInference for Independent Samples\nANOVA\nRegression\nDistribution of \\(\\hat{p}\\)\nInference for 1 Proportion\nInference for 2 Proportions\nChi Square Test for Independence"
+  },
+  {
+    "objectID": "index.html#a-customizable-textbook",
+    "href": "index.html#a-customizable-textbook",
+    "title": "BYU-Idaho Math 221: Introduction to Statistics in R",
+    "section": "",
+    "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.\n\n\nEach lesson will typically include: * Background readings (either from Stats Fundamentals or Workbooks) * Example code (mostly in Workbooks) * Opportunities to practice (Workbooks, Practice Problems and Application Activities)\nStats Fundamentals is a great reference for the core principles which are used throughout the course.\nWorkbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.\nThe Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.\nApplication Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.\nThe section labeled “R Help” provides resources to help with R programming.\n\n\nThis book was specifically designed for the Math 221D section, Intro to Stats In R.\nAfter introducing some foundational principles of Statistics, the recommended sequence:\n\nCourse Introduction, including R installation\nSummarizing Data - Shape and Center\nSummarizing Data - Measures of Spread\nProbability\nNormal Distribution\nDistribution of Sample Means\nProbability Calculations for Means\nIntroduction to Hypothesis Testing\nIntroduction to Confidence Intervals\nInference for a Mean\nInference for Dependent Samples\nInference for Independent Samples\nANOVA\nRegression\nDistribution of \\(\\hat{p}\\)\nInference for 1 Proportion\nInference for 2 Proportions\nChi Square Test for Independence"
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html",
+    "title": "Categorical Data Analysis",
+    "section": "",
+    "text": "Use the Star Wars dataset to answer the following questions:\n\nDo less than 20% of respondents feel Very Favorably towards Emperor Palpatine? (1-sample Z test for proportion)\nWhat is the difference in proportions of females and males who are Very Favorable towards Jar-Jar Binks? (2-sample Proportion)\nCome up with one other 2-sample proportion test using anything from the Star Wars dataset.\nTest to see if income and response to “Which Character Shot First?” are Independent (Chi-square)\n\nFor the proportion tests:\n\nDefine the null and alternative hypotheses\nInclude an explanation and conclusion for hypothesis tests\nInclude Confidence intervals and a sentence explaining each\nCheck the requirements for the hypothesis test and the confidence intervals\n\nFor the Chi-square test:\n\nDefine the null and alternative hypotheses\nInclude an explanation of the conclusion for\nBe sure to check the hypothesis requirements for a test of independence"
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#explore-the-data",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#explore-the-data",
+    "title": "Categorical Data Analysis",
+    "section": "Explore the data",
+    "text": "Explore the data\n\nnames(sw)\n\n [1] \"Are You a Fan of SW?\"               \"Favorability_Han Solo\"             \n [3] \"Favorability_Luke Skywalker\"        \"Favorability_Princess Leia Organa\" \n [5] \"Favorability_Anakin Skywalker\"      \"Favorability_Obi Wan Kenobi\"       \n [7] \"Favorability_Emperor Palpatine\"     \"Favorability_Darth Vader\"          \n [9] \"Favorability_Lando Calrissian\"      \"Favorability_Boba Fett\"            \n[11] \"Favorability_C-3P0\"                 \"Favorability_R2 D2\"                \n[13] \"Favorability_Jar Jar Binks\"         \"Favorability_Padme Amidala\"        \n[15] \"Favorability_Yoda\"                  \"who_shot_first\"                    \n[17] \"Familiar_with_expanded_universe\"    \"are_you_a_fan_of_expanded_universe\"\n[19] \"fan_of_star_trek\"                   \"Gender\"                            \n[21] \"Age\"                                \"Household.Income\"                  \n[23] \"Education\"                          \"Location\"                          \n\ntable(sw$`Favorability_Han Solo`)\n\n\n                                            \n                                          5 \nNeither favorably nor unfavorably (neutral) \n                                         44 \n                         Somewhat favorably \n                                        151 \n                       Somewhat unfavorably \n                                          8 \n                           Unfamiliar (N/A) \n                                         15 \n                             Very favorably \n                                        610 \n                           Very unfavorably \n                                          1 \n\naddmargins(table(sw$`Favorability_Han Solo`, sw$Gender))\n\n                                             \n                                                  Female Male Sum\n                                                0      2    3   5\n  Neither favorably nor unfavorably (neutral)   1     22   21  44\n  Somewhat favorably                            4     71   76 151\n  Somewhat unfavorably                          1      3    4   8\n  Unfamiliar (N/A)                              0      9    6  15\n  Very favorably                               10    289  311 610\n  Very unfavorably                              0      0    1   1\n  Sum                                          16    396  422 834\n\naddmargins(table(sw$`Favorability_Emperor Palpatine`))\n\n\n                                            \n                                         20 \nNeither favorably nor unfavorably (neutral) \n                                        213 \n                         Somewhat favorably \n                                        143 \n                       Somewhat unfavorably \n                                         68 \n                           Unfamiliar (N/A) \n                                        156 \n                             Very favorably \n                                        110 \n                           Very unfavorably \n                                        124 \n                                        Sum \n                                        834"
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#one-sample-proportion-test",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#one-sample-proportion-test",
+    "title": "Categorical Data Analysis",
+    "section": "One-sample Proportion Test",
+    "text": "One-sample Proportion Test\nWhat proportion of respondents are very favorable towards Emperor Palpatine?\nIs this significantly less than 20%?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#two-sample-proportion-test",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#two-sample-proportion-test",
+    "title": "Categorical Data Analysis",
+    "section": "Two-sample Proportion Test",
+    "text": "Two-sample Proportion Test\nWhat percent of female respondents are favorable towards Jar-Jar Binks?\nWhat percent of male respondents are favorable towards Jar-Jar Binks?\nAre they significantly different?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#choose-your-own-adventure",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#choose-your-own-adventure",
+    "title": "Categorical Data Analysis",
+    "section": "Choose your own adventure",
+    "text": "Choose your own adventure\nCompare 2 proportions of your choosing and perform a prop.test()."
+  },
+  {
+    "objectID": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#chi-square-test-for-independence",
+    "href": "Application_Activities/AA_Who_Shot_First_Cat_Vars.html#chi-square-test-for-independence",
+    "title": "Categorical Data Analysis",
+    "section": "Chi-square Test for Independence",
+    "text": "Chi-square Test for Independence\nTest to see if how you responded to the question “Who Shot First” is independent of income category.\nState your conclusion:"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html",
+    "href": "Application_Activities/AA_Unit1_Review.html",
+    "title": "Unit 1 Review",
+    "section": "",
+    "text": "Apply the 3 rules of probability in different scenarios\nDescribe the 5 steps of the statistical process\nDifferentiate between an observational study and an experiment\nDifferentiate between a population and a sample\nDescribe the 4 random sampling schemes\nExplain importance of random sampling \nDistinguish between quantitative and categorical variables\nCreate graphical summaries of data (boxplots, histograms) and be able to make conclusions based on the graphs\nCreate numerical summaries of data (mean, sd, 5 number summary, percentiles) and compare groups (centers, spreads)\nDistinguish between a parameter and a statistic\nDetermine the 5 number summary from a boxplot \nState the properties of a normal distribution\nCalculate the z-score for an individual from a normal population with mean, \\(\\mu\\), and std. dev, \\(\\sigma\\)\nCalculate probabilities (&gt;, &lt;, between) of certain values given \\(\\mu\\) and \\(\\sigma\\) \nDescribe the concept of a sampling distribution of the sample mean\nState the Central Limit Theorem\nDetermine the mean of the sampling distribution of the sample mean given \\(\\mu\\) and \\(\\sigma\\)\nDetermine the std. dev. of the sampling distribution of the sample mean given \\(\\mu\\) and \\(\\sigma\\)\nDetermine the shape of the sampling distribution given a sample size, n, and \\(\\mu\\) and \\(\\sigma\\)\nState the Law of Large Numbers"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html#housing-prices-in-rexburg",
+    "href": "Application_Activities/AA_Unit1_Review.html#housing-prices-in-rexburg",
+    "title": "Unit 1 Review",
+    "section": "Housing Prices in Rexburg",
+    "text": "Housing Prices in Rexburg\nYou are interested housing prices in Rexburg, Idaho. Load the housing data and respond to the following questions.\n\n# Load the data:\nhousing &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/MadisonCountyRealEstate.xlsx') %&gt;% select(ListPrice, Bedrooms)\n\nQ2.1:\nCreate a histogram of listing price.\n\nfavstats(housing$ListPrice ~ housing$Bedrooms)\n\n  housing$Bedrooms    min     Q1 median      Q3     max     mean        sd  n\n1                2  96900 108175 117450  129675  160000 119984.6  15206.23 26\n2                3 109900 142150 184700  213650  499999 199120.8  79099.36 48\n3                4 119900 157000 174900  228000  369000 200642.1  71075.72 19\n4                5 137000 189900 219900  275000  924500 250483.8 131359.88 37\n5                6 179900 281500 319000  364000  699000 340740.0 118103.19 15\n6                7 199000 454675 717450 1040000 1475000 777225.0 545108.00  4\n  missing\n1       0\n2       0\n3       0\n4       0\n5       0\n6       0\n\n\nWhat is the shape of the distribution of list prices for homes in Rexburg.\nQ2.2:\nCalculate the mean, standard deviation, 5 number summary and sample size of housing prices for each number of bedrooms.\n\nboxplot(housing$ListPrice ~ housing$Bedrooms, col=c(2,3,4,5,6,7), xlab = \"Number of Bedrooms\", ylab = \"Housing Price\", main = \"blah\")\n\n\n\n\n\n\n\n\nbold italics\nWhat is the standard deviation of homes with 3 bedrooms?\nHow do you interpret that number?\nQ2.3:\nWhat is the maximum value home price for a 2 bedroom house?\nSuppose there was a typo in the data and the maximum price for a 2 bedroom house was accidentally entered as $1,700,000.\nHow would the median change?\nHow would the mean change?\nHow would the standard deviation change?\nQ2.4:\nCreate a side-by-side boxplot of housing prices for each group. Modify the color scheme so that each boxplot is a different color.\nWhat trends do you notice?\nWhy might the box plot for 7 bedroom homes look so different than the others?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html#hair-color",
+    "href": "Application_Activities/AA_Unit1_Review.html#hair-color",
+    "title": "Unit 1 Review",
+    "section": "Hair Color",
+    "text": "Hair Color\nBrother Cannon has been collecting hair color data about his students for the last several semesters. The proportion of students with each hair color are as follows:\n(run the following R chunk to see the table more clearly)\n\nknitr::kable(tibble(Red=\"???\", Brown=.37, Black=.35, Blond = .22, Other=.02))\n\n\n\n\nRed\nBrown\nBlack\nBlond\nOther\n\n\n\n\n???\n0.37\n0.35\n0.22\n0.02\n\n\n\n\n\nQ3.1:\nWhat percent of Brother Cannon’s students have red hair?\nQ3.2:\nWhat’s the probability that a randomly selected student has either black or brown hair?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html#social-media-use",
+    "href": "Application_Activities/AA_Unit1_Review.html#social-media-use",
+    "title": "Unit 1 Review",
+    "section": "Social Media Use",
+    "text": "Social Media Use\nQ4.1:\nThe number of hours students spend on social media a week is known to be left skewed with a mean of 12 hours and a standard deviation 1.5.\nSuppose we take a random sample of 50 students and calculate the average time they spend on social media.\nQ4.2:\nWhat is the mean of the distribution of sample means for this sample size?\nQ4.3:\nWhat is the standard deviation of sample means for this sample size?\n\n1.5 / sqrt(50)\n\n[1] 0.212132\n\n\nQ4.4:\nWhat is the shape of the distribution of sample means for this sample size and why?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html#faculty-salaries",
+    "href": "Application_Activities/AA_Unit1_Review.html#faculty-salaries",
+    "title": "Unit 1 Review",
+    "section": "Faculty Salaries",
+    "text": "Faculty Salaries\nFaculty salaries at a university are known to be normally distributed with a mean of $108,552 and a standard deviation of $13,277.\nYou randomly sample n=15 faculty members and calculate their average salary.\nQ5.1:\nWhat is the mean of the distribution of sample means for this sample size?\nQ5.2:\nWhat is the standard deviation of sample means for this sample size?\n\n13277/sqrt(15)\n\n[1] 3428.107\n\n\nQ5.3:\nWhat is the shape of the distribution of sample means for this sample size and why?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit1_Review.html#normal-probability-calculations",
+    "href": "Application_Activities/AA_Unit1_Review.html#normal-probability-calculations",
+    "title": "Unit 1 Review",
+    "section": "Normal Probability Calculations",
+    "text": "Normal Probability Calculations\nHigh blood pressure is strongly associated with a host of diseases and increases risk of cardiac arrest (hear attacks) in older patients.\nSuppose that systolic blood pressure in the US is normally distributed with a mean = 128 and a standard deviation of 11.\nUse the following calculator to answer the questions below:\nQ6.1:\nWhat is the probability that a randomly selected person in the US has a systolic blood pressure of greater than 145?\nQ6.2\nWhat is the probability that a randomly selected group of 10 people in the US have an average blood pressure less than 130?\nQ6.3:\nYour doctor says you’re in great shape, and that you are in the 20th percentile for systolic blood pressure.\nWhat does it mean that you are the 20th percentile?\nWhat is your blood pressure?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html",
+    "href": "Application_Activities/AA_Data_Summaries.html",
+    "title": "Summarizing Data",
+    "section": "",
+    "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nIgnoring the Plant ID for a moment, there are three factors that possibly effect the uptake of a plant. These include Type, Treatment, and conc. The factor Type has two levels, Quebec and Mississippi. The factor Treatment has two levels chilled and nonchilled and the factor conc has seven levels 95, 175, 250, 350, 500, 675, and 1000.\nConc is related to the ambient concentration of CO2."
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#univariate-analysis",
+    "href": "Application_Activities/AA_Data_Summaries.html#univariate-analysis",
+    "title": "Summarizing Data",
+    "section": "Univariate Analysis",
+    "text": "Univariate Analysis\nCreate a table with the overall summary statistics for uptake:\n\n# This is NEW!  if you tell R to knit the favstats output using the \"kable\" function, it will look a lot nicer when the document is rendered.\n\nknitr::kable(favstats(CO2$uptake))\n\n\n\n\n\nmin\nQ1\nmedian\nQ3\nmax\nmean\nsd\nn\nmissing\n\n\n\n\n\n7.7\n17.9\n28.3\n37.125\n45.5\n27.2131\n10.81441\n84\n0\n\n\n\n\n\nCreate a histogram of the uptake data:"
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
+    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
+    "title": "Summarizing Data",
+    "section": "Impact of Plant Type on Uptake",
+    "text": "Impact of Plant Type on Uptake\nCreate a table of summary statistics of uptake for each type of plants used in the experiment.\nCreate a side-by-side boxplot of uptake for each type of plants used in the experiment."
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-treatment-on-uptake",
+    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-treatment-on-uptake",
+    "title": "Summarizing Data",
+    "section": "Impact of Treatment on Uptake",
+    "text": "Impact of Treatment on Uptake\nCreate a table of summary statistics of uptake for each treatment used in the experiment.\nCreate a side-by-side boxplot of uptake for each treatment used in the experiment."
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
+    "href": "Application_Activities/AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
+    "title": "Summarizing Data",
+    "section": "Impact of Ambient CO2 Concentration on Uptake",
+    "text": "Impact of Ambient CO2 Concentration on Uptake\nCreate a table of summary statistics of uptake for each level of CO2 found in the experiment.\nCreate a side-by-side boxplot of uptake for each level of CO2 found used in the experiment."
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#what-makes-this-an-experiment",
+    "href": "Application_Activities/AA_Data_Summaries.html#what-makes-this-an-experiment",
+    "title": "Summarizing Data",
+    "section": "What makes this an experiment?",
+    "text": "What makes this an experiment?\nThe background suggests this study was an experiment. In your own words, describe the difference between an experiment and an observational study.\nWhat would this study have looked like if it had been an observational study?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#what-is-the-population-of-this-study",
+    "href": "Application_Activities/AA_Data_Summaries.html#what-is-the-population-of-this-study",
+    "title": "Summarizing Data",
+    "section": "What is the Population of this study?",
+    "text": "What is the Population of this study?\nDescribe in your own words what the population of this study could be. How broad can we make our conclusions?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Data_Summaries.html#what-are-your-recommendations",
+    "href": "Application_Activities/AA_Data_Summaries.html#what-are-your-recommendations",
+    "title": "Summarizing Data",
+    "section": "What are your recommendations?",
+    "text": "What are your recommendations?\nIf you were to recommend a planting scenario to maximize CO2 uptake, what would you recommend based on the summaries provided?"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "",
+    "text": "In this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Brother Cannon’s Math 221 students.\nBegin by describing the population of this analysis. This will determine how broad our conclusions can be. Also include a table of the summary statistics and any visualizations that might tell a story about the data.\nThen, for each personality trait, include:\n\nA statement of the null and alternative hypotheses and why you chose the alternative you did.\nChoose alpha $= $\nCheck that your test requirements are satisfied (n &gt; 30 or qqPlot(respons_variable))\nRun the one-sample t-test and state your conclusion\nCalculate a \\(1-\\alpha\\) level confidence interval and describe in words what it means\n\nRecall that we can use “favstats()” to get summary statistics, boxplot() and histogram() to get visualizations, and the t.test() function to get hypothesis tests and confidence intervals. Be sure to label your plots’ axes and include a title.\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "Conclusion",
+    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-1",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-1",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "Conclusion",
+    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-2",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-2",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "Conclusion",
+    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-3",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-3",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "Conclusion",
+    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
+  },
+  {
+    "objectID": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-4",
+    "href": "Application_Activities/AA_Hypothesis_Conf_Int.html#conclusion-4",
+    "title": "Hypothesis Tests and Confidence Intervals",
+    "section": "Conclusion",
+    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html",
+    "href": "Application_Activities/AA_Unit2_Review.html",
+    "title": "Unit 2 Review",
+    "section": "",
+    "text": "In this activity, you will use everything we’ve covered in Unit 2 including:\n\nData manipulation using tidyverse functions\nHypothesis tests\n\n1-Sample t-test\n2-sample dependent t-test\n2-sample independent t-test\nANOVA\n\nConfidence Intervals where applicable\n\nWe will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.\n\n\nIn class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:\n\nRead in the data\n\nExplore the dataset as a whole:\n\nWhat are the column names? What do they mean? Where can I find information about them?\nWhat is the response/dependent variable? Could there be more than one?\nWhat are some factors that may impact the response variable? Which are likely the most important?\n\nExplore specific columns\n\nStart with the response variable. Are there any outliers? Obtain summary statistics (favstats()), visualize the data (histogram(), boxplot()).\nExplore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (unique())\n\nFormalize statistical hypotheses. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?\nPrepare data for analysis. You may need to clean the data (eg. data %&gt;% filter() %&gt;% select())\nPerform the appropriate analysis (t.test(), aov())\n\nAll these activities are important, but we may spend more or less time on any one of them depending on the state of the data."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#getting-to-know-a-new-dataset",
+    "href": "Application_Activities/AA_Unit2_Review.html#getting-to-know-a-new-dataset",
+    "title": "Unit 2 Review",
+    "section": "",
+    "text": "In class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:\n\nRead in the data\n\nExplore the dataset as a whole:\n\nWhat are the column names? What do they mean? Where can I find information about them?\nWhat is the response/dependent variable? Could there be more than one?\nWhat are some factors that may impact the response variable? Which are likely the most important?\n\nExplore specific columns\n\nStart with the response variable. Are there any outliers? Obtain summary statistics (favstats()), visualize the data (histogram(), boxplot()).\nExplore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (unique())\n\nFormalize statistical hypotheses. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?\nPrepare data for analysis. You may need to clean the data (eg. data %&gt;% filter() %&gt;% select())\nPerform the appropriate analysis (t.test(), aov())\n\nAll these activities are important, but we may spend more or less time on any one of them depending on the state of the data."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#categories-labeled-as-numbers",
+    "href": "Application_Activities/AA_Unit2_Review.html#categories-labeled-as-numbers",
+    "title": "Unit 2 Review",
+    "section": "Categories Labeled as Numbers",
+    "text": "Categories Labeled as Numbers\nSometimes even correct data can have issues that must be addressed. For example, categories are often labeled as numbers. Software can’t guess when numbers are supposed to be categories, so we have to tell R when a number should be treated as a category.\nTo force a variable to be a category, we use the factor() function in R. We can change the variable type in the data itself or change it in the analysis. We demonstrate both methods below.\n\nChanging a Column Type in a dataset\nFather’s education, Fedu, shows up as a number in R. The website suggests that the numbers represent categories (0 = none, 1 = primary education (4th grade), 2 = 5th to 9th grade, 3 = secondary education or 4 = higher education).\nTo change the data type in the data itself, we can use a mutate statement in the following manner:\n\n# Create a new dataset called fedu_data that begins with the clean data and adds a column that we called Fedu_factor, which is the factorized column, Fedu:\n\nnew_data &lt;- student %&gt;%\n  mutate(Fedu_factor = factor(Fedu))\n\n# Check the column names of the new dataset.  Notice the new column\nnames(new_data)\n\n# glimpse() shows us data types.  Notice after Fedu_factor, the &lt;fct&gt;, which shows us that this is in fact, a factor variable type.  &lt;dbl&gt; stands for \"double\" and is a numeric variable type\n\nglimpse(new_data)\n\n\n\nChanging the Variable Type “on the fly”\nYou may not want to bother changing all the variable types for each potential analysis. Fortunately, you can create a factor “on the fly” within the analysis function itself.\nBecause there are more than 2 levels of Father’s Education, I will demonstrate how this is done in an ANOVA:\n\n# Force Fedu to be treated like a category in ANOVA:\nfedu_anova &lt;- aov(student$G3 ~ factor(student$Fedu))\n\nsummary(fedu_anova)\n\n                      Df Sum Sq Mean Sq F value Pr(&gt;F)  \nfactor(student$Fedu)   4    238   59.53   2.891 0.0222 *\nResiduals            390   8032   20.59                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThis works with most analysis functions including t.test() and aov().\nNOTE: You only have to do this for variables in a dataset that are categories labeled as numbers. If the categories are text, t.test() and aov() automatically recognizes the variable as categorical. However, it does no harm to put a column with text into a factor() statement."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#cleaning-the-data",
+    "href": "Application_Activities/AA_Unit2_Review.html#cleaning-the-data",
+    "title": "Unit 2 Review",
+    "section": "Cleaning the Data",
+    "text": "Cleaning the Data\nWhile exploring the data, you may have noticed a few students ended up with a final grade of zero. While it may be interesting to explore what factors lead to an incomplete grade, we want to make conclusions about students who completed the course.\nCreate a clean dataset called, clean, that excludes zeros for G3. This will be used for the following analyses."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#comparing-schools",
+    "href": "Application_Activities/AA_Unit2_Review.html#comparing-schools",
+    "title": "Unit 2 Review",
+    "section": "Comparing Schools",
+    "text": "Comparing Schools\nSuppose the Gabriel Pereira school (GP) has more stringent admissions requirements. We suspect this would lead to higher grades, on average.\nCreate a side-by-side boxplot of the final grades for each school. Change the y-axis label to read “Final Grade out of 20”, the x-axis label to read “School”, and add a title.\nWhat do you notice?\nCreate a table of summary statistics of final grade for each school:\n\nHypothesis Test\nCreate a qqPlot to look at the normality of both groups:\nDo the grades look normally distributed for both groups? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypotheses and significance level.\nNOTE: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.\nHo:\nHa:\n\\(\\alpha = 0.\\)\nWhat is the P-value?\nWhat is your conclusion in context of the research question?\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval and explain it in context of the research question."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#comparing-second-period-grade-with-final-grade",
+    "href": "Application_Activities/AA_Unit2_Review.html#comparing-second-period-grade-with-final-grade",
+    "title": "Unit 2 Review",
+    "section": "Comparing Second Period Grade with Final Grade",
+    "text": "Comparing Second Period Grade with Final Grade\nWe suspect there is a difference between the second period and the final grade, though we do not know if they go up or down. Carry out a hypothesis test to evaluate this suspicion.\n\nHypothesis Test\nChoose how you will define the difference between final grade and second period grade, and create a new object called diff:\n\n# diff &lt;- \n\nWhat does a negative number mean?\nCreate a qqPlot of diff and check for normality:\nDo the grade differences look normally distributed? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypothesis and choose a significance level:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate analysis.\nWhat is the P-value?\nWhat conclusion do you make in context of this research question?\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval for the differences and explain it in context of the research question."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#absenteeism-in-portugal",
+    "href": "Application_Activities/AA_Unit2_Review.html#absenteeism-in-portugal",
+    "title": "Unit 2 Review",
+    "section": "Absenteeism in Portugal",
+    "text": "Absenteeism in Portugal\nIn 2021, Portugal reported having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).\n\nHypothesis Test\nCreate a qqPlot for absences.\nDo absences look normally distributed? If not, should we be concerned? Can we trust the P-value?\nState your null and alternative hypotheses and choose a significance level:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate analysis.\nState your conclusion in context of the research question.\n\n\nConfidence Interval\nCreate a \\((1-\\alpha)\\)% confidence interval for average absences and interpret it in context of the problem."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#the-impact-of-mothers-education-level",
+    "href": "Application_Activities/AA_Unit2_Review.html#the-impact-of-mothers-education-level",
+    "title": "Unit 2 Review",
+    "section": "The Impact of Mother’s Education Level",
+    "text": "The Impact of Mother’s Education Level\nThe level of education of the mother in the home is thought to have a significant impact on student success.\nCreate a side-by-side boxplot of final grades for each level of mother’s education.\nCreate a table of summary statistics of final grades for each level of mother’s education.\nHow many respondents have a mother with no formal education (level 0)?\nCreate a new dataset, clean_medu, that does not include mother’s education level 0.\n\n# clean_medu &lt;- clean %&gt;%\n\nCreate another boxplot with the new dataset that excludes level 0.\nCreate a summary table of final grades for each level of a mother’s education with the new dataset.\nWhat is the maximum standard deviation?\nWhat is the minimum standard deviation?\nVerify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.\n\nHypothesis Test\nState your null and alternative hypotheses and pick alpha:\nHo:\nHa:\n\\(\\alpha = 0.\\)\nPerform the appropriate statistical test.\nWhat is the test statistic?\nWhat is the P-value?\nCheck the normality of the residuals.\nDo the residuals appear roughly normally distributed?\nCan we trust the P-value.\nState your conclusion."
+  },
+  {
+    "objectID": "Application_Activities/AA_Unit2_Review.html#choose-your-own-adventure",
+    "href": "Application_Activities/AA_Unit2_Review.html#choose-your-own-adventure",
+    "title": "Unit 2 Review",
+    "section": "Choose your own adventure",
+    "text": "Choose your own adventure\nPick another variable that was not analyzed above.\nCreate a side-by-side boxplot. Be sure to properly label the graph and add sufficient information so readers can know what they are looking at without having to search through the report or code.\nPerform the appropriate analysis. Be sure to include a concise conclusion in the context of the research question, including a hypothesis test (and confidence interval if applicable.)"
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html",
+    "href": "Application_Activities/Semester_Project_Instructions.html",
+    "title": "Semester Project Instructions",
+    "section": "",
+    "text": "For this project, you will create an html report that is an original analysis based on data that you find.\nStart with a research question that interests you. It can be about any topic (finance, music, video games, hunting, weather, mental health, AI…seriously anything!)\nFor this project, a good research question will be interesting to you AND feasible to find available data. You can certainly think of exciting research questions for which the data are impossible to find or collect. Expect to refine your research question as you begin the data search.\nOnce you have a research question in mind, start looking for data relating to it. Below are some links that might be helpful for finding datasets.\n\n\nGoogle actually has a search engine specifically for datasets\nStatista has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.\nKaggle runs competitions for companies who outsource data challenges. It has also compiled a large library of datasets on a range of topics. Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face."
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#helpful-links",
+    "href": "Application_Activities/Semester_Project_Instructions.html#helpful-links",
+    "title": "Semester Project Instructions",
+    "section": "",
+    "text": "Google actually has a search engine specifically for datasets\nStatista has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.\nKaggle runs competitions for companies who outsource data challenges. It has also compiled a large library of datasets on a range of topics. Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face."
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#define-the-problem",
+    "href": "Application_Activities/Semester_Project_Instructions.html#define-the-problem",
+    "title": "Semester Project Instructions",
+    "section": "1. Define the Problem",
+    "text": "1. Define the Problem\nInclude an introduction that describes why you were interested in the topic and what you envisioned for an analysis. Some questions to address:\n\nWhat is the population of your research?\nWhat do you think is the nature of the relationship you hope to discover?\nWhat type of data are you looking for (quantitative? categorical?)\n\nWhat type of analysis are you expecting to do (t-test, regression? ANOVA? Chi-square test for independence? etc.)"
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#collect-the-data",
+    "href": "Application_Activities/Semester_Project_Instructions.html#collect-the-data",
+    "title": "Semester Project Instructions",
+    "section": "2. Collect the Data",
+    "text": "2. Collect the Data\nTalk about the process of how you found the data and whether you had to make adjustments to your research question."
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#describe-the-data",
+    "href": "Application_Activities/Semester_Project_Instructions.html#describe-the-data",
+    "title": "Semester Project Instructions",
+    "section": "3. Describe the Data",
+    "text": "3. Describe the Data\nInclude summary statistics (favstats, proportions, contingency tables, etc.)\nInclude GGPlot visualizations (boxplots, histograms/density plots, bar charts, etc.). Make the charts as understandable as possible without having to read the text description. That means make sure:\n\nAxes are labeled appropriately\nIt has a descriptive title\nLabel lines or points that are highlighted in the graph"
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#analyze-the-data",
+    "href": "Application_Activities/Semester_Project_Instructions.html#analyze-the-data",
+    "title": "Semester Project Instructions",
+    "section": "4. Analyze the Data",
+    "text": "4. Analyze the Data\nPerform the appropriate analysis for the data collected (t-test, F-test, regression, Chi-square, etc.)"
+  },
+  {
+    "objectID": "Application_Activities/Semester_Project_Instructions.html#take-action",
+    "href": "Application_Activities/Semester_Project_Instructions.html#take-action",
+    "title": "Semester Project Instructions",
+    "section": "5. Take Action",
+    "text": "5. Take Action\nBased on your statistical inference, what recommendations or actions would you take?"
+  },
+  {
+    "objectID": "Practice/Exploring_New_Data_with_Tidyverse.html",
+    "href": "Practice/Exploring_New_Data_with_Tidyverse.html",
+    "title": "Into The Tidyverse",
+    "section": "",
+    "text": "Statistics is only as interesting as the research questions we create. However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.\nThe more time we spend digging into the data and noticing irregularities, the more likely we are to make better research questions and more appropriate conclusions. It doesn’t matter how sophisticated our analysis becomes if it’s based on bad data.\nIn this activity, you will explore a survey about happiness and related factors. By reviewing the data at a high level and then drilling into specific variables, you will gain a better idea about what this survey contains, generate interesting research questions and, with clean data, make better-informed answers to those questions."
+  },
+  {
+    "objectID": "Practice/Exploring_New_Data_with_Tidyverse.html#lying",
+    "href": "Practice/Exploring_New_Data_with_Tidyverse.html#lying",
+    "title": "Into The Tidyverse",
+    "section": "Lying",
+    "text": "Lying\nRepeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying. http://127.0.0.1:41855/graphics/e18505de-f3d7-47b3-b868-2c638e36eb4c.png\n\nCreate a new dataset called lying that excludes the #N/A values in Lying and the Happiness scores outliers, and includes only “Happiness_score” and “Lying”:\n\n\nsteve &lt;- happiness %&gt;%\n  filter(Happiness_score &lt;= 15, \n         Happiness_score &gt;= 0, \n         Lying != \"#N/A\"\n  ) %&gt;%\n  select(Happiness_score, Lying)\n\n#View(steve)\n\n\nCreate a side-by-side boxplot and summary statistics (using favstats()) table for each attitude about Lying:\n\n\nboxplot(steve$Happiness_score ~ steve$Lying)\n\n\n\n\n\n\n\nfavstats(steve$Happiness_score ~ steve$Lying)\n\n                    steve$Lying min Q1 median Q3 max     mean       sd   n\n1         everytime it suits me   5  9     10 11  15 10.05839 2.175284 137\n2                         never   4  9     11 12  15 10.80000 2.138090  50\n3 only to avoid hurting someone   3  9     11 12  15 10.54444 1.997179 270\n4                     sometimes   3 10     11 12  15 10.71639 1.764933 543\n  missing\n1       0\n2       0\n3       0\n4       0"
+  },
+  {
+    "objectID": "Practice/Normal_Probability_Homework.html",
+    "href": "Practice/Normal_Probability_Homework.html",
+    "title": "Normal Probability Homework",
+    "section": "",
+    "text": "The Normal Distribution\nRecall that the normal distribution is a probability distribution defined by its center (\\(\\mu\\)) and its spread (\\(\\sigma\\)).\n[Insert examples of normal distributions with different means and standard deviations]\n\n\nNormal Probability Calculator\nUse the calculator below to calculate the probabilities using the normal distribution.\n\n# Value\nx &lt;- 161\n\n# Hypothesized Mean\nmu &lt;- 150.8\n\n# Population Standard deviation\nsigma &lt;- 8.8\n\n# Z-score:  number of standard deviations above the mean\nz &lt;- (x-mu) / sigma\nz\n\n[1] 1.159091\n\n# Probability of observing a z-score LESS THAN the one we observed (left tail)\npnorm(z)\n\n[1] 0.8767904\n\n# Probability of observing a z-score GREATER THAN the one we observed (Right Tail)\n1-pnorm(z)\n\n[1] 0.1232096\n\n# For calculating the area between 2 numbers\nA &lt;- 61.5\nB &lt;- 68.5\npnorm(B, mu, sigma) - pnorm(A, mu, sigma)\n\n[1] 4.287516e-21\n\n# Find the X_bar associated with a spceific percentile\nqnorm(.25, mu, sigma)\n\n[1] 144.8645\n\n\n\nWhat is the capital of France?\n\n( ) London\nBerlin\nParis\nMadrid"
+  },
+  {
+    "objectID": "R_Resources/Filter.html",
+    "href": "R_Resources/Filter.html",
+    "title": "Filtering Data",
+    "section": "",
+    "text": "We here demonstrate how to define certain criteria for determining which rows are included in the analysis. We will refer to the survey data, which consists of responses to 60 questions from 312 high school students.\n\n# Load libraries and data\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nsurvey &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %&gt;% tibble()"
+  },
+  {
+    "objectID": "R_Resources/Filter.html#logical-operators",
+    "href": "R_Resources/Filter.html#logical-operators",
+    "title": "Filtering Data",
+    "section": "Logical Operators",
+    "text": "Logical Operators\nLogical operators are used extensively in computer programming to evaluate if a specified condition is met. They return a “True” or a “False”, but are often treated as 1 for true and 0 for false.\nThe most common logical operators used to filter rows are:\n\n&lt; and &lt;= means “less than” and “less than or equal to” respectively\n&gt; and &gt;= means “greater than” and “greater than or equal to” respectively\n== means “equal to” (NOTE: we use double equals because in most computer languages, a single = is an assignment operator. This avoids ambiguity)\n!= means “not equal to”; this one is useful if you want to eliminate one level of a variable\n%in% is useful for defining a list of levels that you want to include\n\nWe typically begin with the raw dataset, then “pipe” that dataset into a sequence of functions using the “pipe” operator, %&gt;%.\nNotice that in our dataset we have someone input their height in centimeters as 999. This is an impossible value we may not want to include in a visualization or analysis.\nWe can create a new dataset, clean, that omits responses of people who are taller than 250cm (about 8 feet):\n\nclean &lt;- survey %&gt;% \n  filter(Height_cm &lt; 250)\n\n# the dim() function shows us how many rows and columns in a dataset\ndim(survey)\n\n[1] 312  60\n\ndim(clean)\n\n[1] 310  60\n\n\nThe above code will return a new dataset without the outliers.\nHow many rows does the original dataset have?\nHow many rows does the filtered dataset have?"
+  },
+  {
+    "objectID": "R_Resources/Filter.html#filtering-on-categorical-data",
+    "href": "R_Resources/Filter.html#filtering-on-categorical-data",
+    "title": "Filtering Data",
+    "section": "Filtering on Categorical Data",
+    "text": "Filtering on Categorical Data\nSuppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the filter() function separated by a comma:\n\n# See what the distinct values are in the Handed column\nunique(survey$Handed)\n\n[1] \"Left-Handed\"  \"Right-Handed\" \"Ambidextrous\"\n\nsurvey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed != \"Ambidextrous\")\n\n# A tibble: 302 × 60\n   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm\n   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;\n 1 USA     FL         2022         12 Male         18 Left-Handed        182\n 2 USA     IN         2022         12 Male         17 Right-Handed       190\n 3 USA     GA         2022         12 Female       17 Right-Handed       172\n 4 USA     NC         2022         11 Female       15 Right-Handed       163\n 5 USA     CO         2022         12 Female       17 Left-Handed         51\n 6 USA     MO         2022         11 Male         17 Right-Handed       181\n 7 USA     SC         2022         11 Female       18 Right-Handed       160\n 8 USA     WA         2022         11 Female       16 Right-Handed       156\n 9 USA     WA         2022         12 Female       17 Right-Handed       169\n10 USA     WA         2022         11 Male         18 Right-Handed       160\n# ℹ 292 more rows\n# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,\n#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,\n#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,\n#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,\n#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,\n#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …\n\n# We could also try using %in% instead of the !=\n\nsurvey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed %in% c(\"Left-Handed\", \"Right-Handed\"))\n\n# A tibble: 302 × 60\n   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm\n   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;\n 1 USA     FL         2022         12 Male         18 Left-Handed        182\n 2 USA     IN         2022         12 Male         17 Right-Handed       190\n 3 USA     GA         2022         12 Female       17 Right-Handed       172\n 4 USA     NC         2022         11 Female       15 Right-Handed       163\n 5 USA     CO         2022         12 Female       17 Left-Handed         51\n 6 USA     MO         2022         11 Male         17 Right-Handed       181\n 7 USA     SC         2022         11 Female       18 Right-Handed       160\n 8 USA     WA         2022         11 Female       16 Right-Handed       156\n 9 USA     WA         2022         12 Female       17 Right-Handed       169\n10 USA     WA         2022         11 Male         18 Right-Handed       160\n# ℹ 292 more rows\n# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,\n#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,\n#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,\n#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,\n#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,\n#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …\n\n\nNOTE: Using the %in% and the != will not always give you the same results. If there are misspellings or other options, using %in% will limit the data to only those with the exact spelling in the list provided. For example, “left.handed”, would be omitted. Misspellings would, however, be included if I use != \"Ambitextrous\" because that only takes out rows written exactly that way. Things like, ambidextrious or RightHanded would still be included.\nI could further limit my data to students from Florida and Missouri:\n\nnew_data &lt;- survey %&gt;%\n  filter(Height_cm &lt; 250,\n         Handed %in% c(\"Left-Handed\", \"Right-Handed\"),\n         Region %in% c(\"MO\", \"FL\"))\n\ndim(new_data)\n\n[1] 27 60\n\n\nHow many rows does our latest dataset have?"
+  },
+  {
     "objectID": "R_Resources/Importing_Data.html",
     "href": "R_Resources/Importing_Data.html",
     "title": "Downloading Data",
@@ -789,6 +803,13 @@
     "title": "Downloading Data",
     "section": "PC Instructions:",
     "text": "PC Instructions:\n\nOpen File Explorer, which is usually the folder icon located on your taskbar or in the Start menu.\nNavigate to the folder where your file is located by clicking through the folders.\nOnce you’ve found your file, right-click on it and select “Properties”.\nIn the Properties window, you’ll see a field called “Location” or “Location:” which shows you the file path. It looks something like C:\\Users\\YourUsername\\Documents\\YourFile.csv. You can copy this path by selecting it and pressing Ctrl + C.\n\nIn both cases, the file path tells the computer where to find your file, similar to how a street address tells someone where to find a physical location. You can use this file path to access your file from anywhere on your computer.\nUnfortunately, R doesn’t like single backslashes, \\. If you’re on a PC you can either add a second \\ or switch them to /\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(ggplot2)\n\nwar &lt;- import('C:\\\\Users\\\\paulccannon\\\\OneDrive - BYU-Idaho\\\\Math221inR\\\\countries-in-conflict-data.csv')\nwar &lt;- import('C:/Users/paulccannon/OneDrive - BYU-Idaho/Math221inR/countries-in-conflict-data.csv')\n\nThe rio::import() function can handle many different types data types (.xlsx, .xls, .csv, .txt, and many others). If you run into a data file type that rio can’t import, there are other libraries that have similar functions that can do the same thing. But we limit the scope for this class to sources that rio can handle."
+  },
+  {
+    "objectID": "R_Resources/Select.html",
+    "href": "R_Resources/Select.html",
+    "title": "select()",
+    "section": "",
+    "text": "Selecting Columns\nConsider the High School survey data with 60 columns and 312 respondents.\n\n# Load libraries and data\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nsurvey &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %&gt;% tibble()\n\nIt is likely that we are not interested in analyzing every column in this dataset. Many may even be useless. We can use the tidyverse function, select() to create a subset of the columns that we are primarily interested in.\nRecall that we can “pipe” the raw data into tidy functions using %&gt;%. Suppose we want to see if there are differences in reaction times (Reaction_time) for left-handed and right-handed students. We could create a more manageable dataset with only the columns of interest:\n\nsurvey %&gt;%\n  select(Handed, Reaction_time)\n\n# A tibble: 312 × 2\n   Handed       Reaction_time\n   &lt;chr&gt;                &lt;dbl&gt;\n 1 Left-Handed          0.349\n 2 Right-Handed         0.358\n 3 Right-Handed         0.447\n 4 Right-Handed         0.438\n 5 Left-Handed          0.542\n 6 Right-Handed         0.428\n 7 Ambidextrous         0.258\n 8 Right-Handed         0.427\n 9 Right-Handed         0.412\n10 Right-Handed         0.346\n# ℹ 302 more rows\n\n\n\nCombining Tidy Functions\n\n\n\nClick to see how to filter out Ambitextrous participants and reaction time outliers (reaction times less than 1 seconds):\n\n\n\nClick to see\n\n\nclean &lt;- survey %&gt;%\n  filter(Handed != \"Ambidextrous\",\n         Reaction_time &lt; 1) %&gt;%\n  select(Handed, Reaction_time)\n\nboxplot(clean$Reaction_time ~ clean$Handed, col = c(2,3), ylab = \"Reaction Times\", xlab=\"\", main = \"Distribution of Reaction times for \\n Left and Right-hand Dominance\")\n\n\n\n\n\n\n\n\nWhich hand dominance appears to have quicker reaction times?"
   },
   {
     "objectID": "Textbook/Course_Introduction.html",
