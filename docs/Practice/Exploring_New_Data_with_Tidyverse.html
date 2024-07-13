@@ -248,23 +248,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../Application_Activities/AA_Unit1_Review.html">
- <span class="dropdown-text">Unit 1 Review</span></a>
+ <span class="dropdown-text">Statistical Foundations</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Application_Activities/AA_Hypothesis_Conf_Int.html">
- <span class="dropdown-text">Hypothesis Tests and Confidence Intervals</span></a>
+ <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Application_Activities/AA_Unit2_Review.html">
- <span class="dropdown-text">Unit 2 Review</span></a>
+ <span class="dropdown-text">Comparing Means</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Application_Activities/AA_Who_Shot_First_Cat_Vars.html">
- <span class="dropdown-text">Categorical Data Analysis</span></a>
+ <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../Application_Activities/Semester_Project_Instructions.html">
- <span class="dropdown-text">Semester Project Instructions</span></a>
+ <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
   </li>
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/GroupBy_Summarise.html">
- <span class="dropdown-text">group_by() + summarise()</span></a>
+ <span class="dropdown-text"><code>group_by()</code> + <code>summarise()</code></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Importing_Data.html">
@@ -430,8 +430,8 @@ $ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 1
 </div>
 <p><strong>PRO TIP</strong>: Ask a ton of questions throughout this process! You are not always the subject matter expert for an analysis. Find someone who is and learn as much as you can from them.</p>
 <p>As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response. Start to <strong>mentally rank</strong> which factors you think might be most impactful.</p>
-<p><strong>QUESTIONS</strong>: For our data, what do you think will be our response variable? Happiness</p>
-<p>What other factors do you think might impact the response variable? Fear, Healthy</p>
+<p><strong>QUESTIONS</strong>: For our data, what do you think will be our response variable?</p>
+<p>What other factors do you think might impact the response variable?</p>
 <p>Keep in mind that there may be multiple response variables to explore.</p>
 </section>
 </section>
@@ -507,7 +507,7 @@ $ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 1
 </div>
 </div>
 <p>Are there any values we may need to filter out?</p>
-<p>Excel uses <code>#N/A</code> as a missing value, but in R this is treated like another possible value.</p>
+<p>Excel uses <code>#N/A</code> as a missing value, but in R, this is treated like another level of a categorical variable.</p>
 <p>Pick 2 more <em>categorical</em> variables and list their unique values:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Education)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -553,35 +553,34 @@ $ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 1
 <p>We also want to compare those who “drink a lot” and those who “never drink”.</p>
 <p>Replace the blanks below to create a new dataset called <code>alcohol_use</code> that removes the incorrect happiness scores and includes only those who “drink a lot” and “never drink” and includes only those 2 columns</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>alcohol_use <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         Alcohol <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"drink a lot"</span>, <span class="st">"never"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Alcohol, Happiness_score)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#View(alcohol_use)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>alcohol_use <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score __ <span class="dv">15</span>, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> __,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>         Alcohol ____ <span class="fu">c</span>(<span class="st">"drink a lot"</span>, <span class="st">"never"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Alcohol, Happiness_score)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(alcohol_use)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:3:26: unexpected input
+2: alcohol_use &lt;- happiness %&gt;%
+3:   filter(Happiness_score _
+                            ^</code></pre>
+</div>
 </div>
 <p>Check the histogram of happiness scores in the alcohol_use data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(alcohol_use<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(alcohol_use<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'alcohol_use' not found</code></pre>
 </div>
 </div>
 <p>How would you describe the shape of the distribution?</p>
 <p>Create a side-by-side boxplot and summary statistics table for each level of alcohol use:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(alcohol_use<span class="sc">$</span>Happiness_score <span class="sc">~</span> alcohol_use<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(alcohol_use<span class="sc">$</span>Happiness_score <span class="sc">~</span> alcohol_use<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(predvars, data, env): object 'alcohol_use' not found</code></pre>
 </div>
 </div>
 <p>How different do the happiness scores appear to be between these two groups?</p>
@@ -589,44 +588,40 @@ $ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 1
 <p>It’s important to understand that sometimes finding nothing is finding something.</p>
 <section id="lying" class="level2">
 <h2 class="anchored" data-anchor-id="lying">Lying</h2>
-<p>Repeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying. http://127.0.0.1:41855/graphics/e18505de-f3d7-47b3-b868-2c638e36eb4c.png</p>
+<p>Repeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying.</p>
 <ol type="1">
 <li>Create a new dataset called <code>lying</code> that excludes the <code>#N/A</code> values in <code>Lying</code> and the Happiness scores outliers, and includes only “Happiness_score” and “Lying”:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>steve <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>         Lying <span class="sc">!=</span> <span class="st">"#N/A"</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Happiness_score, Lying)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(steve)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>lying_data <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> __, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>         _______________ <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>         Lying __ <span class="st">"#N/A"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">______</span>(Happiness_score, Lying)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#View(lying_data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:3:30: unexpected input
+2: lying_data &lt;- happiness %&gt;%
+3:   filter(Happiness_score &lt;= __
+                                ^</code></pre>
+</div>
 </div>
 <ol start="2" type="1">
 <li>Create a side-by-side boxplot and summary statistics (using <code>favstats()</code>) table for each attitude about Lying:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Happiness_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(steve<span class="sc">$</span>Happiness_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                    steve$Lying min Q1 median Q3 max     mean       sd   n
-1         everytime it suits me   5  9     10 11  15 10.05839 2.175284 137
-2                         never   4  9     11 12  15 10.80000 2.138090  50
-3 only to avoid hurting someone   3  9     11 12  15 10.54444 1.997179 270
-4                     sometimes   3 10     11 12  15 10.71639 1.764933 543
-  missing
-1       0
-2       0
-3       0
-4       0</code></pre>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(____________________ <span class="sc">~</span> lying_data<span class="sc">$</span>Lying)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(lying_data<span class="sc">$</span>Happiness_score <span class="sc">~</span> _______________)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:2:10: unexpected input
+1: 
+2: boxplot(__
+            ^</code></pre>
 </div>
 </div>
 </section>
@@ -636,31 +631,16 @@ $ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 1
 <p>Pick another <strong>categorical variable</strong> with multiple groups that may impact happiness score.</p>
 <p>Be sure to clean out any ‘nunya business’ or ‘#N/A’ that might be there and clean out the outliers in happiness:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>steve <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> <span class="dv">15</span>, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>         Lying <span class="sc">!=</span> <span class="st">"#N/A"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>         Age <span class="sc">&lt;</span> <span class="dv">100</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>         Age <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Happiness_score, Religiosity_score, Lying, Age)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Religiosity_score <span class="sc">~</span> steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(steve<span class="sc">$</span>Age<span class="sc">~</span>steve<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>()</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in boxplot.default(): argument "x" is missing, with no default</code></pre>
 </div>
 </div>
 <p>What conclusions can you make?</p>

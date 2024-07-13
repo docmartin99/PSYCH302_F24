@@ -68,11 +68,9 @@ There are several ways to look at the data at a high level:
 
 
 ```{r}
-
 #View(happiness)
 glimpse(happiness)
 #head(happiness)
-
 ```
 
 
@@ -80,9 +78,9 @@ __PRO TIP__: Ask a ton of questions throughout this process! You are not always 
 
 As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response.  Start to **mentally rank** which factors you think might be most impactful.  
 
-__QUESTIONS__: For our data, what do you think will be our response variable? Happiness
+__QUESTIONS__: For our data, what do you think will be our response variable? 
 
-What other factors do you think might impact the response variable? Fear, Healthy
+What other factors do you think might impact the response variable? 
 
 Keep in mind that there may be multiple response variables to explore.  
 
@@ -135,7 +133,7 @@ table(happiness$Lying)
 
 Are there any values we may need to filter out?
 
-Excel uses `#N/A` as a missing value, but in R this is treated like another possible value.  
+Excel uses `#N/A` as a missing value, but in R, this is treated like another level of a categorical variable.  
 
 Pick 2 more *categorical* variables and list their unique values:
 
@@ -186,9 +184,9 @@ Replace the blanks below to create a new dataset called `alcohol_use` that remov
 ```{r}
 
 alcohol_use <- happiness %>%
-  filter(Happiness_score <= 15, 
-         Happiness_score >= 0,
-         Alcohol %in% c("drink a lot", "never")) %>%
+  filter(Happiness_score __ 15, 
+         Happiness_score >= __,
+         Alcohol ____ c("drink a lot", "never")) %>%
   select(Alcohol, Happiness_score)
 
 #View(alcohol_use)
@@ -206,12 +204,10 @@ histogram(alcohol_use$Happiness_score)
 How would you describe the shape of the distribution?
 
 
-
 Create a side-by-side boxplot and summary statistics table for each level of alcohol use:
 
 ```{r}
 boxplot(alcohol_use$Happiness_score ~ alcohol_use$Alcohol)
-
 ```
 
 How different do the happiness scores appear to be between these two groups?
@@ -222,20 +218,20 @@ It's important to understand that sometimes finding nothing is finding something
 
 ## Lying
 
-Repeat the above analysis comparing how peoples' happiness scores depend on their attitudes about lying.  http://127.0.0.1:41855/graphics/e18505de-f3d7-47b3-b868-2c638e36eb4c.png
+Repeat the above analysis comparing how peoples' happiness scores depend on their attitudes about lying.  
 
   1. Create a new dataset called `lying` that excludes the `#N/A` values in `Lying` and the Happiness scores outliers, and includes only "Happiness_score" and "Lying":
 
 ```{r}
 
-steve <- happiness %>%
-  filter(Happiness_score <= 15, 
-         Happiness_score >= 0, 
-         Lying != "#N/A"
+lying_data <- happiness %>%
+  filter(Happiness_score <= __, 
+         _______________ >= 0, 
+         Lying __ "#N/A"
   ) %>%
-  select(Happiness_score, Lying)
+  ______(Happiness_score, Lying)
 
-#View(steve)
+#View(lying_data)
 
 ```
 
@@ -243,9 +239,9 @@ steve <- happiness %>%
 
 ```{r}
 
-boxplot(steve$Happiness_score ~ steve$Lying)
+boxplot(____________________ ~ lying_data$Lying)
 
-favstats(steve$Happiness_score ~ steve$Lying)
+favstats(lying_data$Happiness_score ~ _______________)
 
 ```
 
@@ -258,19 +254,14 @@ Be sure to clean out any 'nunya business' or '#N/A' that might be there and clea
 
 ```{r}
 
-steve <- happiness %>%
-  filter(Happiness_score <= 15, 
-         Happiness_score >= 0, 
-         Lying != "#N/A",
-         Age < 100,
-         Age > 0
+new_data <- happiness %>%
+  filter(
+    
   ) %>%
-  select(Happiness_score, Religiosity_score, Lying, Age)
+  select()
 
 
-boxplot(steve$Religiosity_score ~ steve$Lying)
-
-boxplot(steve$Age~steve$Lying)
+boxplot()
 
 ```
 

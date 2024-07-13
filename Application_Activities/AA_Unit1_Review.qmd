@@ -1,6 +1,6 @@
 ---
-title: "Unit 1 Review"
-subtitle: "Statistical Foundations"
+title: "Statistical Foundations"
+subtitle: "Unit 1 Review"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

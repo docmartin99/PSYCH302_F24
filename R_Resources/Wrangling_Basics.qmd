@@ -1,5 +1,5 @@
 ---
-title: "Data Wrangling"
+title: "Intro to Data Wrangling"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

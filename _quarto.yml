@@ -38,6 +38,7 @@ website:
       menu:
          - href: ./Practice/Introducing_R_Homework.qmd
          - href: ./Practice/Exploring_New_Data_with_Tidyverse.qmd
+         - href: ./Practice/More_Tidy_Practice.qmd
          - href: ./Practice/Regression_Problems.qmd
 
     - text: "Application Activities"
@@ -51,7 +52,12 @@ website:
 
     - text: "R Help"
       menu:
+        - text: "Tidyverse Cheat Sheet"
+          href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+        - text: "R for Data Science"
+          href: https://r4ds.had.co.nz/transform.html
         - href: ./Workbooks/Installing_R.qmd
+        - href: ./R_Resources/GGPlot_Intro.qmd
         - href: ./R_Resources/Wrangling_Basics.qmd
         - href: ./R_Resources/Filter.qmd
         - href: ./R_Resources/Select.qmd

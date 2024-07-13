@@ -1,5 +1,5 @@
 ---
-title: "group_by() + summarise()"
+title: "`group_by()` + `summarise()`"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -128,7 +128,7 @@ clean <- survey %>%
 clean
 ```
 
-I can also use the `n()` function to count the number of observations in each group:  
+I can also use the `n()` function without any inputs to count the number of observations in each group:  
 
 ```{r}
 clean <- survey %>%

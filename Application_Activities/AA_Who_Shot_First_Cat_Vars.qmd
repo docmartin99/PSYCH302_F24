@@ -1,6 +1,6 @@
 ---
-title: "Categorical Data Analysis"
-subtitle: "Application Activity"
+title: "Who Shot First?"
+subtitle: "Categorical Data Application Activity"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
