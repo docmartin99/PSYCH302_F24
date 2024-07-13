@@ -106,8 +106,41 @@ clean %>%
 
 ```
 
-
 </details>
 
 </div>
 
+# Grouping by Multiple Variables
+
+It is simple to get summary statistics for multiple grouping factors.  
+
+__EXAMPLE__:  Suppose we want the same means calculated above, but for gender and handedness: 
+
+```{r}
+clean <- survey %>%
+  group_by(Gender, Handed) %>%
+  summarise(
+    mean_height = mean(Height_cm, na.rm=TRUE),
+    mean_react_time = mean(Reaction_time, na.rm=TRUE),
+    mean_social_media_hrs = mean(Social_Websites_Hours, na.rm=TRUE)
+  )
+
+clean
+```
+
+I can also use the `n()` function to count the number of observations in each group:  
+
+```{r}
+clean <- survey %>%
+  group_by(Gender, Handed) %>%
+  summarise(
+    mean_height = mean(Height_cm, na.rm=TRUE),
+    mean_react_time = mean(Reaction_time, na.rm=TRUE),
+    mean_social_media_hrs = mean(Social_Websites_Hours, na.rm=TRUE),
+    N = n()
+  )
+
+clean
+```
+
+This shows me that there are only 3 female ambidextrous students in the sample and 6 male ambidextrous students.  

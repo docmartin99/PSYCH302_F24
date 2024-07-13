@@ -330,10 +330,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#choosing-rows" id="toc-choosing-rows" class="nav-link" data-scroll-target="#choosing-rows">Choosing Rows</a>
+  <li><a href="#choosing-rows" id="toc-choosing-rows" class="nav-link active" data-scroll-target="#choosing-rows">Choosing Rows</a>
   <ul class="collapse">
   <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
+  </ul></li>
+  <li><a href="#removing-outliers" id="toc-removing-outliers" class="nav-link" data-scroll-target="#removing-outliers">Removing Outliers</a>
+  <ul class="collapse">
   <li><a href="#filtering-on-categorical-data" id="toc-filtering-on-categorical-data" class="nav-link" data-scroll-target="#filtering-on-categorical-data">Filtering on Categorical Data</a></li>
   </ul></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a></li>
@@ -362,9 +364,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>We here demonstrate how to define certain criteria for determining which rows are included in the analysis. We will refer to the <code>survey</code> data, which consists of responses to 60 questions from 312 high school students.</p>
+<section id="choosing-rows" class="level1">
+<h1>Choosing Rows</h1>
+<p>Good scientists <strong>NEVER</strong> delete data from original records. The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data.</p>
+<p>We here demonstrate how to define criteria for choosing which rows to include from the data. Consider the High School survey data which consists of responses to 60 questions from 312 high school students.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -375,34 +378,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="choosing-rows" class="level1">
-<h1>Choosing Rows</h1>
-<p>Good scientists <strong>NEVER</strong> delete data from original records. The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data.</p>
 <section id="logical-operators" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operators">Logical Operators</h2>
-<p>Logical operators are used extensively in computer programming to evaluate if a specified condition is met. They return a “True” or a “False”, but are often treated as 1 for true and 0 for false.</p>
+<p>Logical operators are used extensively in computer programming to evaluate if a specified condition is met. They return a “True” or a “False” but are often treated as 1’s and 0’s respectively.</p>
 <p>The most common logical operators used to filter rows are:</p>
 <ul>
 <li><code>&lt;</code> and <code>&lt;=</code> means “less than” and “less than or equal to” respectively</li>
 <li><code>&gt;</code> and <code>&gt;=</code> means “greater than” and “greater than or equal to” respectively</li>
 <li><code>==</code> means “equal to” (NOTE: we use double equals because in most computer languages, a single <code>=</code> is an assignment operator. This avoids ambiguity)</li>
 <li><code>!=</code> means “not equal to”; this one is useful if you want to eliminate one level of a variable</li>
-<li><code>%in%</code> is useful for defining a list of levels that you want to include</li>
+<li><code>%in%</code> selects specified levels you want to include</li>
 </ul>
-<p>We typically begin with the raw dataset, then “pipe” that dataset into a sequence of functions using the “pipe” operator, <code>%&gt;%</code>.</p>
-<p>Notice that in our dataset we have someone input their height in centimeters as 999. This is an impossible value we may not want to include in a visualization or analysis.</p>
+</section>
+</section>
+<section id="removing-outliers" class="level1">
+<h1>Removing Outliers</h1>
+<p>One common use of<code>filter()</code> is to remove outliers. Favstats of Height_cm shows that the tallest person is 999 cm. This means there is at least one impossible value we may not want to include in a visualization or analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
+ 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
+</div>
+</div>
 <p>We can create a new dataset, <code>clean</code>, that omits responses of people who are taller than 250cm (about 8 feet):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the dim() function shows us how many rows and columns in a dataset</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the dim() function shows us how many rows and columns in a dataset</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 312  60</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 310  60</code></pre>
 </div>
@@ -410,19 +419,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The above code will return a new dataset without the outliers.</p>
 <p><strong>How many rows does the original dataset have?</strong></p>
 <p><strong>How many rows does the filtered dataset have?</strong></p>
-</section>
 <section id="filtering-on-categorical-data" class="level2">
 <h2 class="anchored" data-anchor-id="filtering-on-categorical-data">Filtering on Categorical Data</h2>
 <p>Suppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the <code>filter()</code> function separated by a comma:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See what the distinct values are in the Handed column</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See what the distinct values are in the Handed column</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Left-Handed"  "Right-Handed" "Ambidextrous"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 302 × 60
    Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
@@ -445,11 +453,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
 #   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We could also try using %in% instead of the !=</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We could also try using %in% instead of  "!="</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 302 × 60
    Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
@@ -473,15 +481,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
 </div>
 </div>
-<p><strong>NOTE</strong>: Using the <code>%in%</code> and the <code>!=</code> will not always give you the same results. If there are misspellings or other options, using <code>%in%</code> will limit the data to only those with the exact spelling in the list provided. For example, “left.handed”, would be omitted. Misspellings would, however, be included if I use <code>!= "Ambitextrous"</code> because that only takes out rows written exactly that way. Things like, <code>ambidextrious</code> or <code>RightHanded</code> would still be included.</p>
+<p><strong>NOTE</strong>: The <code>%in%</code> and the <code>!=</code> will not always give you the same results. If there are misspellings or other options, using <code>%in%</code> will limit the data to only those with the exact spelling in the list provided. For example, someone responding “left handed”, would not be included in the clean data. Misspellings would, however, be included if I use <code>!= "Ambitextrous"</code> because that only removes rows written exactly that way. Things like, <code>ambidextrious</code> or <code>RightHanded</code> would still be included.</p>
 <p>I could further limit my data to students from Florida and Missouri:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MO"</span>, <span class="st">"FL"</span>))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MO"</span>, <span class="st">"FL"</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 27 60</code></pre>
 </div>
@@ -495,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>Vegetarian</code> column has “Yes” and “No” as possible options.</p>
 <p>The <code>Favorite_Food</code> column has “Meat”, “Pizza/Pasta”, “Breads/Sandwiches”, “Rice/Noodle dishes”, “Poultry”, “Seafood”, “Vegetables”, “Desserts”, “Fruit”, “Salads”, “No favorite”, “Other” and “Soups” as options.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>vegetarians <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vegetarians <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
