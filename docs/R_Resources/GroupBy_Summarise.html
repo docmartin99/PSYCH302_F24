@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Summarizing Data</title>
+<title>Math221 Notebook - group_by() + summarise()</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Filter.html">
- <span class="dropdown-text">Filtering Data</span></a>
+ <span class="dropdown-text"><code>filter()</code></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Select.html">
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/GroupBy_Summarise.html">
- <span class="dropdown-text">Summarizing Data</span></a>
+ <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Importing_Data.html">
@@ -330,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#group_by-summarise" id="toc-group_by-summarise" class="nav-link active" data-scroll-target="#group_by-summarise"><code>group_by()</code> + <code>summarise()</code></a></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link active" data-scroll-target="#summarizing-data">Summarizing Data</a></li>
   </ul>
 </nav>
     </div>
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summarizing Data</h1>
+<h1 class="title">group_by() + summarise()</h1>
 </div>
 
 
@@ -356,8 +356,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="group_by-summarise" class="level1">
-<h1><code>group_by()</code> + <code>summarise()</code></h1>
+<section id="summarizing-data" class="level1">
+<h1>Summarizing Data</h1>
 <p>Consider the High School survey data with 60 columns and 312 respondents.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
@@ -414,9 +414,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -452,16 +452,20 @@ Click to see
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm),</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time),</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ht =</span> <span class="fu">sd</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_react_time =</span> <span class="fu">sd</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_social_hrs =</span> <span class="fu">sd</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Gender mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female        158.           0.444                  12.9
-2 Male          174.           0.395                  12.5</code></pre>
+<pre><code># A tibble: 2 × 7
+  Gender mean_height sd_ht mean_react_time sd_react_time mean_social_media_hrs
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;                 &lt;dbl&gt;
+1 Female        158.  25.1           0.444         0.134                  12.9
+2 Male          174.  23.4           0.395         0.139                  12.5
+# ℹ 1 more variable: sd_social_hrs &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </details>

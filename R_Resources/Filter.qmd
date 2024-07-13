@@ -24,7 +24,7 @@ survey <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/H
 ```
 
 
-# Choosing Rows - `filter()`
+# Choosing Rows
 
 Good scientists **NEVER** delete data from original records.  The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data. 
 

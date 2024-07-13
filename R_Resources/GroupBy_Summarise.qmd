@@ -64,9 +64,9 @@ __EXAMPLE__:  Let's do the same means but for handedness:
 clean <- survey %>%
   group_by(Handed) %>%
   summarise(
-    mean_height = mean(Height_cm),
-    mean_react_time = mean(Reaction_time),
-    mean_social_media_hrs = mean(Social_Websites_Hours)
+    mean_height = mean(Height_cm, na.rm=TRUE),
+    mean_react_time = mean(Reaction_time, na.rm=TRUE),
+    mean_social_media_hrs = mean(Social_Websites_Hours, na.rm=TRUE)
   )
 
 clean
@@ -96,9 +96,12 @@ clean <- survey %>%
 clean %>%
   group_by(Gender) %>%
   summarise(
-    mean_height = mean(Height_cm),
-    mean_react_time = mean(Reaction_time),
-    mean_social_media_hrs = mean(Social_Websites_Hours)
+    mean_height = mean(Height_cm, na.rm=TRUE),
+    sd_ht = sd(Height_cm, na.rm=TRUE),
+    mean_react_time = mean(Reaction_time, na.rm=TRUE),
+    sd_react_time = sd(Reaction_time, na.rm=TRUE),
+    mean_social_media_hrs = mean(Social_Websites_Hours, na.rm=TRUE),
+    sd_social_hrs = sd(Social_Websites_Hours, na.rm=TRUE)
   )
 
 ```

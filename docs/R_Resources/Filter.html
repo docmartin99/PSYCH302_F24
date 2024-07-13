@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Filtering Data</title>
+<title>Math221 Notebook - filter()</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Filter.html">
- <span class="dropdown-text">Filtering Data</span></a>
+ <span class="dropdown-text"><code>filter()</code></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Select.html">
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/GroupBy_Summarise.html">
- <span class="dropdown-text">Summarizing Data</span></a>
+ <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Importing_Data.html">
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#choosing-rows---filter" id="toc-choosing-rows---filter" class="nav-link" data-scroll-target="#choosing-rows---filter">Choosing Rows - <code>filter()</code></a>
+  <li><a href="#choosing-rows" id="toc-choosing-rows" class="nav-link" data-scroll-target="#choosing-rows">Choosing Rows</a>
   <ul class="collapse">
   <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
   <li><a href="#filtering-on-categorical-data" id="toc-filtering-on-categorical-data" class="nav-link" data-scroll-target="#filtering-on-categorical-data">Filtering on Categorical Data</a></li>
@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Filtering Data</h1>
+<h1 class="title"><code>filter()</code></h1>
 </div>
 
 
@@ -376,8 +376,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="choosing-rows---filter" class="level1">
-<h1>Choosing Rows - <code>filter()</code></h1>
+<section id="choosing-rows" class="level1">
+<h1>Choosing Rows</h1>
 <p>Good scientists <strong>NEVER</strong> delete data from original records. The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data.</p>
 <section id="logical-operators" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operators">Logical Operators</h2>
