@@ -1,12 +1,12 @@
 ---
-title: "Summarizing Data"
+title: "group_by() + summarise()"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
 
-# `group_by()` + `summarise()`
+# Summarizing Data
 
 Consider the High School survey data with 60 columns and 312 respondents. 
 
