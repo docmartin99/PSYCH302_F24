@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Data Wrangling Topics</title>
+<title>Math221 Notebook - Data Wrangling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -245,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Wrangling_Basics.html">
- <span class="dropdown-text">Data Wrangling Topics</span></a>
+ <span class="dropdown-text">Data Wrangling</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../R_Resources/Filter.html">
@@ -300,7 +300,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Wrangling Topics</h1>
+<h1 class="title">Data Wrangling</h1>
 </div>
 
 
@@ -340,13 +340,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="tidy-basics" class="level1">
 <h1>Tidy Basics</h1>
-<p>Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset. We use what is called a “pipe” to tell the computer what to pass on to the next step. This “pipe” is typed: <code>%&gt;%</code>. I will demonstrate the use of the pipe with the <code>filter()</code> function, but see <a href="./R_Resources/Filter.qmd">here</a> for more in-depth explanation of <code>filter()</code>.</p>
+<p>Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset. We use what is called a “pipe” to tell the computer what to pass on to the next step. This “pipe” is typed: <code>%&gt;%</code>. I will demonstrate the use of the pipe with the <code>filter()</code> function, but see <a href="../R_Resources/Filter.html">here</a> for more in-depth explanation of <code>filter()</code>.</p>
 <section id="the-pipe-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="the-pipe-in-action">The Pipe in Action</h2>
 <p>Suppose we have a dataset, <code>marital_status_data</code>, with 2 columns: <code>age</code> and <code>marital_status</code>. We expect the <code>marital_status</code> to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.</p>
-<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more <a href="./R_Resources/Filter.qmd##Logical-Operators">here</a>):</p>
+<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more <a href="../R_Resources/Filter.html">here</a>):</p>
 <pre><code>marital_Status_data %&gt;% filter(marital_status != "It's complicated")</code></pre>
-<p><strong>NOTE</strong>: The <code>!=</code> is read “not equal to”, and is a common <a href="">logical operator</a> used in computer programming. So the above code returns a subset of the original data omitting the rows.</p>
+<p><strong>NOTE</strong>: The <code>!=</code> is read “not equal to”, and is a common <a href="../R_Resources/Filter.html#Choosing-Rows##Logical-Operators">logical operator</a> used in computer programming. So the above code returns a subset of the original data omitting the rows.</p>
 <p>I can use pipes sequantially to do quite complicated data wrangling in a very short few lines of code.</p>
 </section>
 </section>

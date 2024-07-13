@@ -317,14 +317,14 @@
   {
     "objectID": "R_Resources/Wrangling_Basics.html",
     "href": "R_Resources/Wrangling_Basics.html",
-    "title": "Data Wrangling Topics",
+    "title": "Data Wrangling",
     "section": "",
     "text": "In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease. This is a terrible disservice to anyone who will deal with data outside of the classroom.\nAnyone who works with data will have to do some data wrangling. Data wrangling is an appropriate description of cleaning, sorting, filtering, summarizing, transforming, and a whole host of other activities to make data usable for a specific purpose.\nIn this document, we introduce a moderately messy dataset and demonstrate basic programming commands to help us get data ready for analysis or visualization."
   },
   {
     "objectID": "R_Resources/Wrangling_Basics.html#the-pipe-in-action",
     "href": "R_Resources/Wrangling_Basics.html#the-pipe-in-action",
-    "title": "Data Wrangling Topics",
+    "title": "Data Wrangling",
     "section": "The Pipe in Action",
     "text": "The Pipe in Action\nSuppose we have a dataset, marital_status_data, with 2 columns: age and marital_status. We expect the marital_status to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.\nWe would begin with the raw data, “pipe” it into the filter() function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more here):\nmarital_Status_data %&gt;% filter(marital_status != \"It's complicated\")\nNOTE: The != is read “not equal to”, and is a common logical operator used in computer programming. So the above code returns a subset of the original data omitting the rows.\nI can use pipes sequantially to do quite complicated data wrangling in a very short few lines of code."
   },
