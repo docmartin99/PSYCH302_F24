@@ -4,12 +4,9 @@ title: "Semester Project"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-
-<div id="download-container">
-  <a href="../Downloads/Semester_Project_Instructions.qmd" download="../Downloads/Semester_Project_Instructions.qmd" type="text/markdown" download class="button-download">
+<a href="../Downloads/Semester_Project_Instructions.qmd" download="../Downloads/Semester_Project_Instructions.qmd" type="text/markdown" download class="button-download">
     Download QMD
-  </a>
-</div>
+</a>
 
 # Introduction
 
@@ -67,7 +64,7 @@ Based on your statistical inference, what recommendations or actions would you t
 
 # What to Turn In
 
-Knit your RMD file to produce a nice looking html report.  Submit the .html file into Canvas.  Be sure to check the following:
+Knit your QMD file to produce a nice looking html report.  Submit the .html file into Canvas.  Be sure to check the following:
 
   - Give your report a proper title in the YAML.  It should not be titled "Semester Project"
   - Include your name as the author
