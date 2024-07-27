@@ -1,6 +1,6 @@
 library(fs)
 library(yaml)
-
+library(stringr)
 
 source_dirs <- c("./Workbooks", "./Practice", "./R_Resources", "./Application_Activities")
 
@@ -8,7 +8,7 @@ source_dirs <- c("./Workbooks", "./Practice", "./R_Resources", "./Application_Ac
 for(i in 1:length(source_dirs)){
   
   # Define source and destination directories
-  dest_dir <- "./Downloads"
+  dest_dir <- paste("./Downloads", str_remove_all(source_dirs[i], "./"), sep='/')
   
   # Create the destination directory if it doesn't exist
   dir_create(dest_dir)

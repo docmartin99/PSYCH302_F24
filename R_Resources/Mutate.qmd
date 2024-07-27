@@ -4,6 +4,10 @@ title: "mutate()"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
+<a href="../Downloads/R_Resources/Mutate.qmd" download="../Downloads/R_Resources/Mutate.qmd" type="text/markdown" download class="button-download">
+    Download QMD
+</a>
+
 
 # Adding Columns
 

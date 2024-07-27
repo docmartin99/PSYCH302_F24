@@ -1,0 +1,304 @@
+---
+title: Simple Linear Regression
+format:
+  html:
+    self_contained: yes
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+<a href="../Downloads/Linear_Regression_Intro.qmd" download="../Downloads/Linear_Regression_Intro.qmd" type="text/markdown" download class="button-download">
+    Download QMD
+</a>
+
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+math <- import('https://byuistats.github.io/BYUI_M221_Book/Data/MathSelfEfficacy.xlsx')
+
+
+```
+
+# Review
+
+Consider the relationship between Score on a math exam and a student's self-reported Confidence Rating.
+
+What is the explanatory (aka independent) variable?
+
+Confidence
+
+What is the response (aka the dependent) variable?  
+
+Score
+
+Plot the relationship:
+
+```{r}
+
+names(math)
+
+plot(Score ~ ConfidenceRatingMean, data = math)
+
+```
+
+Does the relationship appear linear?
+
+What is the direction of the relationship?
+
+What do you think is the strength of the relationship?  (Strong/Moderate/Weak)
+
+What is the correlation coefficient, r?
+
+```{r}
+
+cor(Score ~ ConfidenceRatingMean, data = math)
+
+```
+
+
+# Linear Equation
+
+The correlation coefficient, r, tells us something about the direction and strength of a __linear__ relationship.
+
+Linear Regression allows us to find a functional relationship between X and Y.  We can estimate the slope and intercept of the line that "best fits" the data and use that line to make predictions.  
+
+Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the `t.test()` if the categorical variable had 2 levels or the `aov()` function if the categorical variable had multiple levels.  We used the same notation for both: 
+<br>
+`t.test(y ~ x, data = dat)` and
+`aov(y ~ x, data = dat)`
+<br>
+
+The `aov()` function output wasn't as useful as the `t.test()` by itself, so we typically assigned a name to the `aov()` output then used `summarize()` to get the test statistic and p-value.  We could also extract "residuals".
+
+The same paradigm works for estimating the linear relationship between 2 quantitative variables, but we need to introduce a new function:  `lm()`.  The 'lm' stands for "linear model".  The relationship notation remains the same:
+<br>
+
+`lm(y ~ x, data = dat)`
+<br>
+
+except x and y are both quantitative.  Just like with `aov()` the `lm()` output by itself doesn't give us test statistics and p-values.  We will also use the `summarize()` function to get our test statistics.  
+
+Let's fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score:
+
+```{r}
+
+math_lm <- lm(Score ~ ConfidenceRatingMean, data = math)
+summary(math_lm)
+
+confint(math_lm, level = .92)
+
+```
+
+The `lm()` output includes only the slope and the intercept. 
+
+How do we interpret the intercept of 18.69?
+
+How do we interpret the slope of 12.69 in context? 
+
+What is the expected score on a test of someone who ranks themselves 5 in confidence? 
+
+
+## Plotting the Regression Line
+
+Scatter plots by themselves are nice, but we would also like to see the regression line.  Simple graphics in R can be augmented by using some functions.  The `abline()` function, when executed right after a graphing function can add lines.  We've used this to add vertical lines and horizontal line already in class.  We can also use this function to add a regression line.  We simply insert our linear model output into the `abline()` function as follows:
+
+```{r}
+
+
+plot(Score ~ ConfidenceRatingMean, data = math)
+abline(math_lm)
+
+```
+
+Just as with the other plotting functions we've used, we can change the color, type and width of the line:
+
+```{r}
+
+plot(Score ~ ConfidenceRatingMean, data = math, pch = 16, main = "Title")
+abline(math_lm, col = "purple", lwd = 3, lty = 3)
+
+
+```
+
+
+## Hypothesis Testing for Regression
+
+A linear equation has 2 parameters: Slope and Intercept.  In most situations, the intercept isn't very interesting by itself and is often absurd. We are most interested in the slope
+
+$$H_o: \beta_1 = 0$$
+$$H_a: \beta_1 \neq 0$$
+
+These are the same for all regression questions.  
+
+To get the p-value and test statistics, we use the `summary()` function as we did with aov:
+
+```{r}
+
+summary(math_lm)
+
+```
+
+
+We can also calculate confidence intervals for the slope by using the `confint()` function.  This function requires you to tell it which model to extract a confidence intervals from.  You can specify which parameter you're interested in, and the level of confidence:  
+
+```{r}
+
+# input the model into the following function:
+confint(math_lm, level = .95)
+
+
+```
+
+
+How do we interpret this confidence interval for a slope?
+
+95% Confident that the true population slope is within (10.674297, 14.71535)
+
+For every 1 unit increase in Confidence Rating, test scores go up by between (10.674297, 14.71535) on average.  
+
+
+## Regression Requirements
+
+There are certain requirements for all statistical tests to be valid.  For means, we needed to make sure that the Central Limit Theorem applied.  This meant that we had a large enough sample size (N>30) or that the population itself was normally distributed.  
+
+For ANOVA, we had to check that the residuals were normally distributed and that the population standard deviations were the same.
+
+Regression analysis has 5 requirements to be valid.  While this sounds daunting, in practice we can check most of them very quickly. 
+
+1. Relationship between X and Y is Linear
+2. The residuals, $\epsilon$, are normally distributed
+3. The Variance of the error terms is constant for all values of X
+4. The X’s are fixed and measured without error (i.e. X’s can be considered as known constants)
+5. The observations are independent
+
+The linear relationship is assessed visually with the scatter plot.  If there is obvious curvature or non-linearity then fitting a line isn't the best model.
+
+We check the normality of the residuals with a qqplot() exactly as with the `aov()` output.
+
+The constant Variance is checked with a new plot, that looks at how the predicted values relate to the residuals.  This is important because we want our predictions to be "wrong" about the same regardless of the value of the prediction.  We're looking for random scatter.
+
+Requirements 4 cannot be analyzed directly.  It is important because X is the independent variable.  If there is uncertainty about the input, then the simple linear regression might not be the most appropriate model.
+
+Requirement 5 also cannot be analyzed, but random sampling is usually satisfies this requirement.  
+
+```{r}
+
+# Requirement 1:  Check for linear relationship
+plot(Score ~ ConfidenceRatingMean, data = math, pch = 19, main = "Title")
+
+# Req 2: Normality of residuals:
+qqPlot(math_lm$residuals)
+
+# Req 3: Constant variance (look odd patterns). When you put lm() output into the plot function it gives you several different plots. The residual plots we're most interested in are 1 and 2
+
+plot(math_lm, which = 1)
+
+
+
+```
+
+# Your Turn
+
+
+
+```{r}
+
+manatees <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/manatees.csv')
+acura <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/acuraMDX_price_vs_mileage.csv')
+alcohol <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/life_expectancy_vs_alcohol_consumption.csv')
+mcat <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/mcat_gpa.csv')
+
+
+```
+
+
+```{r}
+
+plot(MCAT ~ GPA, data = mcat)
+
+cor(MCAT ~ GPA, data = mcat)
+
+lm_mcat <- lm(MCAT ~ GPA, data = mcat)
+lm_mcat
+summary(lm_mcat)
+
+confint(lm_mcat)
+
+abline(lm_mcat)
+
+qqPlot(lm_mcat$residuals)
+
+plot(lm_mcat, which = 1)
+
+
+```
+
+
+
+```{r}
+
+plot(lm_man, which = 1)
+
+qqPlot(lm_man)
+
+plot(manatees$Manatees ~ manatees$`Power Boats (in 1000's)`)
+abline(lm_man)
+
+summary(lm_man)
+
+confint(lm_man)
+
+```
+
+```{r}
+
+```
+
+
+
+```{r}
+#  Alcohol v
+
+plot(alcohol$`Life Expectancy` ~ alcohol$`Alcohol Consumed`)
+cor(alcohol$`Life Expectancy` ~ alcohol$`Alcohol Consumed`)
+
+alcohol_lm<- lm(alcohol$`Life Expectancy` ~ alcohol$`Alcohol Consumed`)
+
+plot(alcohol$`Life Expectancy` ~ alcohol$`Alcohol Consumed`, main = "Impact of Alcohol on Life Expectancy", xlab = "Alcohol", pch = 19, col = "darkblue", ylab = "Life Expectancy")
+abline(alcohol_lm, col = "darkred", lwd=2, lty =2)
+text(x=8, y = 60, label = "LE = 73.851 - 2.786*Alcohol")
+
+plot(alcohol_lm, which = 1)
+qqPlot(alcohol_lm)
+
+summary(alcohol_lm)
+
+confint(alcohol_lm)
+
+
+
+```
+
+
+
+
+Determine which variable is your response/dependent variable and which is the explanatory/independent variable.
+
+Make a scatterplot.  
+
+What is the nature of the relationship? (direction/strength/linearity)
+
+Calculate the correlation coefficient.
+
+Perform a linear regression analysis.  Be sure to check the regression requirements (linearity, normality of residuals, constant variance).  
+
+What is the conclusion of your hypothesis?
+
+What is the confidence interval for the slope? Give a 1-sentence interpretation in context of your research question.    
+

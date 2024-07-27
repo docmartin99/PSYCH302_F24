@@ -5,7 +5,7 @@ title: "Independent Two-sample T-test"
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Independent_2_sample_ttest.qmd" download="../Downloads/Independent_2_sample_ttest.qmd" type="text/markdown" download class="button-download">
+<a href="../Downloads/Workbooks/Independent_2_sample_ttest.qmd" download="../Downloads/Workbooks/Independent_2_sample_ttest.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

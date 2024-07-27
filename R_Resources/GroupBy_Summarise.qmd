@@ -4,6 +4,9 @@ title: "group_by() + summarise()"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
+<a href="../Downloads/R_Resources/GroupBy_Summarise.qmd" download="../Downloads/R_Resources/GroupBy_Summarise.qmd" type="text/markdown" download class="button-download">
+    Download QMD
+</a>
 
 
 # Summarizing Data
