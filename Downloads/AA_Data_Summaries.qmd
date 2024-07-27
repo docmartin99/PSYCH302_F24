@@ -1,12 +1,15 @@
 ---
-title: "Summarizing Data"
-subtitle: "CO2 Uptake Experiment"
+title: Summarizing Data
+subtitle: CO2 Uptake Experiment
+format:
+  html:
+    self_contained: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 <div id="download-container">
-  <a href="../Downloads/AA_Data_Summaries.qmd" download="../Downloads/AA_Data_Summaries.qmd" type="text/markdown" download class="button-download">
+  <a href="./Downloads/AA_Data_Summaries.qmd" download="./Downloads/AA_Data_Summaries.qmd" type="text/markdown" download class="button-download">
     Download QMD
   </a>
 </div>
