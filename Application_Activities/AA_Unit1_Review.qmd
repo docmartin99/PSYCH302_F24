@@ -5,11 +5,9 @@ subtitle: "Unit 1 Review"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<div id="download-container">
-  <a href="../Downloads/AA_Unit1_Review.qmd" download="../Downloads/AA_Unit1_Review.qmd" type="text/markdown" download class="button-download">
+<a href="../Downloads/AA_Unit1_Review.qmd" download="../Downloads/AA_Unit1_Review.qmd" type="text/markdown" download class="button-download">
     Download QMD
-  </a>
-</div>
+</a>
 
 # Assessment Objectives
 
