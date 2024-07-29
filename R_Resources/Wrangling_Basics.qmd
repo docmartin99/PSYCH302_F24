@@ -4,7 +4,7 @@ title: "Intro to Data Wrangling"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/R_Resources/Wrangling_Basics.qmd" download="../Downloads/R_Resources/Wrangling_Basics.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/R_Resources/Wrangling_Basics.qmd" download="Wrangling_Basics.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

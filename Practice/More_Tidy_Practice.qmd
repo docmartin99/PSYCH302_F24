@@ -4,7 +4,7 @@ title: "Level up your Tidy-ness"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Practice/More_Tidy_Practice.qmd" download="../Downloads/Practice/More_Tidy_Practice.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Practice/More_Tidy_Practice.qmd" download="More_Tidy_Practice.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 
