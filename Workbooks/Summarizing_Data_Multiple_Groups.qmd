@@ -6,7 +6,7 @@ subtitle: "Multiple Groups"
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Workbooks/Summarizing_Data_Multiple_Groups.qmd" download="../Downloads/Workbooks/Summarizing_Data_Multiple_Groups.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Workbooks/Summarizing_Data_Multiple_Groups.qmd" download="Summarizing_Data_Multiple_Groups.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

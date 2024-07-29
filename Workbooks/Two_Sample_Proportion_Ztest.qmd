@@ -5,7 +5,7 @@ title: "Two-sample Proportion Tests"
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Workbooks/Two_Sample_Proportion_Ztest.qmd" download="../Downloads/Workbooks/Two_Sample_Proportion_Ztest.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Workbooks/Two_Sample_Proportion_Ztest.qmd" download="Two_Sample_Proportion_Ztest.qmd" type="text/markdown" class="button-download">
     Download QMD
 </a>
 

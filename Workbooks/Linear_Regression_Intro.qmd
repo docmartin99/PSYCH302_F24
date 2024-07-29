@@ -5,7 +5,7 @@ title: "Simple Linear Regression"
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Workbooks/Linear_Regression_Intro.qmd" download="../Downloads/Workbooks/Linear_Regression_Intro.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Workbooks/Linear_Regression_Intro.qmd" download="Linear_Regression_Intro.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 
