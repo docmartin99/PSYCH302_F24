@@ -4,7 +4,7 @@ title: "Semester Project"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://github.com/byuistats/Math221D_Course/raw/main/Downloads/Application_Activities/Semester_Project_Instructions.qmd" download="https://github.com/byuistats/Math221D_Course/raw/main/Downloads/Application_Activities/Semester_Project_Instructions.qmd" type="text/markdown" download class="button-download">
+<a href="https://github.com/byuistats/Math221D_Course/raw/main/Downloads/Application_Activities/Semester_Project_Instructions.qmd" download="Semester_Project_Instructions.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 
