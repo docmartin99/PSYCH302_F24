@@ -5,9 +5,22 @@ subtitle: "Unit 2 Review"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Application_Activities/AA_Unit2_Review.qmd" download="AA_Unit2_Review.qmd" type="text/markdown" class="button-download">
+<a href="../Downloads/Application_Activities/AA_Data_Summaries.qmd" class="button-download" onclick="forceDownload(event, this)">
     Download QMD
 </a>
+
+<script>
+  function forceDownload(event, link) {
+    event.preventDefault();
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.download = 'AA_Data_Summaries.qmd';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+</script>
+
 
 # Introduction
 
