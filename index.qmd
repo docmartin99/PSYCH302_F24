@@ -17,7 +17,7 @@ This book is designed to be a digital workbook.  You can download the Workbooks,
 
 ### Download Course Material
 
-T0 download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:
+To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:
 
   1. Create a class folder where you will save all your work throughout this semester.  This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.
   2. Click on the link below to download the `.zip` file containing all contents of the course website:
