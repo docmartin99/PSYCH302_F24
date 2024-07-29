@@ -9,19 +9,6 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
-<script>
-  function forceDownload(event, link) {
-    event.preventDefault();
-    const a = document.createElement('a');
-    a.href = link.href;
-    a.download = 'AA_Data_Summaries.qmd';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-</script>
-
-
 # Introduction
 
 In this activity, you will use everything we've covered in Unit 2 including:
