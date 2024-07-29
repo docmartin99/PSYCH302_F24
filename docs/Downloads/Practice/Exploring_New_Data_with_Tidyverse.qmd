@@ -9,7 +9,6 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
-
 # Introduction
 
 Statistics is only as interesting as the research questions we create.  However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.  

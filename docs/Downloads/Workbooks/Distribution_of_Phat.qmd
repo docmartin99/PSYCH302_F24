@@ -8,9 +8,6 @@ format:
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Distribution_of_Phat.qmd" download="../Downloads/Distribution_of_Phat.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
 
 # The Distribution of Sample Means
 

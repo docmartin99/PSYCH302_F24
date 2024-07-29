@@ -8,7 +8,6 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
-
 # Selecting Columns
 
 Consider the High School survey data with 60 columns and 312 respondents.  

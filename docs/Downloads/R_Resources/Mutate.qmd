@@ -8,6 +8,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Adding Columns
 
 If we want to create a new column in our dataset, we use the tidy function, `mutate()`.  Consider again the High School survey data with 60 columns and 312 respondents.
