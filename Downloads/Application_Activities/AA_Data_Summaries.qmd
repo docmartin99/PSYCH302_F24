@@ -8,9 +8,6 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Application_Activities/AA_Data_Summaries.qmd" download="../Downloads/Application_Activities/AA_Data_Summaries.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
 
 
 # Background

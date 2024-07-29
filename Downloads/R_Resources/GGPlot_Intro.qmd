@@ -8,9 +8,6 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/R_Resources/GGPlot_Intro.qmd" download="../Downloads/R_Resources/GGPlot_Intro.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
 
 # Introduction
 

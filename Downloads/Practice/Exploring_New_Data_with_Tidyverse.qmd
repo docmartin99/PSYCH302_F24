@@ -8,9 +8,6 @@ format:
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Practice/Exploring_New_Data_with_Tidyverse.qmd" download="../Downloads/Practice/Exploring_New_Data_with_Tidyverse.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
 
 # Introduction
 

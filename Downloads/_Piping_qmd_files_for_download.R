@@ -4,7 +4,6 @@ library(stringr)
 
 source_dirs <- c("./Workbooks", "./Practice", "./R_Resources", "./Application_Activities")
 
-
 for(i in 1:length(source_dirs)){
   
   # Define source and destination directories
@@ -12,7 +11,7 @@ for(i in 1:length(source_dirs)){
   
   # Create the destination directory if it doesn't exist
   dir_create(dest_dir)
-
+  
   yaml_to_add <- list(
     format = list(
       html = list(
@@ -22,8 +21,7 @@ for(i in 1:length(source_dirs)){
     )
   )
   
-  # Function to add YAML features to a file
-  add_yaml_features <- function(file_path, new_features) {
+  add_yaml_features_and_remove_button <- function(file_path, new_features) {
     # Read the file content
     content <- readLines(file_path, warn = FALSE)
     
@@ -45,18 +43,36 @@ for(i in 1:length(source_dirs)){
     # Convert the updated YAML back to string
     updated_yaml_str <- as.yaml(updated_yaml)
     
+    # Remove the download button
+    if (yaml_end < length(content)) {
+      content_without_button <- content[(yaml_end + 1):length(content)]
+      
+      # Find start and end indices of the button
+      button_start <- which(grepl("<a.*class=\"button-download\"", content_without_button))
+      button_end <- which(grepl("</a>", content_without_button))
+      
+      # Remove the button if found
+      if (length(button_start) > 0 && length(button_end) > 0) {
+        button_end <- button_end[button_end > button_start][1]  # Find the first closing tag after the opening tag
+        if (!is.na(button_end)) {
+          content_without_button <- content_without_button[-(button_start:button_end)]
+        }
+      }
+    } else {
+      content_without_button <- character(0)  # Empty vector if there's no content after YAML
+    }
+    
     # Reconstruct the file content
     new_content <- c(
       "---",
       strsplit(updated_yaml_str, "\n")[[1]],
       "---",
-      content[(yaml_end + 1):length(content)]
+      content_without_button
     )
     
     return(new_content)
   }
   
-    
   # Get list of qmd files
   qmd_files <- dir_ls(source_dirs[i], glob = "*.qmd")
   
@@ -68,14 +84,14 @@ for(i in 1:length(source_dirs)){
     # Copy the file
     file_copy(file, dest_file, overwrite = TRUE)
     
-    # Add YAML features to the copied file
-    new_content <- add_yaml_features(dest_file, yaml_to_add)
+    # Add YAML features to the copied file and remove download button
+    new_content <- add_yaml_features_and_remove_button(dest_file, yaml_to_add)
     
     # Write the new content back to the file
-    writeLines(new_content, dest_file, useBytes = TRUE)
+    writeLines(new_content, dest_file)
     
     cat("Processed:", path_file(file), "\n")
   }
   
-  cat("All files have been copied and modified.\n")
+  cat("All files have been copied, modified, and had download buttons removed.\n")
 }
