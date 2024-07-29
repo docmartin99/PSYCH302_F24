@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
     Download QMD
 </a>
 
+
 # Assessment Objectives
 
   * Apply the 3 rules of probability in different scenarios

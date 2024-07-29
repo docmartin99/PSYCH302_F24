@@ -1,13 +1,13 @@
 ---
-title: "Don't Take it Personally"
-subtitle: "Hypothesis Tests and Confidence Intervals"
+title: Don't Take it Personally
+subtitle: Hypothesis Tests and Confidence Intervals
+format:
+  html:
+    self_contained: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Application_Activities/AA_Hypothesis_Conf_Int.qmd" download="AA_Hypothesis_Conf_Int.qmd" type="text/markdown" class="button-download">
-    Download QMD
-</a>
 
 
 # Introduction
