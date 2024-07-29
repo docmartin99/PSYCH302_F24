@@ -26,8 +26,14 @@ To download the folder containing all of the exercises, notes, R helps and Appli
   Download Course Files
 </a>
 
+<a href="https://github.com/byuistats/Math221D_Course/raw/main/Student_Work.zip" class="button-download" download>
+  Download Course Files
+</a>
+
   2. Open the `.zip` file and the Folder called `Math221D_Course-main`
   3. Save the `Student_Work` folder to your class folder created in step 1.  This can typically be done by right clicking the folder then copying and pasting it into the new location. 
+
+These files will be the basis of your coursework.  
 
 
 ### How to Use This Book

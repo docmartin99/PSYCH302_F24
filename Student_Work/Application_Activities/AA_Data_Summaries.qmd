@@ -1,14 +1,14 @@
 ---
-title: "Summarizing Data"
-subtitle: "CO2 Uptake Experiment"
+title: Summarizing Data
+subtitle: CO2 Uptake Experiment
 format:
   html:
-    self-contained: true
-    code-fold: true
+    self_contained: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
+
 
 
 # Background
