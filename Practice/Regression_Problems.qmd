@@ -4,7 +4,7 @@ title: "Regression Practice"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Practice/Regression_Problems.qmd" download="Regression_Problems.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Practice/Regression_Problems.qmd" download="Regression_Problems.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

@@ -4,7 +4,7 @@ title: "Downloading Data"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/R_Resources/Importing_Data.qmd" download="Importing_Data.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Importing_Data.qmd" download="Importing_Data.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

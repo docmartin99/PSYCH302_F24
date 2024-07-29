@@ -5,7 +5,7 @@ subtitle: "Unit 2 Review"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/Application_Activities/AA_Unit2_Review.qmd" download="AA_Unit2_Review.qmd" type="text/markdown" class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Application_Activities/AA_Unit2_Review.qmd" download="AA_Unit2_Review.qmd" type="text/markdown" class="button-download">
     Download QMD
 </a>
 

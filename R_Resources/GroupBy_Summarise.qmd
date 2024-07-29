@@ -4,7 +4,7 @@ title: "group_by() + summarise()"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/R_Resources/GroupBy_Summarise.qmd" download="GroupBy_Summarise.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/GroupBy_Summarise.qmd" download="GroupBy_Summarise.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

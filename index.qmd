@@ -5,6 +5,16 @@ title: "BYU-Idaho Math 221: Introduction to Statistics in R"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Download Course Material
+
+You can download all the course content including exercises, workbooks, application activities and R helps by clicking on the link:
+
+
+<a href="https://github.com/byuistats/Math221D_Course/archive/refs/heads/main.zip" class="button-download" download>
+  Download Course Files
+</a>
+
+
 ## A Customizable Textbook
 
 This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.

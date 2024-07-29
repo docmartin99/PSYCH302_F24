@@ -4,7 +4,7 @@ title: "filter()"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Downloads/R_Resources/Filter.qmd" download="Filter.qmd" type="text/markdown" download class="button-download">
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Filter.qmd" download="Filter.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 
