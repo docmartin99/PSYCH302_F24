@@ -72,7 +72,7 @@ for(i in 1:length(source_dirs)){
     new_content <- add_yaml_features(dest_file, yaml_to_add)
     
     # Write the new content back to the file
-    writeLines(new_content, dest_file)
+    writeLines(new_content, dest_file, useBytes = TRUE)
     
     cat("Processed:", path_file(file), "\n")
   }

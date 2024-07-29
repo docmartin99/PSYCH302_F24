@@ -7,6 +7,9 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
+<a href="../Downloads/Practice/More_Tidy_Practice.qmd" download="../Downloads/Practice/More_Tidy_Practice.qmd" type="text/markdown" download class="button-download">
+    Download QMD
+</a>
 
 
 # Putting it All Together

@@ -9,7 +9,7 @@ format:
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="../Downloads/Inference_for_mean_sigma_unknown.qmd" download="../Downloads/Inference_for_mean_sigma_unknown.qmd" type="text/markdown" download class="button-download">
+<a href="../Downloads/Workbooks/Inference_for_mean_sigma_unknown.qmd" download="../Downloads/Workbooks/Inference_for_mean_sigma_unknown.qmd" type="text/markdown" download class="button-download">
     Download QMD
 </a>
 

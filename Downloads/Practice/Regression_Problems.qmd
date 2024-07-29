@@ -2,17 +2,14 @@
 title: Regression Practice
 format:
   html:
-    self-contained: yes
+    self_contained: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-
-<div id="download-container">
-  <a href="../Downloads/Regression_Problems.qmd" download="../Downloads/Regression_Problems.qmd" type="text/markdown" download class="button-download">
+<a href="../Downloads/Practice/Regression_Problems.qmd" download="../Downloads/Practice/Regression_Problems.qmd" type="text/markdown" download class="button-download">
     Download QMD
-  </a>
-</div>
+</a>
 
 # Introduction
 
