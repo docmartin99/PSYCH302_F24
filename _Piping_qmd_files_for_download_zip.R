@@ -58,20 +58,7 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
     content_without_button
   )
   
-  # Ensure new_content is a character vector
-  new_content <- as.character(new_content)
-  
   return(new_content)
-}
-
-sanitize_path <- function(path) {
-  # Replace colons with underscores
-  sanitized <- gsub(":", "_", path)
-  # Remove any leading or trailing whitespace
-  sanitized <- trimws(sanitized)
-  # Replace any remaining problematic characters
-  sanitized <- gsub("[<>:\"/\\|?*]", "_", sanitized)
-  return(sanitized)
 }
 
 for(i in 1:length(source_dirs)){
@@ -96,17 +83,14 @@ for(i in 1:length(source_dirs)){
   
   # Process each file
   for (file in qmd_files) {
-    # Construct destination file path and sanitize it
-    dest_file <- path(dest_dir, sanitize_path(path_file(file)))
+    # Construct destination file path
+    dest_file <- path(dest_dir, path_file(file))
     
     # Copy the file
     file_copy(file, dest_file, overwrite = TRUE)
     
     # Add YAML features to the copied file and remove download button
     new_content <- add_yaml_features_and_remove_button(dest_file, yaml_to_add)
-    
-    # Ensure new_content is a character vector
-    new_content <- as.character(new_content)
     
     # Write the new content back to the file
     writeLines(new_content, dest_file)
@@ -119,10 +103,7 @@ for(i in 1:length(source_dirs)){
 
 # Create zip file
 zip_file_path <- path(temp_dir, zip_file_name)
-files_to_zip <- dir(path(temp_dir, "Student_Work"), recursive = TRUE, full.names = TRUE)
-sanitized_files <- sapply(files_to_zip, sanitize_path)
-
-zip::zip(zip_file_path, files_to_zip, mode = "mirror")
+zip::zip(zip_file_path, dir(path(temp_dir, "Student_Work"), recursive = TRUE, full.names = TRUE))
 
 cat("Created zip file:", zip_file_path, "\n")
 
