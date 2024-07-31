@@ -1,5 +1,5 @@
 ---
-title: "The Normal Distributions"
+title: "The Normal Distribution"
 warning: false
 ---
 
