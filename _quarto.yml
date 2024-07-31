@@ -18,6 +18,7 @@ website:
         - href: ./Textbook/Shape_and_Center.qmd
         - href: ./Textbook/Spread.qmd
         - href: ./Textbook/Intro_to_Probability.qmd
+        - href: ./Textbook/The_Normal_Distribution.qmd
         
     - text:  "Workbook"
       menu:
@@ -25,11 +26,11 @@ website:
         - href: ./Workbooks/Summarizing_Data_Multiple_Groups.qmd
         - href: ./Workbooks/Normal_Distribution.qmd
         - href: ./Workbooks/CLT_Normal_Prob_for_Means.qmd
+        - href: ./Workbooks/Assessing_Normality.qmd
         - href: ./Workbooks/Inference_for_mean_sigma_unknown.qmd
         - href: ./Workbooks/Paired_ttest.qmd
         - href: ./Workbooks/Independent_2_sample_ttest.qmd
         - href: ./Workbooks/ANOVA_Intro.qmd
-        - href: ./Workbooks/Assessing_Normality.qmd
         - href: ./Workbooks/Bivariate_Data_Intro.qmd
         - href: ./Workbooks/Linear_Regression_Intro.qmd
         - href: ./Workbooks/Distribution_of_Phat.qmd
@@ -39,6 +40,8 @@ website:
         
     - text: "Practice Problems"
       menu:
+         - href: ./Practice/Statistical_Process.qmd
+         - href: ./Practice/Summarizing_Data.qmd
          - href: ./Practice/Introducing_R_Homework.qmd
          - href: ./Practice/Exploring_New_Data_with_Tidyverse.qmd
          - href: ./Practice/More_Tidy_Practice.qmd
