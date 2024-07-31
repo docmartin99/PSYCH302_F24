@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Lesson 5: Normal Distributions</title>
+<title>Math221 Notebook - The Normal Distributions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -180,7 +180,7 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../Textbook/The_Normal_Distribution.html">
- <span class="dropdown-text">Lesson 5: Normal Distributions</span></a>
+ <span class="dropdown-text">The Normal Distributions</span></a>
   </li>  
     </ul>
   </li>
@@ -414,7 +414,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lesson 5: Normal Distributions</h1>
+<h1 class="title">The Normal Distributions</h1>
 </div>
 
 
@@ -512,7 +512,12 @@ Show/Hide Solution
 <h5 class="anchored" data-anchor-id="rule-for-bell-shaped-distributions">68-95-99.7% Rule for Bell-shaped Distributions</h5>
 <p>Heights of women (or men) in a particular population follow a normal distribution. Most people’s heights are close to the mean. A few are very tall or very short. We would like to make a more precise statement than this.</p>
 <div class="Emphasis">
-<p>For any bell-shaped distribution, - 68% of the data will lie within 1 standard deviation of the mean, - 95% of the data will lie within 2 standard deviations of the mean, and - 99.7% of the data will lie within 3 standard deviations of the mean.</p>
+<p>For any bell-shaped distribution,</p>
+<ul>
+<li>68% of the data will lie within 1 standard deviation of the mean,</li>
+<li>95% of the data will lie within 2 standard deviations of the mean, and</li>
+<li>99.7% of the data will lie within 3 standard deviations of the mean.</li>
+</ul>
 <p>This is called the 68-95-99.7% Rule for Bell-shaped Distributions. Some statistics books refer to this as the Empirical Rule. <br></p>
 </div>
 <p><br></p>
@@ -552,7 +557,6 @@ Show/Hide Solution
 <li>Relative to other Ghanaian women, Serwa is very tall. Gustavo is tall relative to Brazilian men, but relative to people of his gender and nationality, he is not relatively taller than Serwa. Serwa has a higher <span class="math inline">\(z\)</span>-score.</li>
 </ul>
 </details>
-<p><br></p>
 <ol start="4" type="1">
 <li>Are either of these heights unusual?</li>
 </ol>
@@ -578,11 +582,16 @@ Show/Hide Solution
 <p>An important part of the practice of statistics is finding areas under a normal curve. The area under a normal curve, say, to the left of a value, gives the probability of obtaining an observation less than (or equal to) that value. This is an example of converting a value to an area. It is also important to convert an area to a value. For example, if you want to find the 40th percentile for data that follow a normal distribution, you find the value of the observation such that the area (under the curve) to the left of this value is 0.40.</p>
 <section id="introduction-to-the-normal-probability-applet" class="level3">
 <h3 class="anchored" data-anchor-id="introduction-to-the-normal-probability-applet">Introduction to the Normal Probability Applet</h3>
-<p>The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between <span class="math inline">\(z\)</span>-scores and areas under the standard normal curve. You can find a link to this applet on I-learn, under the Course Resources module. This app is also compatible to use on your phone, iPad, and other mobile devices. The app is stored at https://byuimath.com/apps/normprob.html. If you want a copy you can open from your desktop, just right click the link and save it to your computer.</p>
+<p>The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between <span class="math inline">\(z\)</span>-scores and areas under the standard normal curve. You can find a link to this applet <a href="https://byuimath.com/apps/normprob.html">here</a>. This app is also compatible to use on your phone, iPad, and other mobile devices. The app is stored at . If you want a copy you can open from your desktop, just right click the link and save it to your computer.</p>
 <p>To use this applet, follow these instructions:</p>
-<p><em>Click on an area below the curved line to shade/unshade the region. </em>Click and drag the red lines to adjust the <span class="math inline">\(z\)</span>-scores and obtain the area. <em>Type a <span class="math inline">\(z\)</span>-score into one of the bottom input boxes and hit “Enter” to get an area. </em>Type in an area and hit “Enter” to get a <span class="math inline">\(z\)</span>-score.</p>
+<ul>
+<li>Click on an area below the curved line to shade/unshade the region.</li>
+<li>Click and drag the red lines to adjust the <span class="math inline">\(z\)</span>-scores and obtain the area.</li>
+<li>Type a <span class="math inline">\(z\)</span>-score into one of the bottom input boxes and hit “Enter” to get an area.</li>
+<li>Type in an area and hit “Enter” to get a <span class="math inline">\(z\)</span>-score.</li>
+</ul>
 <center>
-<div width="90%">
+<div class="iframe-container" width="90%">
 <iframe src="https://byuimath.com/apps/normprob.html?width=600&amp;z=1&amp;height=400&amp;left=1&amp;mid=0&amp;right=1&amp;area=a&amp;static=0&amp;title=1&amp;border=0" frameborder="0" width="650" height="450" data-external="1">
 </iframe>
 </div>
@@ -591,11 +600,10 @@ Show/Hide Solution
 <section id="converting-a-z-score-to-a-probability" class="level3">
 <h3 class="anchored" data-anchor-id="converting-a-z-score-to-a-probability">Converting a <span class="math inline">\(z\)</span>-score to a Probability</h3>
 <p>Using this applet we can calculate proportions and probabilities based on the area under the normal curve. For the following examples, please open the <a href="https://byuimath.com/apps/normprob.html" target="_blank">Normal Probability Applet</a> and practice using it to find areas under the curve.</p>
-<p>The Normal Probability Applet is nice for visualizing areas under the curve. However, it has significant limitations. We can use the pnorm(x, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>) function in R to calculate areas under the curve. The <code>p</code> in <code>pnorm()</code> stands for probability and <code>norm</code> obviously stands for the normal distribution.</p>
-<p>By default, the <code>pnorm()</code> gives the area of the curve to the <em>LEFT</em> of the value, <span class="math inline">\(x\)</span>, for a normal distribution with a mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>.</p>
-<p>We can calculate probabilities directly in the original units of the data, or use the z-score with a mean of zero and a standard deviation of 1: <code>pnorm(z)</code>.</p>
+<p>The Normal Probability Applet is nice for visualizing areas under the curve. However, it has significant limitations. In this class, we will use R to do the heavy lifting. The pnorm(x, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>) function calculates areas under the curve the normal distribution with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, for a given x. The <code>p</code> in <code>pnorm()</code> stands for probability and <code>norm</code> obviously stands for the normal distribution.</p>
+<p>By default, <code>pnorm()</code> gives the area of the curve to the <em>LEFT</em> of the value, <span class="math inline">\(x\)</span>, for a normal distribution with a mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>.</p>
+<p>We can calculate probabilities directly in the original units of the data, or use the z-score with a <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span>: <code>pnorm(z)</code>.</p>
 <p><strong>NOTE</strong>: <code>pnorm()</code> has a default value for the mean, <span class="math inline">\(\mu = 0\)</span> and standard deviation, <span class="math inline">\(\sigma = 1\)</span> so we don’t have to input those values when we use a z-score with the <strong>standard normal distribution</strong>.</p>
-<p>We will show you how to calculate these probabilities in R with the examples below.</p>
 <section id="heights-of-ghanaian-women" class="level4">
 <h4 class="anchored" data-anchor-id="heights-of-ghanaian-women">Heights of Ghanaian Women</h4>
 <p>We will use the example of Serwa’s height to find the proportion of young Ghanaian women who are shorter than Serwa. Recall that for the height of young Ghanaian women, the population mean is 159.0 cm and the population standard deviation is 4.9 cm. Serwa’s height is 169.0 cm. We found the <span class="math inline">\(z\)</span>-score of Serwa’s height as:</p>
@@ -610,11 +618,13 @@ Show/Hide Solution
 </div>
 <center>
 <div width="90%">
+<div class="iframe-container" width="90%">
 <iframe src="https://byuimath.com/apps/normprob.html?width=600&amp;z=2.041&amp;height=400&amp;left=1&amp;mid=1&amp;right=0&amp;area=a&amp;static=1&amp;title=1&amp;border=0" frameborder="0" width="650" height="450" data-external="1">
 </iframe>
 </div>
+</div>
 </center>
-<p>The area to the left of our chosen <span class="math inline">\(z\)</span>-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is <span class="math inline">\(0.979\)</span>, or <span class="math inline">\(97.9\%\)</span>.</p>
+<p><strong>NOTE</strong>: The area to the left of our chosen <span class="math inline">\(z\)</span>-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is <span class="math inline">\(0.979\)</span>, or <span class="math inline">\(97.9\%\)</span>.</p>
 <p><nowiki>*</nowiki>Remember that in this course, unless otherwise specified, we round to three decimal places.</p>
 </section>
 <section id="baseball-averages" class="level4">
@@ -629,25 +639,26 @@ Show/Hide Solution
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu)<span class="sc">/</span>sigma</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the LEFT:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7118589</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Equivilantly:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7118589</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the RIGHT</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2881411</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2881411</code></pre>
 </div>
 </div>
-<p>Type the <span class="math inline">\(z\)</span>-score of <span class="math inline">\(0.559\)</span> in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.</p>
+<p>Using the Applet, type the <span class="math inline">\(z\)</span>-score of <span class="math inline">\(0.559\)</span> in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.</p>
 <p><img src="../Images/Batting_average_z-score.PNG"></p>
 <p>The area under the curve to the right of <span class="math inline">\(z = 0.559\)</span> is <span class="math inline">\(0.288\)</span>. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)</p>
 <p>Notice that the area shaded in blue above 0.288 is very close to the area we found when we looked at the area represented by the bars of the histogram 0.298 that was shaded in red above.</p>
@@ -663,7 +674,7 @@ Show/Hide Solution
 <p>We want to find the probability that a randomly selected woman’s height is between <span class="math inline">\(150.0\)</span> cm and <span class="math inline">\(165.0\)</span> cm. To do this we find the <span class="math inline">\(z\)</span>-score for both values:</p>
 <p><span class="math display">\[z_1 = \frac{x- \mu}{\sigma} = \frac{150.0 - 159.0}{4.9} = -1.837\]</span> <span class="math display">\[z_2 = \frac{x - \mu}{\sigma} = \frac{165.0 -159.0}{4.9} = 1.22\]</span></p>
 <p>We now answer the question by finding the area under the normal density curve (i.e.&nbsp;the probability) to the left of <span class="math inline">\(z = 1.22\)</span> which is <span class="math inline">\(0.8888\)</span> and also the area under the normal density curve to the left of <span class="math inline">\(z = -1.837\)</span> which is <span class="math inline">\(0.033\)</span>. To find the area between <span class="math inline">\(z = 1.22\)</span> and <span class="math inline">\(z = -1.837\)</span>, we subtract the smaller area from the larger.</p>
-<p><span class="math display">\[0.8888 - 0.033 = 0.8558\]</span></p>
+<p><span class="math display">\[0.8888 - 0.0331 = 0.8557\]</span></p>
 <p>So the probability that the height of a randomly selected young Ghanaian woman will be between 150.0 cm and 165.0 cm is <span class="math inline">\(0.8558\)</span>. This is the same as the proportion of all young Ghanaian women who are between 150.0 and 165.0 cm tall.</p>
 <p>To find the probability of being between <em>any</em> 2 numbers for a normal distribution with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, we can use the following R code:</p>
 <div class="cell">
@@ -677,12 +688,14 @@ Show/Hide Solution
 <pre><code>[1] 0.8564917</code></pre>
 </div>
 </div>
-<p><strong>NOTE</strong>: Value 1 is the lower of the two values and Value 2 is the higher value.</p>
+<p><strong>NOTE</strong>: Value 1 is the lower of the two values and Value 2 is the higher value. Also, this answer is slightly different than above due to when you round. This answer is more accurate because we rounded at the end of the probability calculations rather than rounding the z-scores, then calculating probabilities.</p>
 </section>
 </section>
 <section id="calculating-percentiles-using-a-normal-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="calculating-percentiles-using-a-normal-distribution">Calculating Percentiles using a Normal Distribution</h3>
-<p>A percentile is a number such that a specified percentage of the population are at or below this number. For example, the 25<sup>th</sup> percentile is the number in a data set that is greater than or equal to 25% of all the values in the data set. We can find the values of percentiles for a normal distribution R using the <code>qnorm(percentile, mu, sigma)</code> function.</p>
+<p>A percentile is a number such that a specified percentage of the population are at or below this number. For example, the 25<sup>th</sup> percentile is the number in a data set that is greater than or equal to 25% of all the values in the data set.</p>
+<p>We can find percentiles <em>for a given dataset</em> by using the <code>quantile()</code> function as described in the chapter on <a href="https://byuistats.github.io/Math221D_Course/Textbook/Spread.html">summarizing data</a></p>
+<p>However, to calculate percentiles <em>from a normal distribution</em>, we use the <code>qnorm(percentile, mu, sigma)</code> function.</p>
 <p><strong>NOTE</strong>: R typically uses the word <em>quantile</em> when referring to <em>percentiles</em>. So the <span class="math inline">\(q\)</span> in <code>qnorm()</code> stands for <em>quantile</em>.</p>
 <p>To find the <em>height</em> of a Ghanaian woman corresponding to the 90<sup>th</sup> percentile:</p>
 <div class="cell">
@@ -713,59 +726,14 @@ R Instructions
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'mosaic':
-  method                           from   
-  fortify.SpatialPolygonsDataFrame ggplot2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-The 'mosaic' package masks several functions from core packages in order to add 
-additional features.  The original behavior of these functions should not be affected by this.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'mosaic'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:dplyr':
-
-    count, do, tally</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:Matrix':
-
-    mean</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:ggplot2':
-
-    stat</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:rio':
-
-    factorize</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
-    quantile, sd, t.test, var</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    max, mean, min, prod, range, sample, sum</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bat_avg <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"../Data/BattingAverages.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>bat_avg <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/BattingAverages.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li>Use <code>histogram(data$column_name)</code> where <code>column_name</code> refers to the column you would like to use to create a histogram.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(bat_avg<span class="sc">$</span>BattingAvg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(bat_avg<span class="sc">$</span>BattingAvg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -778,7 +746,7 @@ Attaching package: 'mosaic'</code></pre>
 <li>Customize your graph to make it presentation worthy by adding labels and modifying colors:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(bat_avg<span class="sc">$</span>BattingAvg, <span class="at">main =</span> <span class="st">"Distribution of Batting Averages"</span>, <span class="at">xlab =</span> <span class="st">"Batting Average"</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">col =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(bat_avg<span class="sc">$</span>BattingAvg, <span class="at">main =</span> <span class="st">"Distribution of Batting Averages"</span>, <span class="at">xlab =</span> <span class="st">"Batting Average"</span>, <span class="at">ylab =</span> <span class="st">""</span>, <span class="at">col =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -807,10 +775,10 @@ Answer the following questions:
 Show/Hide Solution
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"../Data/BodyTemp.xlsx"</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/BodyTemp.xlsx"</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -820,7 +788,7 @@ Show/Hide Solution
 </div>
 </div>
 </details>
-<ol start="6" type="1">
+<ol start="2" type="1">
 <li>Based on your histogram, what is the shape of the distribution of these data?</li>
 </ol>
 <details>
@@ -831,8 +799,7 @@ Show/Hide Solution
 <li>The data appear to be normally distributed.</li>
 </ul>
 </details>
-<p><br></p>
-<ol start="7" type="1">
+<ol start="3" type="1">
 <li>Calculate the following numerical summaries of the data: sample mean, sample standard deviation, and sample size.</li>
 </ol>
 <details>
@@ -840,7 +807,7 @@ Show/Hide Solution
 Show/Hide Solution
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  min   Q1 median   Q3   max     mean        sd   n missing
  96.2 97.8   98.3 98.7 100.8 98.23446 0.7375924 148       0</code></pre>
@@ -861,12 +828,16 @@ Remember…
 <div class="Summary">
 <ol type="1">
 <li><p>A <strong>normal density curve</strong> is symmetric and bell-shaped with a mean of <span class="math inline">\(\mu\)</span> and a standard deviation of <span class="math inline">\(\sigma\)</span>. The curve lies above the horizontal axis and the total area under the curve is equal to 1. A <strong>standard normal distribution</strong> has a mean of 0 and a standard deviation of 1.</p></li>
-<li><p>A <strong>z-score</strong> is calculated as: <span class="math inline">\(\displaystyle{z = \frac{\text{value}-\text{mean}}{\text{standard deviation}} = \frac{x-\mu}{\sigma}}\)</span></p></li>
-<li><p>A <strong>z-score</strong> tells us how many standard deviations above (<span class="math inline">\(+Z\)</span>) or below (<span class="math inline">\(-Z\)</span>) the mean (<span class="math inline">\(\mu\)</span>) a given value (<span class="math inline">\(x\)</span>) is.</p></li>
-<li><p>To calculate probabilities for an observation <span class="math inline">\(x\)</span>, calculate the <span class="math inline">\(z\)</span>-score using <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, and <span class="math inline">\(x\)</span> and then use <code>pnorm(x, mu, sigma)</code> or <code>1-pnorm(x, mu, sigma)</code> to get the desired probability (above, below, between). In every case, the <strong>probability is</strong> given by the <strong>Area</strong> under the curve.</p></li>
-<li><p>The <strong>68-95-99.7% rule</strong> states that when data are normally distributed, approximately 68% of the data lie within <span class="math inline">\(z=1\)</span> standard deviation (<span class="math inline">\(\sigma\)</span>) from the mean, approximately 95% of the data lie within <span class="math inline">\(z=2\)</span> standard deviations from the mean, and approximately 99.7% of the data lie within <span class="math inline">\(z=3\)</span> standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of <span class="math inline">\(z=-2\)</span>.</p></li>
-<li><p>Percentiles can be calculated using the <code>qnorm(percentile, mu, sigma)</code> function. <br></p></li>
+<li><p>A <strong>z-score</strong> is calculated as:</p></li>
 </ol>
+<p><span class="math display">\[\displaystyle{z = \frac{\text{value}-\text{mean}}{\text{standard deviation}} = \frac{x-\mu}{\sigma}}\]</span></p>
+<ol start="3" type="1">
+<li><p>A <strong>z-score</strong> tells us how many standard deviations above (<span class="math inline">\(+Z\)</span>) or below (<span class="math inline">\(-Z\)</span>) the mean (<span class="math inline">\(\mu\)</span>) a given value (<span class="math inline">\(x\)</span>) is.</p></li>
+<li><p>To calculate probabilities for a normal distribution with mean, <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> for a given observation <span class="math inline">\(x\)</span>, use <code>pnorm(x, mu, sigma)</code> or <code>1-pnorm(x, mu, sigma)</code> to get the desired probability (below, above). Alternatively, calculate the <span class="math inline">\(z\)</span>-score and use <code>pnorm(z)</code> or <code>1-pnorm(z)</code>. In every case, the <strong>probability is</strong> given by the <strong>Area</strong> under the curve.</p></li>
+<li><p>The <strong>68-95-99.7% rule</strong> states that when data are normally distributed, approximately 68% of the population lies within <span class="math inline">\(z=1\)</span> standard deviation (<span class="math inline">\(\sigma\)</span>) from the mean, approximately 95% of the data lie within <span class="math inline">\(z=2\)</span> standard deviations from the mean, and approximately 99.7% of the data lie within <span class="math inline">\(z=3\)</span> standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of <span class="math inline">\(z=-2\)</span>.</p></li>
+<li><p>Percentiles can be calculated using the <code>qnorm(percentile, mu, sigma)</code> function.</p></li>
+</ol>
+<p><br></p>
 </div>
 <p><br></p>
 

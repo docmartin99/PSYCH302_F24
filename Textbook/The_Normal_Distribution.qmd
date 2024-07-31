@@ -1,5 +1,6 @@
 ---
-title: "Lesson 5: Normal Distributions"
+title: "The Normal Distributions"
+warning: false
 ---
 
 ## Lesson Outcomes
@@ -108,9 +109,10 @@ Heights of women (or men) in a particular population follow a normal distributio
 
 <div class="Emphasis">
 For any bell-shaped distribution,
-- 68% of the data will lie within 1 standard deviation of the mean,
-- 95% of the data will lie within 2 standard deviations of the mean, and
-- 99.7% of the data will lie within 3 standard deviations of the mean.
+
+  - 68% of the data will lie within 1 standard deviation of the mean,
+  - 95% of the data will lie within 2 standard deviations of the mean, and
+  - 99.7% of the data will lie within 3 standard deviations of the mean.
 
 This is called the 68-95-99.7% Rule for Bell-shaped Distributions. Some statistics books refer to this as the Empirical Rule.
 <br>
@@ -155,7 +157,6 @@ We define an **unusual observation** to be something that happens less than 5% o
 <summary>Show/Hide Solution</summary>
 -  Relative to other Ghanaian women, Serwa is very tall.  Gustavo is tall relative to Brazilian men, but relative to people of his gender and nationality, he is not relatively taller than Serwa.  Serwa has a higher $z$-score.
 </details>
-<br>
 
 4. Are either of these heights unusual?
 
@@ -176,17 +177,18 @@ An important part of the practice of statistics is finding areas under a normal 
 
 ### Introduction to the Normal Probability Applet
 
-The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between $z$-scores and areas under the standard normal curve. You can find a link to this applet on I-learn, under the Course Resources module. This app is also compatible to use on your phone, iPad, and other mobile devices.  The app is stored at https://byuimath.com/apps/normprob.html.  If you want a copy you can open from your desktop, just right click the link and save it to your computer.
+The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between $z$-scores and areas under the standard normal curve. You can find a link to this applet [here](https://byuimath.com/apps/normprob.html). This app is also compatible to use on your phone, iPad, and other mobile devices.  The app is stored at .  If you want a copy you can open from your desktop, just right click the link and save it to your computer.
 
 To use this applet, follow these instructions:
 
-*Click on an area below the curved line to shade/unshade the region.
-*Click and drag the red lines to adjust the $z$-scores and obtain the area.
-*Type a $z$-score into one of the bottom input boxes and hit "Enter" to get an area.
-*Type in an area and hit "Enter" to get a $z$-score.
+  * Click on an area below the curved line to shade/unshade the region.
+  * Click and drag the red lines to adjust the $z$-scores and obtain the area.
+  * Type a $z$-score into one of the bottom input boxes and hit "Enter" to get an area.
+  * Type in an area and hit "Enter" to get a $z$-score.
+
 
 <center>
-<div width="90%">
+<div class="iframe-container" width="90%">
 <iframe src="https://byuimath.com/apps/normprob.html?width=600&z=1&height=400&left=1&mid=0&right=1&area=a&static=0&title=1&border=0" frameborder="0" width="650" height="450" data-external="1"></iframe>
 </div>
 </center>
@@ -196,15 +198,13 @@ To use this applet, follow these instructions:
 
 Using this applet we can calculate proportions and probabilities based on the area under the normal curve. For the following examples, please open the [Normal Probability Applet](https://byuimath.com/apps/normprob.html){target="_blank"} and practice using it to find areas under the curve.
 
-The Normal Probability Applet is nice for visualizing areas under the curve.  However, it has significant limitations.  We can use the pnorm(x, $\mu$, $\sigma$) function in R to calculate areas under the curve.  The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
+The Normal Probability Applet is nice for visualizing areas under the curve.  However, it has significant limitations.  In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
 
-By default, the `pnorm()` gives the area of the curve to the *LEFT* of the value, $x$, for a normal distribution with a mean, $\mu$, and standard deviation, $\sigma$.  
+By default, `pnorm()` gives the area of the curve to the *LEFT* of the value, $x$, for a normal distribution with a mean, $\mu$, and standard deviation, $\sigma$.  
 
-We can calculate probabilities directly in the original units of the data, or use the z-score with a mean of zero and a standard deviation of 1:  `pnorm(z)`.  
+We can calculate probabilities directly in the original units of the data, or use the z-score with a $\mu=0$ and $\sigma=1$:  `pnorm(z)`.  
 
 __NOTE__: `pnorm()` has a default value for the mean, $\mu = 0$ and standard deviation, $\sigma = 1$ so we don't have to input those values when we use a z-score with the __standard normal distribution__.  
-
-We will show you how to calculate these probabilities in R with the examples below.  
 
 #### Heights of Ghanaian Women
 
@@ -223,11 +223,13 @@ pnorm(2.041)
 
 <center>
 <div width="90%">
+<div class="iframe-container" width="90%">
 <iframe src="https://byuimath.com/apps/normprob.html?width=600&z=2.041&height=400&left=1&mid=1&right=0&area=a&static=1&title=1&border=0" frameborder="0" width="650" height="450" data-external="1"></iframe>
+</div>
 </div>
 </center>
 
-The area to the left of our chosen $z$-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is $0.979$, or $97.9\%$.
+__NOTE__: The area to the left of our chosen $z$-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is $0.979$, or $97.9\%$.
 
 <nowiki>*</nowiki>Remember that in this course, unless otherwise specified, we round to three decimal places.
 
@@ -245,17 +247,18 @@ sigma <- 0.034
 z <- (x-mu)/sigma
 
 # Area to the LEFT:
-pnorm(z)
 pnorm(x, mu, sigma)
+## Equivilantly:
+pnorm(z)
 
 # Area to the RIGHT
-1-pnorm(z)
 1-pnorm(x, mu, sigma)
+1-pnorm(z)
 
 ```
 
 
-Type the $z$-score of $0.559$ in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.
+Using the Applet, type the $z$-score of $0.559$ in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.
 
 <img src="../Images/Batting_average_z-score.PNG">
 
@@ -280,7 +283,7 @@ $$z_2 = \frac{x - \mu}{\sigma} = \frac{165.0 -159.0}{4.9} = 1.22$$
 
 We now answer the question by finding the area under the normal density curve (i.e. the probability) to the left of $z = 1.22$ which is $0.8888$ and also the area under the normal density curve to the left of $z = -1.837$ which is $0.033$. To find the area between $z = 1.22$ and $z = -1.837$, we subtract the smaller area from the larger.
 
-$$0.8888 - 0.033 = 0.8558$$
+$$0.8888 - 0.0331 = 0.8557$$
 
 So the probability that the height of a randomly selected young Ghanaian woman will be between 150.0 cm and 165.0 cm is $0.8558$. This is the same as the proportion of all young Ghanaian women who are between 150.0 and 165.0 cm tall.
 
@@ -296,12 +299,16 @@ pnorm(value2, mean = mu, sd = sigma) - pnorm(value1, mean = mu, sd = sigma)
 
 ```
 
-__NOTE__:  Value 1 is the lower of the two values and Value 2 is the higher value.  
+__NOTE__:  Value 1 is the lower of the two values and Value 2 is the higher value.  Also, this answer is slightly different than above due to when you round. This answer is more accurate because we rounded at the end of the probability calculations rather than rounding the z-scores, then calculating probabilities.  
 
 
 ### Calculating Percentiles using a Normal Distribution
 
-A percentile is a number such that a specified percentage of the population are at or below this number. For example, the 25<sup>th</sup> percentile is the number in a data set that is greater than or equal to 25% of all the values in the data set.  We can find the values of percentiles for a normal distribution R using the `qnorm(percentile, mu, sigma)` function.
+A percentile is a number such that a specified percentage of the population are at or below this number. For example, the 25<sup>th</sup> percentile is the number in a data set that is greater than or equal to 25% of all the values in the data set.  
+
+We can find percentiles *for a given dataset* by using the `quantile()` function as described in the chapter on [summarizing data](https://byuistats.github.io/Math221D_Course/Textbook/Spread.html)
+
+However, to calculate percentiles *from a normal distribution*, we use the `qnorm(percentile, mu, sigma)` function.
 
 __NOTE__: R typically uses the word *quantile* when referring to *percentiles*.  So the $q$ in `qnorm()` stands for *quantile*.
 
@@ -336,7 +343,7 @@ For more detailed instructions revisit [Summarizing Data](../docs/Textbook/Summa
 ```{r}
 library(rio)
 library(mosaic)
-bat_avg <- import("../Data/BattingAverages.xlsx")
+bat_avg <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/BattingAverages.xlsx")
 ```
 
 2. Use `histogram(data$column_name)` where `column_name` refers to the column you would like to use to create a histogram.
@@ -367,21 +374,20 @@ Each volunteer was given a physical to assure that they were not ill at the time
 ```{r}
 library(rio)
 library(mosaic)
-body_temp <- import("../Data/BodyTemp.xlsx")
+body_temp <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/BodyTemp.xlsx")
 histogram(body_temp$BodyTemp)
 ```
 </details>
 
 
-6. Based on your histogram, what is the shape of the distribution of these data?
+2. Based on your histogram, what is the shape of the distribution of these data?
 
 <details>
 <summary>Show/Hide Solution</summary>
 -  The data appear to be normally distributed. 
 </details>
-<br>
 
-7. Calculate the following numerical summaries of the data: sample mean, sample standard deviation, and sample size.
+3. Calculate the following numerical summaries of the data: sample mean, sample standard deviation, and sample size.
 
 <details>
 <summary>Show/Hide Solution</summary>
@@ -404,15 +410,18 @@ The sample mean is 98.23, sample standard deviation is 0.738, and sample size is
 
 1. A **normal density curve** is symmetric and bell-shaped with a mean of $\mu$ and a standard deviation of $\sigma$. The curve lies above the horizontal axis and the total area under the curve is equal to 1. A **standard normal distribution** has a mean of 0 and a standard deviation of 1. 
 
-2. A **z-score** is calculated as: $\displaystyle{z = \frac{\text{value}-\text{mean}}{\text{standard deviation}} = \frac{x-\mu}{\sigma}}$
+2. A **z-score** is calculated as: 
+
+$$\displaystyle{z = \frac{\text{value}-\text{mean}}{\text{standard deviation}} = \frac{x-\mu}{\sigma}}$$
 
 3. A **z-score** tells us how many standard deviations above ($+Z$) or below ($-Z$) the mean ($\mu$) a given value ($x$) is.
 
-4. To calculate probabilities for an observation $x$, calculate the $z$-score using $\mu$, $\sigma$, and $x$ and then use `pnorm(x, mu, sigma)` or `1-pnorm(x, mu, sigma)` to get the desired probability (above, below, between). In every case, the **probability is** given by the **Area** under the curve.  
+4. To calculate probabilities for a normal distribution with mean, $\mu$ and standard deviation $\sigma$ for a given observation $x$, use `pnorm(x, mu, sigma)` or `1-pnorm(x, mu, sigma)` to get the desired probability (below, above).  Alternatively, calculate the $z$-score and use `pnorm(z)` or `1-pnorm(z)`.  In every case, the **probability is** given by the **Area** under the curve.  
 
-5. The **68-95-99.7% rule** states that when data are normally distributed, approximately 68% of the data lie within $z=1$ standard deviation ($\sigma$) from the mean, approximately 95% of the data lie within $z=2$ standard deviations from the mean, and approximately 99.7% of the data lie within $z=3$ standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of $z=-2$.
+5. The **68-95-99.7% rule** states that when data are normally distributed, approximately 68% of the population lies within $z=1$ standard deviation ($\sigma$) from the mean, approximately 95% of the data lie within $z=2$ standard deviations from the mean, and approximately 99.7% of the data lie within $z=3$ standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of $z=-2$.
 
 6. Percentiles can be calculated using the `qnorm(percentile, mu, sigma)` function. 
+
 <br/>
 
 </div>
