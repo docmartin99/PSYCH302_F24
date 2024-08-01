@@ -1,5 +1,6 @@
 ---
-title: "The Sampling Distribution of the Sample Mean & The Central Limit Theorem"
+title: "The Distribution of Sample Means"
+subtitle: "And the Central Limit Theorem"
 warning: false
 ---
 

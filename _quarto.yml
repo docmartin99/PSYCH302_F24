@@ -37,7 +37,7 @@ website:
         - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
 
         
-    - text: "Fundamentals of Statistics"
+    - text: "Fundamentals of Stats"
       menu:
          - href: ./3-Stat_Fundamentals/01-Intro_to_Probability.qmd
          - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
@@ -50,7 +50,7 @@ website:
          - href: ./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.qmd
          - href: ./3-Stat_Fundamentals/10-Assessing_Normality.qmd
   
-    - text: "Statistical Tests - Part 1"
+    - text: "Stat Tests - Part 1"
       menu:
         - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
         - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
@@ -59,7 +59,7 @@ website:
         - href: ./4-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
         - href: ./4-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
 
-    - text: "Statistical Tests - Part 2"
+    - text: "Stat Tests - Part 2"
       menu:
         - href: ./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
@@ -84,12 +84,6 @@ website:
         - href: ./2-Tidy_Data/Bonus_Mutate.qmd
         - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
         - href: ./6-Semester_Project/Importing_Data.qmd
-
-
-    right:
-    - text: "Datasets"
-      menu:
-        - text: "Download Zip Data"
 
 format:  
   html:
