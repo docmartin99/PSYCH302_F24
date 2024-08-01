@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - One-sample Proportion Tests</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,7 +133,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -109,7 +143,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -125,43 +159,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-literacy">    
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/2-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/3-Statistical_Process_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/9-Summarizing_Data_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/10-AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
     </ul>
@@ -172,39 +206,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-into-the-tidyverse">    
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/04-Tidyverse_Fundamentals.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/04-Tidyverse_Fundamentals.html">
  <span class="dropdown-text">Introducing the Tidyverse - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
+    <a class="dropdown-item" href=".././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -215,43 +249,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentals-of-statistics">    
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Homework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
  <span class="dropdown-text">The Sampling Distribution of the Sample Mean &amp; The Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Calculating Probabilities with Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -262,27 +296,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means</span></a>
   </li>  
     </ul>
@@ -293,35 +327,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
  <span class="dropdown-text">Sampling Distribution of P_hat</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">One-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">Two-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -340,35 +374,35 @@ window.Quarto = {
  <span class="dropdown-text">R for Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../6-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +434,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#one-sample-proportion-test" id="toc-one-sample-proportion-test" class="nav-link" data-scroll-target="#one-sample-proportion-test">One Sample Proportion Test</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#example-1-one-sample-proportion-test" id="toc-example-1-one-sample-proportion-test" class="nav-link" data-scroll-target="#example-1-one-sample-proportion-test">Example 1: One Sample Proportion Test</a>
+  <ul class="collapse">
+  <li><a href="#the-distribution-of-hatp" id="toc-the-distribution-of-hatp" class="nav-link" data-scroll-target="#the-distribution-of-hatp">The distribution of <span class="math inline">\(\hat{p}\)</span></a></li>
+  </ul></li>
+  <li><a href="#example-2-handedness" id="toc-example-2-handedness" class="nav-link" data-scroll-target="#example-2-handedness">Example 2: Handedness</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +451,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">One-sample Proportion Tests</h1>
 </div>
 
 
@@ -430,65 +468,97 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
-<ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
-</ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
-<ol start="2" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
-</ol>
-<p>These files will be the basis of your coursework.</p>
+<p><a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Workbooks/One_Sample_Proportion_Ztest.qmd" download="One_Sample_Proportion_Ztest.qmd" type="text/markdown" class="button-download"> Download QMD </a></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In statistics, one-sample proportion tests are used to compare proportions or percentages to a hypothesized value. These tests are useful when dealing with categorical data. We here discuss these tests and provide examples of their application in R.</p>
+<p>The hypothesis test should look very familiar:</p>
+<p><span class="math display">\[H_0: p = p_0\]</span> <span class="math display">\[H_a: p\; (&lt;,&gt;,\neq) \: p_0\]</span> where <span class="math inline">\(p_0\)</span> is some hypothesized value for the population proportion.</p>
+<p>So far, we have been using Greek letters to represent population parameters. We deviate from that now due to the fact that the Greek letter for p, <span class="math inline">\(\pi\)</span>, already has a long-established meaning in mathematics. In the hypothesis definition above, <span class="math inline">\(p\)</span> represents the population proportion.</p>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
-<ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
-</ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
+<section id="one-sample-proportion-test" class="level1">
+<h1>One Sample Proportion Test</h1>
+<p>The one sample proportion test is used to determine whether the proportion of successes in a single sample differs significantly from a hypothesized value.</p>
+<section id="example-1-one-sample-proportion-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-one-sample-proportion-test">Example 1: One Sample Proportion Test</h2>
+<p>Suppose we want to test whether the proportion of students who passed an exam is significantly less than 0.75. We have a sample of 100 students, of which 72 passed.</p>
+<p><span class="math display">\[\hat{p} = \frac{X}{N} = \frac{72}{100} = .72\]</span></p>
+<p>If we want to test if this is significantly less than 75%, we can use the <code>prop.test()</code> which is very similar to <code>t.test()</code>. Instead of putting in a sample mean, <span class="math inline">\(\bar{x}\)</span>, with a hypothesized <span class="math inline">\(\mu\)</span>, we put in <span class="math inline">\(X\)</span> and <span class="math inline">\(N\)</span> and a hypothesized <span class="math inline">\(p\)</span>. Setting the alternative and confidence level operates the same as <code>t.test()</code>.</p>
+<p>Confidence intervals for proportions for proportions can also be obtained just as with <code>t.test()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One Sample Proportion Test Example</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesized proportion: 0.75</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size: 100</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of successes: 72</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">72</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">conf.level =</span> .<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  72 out of 100, null probability 0.75
+X-squared = 0.33333, df = 1, p-value = 0.2819
+alternative hypothesis: true p is less than 0.75
+90 percent confidence interval:
+ 0.0000000 0.7782396
+sample estimates:
+   p 
+0.72 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">72</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">conf.level =</span> .<span class="dv">9</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6358512 0.7917861
+attr(,"conf.level")
+[1] 0.9</code></pre>
+</div>
+</div>
+<section id="the-distribution-of-hatp" class="level3">
+<h3 class="anchored" data-anchor-id="the-distribution-of-hatp">The distribution of <span class="math inline">\(\hat{p}\)</span></h3>
+<p>Recall that the sampling distribution for <span class="math inline">\(\hat{p}\)</span> is approximately normally distributed when our sample has more than 10 expeted “successes” and more than 10 expected “failures”. We test this by looking at</p>
+<p><strong>Hypothesis Test Requirements:</strong></p>
+<p><span class="math display">\[np \geq 10\]</span> <span class="math display">\[n(1-p) \geq 10\]</span></p>
+<p>We use p, not <span class="math inline">\(\hat{p}\)</span> for hypothesis testing because hypothesis testing always assumes the null hypothesis is true. Confidence intervals, on the other hand, make no such assumption.</p>
+<p>To see if the calculated confidence interval is appropriate, we use <span class="math inline">\(\hat{p}\)</span>.</p>
+<p><strong>Confidence Interval Requirements:</strong> <span class="math display">\[n\hat{p} \geq 10\]</span> <span class="math display">\[n(1-\hat{p}) \geq 10\]</span> Can we trust the p-value and confidence interval?</p>
+<p>You can use a calculator for this, or simply use R as a calculator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">72</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p_hat <span class="ot">&lt;-</span> x<span class="sc">/</span>n</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> .<span class="dv">75</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For Hypothesis Testing:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>p <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For Confidence Intervals:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>p_hat <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p_hat) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="example-2-handedness" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-handedness">Example 2: Handedness</h2>
+<p>Suppose the United States national average percent of left-handed people is 11%. A researcher wants to know if visual arts majors are significantly more likely to be left handed. She samples 250 visual arts majors and finds that 36 are left handed.</p>
+<p>Perform a one-sample proportion to see if visual arts majors are significantly more left-handed than the general population.</p>
+<p>State the null and alternative hypotheses and your significance level.</p>
+<p><span class="math display">\[H_0: p = \]</span> <span class="math display">\[H_a: p \]</span> <span class="math display">\[\alpha = \]</span></p>
+<p>Make a <span class="math inline">\((1-\alpha)\)</span> level confidence interval for the true population proportion.</p>
+<p>Are the test requirments for the normlity of <span class="math inline">\(\hat{p}\)</span> satisfied?</p>
+<p>Are the requirements for a confidence interval for <span class="math inline">\(p\)</span> satisfied?</p>
 
 
-</section>
 </section>
 </section>
 

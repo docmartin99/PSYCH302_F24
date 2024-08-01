@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Comparing Means</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,7 +133,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -109,7 +143,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -125,43 +159,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-literacy">    
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/2-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/3-Statistical_Process_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/9-Summarizing_Data_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/10-AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
     </ul>
@@ -172,39 +206,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-into-the-tidyverse">    
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/04-Tidyverse_Fundamentals.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/04-Tidyverse_Fundamentals.html">
  <span class="dropdown-text">Introducing the Tidyverse - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
+    <a class="dropdown-item" href=".././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -215,43 +249,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentals-of-statistics">    
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Homework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
  <span class="dropdown-text">The Sampling Distribution of the Sample Mean &amp; The Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Calculating Probabilities with Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -262,27 +296,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means</span></a>
   </li>  
     </ul>
@@ -293,35 +327,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
  <span class="dropdown-text">Sampling Distribution of P_hat</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">One-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">Two-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -340,35 +374,35 @@ window.Quarto = {
  <span class="dropdown-text">R for Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../6-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +434,43 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#getting-to-know-a-new-dataset" id="toc-getting-to-know-a-new-dataset" class="nav-link" data-scroll-target="#getting-to-know-a-new-dataset">Getting to know a new dataset</a></li>
+  <li><a href="#load-the-libraries-and-data" id="toc-load-the-libraries-and-data" class="nav-link" data-scroll-target="#load-the-libraries-and-data">Load the Libraries and Data</a></li>
+  </ul></li>
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review the data</a></li>
+  <li><a href="#preparing-data-for-analysis" id="toc-preparing-data-for-analysis" class="nav-link" data-scroll-target="#preparing-data-for-analysis">Preparing data for analysis</a>
+  <ul class="collapse">
+  <li><a href="#categories-labeled-as-numbers" id="toc-categories-labeled-as-numbers" class="nav-link" data-scroll-target="#categories-labeled-as-numbers">Categories Labeled as Numbers</a>
+  <ul class="collapse">
+  <li><a href="#changing-a-column-type-in-a-dataset" id="toc-changing-a-column-type-in-a-dataset" class="nav-link" data-scroll-target="#changing-a-column-type-in-a-dataset">Changing a Column Type in a dataset</a></li>
+  <li><a href="#changing-the-variable-type-on-the-fly" id="toc-changing-the-variable-type-on-the-fly" class="nav-link" data-scroll-target="#changing-the-variable-type-on-the-fly">Changing the Variable Type “on the fly”</a></li>
+  </ul></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the Data</a></li>
+  </ul></li>
+  <li><a href="#perform-the-appropriate-analysis" id="toc-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis">Perform the Appropriate Analysis</a>
+  <ul class="collapse">
+  <li><a href="#comparing-schools" id="toc-comparing-schools" class="nav-link" data-scroll-target="#comparing-schools">Comparing Schools</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#comparing-second-period-grade-with-final-grade" id="toc-comparing-second-period-grade-with-final-grade" class="nav-link" data-scroll-target="#comparing-second-period-grade-with-final-grade">Comparing Second Period Grade with Final Grade</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#absenteeism-in-portugal" id="toc-absenteeism-in-portugal" class="nav-link" data-scroll-target="#absenteeism-in-portugal">Absenteeism in Portugal</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#the-impact-of-mothers-education-level" id="toc-the-impact-of-mothers-education-level" class="nav-link" data-scroll-target="#the-impact-of-mothers-education-level">The Impact of Mother’s Education Level</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-3" id="toc-hypothesis-test-3" class="nav-link" data-scroll-target="#hypothesis-test-3">Hypothesis Test</a></li>
+  </ul></li>
+  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +480,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Comparing Means</h1>
+<p class="subtitle lead">Unit 2 Review</p>
 </div>
 
 
@@ -430,65 +498,227 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
-<ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
-</ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
-<ol start="2" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
-</ol>
-<p>These files will be the basis of your coursework.</p>
-</section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
+<p><a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Application_Activities/AA_Unit2_Review.qmd" download="AA_Unit2_Review.qmd" type="text/markdown" class="button-download"> Download QMD </a></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this activity, you will use everything we’ve covered in Unit 2 including:</p>
 <ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
-</ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
+<li>Data manipulation using tidyverse functions</li>
+<li>Hypothesis tests
+<ul>
+<li>1-Sample t-test</li>
+<li>2-sample dependent t-test</li>
+<li>2-sample independent t-test</li>
 <li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
-
-
+</ul></li>
+<li>Confidence Intervals where applicable</li>
+</ul>
+<p>We will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.</p>
+<section id="getting-to-know-a-new-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="getting-to-know-a-new-dataset">Getting to know a new dataset</h2>
+<p>In class, we have reinforced a process for approaching a new dataset. The following is a summary of activities that help us conduct good research:</p>
+<ul>
+<li><strong>Read in the data</strong><br>
+</li>
+<li><strong>Explore the dataset as a whole</strong>:
+<ul>
+<li>What are the column names? What do they mean? Where can I find information about them?</li>
+<li>What is the response/dependent variable? Could there be more than one?</li>
+<li>What are some factors that may impact the response variable? Which are likely the most important?</li>
+</ul></li>
+<li><strong>Explore specific columns</strong>
+<ul>
+<li>Start with the response variable. Are there any outliers? Obtain summary statistics (<code>favstats()</code>), visualize the data (<code>histogram()</code>, <code>boxplot()</code>).</li>
+<li>Explore the explanatory variables you think are most impact to the response variable. What type of data are they (categorical, quantitative)? For categorical variables, what are all the levels (<code>unique()</code>)</li>
+</ul></li>
+<li><strong>Formalize statistical hypotheses</strong>. If your factors are categorical, how many groups will you be comparing? Is it a 1-sample t-test, 2-sample t-test, ANOVA?</li>
+<li><strong>Prepare data for analysis</strong>. You may need to clean the data (eg. <code>data %&gt;% filter() %&gt;% select()</code>)</li>
+<li><strong>Perform the appropriate analysis</strong> (<code>t.test()</code>, <code>aov()</code>)</li>
+</ul>
+<p>All these activities are important, but we may spend more or less time on any one of them depending on the state of the data.</p>
 </section>
+<section id="load-the-libraries-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-libraries-and-data">Load the Libraries and Data</h2>
+</section>
+</section>
+<section id="review-the-data" class="level1">
+<h1>Review the data</h1>
+<p>Take some time to familiarize yourself with the data. Check the <a href="https://www.kaggle.com/datasets/whenamancodes/student-performance">website</a> to see what the columns are.</p>
+<p>What is the response variable?</p>
+<p>Create a histogram of the response variable.</p>
+<p>What do you notice about the shape of the distribution?</p>
+<p>What anomalies, if any, do you notice?</p>
+<p>Calculate summary statistics for the response variable.</p>
+<p>What is the minimum?</p>
+<p>What is the maximum?</p>
+<p>How many students participated in the survey?</p>
+<p>Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:</p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<p><strong>NOTE</strong>: Some of the above variables may be quantitative, which is great! Next unit will cover how to analyze those relationships. This assignment, however, focuses on comparing differences between groups and only considers categorical explanatory variables variables.</p>
+</section>
+<section id="preparing-data-for-analysis" class="level1">
+<h1>Preparing data for analysis</h1>
+<section id="categories-labeled-as-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="categories-labeled-as-numbers">Categories Labeled as Numbers</h2>
+<p>Sometimes even correct data can have issues that must be addressed. For example, categories are often labeled as numbers. Software can’t guess when numbers are supposed to be categories, so we have to tell R when a number should be treated as a category.</p>
+<p>To force a variable to be a category, we use the <code>factor()</code> function in R. We can change the variable type in the data itself or change it in the analysis. We demonstrate both methods below.</p>
+<section id="changing-a-column-type-in-a-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="changing-a-column-type-in-a-dataset">Changing a Column Type in a dataset</h3>
+<p>Father’s education, <code>Fedu</code>, shows up as a number in R. The website suggests that the numbers represent categories (0 = none, 1 = primary education (4th grade), 2 = 5th to 9th grade, 3 = secondary education or 4 = higher education).</p>
+<p>To change the data type in the data itself, we can use a mutate statement in the following manner:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset called fedu_data that begins with the clean data and adds a column that we called Fedu_factor, which is the factorized column, Fedu:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> student <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Fedu_factor =</span> <span class="fu">factor</span>(Fedu))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the column names of the new dataset.  Notice the new column</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(new_data)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse() shows us data types.  Notice after Fedu_factor, the &lt;fct&gt;, which shows us that this is in fact, a factor variable type.  &lt;dbl&gt; stands for "double" and is a numeric variable type</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="changing-the-variable-type-on-the-fly" class="level3">
+<h3 class="anchored" data-anchor-id="changing-the-variable-type-on-the-fly">Changing the Variable Type “on the fly”</h3>
+<p>You may not want to bother changing all the variable types for each potential analysis. Fortunately, you can create a factor “on the fly” within the analysis function itself.</p>
+<p>Because there are more than 2 levels of Father’s Education, I will demonstrate how this is done in an ANOVA:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Force Fedu to be treated like a category in ANOVA:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fedu_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(student<span class="sc">$</span>G3 <span class="sc">~</span> <span class="fu">factor</span>(student<span class="sc">$</span>Fedu))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fedu_anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      Df Sum Sq Mean Sq F value Pr(&gt;F)  
+factor(student$Fedu)   4    238   59.53   2.891 0.0222 *
+Residuals            390   8032   20.59                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>This works with most analysis functions including <code>t.test()</code> and <code>aov()</code>.</p>
+<p><strong>NOTE</strong>: You only have to do this for variables in a dataset that are categories labeled as numbers. If the categories are text, <code>t.test()</code> and <code>aov()</code> automatically recognizes the variable as categorical. However, it does no harm to put a column with text into a <code>factor()</code> statement.</p>
+</section>
+</section>
+<section id="cleaning-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-the-data">Cleaning the Data</h2>
+<p>While exploring the data, you may have noticed a few students ended up with a final grade of zero. While it may be interesting to explore what factors lead to an incomplete grade, we want to make conclusions about students who completed the course.</p>
+<p>Create a clean dataset called, <code>clean</code>, that excludes zeros for G3. This will be used for the following analyses.</p>
+</section>
+</section>
+<section id="perform-the-appropriate-analysis" class="level1">
+<h1>Perform the Appropriate Analysis</h1>
+<section id="comparing-schools" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-schools">Comparing Schools</h2>
+<p>Suppose the Gabriel Pereira school (GP) has more stringent admissions requirements. We suspect this would lead to higher grades, on average.</p>
+<p>Create a side-by-side boxplot of the final grades for each school. Change the y-axis label to read “Final Grade out of 20”, the x-axis label to read “School”, and add a title.</p>
+<p>What do you notice?</p>
+<p>Create a table of summary statistics of final grade for each school:</p>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>Create a qqPlot to look at the normality of both groups:</p>
+<p>Do the grades look normally distributed for both groups? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypotheses and significance level.</p>
+<p><strong>NOTE</strong>: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>What is the P-value?</p>
+<p>What is your conclusion in context of the research question?</p>
+</section>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval and explain it in context of the research question.</p>
+</section>
+</section>
+<section id="comparing-second-period-grade-with-final-grade" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-second-period-grade-with-final-grade">Comparing Second Period Grade with Final Grade</h2>
+<p>We suspect there is a difference between the second period and the final grade, though we do not know if they go up or down. Carry out a hypothesis test to evaluate this suspicion.</p>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Choose how you will define the difference between final grade and second period grade, and create a new object called <code>diff</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diff &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What does a negative number mean?</p>
+<p>Create a qqPlot of <code>diff</code> and check for normality:</p>
+<p>Do the grade differences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypothesis and choose a significance level:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate analysis.</p>
+<p>What is the P-value?</p>
+<p>What conclusion do you make in context of this research question?</p>
+</section>
+<section id="confidence-interval-1" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the differences and explain it in context of the research question.</p>
+</section>
+</section>
+<section id="absenteeism-in-portugal" class="level2">
+<h2 class="anchored" data-anchor-id="absenteeism-in-portugal">Absenteeism in Portugal</h2>
+<p>In 2021, Portugal <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Secondary_education_statistics#Out-of-school_rates">reported</a> having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).</p>
+<section id="hypothesis-test-2" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h3>
+<p>Create a qqPlot for absences.</p>
+<p>Do absences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+<p>State your null and alternative hypotheses and choose a significance level:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate analysis.</p>
+<p>State your conclusion in context of the research question.</p>
+</section>
+<section id="confidence-interval-2" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h3>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for average absences and interpret it in context of the problem.</p>
+</section>
+</section>
+<section id="the-impact-of-mothers-education-level" class="level2">
+<h2 class="anchored" data-anchor-id="the-impact-of-mothers-education-level">The Impact of Mother’s Education Level</h2>
+<p>The level of education of the mother in the home is thought to have a significant impact on student success.</p>
+<p>Create a side-by-side boxplot of final grades for each level of mother’s education.</p>
+<p>Create a table of summary statistics of final grades for each level of mother’s education.</p>
+<p>How many respondents have a mother with no formal education (level 0)?</p>
+<p>Create a new dataset, <code>clean_medu</code>, that does not include mother’s education level 0.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean_medu &lt;- clean %&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create another boxplot with the new dataset that excludes level 0.</p>
+<p>Create a summary table of final grades for each level of a mother’s education with the new dataset.</p>
+<p>What is the maximum standard deviation?</p>
+<p>What is the minimum standard deviation?</p>
+<p>Verify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.</p>
+<section id="hypothesis-test-3" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis Test</h3>
+<p>State your null and alternative hypotheses and pick alpha:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p>Perform the appropriate statistical test.</p>
+<p>What is the test statistic?</p>
+<p>What is the P-value?</p>
+<p>Check the normality of the residuals.</p>
+<p>Do the residuals appear roughly normally distributed?</p>
+<p>Can we trust the P-value.</p>
+<p>State your conclusion.</p>
+</section>
+</section>
+<section id="choose-your-own-adventure" class="level2">
+<h2 class="anchored" data-anchor-id="choose-your-own-adventure">Choose your own adventure</h2>
+<p>Pick another variable that was not analyzed above.</p>
+<p>Create a side-by-side boxplot. Be sure to properly label the graph and add sufficient information so readers can know what they are looking at without having to search through the report or code.</p>
+<p>Perform the appropriate analysis. Be sure to include a concise conclusion in the context of the research question, including a hypothesis test (and confidence interval if applicable.)</p>
+
+
 </section>
 </section>
 

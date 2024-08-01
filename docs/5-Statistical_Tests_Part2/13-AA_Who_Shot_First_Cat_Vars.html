@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Who Shot First?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,37 +103,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -109,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -125,43 +130,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-literacy">    
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/2-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/3-Statistical_Process_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/9-Summarizing_Data_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/10-AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
     </ul>
@@ -172,39 +177,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-into-the-tidyverse">    
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/04-Tidyverse_Fundamentals.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/04-Tidyverse_Fundamentals.html">
  <span class="dropdown-text">Introducing the Tidyverse - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
+    <a class="dropdown-item" href=".././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -215,43 +220,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentals-of-statistics">    
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Homework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
  <span class="dropdown-text">The Sampling Distribution of the Sample Mean &amp; The Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Calculating Probabilities with Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -262,27 +267,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means</span></a>
   </li>  
     </ul>
@@ -293,35 +298,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
  <span class="dropdown-text">Sampling Distribution of P_hat</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">One-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">Two-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -340,35 +345,35 @@ window.Quarto = {
  <span class="dropdown-text">R for Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../6-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +405,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#report" id="toc-report" class="nav-link" data-scroll-target="#report">Report</a></li>
+  <li><a href="#data-and-analysis" id="toc-data-and-analysis" class="nav-link" data-scroll-target="#data-and-analysis">Data and Analysis</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a></li>
+  <li><a href="#one-sample-proportion-test" id="toc-one-sample-proportion-test" class="nav-link" data-scroll-target="#one-sample-proportion-test">One-sample Proportion Test</a></li>
+  <li><a href="#two-sample-proportion-test" id="toc-two-sample-proportion-test" class="nav-link" data-scroll-target="#two-sample-proportion-test">Two-sample Proportion Test</a></li>
+  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
+  <li><a href="#chi-square-test-for-independence" id="toc-chi-square-test-for-independence" class="nav-link" data-scroll-target="#chi-square-test-for-independence">Chi-square Test for Independence</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +423,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Who Shot First?</h1>
+<p class="subtitle lead">Categorical Data Application Activity</p>
 </div>
 
 
@@ -430,65 +441,137 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
+<p><a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Application_Activities/AA_Who_Shot_First_Cat_Vars.qmd" download="AA_Who_Shot_First_Cat_Vars.qmd" type="text/markdown" class="button-download"> Download QMD </a></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Use the Star Wars dataset to answer the following questions:</p>
 <ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
+<li>Do less than 20% of respondents feel Very Favorably towards Emperor Palpatine? (1-sample Z test for proportion)</li>
+<li>What is the difference in proportions of females and males who are Very Favorable towards Jar-Jar Binks? (2-sample Proportion)</li>
+<li>Come up with one other 2-sample proportion test using anything from the Star Wars dataset.</li>
+<li>Test to see if income and response to “Which Character Shot First?” are Independent (Chi-square)</li>
 </ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
-<ol start="2" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
+<p>For the proportion tests:</p>
+<ol type="1">
+<li>Define the null and alternative hypotheses</li>
+<li>Include an explanation and conclusion for hypothesis tests</li>
+<li>Include Confidence intervals and a sentence explaining each</li>
+<li>Check the requirements for the hypothesis test and the confidence intervals</li>
 </ol>
-<p>These files will be the basis of your coursework.</p>
+<p>For the Chi-square test:</p>
+<ol type="1">
+<li>Define the null and alternative hypotheses</li>
+<li>Include an explanation of the conclusion for</li>
+<li>Be sure to check the hypothesis requirements for a test of independence</li>
+</ol>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
-<ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
-</ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
+<section id="report" class="level1">
+<h1>Report</h1>
+<p>Turn in the HTML file created when you knit/render the rmd file.</p>
+</section>
+<section id="data-and-analysis" class="level1">
+<h1>Data and Analysis</h1>
+<p>Load the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Are You a Fan of SW?"               "Favorability_Han Solo"             
+ [3] "Favorability_Luke Skywalker"        "Favorability_Princess Leia Organa" 
+ [5] "Favorability_Anakin Skywalker"      "Favorability_Obi Wan Kenobi"       
+ [7] "Favorability_Emperor Palpatine"     "Favorability_Darth Vader"          
+ [9] "Favorability_Lando Calrissian"      "Favorability_Boba Fett"            
+[11] "Favorability_C-3P0"                 "Favorability_R2 D2"                
+[13] "Favorability_Jar Jar Binks"         "Favorability_Padme Amidala"        
+[15] "Favorability_Yoda"                  "who_shot_first"                    
+[17] "Familiar_with_expanded_universe"    "are_you_a_fan_of_expanded_universe"
+[19] "fan_of_star_trek"                   "Gender"                            
+[21] "Age"                                "Household.Income"                  
+[23] "Education"                          "Location"                          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                            
+                                          5 
+Neither favorably nor unfavorably (neutral) 
+                                         44 
+                         Somewhat favorably 
+                                        151 
+                       Somewhat unfavorably 
+                                          8 
+                           Unfamiliar (N/A) 
+                                         15 
+                             Very favorably 
+                                        610 
+                           Very unfavorably 
+                                          1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>, sw<span class="sc">$</span>Gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                             
+                                                  Female Male Sum
+                                                0      2    3   5
+  Neither favorably nor unfavorably (neutral)   1     22   21  44
+  Somewhat favorably                            4     71   76 151
+  Somewhat unfavorably                          1      3    4   8
+  Unfamiliar (N/A)                              0      9    6  15
+  Very favorably                               10    289  311 610
+  Very unfavorably                              0      0    1   1
+  Sum                                          16    396  422 834</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Emperor Palpatine</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                                            
+                                         20 
+Neither favorably nor unfavorably (neutral) 
+                                        213 
+                         Somewhat favorably 
+                                        143 
+                       Somewhat unfavorably 
+                                         68 
+                           Unfamiliar (N/A) 
+                                        156 
+                             Very favorably 
+                                        110 
+                           Very unfavorably 
+                                        124 
+                                        Sum 
+                                        834 </code></pre>
+</div>
+</div>
+</section>
+<section id="one-sample-proportion-test" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-proportion-test">One-sample Proportion Test</h2>
+<p>What proportion of respondents are very favorable towards Emperor Palpatine?</p>
+<p>Is this significantly less than 20%?</p>
+</section>
+<section id="two-sample-proportion-test" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-proportion-test">Two-sample Proportion Test</h2>
+<p>What percent of female respondents are favorable towards Jar-Jar Binks?</p>
+<p>What percent of male respondents are favorable towards Jar-Jar Binks?</p>
+<p>Are they significantly different?</p>
+</section>
+<section id="choose-your-own-adventure" class="level2">
+<h2 class="anchored" data-anchor-id="choose-your-own-adventure">Choose your own adventure</h2>
+<p>Compare 2 proportions of your choosing and perform a <code>prop.test()</code>.</p>
+</section>
+<section id="chi-square-test-for-independence" class="level2">
+<h2 class="anchored" data-anchor-id="chi-square-test-for-independence">Chi-square Test for Independence</h2>
+<p>Test to see if how you responded to the question “Who Shot First” is independent of income category.</p>
+<p>State your conclusion:</p>
 
 
-</section>
 </section>
 </section>
 

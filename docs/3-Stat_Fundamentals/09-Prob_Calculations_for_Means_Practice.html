@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - Calculating Probabilities with Means</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -99,7 +133,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -109,7 +143,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -125,43 +159,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-literacy">    
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/2-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/3-Statistical_Process_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/9-Summarizing_Data_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/10-AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
     </ul>
@@ -172,39 +206,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-into-the-tidyverse">    
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/04-Tidyverse_Fundamentals.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/04-Tidyverse_Fundamentals.html">
  <span class="dropdown-text">Introducing the Tidyverse - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
+    <a class="dropdown-item" href=".././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -215,43 +249,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentals-of-statistics">    
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Homework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
  <span class="dropdown-text">The Sampling Distribution of the Sample Mean &amp; The Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Calculating Probabilities with Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -262,27 +296,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means</span></a>
   </li>  
     </ul>
@@ -293,35 +327,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
  <span class="dropdown-text">Sampling Distribution of P_hat</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">One-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">Two-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -340,35 +374,35 @@ window.Quarto = {
  <span class="dropdown-text">R for Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../6-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +434,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#gpa" id="toc-gpa" class="nav-link" data-scroll-target="#gpa">GPA</a></li>
+  <li><a href="#gre" id="toc-gre" class="nav-link" data-scroll-target="#gre">GRE</a></li>
+  <li><a href="#coast-guard" id="toc-coast-guard" class="nav-link" data-scroll-target="#coast-guard">Coast Guard</a></li>
+  <li><a href="#tankers" id="toc-tankers" class="nav-link" data-scroll-target="#tankers">Tankers</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +450,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Calculating Probabilities with Means</h1>
+<p class="subtitle lead">Applying the CLT</p>
 </div>
 
 
@@ -430,65 +468,159 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
-<ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
-</ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
-<ol start="2" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
-</ol>
-<p>These files will be the basis of your coursework.</p>
+<p><a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Workbooks/Prob_Calculations_for_Means_Practice.qmd" download="Prob_Calculations_for_Means_Practice.qmd" type="text/markdown" class="button-download"> Download QMD </a></p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Answer the following questions, render the document and submit the <code>.html</code> report.</p>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
-<ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
-</ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
+<section id="questions" class="level1">
+<h1>Questions</h1>
+<section id="gpa" class="level2">
+<h2 class="anchored" data-anchor-id="gpa">GPA</h2>
+<p>Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 81 students will be drawn.</p>
+<p>Use the following R code to answer the questions below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sigma_xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'sigma_xbar' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the left:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the right:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question</strong>: What is the mean of the distribution of the sample means (<span class="math inline">\(\mu_{\bar{x}}\)</span>) for all possible samples of size 81 that could be drawn from the parent population of GPAs?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the standard deviation of the distribution of the sample means (<span class="math inline">\(\sigma_{\bar{x}}\)</span>) for all possible samples of size 81 that could be drawn from the parent population of GPAs?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the shape of the distribution of the sample means for all possible samples of size 81 that could be drawn from the parent population of GPAs?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that the mean GPA for 81 randomly selected BYU-Idaho students will be less than 3.3?</p>
+</section>
+<section id="gre" class="level2">
+<h2 class="anchored" data-anchor-id="gre">GRE</h2>
+<p>Scores on the quantitative portion of the GRE are approximately normally distributed with mean, <span class="math inline">\(\mu = 150.8\)</span> and standard deviation, <span class="math inline">\(\sigma = 8.8\)</span>.</p>
+<p>Use the following R code to answer the questions below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>sigma_xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'sigma_xbar' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the left:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the right:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentile (qnorm())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question</strong>: Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that a randomly selected student will score <em>above</em> 160 on the quantitative portion of the GRE?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What GRE score (n=1) corresponds to the 95th percentile?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that the <em>average</em> GRE score of 5 randomly selected students will be above 160?<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="coast-guard" class="level2">
+<h2 class="anchored" data-anchor-id="coast-guard">Coast Guard</h2>
+<p>The United States Coast Guard assumes the mean weight of passengers in commercial boats is 185 pounds. The previous value was lower, but was raised after a tragic boating accident. The standard deviation of passenger weights is 26.7 pounds. The weights of a random sample of 48 commercial boat passengers were recorded. The sample mean was determined to be 177.6 pounds.</p>
+<p>Use the following R code to answer the questions below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>sigma_xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'sigma_xbar' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the left:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the right:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question</strong>: Find the probability that a random sample of passengers will have a mean weight that is as extreme or more extreme (either above or below the mean) than was observed in this sample.<br>
+<strong>Answer</strong>:</p>
+<p><strong>HINT</strong>: To get a value “as extreme” means it could be higher or lower. Because the normal distribution is symmetric, if the <span class="math inline">\(z&lt;0\)</span>, we can take the area to the <em>left</em> of <span class="math inline">\(z\)</span> and multiply by 2. Conversely, if <span class="math inline">\(z&gt;0\)</span> we can take the area to the right and multiply by 2.</p>
+</section>
+<section id="tankers" class="level2">
+<h2 class="anchored" data-anchor-id="tankers">Tankers</h2>
+<p>Tanker trucks are designed to carry huge quantities of gasoline from refineries to filling stations. A factory that manufactures the tank of the trucks claims to manufacture tanks with a capacity of 8550 gallons of gasoline. The actual capacity of the tanks is normally distributed with mean, <span class="math inline">\(\mu = 8544\)</span> gallons, and standard deviation, <span class="math inline">\(\sigma=12\)</span> gallons.</p>
+<p>Use the following R code to answer the questions below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'n' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sigma_xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'sigma_xbar' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> sigma_xbar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'xbar' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the left:</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Area to the right</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Area between A and B</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma_xbar) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'B' not found</code></pre>
+</div>
+</div>
+<p><strong>Question</strong>: Find the <strong>z-score</strong> corresponding to a single tank (<span class="math inline">\(n=1\)</span>) with a capacity of 8550 gallons. Round your answer to one decimal place.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that a randomly selected tank will have a capacity of <strong>less</strong> than 8550 gallons?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: A simple random sample of <span class="math inline">\(n = 20\)</span> tanks was selected. Find the z-score corresponding to a sample mean capacity for 20 tanks of 8550.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that the sample mean of <span class="math inline">\(n=20\)</span> randomly selected tanks will be between 8541 and 8547?<br>
+<strong>Answer</strong>:</p>
 
 
-</section>
 </section>
 </section>
 

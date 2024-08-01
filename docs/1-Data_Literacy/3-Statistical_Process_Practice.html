@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - BYU-Idaho Math 221: Introduction to Statistics in R</title>
+<title>Math221 Notebook - The Statistical Process</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,37 +69,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -109,7 +80,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -125,43 +96,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-literacy">    
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/2-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/3-Statistical_Process_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
  <span class="dropdown-text">Describing Quantitative Data (Shape &amp; Center)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
  <span class="dropdown-text">Describing Quantitative Data (Spread)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
  <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/9-Summarizing_Data_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/10-AA_Data_Summaries.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Data</span></a>
   </li>  
     </ul>
@@ -172,39 +143,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-into-the-tidyverse">    
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/04-Tidyverse_Fundamentals.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/04-Tidyverse_Fundamentals.html">
  <span class="dropdown-text">Introducing the Tidyverse - Part 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
+    <a class="dropdown-item" href=".././2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd">
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -215,43 +186,43 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-fundamentals-of-statistics">    
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Homework</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
  <span class="dropdown-text">The Sampling Distribution of the Sample Mean &amp; The Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Calculating Probabilities with Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Stat_Fundamentals/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -262,27 +233,27 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means</span></a>
   </li>  
     </ul>
@@ -293,35 +264,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/05-Distribution_of_Phat.html">
  <span class="dropdown-text">Sampling Distribution of P_hat</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">One-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.html">
  <span class="dropdown-text">Two-sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -340,35 +311,35 @@ window.Quarto = {
  <span class="dropdown-text">R for Data Science</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/06-GGPlot_Intro.html">
  <span class="dropdown-text">Introducing GGPlot!</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/02-Filter.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/03-Select.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Tidy_Data/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../2-Tidy_Data/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../6-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,11 +371,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#a-sleep-and-a-forgetting" id="toc-a-sleep-and-a-forgetting" class="nav-link active" data-scroll-target="#a-sleep-and-a-forgetting">1 - “A sleep and a forgetting”</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#the-sitch" id="toc-the-sitch" class="nav-link" data-scroll-target="#the-sitch">The sitch:</a></li>
   </ul></li>
+  <li><a href="#you-see-but-you-do-not-observe" id="toc-you-see-but-you-do-not-observe" class="nav-link" data-scroll-target="#you-see-but-you-do-not-observe">2 - “You see, but you do not observe”</a></li>
+  <li><a href="#will-the-real-jonas-salk-please-stand-up" id="toc-will-the-real-jonas-salk-please-stand-up" class="nav-link" data-scroll-target="#will-the-real-jonas-salk-please-stand-up">3 - Will the real Jonas Salk please stand up</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">4 - Data Types</a></li>
+  <li><a href="#election-year-madness" id="toc-election-year-madness" class="nav-link" data-scroll-target="#election-year-madness">Election year madness</a></li>
+  <li><a href="#how-random" id="toc-how-random" class="nav-link" data-scroll-target="#how-random">How Random!</a></li>
   </ul>
 </nav>
     </div>
@@ -413,7 +388,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">The Statistical Process</h1>
 </div>
 
 
@@ -430,66 +405,96 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
+<section id="a-sleep-and-a-forgetting" class="level1">
+<h1>1 - “A sleep and a forgetting”</h1>
+<section id="the-sitch" class="level2">
+<h2 class="anchored" data-anchor-id="the-sitch">The sitch:</h2>
+<p>The <a href="https://youtu.be/UpAq9EZpL5A?si=Y_wNRFDpaM1WsZKW">Forgetting Curve</a> relates to how quickly we forget new information and suggests strategies for maximize retention. Studies have shown that retention of classroom materials can drop as low as 58% within 15 minutes of class and within 44% after the first hour after class if there is no review of the material. This forgetting curve continues, so that within six days only 25% is remembered.</p>
+<p>Suppose your teacher wanted to test strategies for retention and invited you to participate in a study. You would be randomly assigned to one of two groups.</p>
+<p>Group 1 would be asked to review for ten minutes at three specific times: fifteen minutes after class, one hour after class, and two days after class.</p>
+<p>Group 2 would not be asked to review the material at all. Use the above information for all parts.</p>
+<p><strong>Question</strong>: Which treatment group would be considered the control and why?</p>
+<p><strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Before participating, your teacher gives you a short quiz and records your score out of 10. What type of data (quantitative or categorical) is being recorded?</p>
+<p><strong>Answer</strong>:</p>
+</section>
+</section>
+<section id="you-see-but-you-do-not-observe" class="level1">
+<h1>2 - “You see, but you do not observe”</h1>
+<p>For each of the following scenarios, which are observational studies and which are experiments:</p>
 <ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
+<li>A Telephone Poll asking people about whether or not they vaccinate their children</li>
 </ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
+<p><strong>Study Type</strong>:</p>
 <ol start="2" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
+<li>Administering the tuberculosis vaccination to one group and giving a placebo to another</li>
 </ol>
-<p>These files will be the basis of your coursework.</p>
+<p><strong>Study Type</strong>:</p>
+<ol start="3" type="1">
+<li>A mailed survey asking people whether or not they received the tuberculosis vaccine</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="4" type="1">
+<li>Randomly assigning 2 versions of an exam to a classroom</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="5" type="1">
+<li>A sample of 504 patients in early stages of Alzheimer’s disease is divided into two groups. One group receives an experimental drug and the other a placebo. The advance of the disease is tracked at one-month intervals over the next year.</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
-<ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
-</ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
+<section id="will-the-real-jonas-salk-please-stand-up" class="level1">
+<h1>3 - Will the real Jonas Salk please stand up</h1>
+<p>You want to become the next Jonas Salk and produce a vaccine that will help cure children of Respiratory Syncytial Virus (RSV). You test the vaccine and compare it to a placebo and randomly choose one group of children to take the vaccine and one group to take the placebo.</p>
+<p><strong>Question</strong>: What (or who) are the experimental units or subjects?</p>
+<p><strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the treatments?</p>
+<p><strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the population of this study?</p>
+<p><strong>Answer</strong>:</p>
+</section>
+<section id="data-types" class="level1">
+<h1>4 - Data Types</h1>
+<p>For each of the following examples, state whether or not the collected data are quantitative or categorical:</p>
 <ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
+<li>The number of people in a randomly selected classroom on campus</li>
 </ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="2" type="1">
+<li>The 3 most common brands of car found in the US</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="3" type="1">
+<li>The telephone number of a randomly selected business in town</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="4" type="1">
+<li>The time spent on hold calling customer service</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+</section>
+<section id="election-year-madness" class="level1">
+<h1>Election year madness</h1>
+<p>In a recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate. From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses.</p>
+<p><strong>Question</strong>: What is the population of the study?</p>
+<p><strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the sample of the study?</p>
+<p><strong>Answer</strong>:</p>
+</section>
+<section id="how-random" class="level1">
+<h1>How Random!</h1>
+<p>For each scenario, state which type of sampling scheme was used and explain why:</p>
+<p><strong>Scenario 1</strong>: A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class.</p>
+<p><strong>Sampling Scheme</strong>:</p>
+<p><strong>Explanation</strong>:</p>
+<p><strong>Scenario 2</strong>: Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson’s and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample.</p>
+<p><strong>Sampling Scheme</strong>:</p>
+<p><strong>Explanation</strong>:</p>
+<p><strong>Scenario 3</strong>: A study is being planned in order to estimate the parts per million of a particular pollutant in a lake’s water.</p>
+<p><strong>Question</strong>: How would you sample from the lake to get a representative sample?</p>
+<p><strong>Answer</strong>:</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

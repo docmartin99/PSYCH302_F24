@@ -1,0 +1,36 @@
+---
+title: Testing...Testing...1...2...3
+author: '[your name]'
+format:
+  html:
+    self-contained: yes
+    code-fold: yes
+    self_contained: yes
+editor_options:
+  chunk_output_type: console
+---
+
+# Introduction
+
+This type of file is called a "markdown" file.  Markdown is like Microsoft Word but much more powerful.  This file is made specific for R, and has a file type `.Rmd` meaning "R Markdown".  
+
+You will become very familiar with these files throughout the semester.  For now, it's only necessary to download this file, save it in a sensible folder on your computer or OneDrive, and "run" it. 
+
+Clicking on the "knit" button above (depending on your computer setup it may show up shows up "Render") will create an `.html` document that should open up in your default browser.  
+
+As you see, we can make section headers and type regular text.  But the power of `.Rmd` files is that we can also code inside these documents and present our output directly within the document.
+
+Click "Knit" or "Render" to test to see if your software is set up.  
+
+When coding, we have to tell the computer when we're writing text and when we expect it to compile code.  Below is an example of a "code chunk" that creates a made up graph.
+
+You do __not__ have to understand this right now.  We're only testing that R and RStudio are set up correctly.  
+
+```{r}
+x <- seq(0,10, length = 100)
+y <- 2+exp(x)
+
+plot(x,y, type = "l", lwd=2, col="darkblue", main = "Exponential Function")
+
+```
+

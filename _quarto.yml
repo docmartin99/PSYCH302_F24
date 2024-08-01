@@ -11,50 +11,64 @@ website:
     background: primary
     search: true
     left:
-    - text: "Stats Fundamentals"
+    - text: "Data Literacy"
       menu:
-        - href: ./Textbook/Course_Introduction.qmd
-        - href: ./Textbook/Stat_Process.qmd
-        - href: ./Textbook/Shape_and_Center.qmd
-        - href: ./Textbook/Spread.qmd
-        - href: ./Textbook/Intro_to_Probability.qmd
-        - href: ./Textbook/The_Normal_Distribution.qmd
+        - href: ./1-Data_Literacy/1-Course_Introduction.qmd
+        - href: ./1-Data_Literacy/2-Stat_Process.qmd
+        - href: ./1-Data_Literacy/3-Statistical_Process_Practice.qmd
+        - href: ./1-Data_Literacy/4-Installing_R.qmd
+        - href: ./1-Data_Literacy/5-Shape_and_Center.qmd
+        - href: ./1-Data_Literacy/6-Spread.qmd
+        - href: ./1-Data_Literacy/7-Introducing_R_Practice.qmd
+        - href: ./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.qmd
+        - href: ./1-Data_Literacy/9-Summarizing_Data_Practice.qmd
+        - href: ./1-Data_Literacy/10-AA_Data_Summaries.qmd
         
-    - text:  "Workbook"
+    - text:  "Into the Tidyverse"
       menu:
-        - href: ./Workbooks/Installing_R.qmd
-        - href: ./Workbooks/Summarizing_Data_Multiple_Groups.qmd
-        - href: ./Workbooks/Normal_Distribution.qmd
-        - href: ./Workbooks/CLT_Normal_Prob_for_Means.qmd
-        - href: ./Workbooks/Assessing_Normality.qmd
-        - href: ./Workbooks/Inference_for_mean_sigma_unknown.qmd
-        - href: ./Workbooks/Paired_ttest.qmd
-        - href: ./Workbooks/Independent_2_sample_ttest.qmd
-        - href: ./Workbooks/ANOVA_Intro.qmd
-        - href: ./Workbooks/Bivariate_Data_Intro.qmd
-        - href: ./Workbooks/Linear_Regression_Intro.qmd
-        - href: ./Workbooks/Distribution_of_Phat.qmd
-        - href: ./Workbooks/One_Sample_Proportion_Ztest.qmd
-        - href: ./Workbooks/Two_Sample_Proportion_Ztest.qmd
-        - href: ./Workbooks/Chi_Square_Intro.qmd
-        
-    - text: "Practice Problems"
-      menu:
-         - href: ./Practice/Statistical_Process.qmd
-         - href: ./Practice/Summarizing_Data.qmd
-         - href: ./Practice/Introducing_R_Homework.qmd
-         - href: ./Practice/Exploring_New_Data_with_Tidyverse.qmd
-         - href: ./Practice/More_Tidy_Practice.qmd
-         - href: ./Practice/Regression_Problems.qmd
+        - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
+        - href: ./2-Tidy_Data/02-Filter.qmd
+        - href: ./2-Tidy_Data/03-Select.qmd
+        - href: ./2-Tidy_Data/04-Tidyverse_Fundamentals.qmd
+        - href: ./2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd
+        - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
+        - href: ./2-Tidy_Data/Bonus_More_Tidy_Practice.qmd
+        - href: ./2-Tidy_Data/Bonus_Mutate.qmd
+        - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
 
-    - text: "Application Activities"
+        
+    - text: "Fundamentals of Statistics"
       menu:
-        - href: ./Application_Activities/AA_Data_Summaries.qmd
-        - href: ./Application_Activities/AA_Unit1_Review.qmd
-        - href: ./Application_Activities/AA_Hypothesis_Conf_Int.qmd
-        - href: ./Application_Activities/AA_Unit2_Review.qmd
-        - href: ./Application_Activities/AA_Who_Shot_First_Cat_Vars.qmd
-        - href: ./Application_Activities/Semester_Project_Instructions.qmd
+         - href: ./3-Stat_Fundamentals/01-Intro_to_Probability.qmd
+         - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
+         - href: ./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.qmd
+         - href: ./3-Stat_Fundamentals/04-Normal_Probability_Practice.qmd
+         - href: ./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.qmd
+         - href: ./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.qmd
+         - href: ./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.qmd
+         - href: ./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.qmd
+         - href: ./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.qmd
+         - href: ./3-Stat_Fundamentals/10-Assessing_Normality.qmd
+  
+    - text: "Statistical Tests - Part 1"
+      menu:
+        - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
+        - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
+        - href: ./4-Statistical_Tests_Part1/03-Paired_ttest.qmd
+        - href: ./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.qmd
+        - href: ./4-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
+        - href: ./4-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
+
+    - text: "Statistical Tests - Part 2"
+      menu:
+        - href: ./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
+        - href: ./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
+        - href: ./5-Statistical_Tests_Part2/03-Regression_Practice.qmd
+        - href: ./5-Statistical_Tests_Part2/05-Distribution_of_Phat.qmd
+        - href: ./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.qmd
+        - href: ./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.qmd
+        - href: ./5-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
+        - href: ./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
 
     - text: "R Help"
       menu:
@@ -62,14 +76,14 @@ website:
           href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
         - text: "R for Data Science"
           href: https://r4ds.had.co.nz/transform.html
-        - href: ./Workbooks/Installing_R.qmd
-        - href: ./R_Resources/GGPlot_Intro.qmd
-        - href: ./R_Resources/Wrangling_Basics.qmd
-        - href: ./R_Resources/Filter.qmd
-        - href: ./R_Resources/Select.qmd
-        - href: ./R_Resources/Mutate.qmd
-        - href: ./R_Resources/GroupBy_Summarise.qmd
-        - href: ./R_Resources/Importing_Data.qmd
+        - href: ./1-Data_Literacy/4-Installing_R.qmd
+        - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
+        - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
+        - href: ./2-Tidy_Data/02-Filter.qmd
+        - href: ./2-Tidy_Data/03-Select.qmd
+        - href: ./2-Tidy_Data/Bonus_Mutate.qmd
+        - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
+        - href: ./6-Semester_Project/Importing_Data.qmd
 
 
     right:

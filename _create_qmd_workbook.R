@@ -76,7 +76,7 @@ zip_folder <- function(folder_path, output_zip_name) {
 }
 
 # Main script
-source_dirs <- c("./Workbooks", "./Practice", "./R_Resources", "./Application_Activities")
+source_dirs <- c("./1-Data_Literacy", "./2-Tidy_Data", "./3-Stat_Fundamentals", "./4-Statistical_Tests_Part1", "5-Statistical_Tests_Part2", "./6-Semester_Project")
 yaml_to_add <- list(
   format = list(
     html = list(
