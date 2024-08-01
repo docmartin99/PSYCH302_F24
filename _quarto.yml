@@ -11,8 +11,9 @@ website:
     background: primary
     search: true
     left:
-    - text: "Data Literacy"
+    - text: "Unit 1"
       menu:
+        - text: "Data Literacy"
         - href: ./1-Data_Literacy/1-Course_Introduction.qmd
         - href: ./1-Data_Literacy/2-Stat_Process.qmd
         - href: ./1-Data_Literacy/3-Statistical_Process_Practice.qmd
@@ -24,21 +25,24 @@ website:
         - href: ./1-Data_Literacy/9-Summarizing_Data_Practice.qmd
         - href: ./1-Data_Literacy/10-AA_Data_Summaries.qmd
         
-    - text:  "Into the Tidyverse"
+    - text:  "Unit 2"
       menu:
+        - text: "Into the Tidyverse"
         - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
         - href: ./2-Tidy_Data/02-Filter.qmd
         - href: ./2-Tidy_Data/03-Select.qmd
         - href: ./2-Tidy_Data/04-Tidyverse_Fundamentals.qmd
         - href: ./2-Tidy_Data/05-Exploring_New_Data_With_Tidyverse.qmd
         - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
+        - text: "Bonus Material"
         - href: ./2-Tidy_Data/Bonus_More_Tidy_Practice.qmd
         - href: ./2-Tidy_Data/Bonus_Mutate.qmd
         - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
 
         
-    - text: "Fundamentals of Stats"
+    - text: "Unit 3"
       menu:
+         - text: "Fundamentals of Statistics"
          - href: ./3-Stat_Fundamentals/01-Intro_to_Probability.qmd
          - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
          - href: ./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.qmd
@@ -50,8 +54,9 @@ website:
          - href: ./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.qmd
          - href: ./3-Stat_Fundamentals/10-Assessing_Normality.qmd
   
-    - text: "Stat Tests - Part 1"
+    - text: "Unit 4"
       menu:
+        - text: "Statistical Tests - Part 1"
         - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
         - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
         - href: ./4-Statistical_Tests_Part1/03-Paired_ttest.qmd
@@ -59,8 +64,9 @@ website:
         - href: ./4-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
         - href: ./4-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
 
-    - text: "Stat Tests - Part 2"
+    - text: "Unit 5"
       menu:
+        - text: "Statistical Tests - Part 2"
         - href: ./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/03-Regression_Practice.qmd
@@ -69,6 +75,11 @@ website:
         - href: ./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.qmd
         - href: ./5-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
+
+    - text: "Semester Project"
+      menu:
+        - href: ./6-Semester_Project/Importing_Data.qmd
+        - href: ./6-Semester_Project/Semester_Project_Instructions.qmd
 
     - text: "R Help"
       menu:
