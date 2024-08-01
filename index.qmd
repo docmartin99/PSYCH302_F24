@@ -6,74 +6,65 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## A Customizable Textbook
+## An Interactive Textbook
 
 This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.
 
 Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.
 
-This book is designed to be a digital workbook.  You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer.  Completed workbooks and assignments will be submitted in Canvas as web-page reports.  
+This book is designed to be a digital workbook.  You can download the notes, practice problems and application activities which can be edited locally on your computer.  Completed assignments will be submitted in Canvas as web-page reports.  
 
 
 ### Download Course Material
 
-To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:
+To download the folder containing all of the exercises, notes and application activities by following these steps:
 
   1. Create a class folder where you will save all your work throughout this semester.  This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.
   2. Click on the link below to download the `.zip` file containing all contents of the course website:
 
+<center>
 <a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download>
   Download Course Files
 </a>
+</center>
 
-  2. Open the `.zip` file
-  3. Save the `Student_Work` folder to your class folder created in step 1.  This can typically be done by right clicking the folder then copying and pasting it into the new location. 
+  3. Open the `.zip` file
+  4. Save the `Student_Work` folder to your class folder created in step 1.  This can typically be done by right clicking the folder then copying and pasting it into the new location. 
 
 These files will be the basis of your coursework.  
 
 
 ### How to Use This Book
 
-Each lesson will typically include:
+Each unit contains:
 
-  * Background readings (either from Stats Fundamentals or Workbooks)
-  * Example code (mostly in Workbooks)
-  * Opportunities to practice (Workbooks, Practice Problems and Application Activities)
+  * Background readings
+  * Class notes including example code
+  * Practice problems
+  * Application Activities
   
-Stats Fundamentals is a great reference for the core principles which are used throughout the course.  
+Unit 1 introduces R and summarizing data.  It's a gentle enough introduction to enable even those who have never coded before to start working with R and begin creating lovely web-based reports.  
 
-Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.  
+Unit 2 expands on the R basics of Unit 1 and introduces the Tidyverse.  This is a powerful way to wrangle data and create even more beautiful data visualizations.    
 
-The Practice Problems tab provides opportunities to practice.  Sometimes these will be done in class with the assistance of teacher, TA, and friends.  Other times they will be completed on your own outside of class.  
+Unit 3 covers the fundamentals of statistics including elementary probability, the Normal Distribution, sampling distributions and the Central Limit Theorem.  
 
-Application Activities are designed to give you a more real-world experience dealing with data.  They are larger projects that may cover multiple lessons.
+Unit 4 introduces hypothesis testing, confidence intervals and statistical inference for means.
 
-The section labeled "R Help" provides resources to help with R programming.
+Unit 5 introduces hypothesis tests for regression and categorical data.
 
+The Semester Project is an opportunity for students to demonstrate the skills acquired during the course.  You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.
 
-#### Suggested Sequence of Topics for Teaching
-
-This book was specifically designed for the Math 221D section, Intro to Stats In R.
-
-After introducing some foundational principles of Statistics, the recommended sequence:
-
-1.  Course Introduction, including R installation
-2.  Summarizing Data - Shape and Center
-3.  Summarizing Data - Measures of Spread
-4.  Probability
-5.  Normal Distribution
-6.  Distribution of Sample Means
-7.  Probability Calculations for Means
-8.  Introduction to Hypothesis Testing
-9.  Introduction to Confidence Intervals
-10. Inference for a Mean
-11. Inference for Dependent Samples
-12. Inference for Independent Samples
-13. ANOVA
-14. Regression
-15. Distribution of $\hat{p}$
-16. Inference for 1 Proportion
-17. Inference for 2 Proportions
-18. Chi Square Test for Independence
+R Help provides additional resources for learning how to use R.
 
 
+#### Course Objectives
+
+By the end of this semester, students will confidently be able to:
+
+- Import data and apply basic data wrangling to moderately messy data
+- Describe data with numerical and graphical summaries
+- Make evidence-based decisions regarding situations with inherent randomness
+- Investigate questions through the application of probability distributions
+- Perform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals
+- Create web-based reports to communicate the results of statistical analyses to relevant audiences

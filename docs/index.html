@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -411,7 +382,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-customizable-textbook" id="toc-a-customizable-textbook" class="nav-link active" data-scroll-target="#a-customizable-textbook">A Customizable Textbook</a>
+  <li><a href="#an-interactive-textbook" id="toc-an-interactive-textbook" class="nav-link active" data-scroll-target="#an-interactive-textbook">An Interactive Textbook</a>
   <ul class="collapse">
   <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
   <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
@@ -441,20 +412,22 @@ window.Quarto = {
 </header>
 
 
-<section id="a-customizable-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="a-customizable-textbook">A Customizable Textbook</h2>
+<section id="an-interactive-textbook" class="level2">
+<h2 class="anchored" data-anchor-id="an-interactive-textbook">An Interactive Textbook</h2>
 <p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
 <p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the Workbooks, Practice Problems and Application Activities which can be edited locally on your computer. Completed workbooks and assignments will be submitted in Canvas as web-page reports.</p>
+<p>This book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.</p>
 <section id="download-course-material" class="level3">
 <h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes, R helps and Application Activities by following these steps:</p>
+<p>To download the folder containing all of the exercises, notes and application activities by following these steps:</p>
 <ol type="1">
 <li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
 <li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
 </ol>
-<p><a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a></p>
-<ol start="2" type="1">
+<center>
+<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download=""> Download Course Files </a>
+</center>
+<ol start="3" type="1">
 <li>Open the <code>.zip</code> file</li>
 <li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
 </ol>
@@ -462,41 +435,31 @@ window.Quarto = {
 </section>
 <section id="how-to-use-this-book" class="level3">
 <h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each lesson will typically include:</p>
+<p>Each unit contains:</p>
 <ul>
-<li>Background readings (either from Stats Fundamentals or Workbooks)</li>
-<li>Example code (mostly in Workbooks)</li>
-<li>Opportunities to practice (Workbooks, Practice Problems and Application Activities)</li>
+<li>Background readings</li>
+<li>Class notes including example code</li>
+<li>Practice problems</li>
+<li>Application Activities</li>
 </ul>
-<p>Stats Fundamentals is a great reference for the core principles which are used throughout the course.</p>
-<p>Workbooks are more hands-on, interactive activities that reinforce and expand on the key topics from Stats Fundamentals.</p>
-<p>The Practice Problems tab provides opportunities to practice. Sometimes these will be done in class with the assistance of teacher, TA, and friends. Other times they will be completed on your own outside of class.</p>
-<p>Application Activities are designed to give you a more real-world experience dealing with data. They are larger projects that may cover multiple lessons.</p>
-<p>The section labeled “R Help” provides resources to help with R programming.</p>
-<section id="suggested-sequence-of-topics-for-teaching" class="level4">
-<h4 class="anchored" data-anchor-id="suggested-sequence-of-topics-for-teaching">Suggested Sequence of Topics for Teaching</h4>
-<p>This book was specifically designed for the Math 221D section, Intro to Stats In R.</p>
-<p>After introducing some foundational principles of Statistics, the recommended sequence:</p>
-<ol type="1">
-<li>Course Introduction, including R installation</li>
-<li>Summarizing Data - Shape and Center</li>
-<li>Summarizing Data - Measures of Spread</li>
-<li>Probability</li>
-<li>Normal Distribution</li>
-<li>Distribution of Sample Means</li>
-<li>Probability Calculations for Means</li>
-<li>Introduction to Hypothesis Testing</li>
-<li>Introduction to Confidence Intervals</li>
-<li>Inference for a Mean</li>
-<li>Inference for Dependent Samples</li>
-<li>Inference for Independent Samples</li>
-<li>ANOVA</li>
-<li>Regression</li>
-<li>Distribution of <span class="math inline">\(\hat{p}\)</span></li>
-<li>Inference for 1 Proportion</li>
-<li>Inference for 2 Proportions</li>
-<li>Chi Square Test for Independence</li>
-</ol>
+<p>Unit 1 introduces R and summarizing data. It’s a gentle enough introduction to enable even those who have never coded before to start working with R and begin creating lovely web-based reports.</p>
+<p>Unit 2 expands on the R basics of Unit 1 and introduces the Tidyverse. This is a powerful way to wrangle data and create even more beautiful data visualizations.</p>
+<p>Unit 3 covers the fundamentals of statistics including elementary probability, the Normal Distribution, sampling distributions and the Central Limit Theorem.</p>
+<p>Unit 4 introduces hypothesis testing, confidence intervals and statistical inference for means.</p>
+<p>Unit 5 introduces hypothesis tests for regression and categorical data.</p>
+<p>The Semester Project is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.</p>
+<p>R Help provides additional resources for learning how to use R.</p>
+<section id="course-objectives" class="level4">
+<h4 class="anchored" data-anchor-id="course-objectives">Course Objectives</h4>
+<p>By the end of this semester, students will confidently be able to:</p>
+<ul>
+<li>Import data and apply basic data wrangling to moderately messy data</li>
+<li>Describe data with numerical and graphical summaries</li>
+<li>Make evidence-based decisions regarding situations with inherent randomness</li>
+<li>Investigate questions through the application of probability distributions</li>
+<li>Perform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals</li>
+<li>Create web-based reports to communicate the results of statistical analyses to relevant audiences</li>
+</ul>
 
 
 </section>
