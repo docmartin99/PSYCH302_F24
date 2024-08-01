@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Normal Probability Calculations for Means</title>
+<title>Math221 Notebook - Paired T-Test Practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -457,13 +457,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link active" data-scroll-target="#the-central-limit-theorem">The Central Limit Theorem</a></li>
-  <li><a href="#probability-calculations-for-the-sampling-distribution-of-barx" id="toc-probability-calculations-for-the-sampling-distribution-of-barx" class="nav-link" data-scroll-target="#probability-calculations-for-the-sampling-distribution-of-barx">Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></a></li>
-  <li><a href="#one-z-formula-to-rule-them-all" id="toc-one-z-formula-to-rule-them-all" class="nav-link" data-scroll-target="#one-z-formula-to-rule-them-all">One Z Formula to Rule Them All</a></li>
-  <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#helmet-measurements" id="toc-helmet-measurements" class="nav-link" data-scroll-target="#helmet-measurements">Helmet Measurements</a>
   <ul class="collapse">
-  <li><a href="#gpas" id="toc-gpas" class="nav-link" data-scroll-target="#gpas">GPA’s</a></li>
-  <li><a href="#gre-scores" id="toc-gre-scores" class="nav-link" data-scroll-target="#gre-scores">GRE Scores</a></li>
+  <li><a href="#step-1-load-the-data" id="toc-step-1-load-the-data" class="nav-link" data-scroll-target="#step-1-load-the-data">Step 1: Load the Data</a></li>
+  <li><a href="#step-2-explore-the-data-and-generate-hypotheses" id="toc-step-2-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</a></li>
+  <li><a href="#step-3-prepare-the-data-for-analysis" id="toc-step-3-prepare-the-data-for-analysis" class="nav-link" data-scroll-target="#step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analyses" id="toc-step-4-perform-the-appropriate-analyses" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analyses">Step 4: Perform the Appropriate Analyses</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#cholesterol" id="toc-cholesterol" class="nav-link" data-scroll-target="#cholesterol">Cholesterol</a>
+  <ul class="collapse">
+  <li><a href="#step-1-load-the-data-1" id="toc-step-1-load-the-data-1" class="nav-link" data-scroll-target="#step-1-load-the-data-1">Step 1: Load the Data</a></li>
+  <li><a href="#step-2-review-the-data-generate-hypotheses" id="toc-step-2-review-the-data-generate-hypotheses" class="nav-link" data-scroll-target="#step-2-review-the-data-generate-hypotheses">Step 2: Review the Data Generate Hypotheses</a></li>
+  <li><a href="#step-3-prepare-the-data-for-analysis-1" id="toc-step-3-prepare-the-data-for-analysis-1" class="nav-link" data-scroll-target="#step-3-prepare-the-data-for-analysis-1">Step 3: Prepare the data for analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analysis" id="toc-step-4-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -473,7 +488,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Normal Probability Calculations for Means</h1>
+<h1 class="title">Paired T-Test Practice</h1>
 </div>
 
 
@@ -490,106 +505,111 @@ window.Quarto = {
 </header>
 
 
-<section id="the-central-limit-theorem" class="level1">
-<h1>The Central Limit Theorem</h1>
-<p>The Central Limit Theorem states that for a large enough sample size (<span class="math inline">\(n&gt;30\)</span>) the distribution of <em>sample means</em> is approximately normal with mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> regardless of the distribution of the population.</p>
-<p>We can assume the distribution of sample means is approximately normal if:</p>
-<ol type="1">
-<li>The population is normally distributed</li>
-<li>n &gt; 30</li>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing dependent samples using R. For each question, you will:</p>
+<ul>
+<li>Read in data</li>
+<li>Create data summaries (numerical and graphical)</li>
+<li>Statistically analyze the data</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
+</section>
+<section id="helmet-measurements" class="level1">
+<h1>Helmet Measurements</h1>
+<p>After purchasing a batch of flight helmets that did not fit the heads of many pilots, the NZ Airforce decided to measure the head sizes of all recruits. Before this was carried out, information was collected to determine the feasibility of using cheap cardboard calipers to make the measurements, instead of metal ones which were expensive and uncomfortable.</p>
+<p>The data lists the head diameters of 18 recruits measured once using cardboard calipers and again using metal calipers. One question is whether there is <em>any</em> systematic difference between the two measurement tools.</p>
+<p><strong>NOTE</strong>: Define the difference as cardboard - metal.</p>
+<p>Use <span class="math inline">\(\alpha = 0.05\)</span> significance level.</p>
+<section id="step-1-load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-the-data">Step 1: Load the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>helmet_fit <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/helmet_fit.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-explore-the-data-and-generate-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</h2>
+<p>Create histograms and summary statistic tables for the measurements for each type of tool:</p>
+</section>
+<section id="step-3-prepare-the-data-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</h2>
+<p>Give the summary statistics (favstats) for the <em>differences</em> in the measured head diameters.</p>
+<p>What does a negative number mean given the definition of the difference?</p>
+<p>Create a qqPlot of the differences:</p>
+</section>
+<section id="step-4-perform-the-appropriate-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analyses">Step 4: Perform the Appropriate Analyses</h2>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>Make the following null and alternative hypothesis correct by deleting what doesn’t belong:</p>
+<p><span class="math display">\[H_0: \mu_d  &gt; &lt; = \ne 0\]</span></p>
+<p><span class="math display">\[ H_a: \mu_d &gt; &lt; = \ne 0\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a t-test for the mean of the differences between cardboard and caliper data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What is the value of the test statistic, <span class="math inline">\(t\)</span>?</p>
+<p>How many degrees of freedom does this test statistics have?</p>
+<p>What is the P-value?</p>
+<p>Can we trust this P-value?</p>
+<ol type="a">
+<li>How many differences in our sample?</li>
+<li>Check the <code>qqPlot()</code> of the differences for normality:</li>
 </ol>
-<p>Don’t forget, that if the population is normally distributed, so is the distribution of sample means <strong>regardless of sample size</strong>.</p>
+<p>State your conclusion about the hypothesis test:</p>
 </section>
-<section id="probability-calculations-for-the-sampling-distribution-of-barx" class="level1">
-<h1>Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></h1>
-<p>When we are confident that the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is normal, we can use the <code>pnorm()</code> function just as we did before. We simply input the mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> into the Z-score formula as follows:</p>
+<section id="confidence-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h3>
+<p>Create a 95% confidence interval for the true average difference between the cardboard and the metal measurement tools:</p>
+<p>Give a one-sentence explanation of your confidence interval:</p>
+</section>
+</section>
+</section>
+<section id="cholesterol" class="level1">
+<h1>Cholesterol</h1>
+<p>A study was conducted at a major northeastern American medical center regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days after the heart attack and again four days after the heart attack. Researchers want to see if cholesterol levels reduced significantly four days after the attack versus two days after the attack.</p>
+<p>Use the level of significance of 0.05.</p>
+<section id="step-1-load-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-the-data-1">Step 1: Load the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">33</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of a sample mean being between A and B</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma_xbar) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02774293</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating Percentiles: What is the sample mean below which a certain percent is found? </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18.2388</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cholesterol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/cholesterol.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="one-z-formula-to-rule-them-all" class="level1">
-<h1>One Z Formula to Rule Them All</h1>
-<p>We do not have to worry about choosing between two different Z-score formulas (one for individuals and a separate one for means).</p>
-<p>If we are calculating probabilities for a normal population and we want to calculate the probability of a single individual, we can simply set <span class="math inline">\(n=1\)</span>.</p>
-<p><em>WARNING</em>: Using sample size of 1 only works if the population is already normally distributed. But if we confident that it is, we can use the following calculations:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
-</div>
-</div>
+<section id="step-2-review-the-data-generate-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-review-the-data-generate-hypotheses">Step 2: Review the Data Generate Hypotheses</h2>
+<p>Create histograms and summary statistics tables for the cholesterol measurements at 2 days and at 4 days.</p>
 </section>
-<section id="practice-together" class="level1">
-<h1>Practice Together</h1>
-<p>Use the following calculator to answer the questions below. <strong>REMEMBER</strong>: Whenever you update information, it is useful to run the whole code chunk.</p>
-<section id="gpas" class="level2">
-<h2 class="anchored" data-anchor-id="gpas">GPA’s</h2>
-<p>Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 45 students will be drawn.</p>
-<p><em>Question 1</em>: What is the mean of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population of GPAs?</p>
-<p><em>Question 2</em>: What is the standard deviation of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population?</p>
-<p><em>Question 3</em>: What is the probability that the mean GPA for 45 randomly selected BYU-Idaho students will be less than 3.3?</p>
-<p><em>Question 4</em>: What is the shape of the distribution of sample means, <span class="math inline">\(\bar{x}\)</span>, 45 students are selected in each of the possible random samples?</p>
+<section id="step-3-prepare-the-data-for-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-the-data-for-analysis-1">Step 3: Prepare the data for analysis</h2>
+<p>Decide how you are going to define the difference (chol_day2 - chol_day4 or chol_day4 - chol_day2).</p>
+<p>What does a negative number mean:</p>
+<p>What is your null and alternative hypotheses:</p>
+<p><span class="math display">\[H_0: \mu_d  &gt; &lt; = \ne 0\]</span></p>
+<p><span class="math display">\[ H_a: \mu_d &gt; &lt; = \ne 0\]</span></p>
+<p>Create a qqPlot of the differences and determine if you can trust the statistical tests.</p>
 </section>
-<section id="gre-scores" class="level2">
-<h2 class="anchored" data-anchor-id="gre-scores">GRE Scores</h2>
-<p>Scores on the quantitative portion of the GRE are approximately normally distributed with mean, <span class="math inline">\(\mu=150.8\)</span>, and standard deviation <span class="math inline">\(\sigma = 8.8\)</span>.</p>
-<p><em>Question 1</em>: Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score?</p>
-<p><em>Question 2</em>: What is the probability that a randomly selected student will score above 160 on the quantitative portion of the GRE?</p>
-<p><em>Question 3</em>: What is the probability that a randomly selected group of 18 students will have an <em>average</em> less than 160 on the quantitative portion of the GRE?</p>
-<p><em>Question 4</em>: What is the probability that a randomly selected group of 18 students will have an <em>average</em> between 145 and 160 on the quantitative portion of the GRE?</p>
+<section id="step-4-perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Perform a t-test for the differences.</p>
+<p>How many degrees of freedom does the test statistic have:</p>
+<p>What is the test statistic:</p>
+<p>What is the P-value:</p>
+<p>State your conclusion in context of the research question:</p>
+</section>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a 95% confidence interval for the difference in cholesterol scores:</p>
+<p>Explain your confidence interval in context of the research question:</p>
 
 
+</section>
 </section>
 </section>
 

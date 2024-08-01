@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Normal Probability Calculations for Means</title>
+<title>Math221 Notebook - 2-Sample Independent T-Test Practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -457,14 +457,29 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link active" data-scroll-target="#the-central-limit-theorem">The Central Limit Theorem</a></li>
-  <li><a href="#probability-calculations-for-the-sampling-distribution-of-barx" id="toc-probability-calculations-for-the-sampling-distribution-of-barx" class="nav-link" data-scroll-target="#probability-calculations-for-the-sampling-distribution-of-barx">Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></a></li>
-  <li><a href="#one-z-formula-to-rule-them-all" id="toc-one-z-formula-to-rule-them-all" class="nav-link" data-scroll-target="#one-z-formula-to-rule-them-all">One Z Formula to Rule Them All</a></li>
-  <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#its-a-date" id="toc-its-a-date" class="nav-link" data-scroll-target="#its-a-date">It’s a Date!</a>
   <ul class="collapse">
-  <li><a href="#gpas" id="toc-gpas" class="nav-link" data-scroll-target="#gpas">GPA’s</a></li>
-  <li><a href="#gre-scores" id="toc-gre-scores" class="nav-link" data-scroll-target="#gre-scores">GRE Scores</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#tooth-hurty" id="toc-tooth-hurty" class="nav-link" data-scroll-target="#tooth-hurty">Tooth hurty</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review The Data</a></li>
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#birth-weights" id="toc-birth-weights" class="nav-link" data-scroll-target="#birth-weights">Birth Weights</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data-1" id="toc-review-the-data-1" class="nav-link" data-scroll-target="#review-the-data-1">Review The Data</a></li>
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#miscellany" id="toc-miscellany" class="nav-link" data-scroll-target="#miscellany">Miscellany</a></li>
   </ul>
 </nav>
     </div>
@@ -473,7 +488,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Normal Probability Calculations for Means</h1>
+<h1 class="title">2-Sample Independent T-Test Practice</h1>
 </div>
 
 
@@ -490,107 +505,157 @@ window.Quarto = {
 </header>
 
 
-<section id="the-central-limit-theorem" class="level1">
-<h1>The Central Limit Theorem</h1>
-<p>The Central Limit Theorem states that for a large enough sample size (<span class="math inline">\(n&gt;30\)</span>) the distribution of <em>sample means</em> is approximately normal with mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> regardless of the distribution of the population.</p>
-<p>We can assume the distribution of sample means is approximately normal if:</p>
-<ol type="1">
-<li>The population is normally distributed</li>
-<li>n &gt; 30</li>
-</ol>
-<p>Don’t forget, that if the population is normally distributed, so is the distribution of sample means <strong>regardless of sample size</strong>.</p>
-</section>
-<section id="probability-calculations-for-the-sampling-distribution-of-barx" class="level1">
-<h1>Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></h1>
-<p>When we are confident that the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is normal, we can use the <code>pnorm()</code> function just as we did before. We simply input the mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> into the Z-score formula as follows:</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:</p>
+<ul>
+<li>Read in data</li>
+<li>Identify the Response and Independent variable</li>
+<li>Create data summaries (numerical and graphical)</li>
+<li>Statistically analyze the data</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
+<p>When you finish, render this document and submit the <code>.html</code> in Canvas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">33</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of a sample mean being between A and B</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma_xbar) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02774293</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating Percentiles: What is the sample mean below which a certain percent is found? </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18.2388</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="one-z-formula-to-rule-them-all" class="level1">
-<h1>One Z Formula to Rule Them All</h1>
-<p>We do not have to worry about choosing between two different Z-score formulas (one for individuals and a separate one for means).</p>
-<p>If we are calculating probabilities for a normal population and we want to calculate the probability of a single individual, we can simply set <span class="math inline">\(n=1\)</span>.</p>
-<p><em>WARNING</em>: Using sample size of 1 only works if the population is already normally distributed. But if we confident that it is, we can use the following calculations:</p>
+<section id="its-a-date" class="level1">
+<h1>It’s a Date!</h1>
+<p>Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates. In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).</p>
+<p>The researchers want to determine if males report to value attractiveness more than females. Use a level of significance of 0.05.</p>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="practice-together" class="level1">
-<h1>Practice Together</h1>
-<p>Use the following calculator to answer the questions below. <strong>REMEMBER</strong>: Whenever you update information, it is useful to run the whole code chunk.</p>
-<section id="gpas" class="level2">
-<h2 class="anchored" data-anchor-id="gpas">GPA’s</h2>
-<p>Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 45 students will be drawn.</p>
-<p><em>Question 1</em>: What is the mean of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population of GPAs?</p>
-<p><em>Question 2</em>: What is the standard deviation of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population?</p>
-<p><em>Question 3</em>: What is the probability that the mean GPA for 45 randomly selected BYU-Idaho students will be less than 3.3?</p>
-<p><em>Question 4</em>: What is the shape of the distribution of sample means, <span class="math inline">\(\bar{x}\)</span>, 45 students are selected in each of the possible random samples?</p>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>What do you observe?</p>
+<p>Create a table of summary statistics for each group (<code>favstats()</code>):</p>
 </section>
-<section id="gre-scores" class="level2">
-<h2 class="anchored" data-anchor-id="gre-scores">GRE Scores</h2>
-<p>Scores on the quantitative portion of the GRE are approximately normally distributed with mean, <span class="math inline">\(\mu=150.8\)</span>, and standard deviation <span class="math inline">\(\sigma = 8.8\)</span>.</p>
-<p><em>Question 1</em>: Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score?</p>
-<p><em>Question 2</em>: What is the probability that a randomly selected student will score above 160 on the quantitative portion of the GRE?</p>
-<p><em>Question 3</em>: What is the probability that a randomly selected group of 18 students will have an <em>average</em> less than 160 on the quantitative portion of the GRE?</p>
-<p><em>Question 4</em>: What is the probability that a randomly selected group of 18 students will have an <em>average</em> between 145 and 160 on the quantitative portion of the GRE?</p>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the ??? with the appropriate symbol):</p>
+<p><span class="math display">\[H_0:  \mu_{F}???\mu_{M}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{F}???\mu_{M}\]</span></p>
+<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
+<p>Check that the samples for both groups are normally distributed</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance, <span class="at">groups =</span> dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-Independent_2_sample_ttest_practice_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Do the data for each group appear normally distributed?</p>
+<p>Why is it OK to continue with the analysis?</p>
+<p>Perform a t-test.</p>
+<p>What is the value of the test statistic?</p>
+<p>How many degrees of freedom for this test?</p>
+<p>What is the p-value?</p>
+<p>What do you conclude?</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
+</section>
+</section>
+</section>
+<section id="tooth-hurty" class="level1">
+<h1>Tooth hurty</h1>
+<p>A simple random sample of dental bill costs was collected at offices in Rexburg and Idaho Falls. Let <span class="math inline">\(\mu_{IF}\)</span> be the <em>population</em> mean of dental costs in Idaho Falls and <span class="math inline">\(\mu_{R}\)</span> be the <em>population</em> mean of dentals costs in Rexburg.</p>
+<p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create summary statistics tables of dental costs for each office:</p>
+<p>Create a side-by-side boxplot for dental costs for each office.</p>
+<p>Check the normality of each group.</p>
+<p><strong>Question</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
+</section>
+<section id="hypothesis-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{IF}???\mu_{R}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{IF}???\mu_{R}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-1" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<p>Create a confidence interval for the difference in costs between the IF and Rexburg offices:</p>
+<p>Explain the confidence interval in context of the research question:</p>
+</section>
+</section>
+<section id="birth-weights" class="level1">
+<h1>Birth Weights</h1>
+<p>A study was conducted in which researchers obtained birth weights of infants born in Illinois during the same year. The birth weights are categorized based on the race and birthplace of the mother. Researchers want to know if there is a difference in mean birth weights of babies born to black women who were born in the United States and babies born to black women who were born in Africa. Values were recorded (in grams) for each infant born. The data are recorded in the file.</p>
+<p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create summary statistics tables of birth weights for each country:</p>
+<p>Create a side-by-side boxplot for birth weights for each country:</p>
+<p>Check the normality of each group.</p>
+<p><strong>Question</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
+</section>
+<section id="hypothesis-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{A}???\mu_{IL}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{A}???\mu_{IL}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
+<p>Create a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:</p>
+<p>Explain the confidence interval in context of the research question:</p>
+</section>
+</section>
+<section id="miscellany" class="level1">
+<h1>Miscellany</h1>
+<p><strong>Question</strong>: A financial economist is studying married couples in which both spouses work. He wants to compare the mean income earned by husbands with the mean income earned by their wives. Should he use independent sampling or dependent sampling, and why? <strong>Answer</strong>:</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

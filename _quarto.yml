@@ -60,8 +60,11 @@ website:
         - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
         - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
         - href: ./4-Statistical_Tests_Part1/03-Paired_ttest.qmd
+        - href: ./4-Statistical_Tests_Part1/04-Paired_ttest_Practice.qmd
         - href: ./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.qmd
+        - href: ./4-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.qmd
         - href: ./4-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
+        - href: ./4-Statistical_Tests_Part1/08-ANOVA_Practice.qmd
         - href: ./4-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
 
     - text: "Unit 5"

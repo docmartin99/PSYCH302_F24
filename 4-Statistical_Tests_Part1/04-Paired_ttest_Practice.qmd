@@ -1,6 +1,22 @@
 ---
 title: "Paired T-Test Practice"
 ---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Instructions
+
+Here are several opportunities to practice analyzing dependent samples using R.  For each question, you will:
+
+- Read in data
+- Create data summaries (numerical and graphical)
+- Statistically analyze the data
+- Check for the suitability of the statistical test (CLT, Normality)
+- State your hypothesis test conclusions and interpret your confidence intervals
+
 
 # Helmet Measurements
 
@@ -45,7 +61,7 @@ What does a negative number mean given the definition of the difference?
 
 ```
 
-Create a histogram and a qqPlot of the differences:
+Create a qqPlot of the differences:
 
 ```{r}
 
