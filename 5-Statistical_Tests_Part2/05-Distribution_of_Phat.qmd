@@ -5,9 +5,7 @@ title: "Sampling Distribution of P_hat"
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Workbooks/Distribution_of_Phat.qmd" download="Distribution_of_Phat.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
+
 
 # The Distribution of Sample Means
 

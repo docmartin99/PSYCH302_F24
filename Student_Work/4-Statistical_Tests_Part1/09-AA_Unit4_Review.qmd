@@ -11,7 +11,6 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 
 
-
 # Introduction
 
 In this activity, you will use everything we've covered in Unit 2 including:

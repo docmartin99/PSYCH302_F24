@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # The Central Limit Theorem
 
 The Central Limit Theorem states that for a large enough sample size ($n>30$) the distribution of _sample means_ is approximately normal with mean, $\mu_{\bar{x}} = \mu$ and $\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$ regardless of the distribution of the population.  

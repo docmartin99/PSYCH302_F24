@@ -5,9 +5,7 @@ title: "Into The Tidyverse"
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Practice/Exploring_New_Data_with_Tidyverse.qmd" download="Exploring_New_Data_with_Tidyverse.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
+
 
 # Introduction
 

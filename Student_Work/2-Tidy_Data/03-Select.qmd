@@ -8,6 +8,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Selecting Columns
 
 Consider the High School survey data with 60 columns and 312 respondents.  
@@ -42,7 +43,7 @@ survey %>%
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../R_Resources/Filter.qmd) out Ambitextrous participants and reaction time outliers (reaction times less than 1 seconds):
+1. Click to see how to [filter](../2-Tidy_Data/02-Filter.qmd) out Ambitextrous participants and reaction time outliers (reaction times less than 1 seconds):
 
 <details>
 <summary>Click to see</summary>

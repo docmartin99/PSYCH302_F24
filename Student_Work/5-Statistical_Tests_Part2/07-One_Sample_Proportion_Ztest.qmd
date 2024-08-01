@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 In statistics, one-sample proportion tests are used to compare proportions or percentages to a hypothesized value. These tests are useful when dealing with categorical data. We here discuss these tests and provide examples of their application in R.

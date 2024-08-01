@@ -339,7 +339,7 @@ Later in the course, we will learn a better way to assess normality.  For now, w
 <div class="Summary">
 **Here is a refresher of how to make a Histogram in R**
 
-For more detailed instructions revisit [Summarizing Data](../docs/Textbook/Summarizing_Data_Multiple_Groups.html)
+For more detailed instructions revisit [Summarizing Data](../docs/1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html)
 
 1. Read in the data
 

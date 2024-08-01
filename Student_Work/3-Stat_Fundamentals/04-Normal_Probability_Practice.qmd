@@ -8,6 +8,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # The Normal Distribution
 
 Recall that the normal distribution is a probability distribution defined by its center ($\mu$) and its spread ($\sigma$).  

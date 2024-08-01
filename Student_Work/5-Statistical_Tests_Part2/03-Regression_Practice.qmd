@@ -8,6 +8,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 In this assignment, you will practice regression analysis including:

@@ -5,9 +5,6 @@ subtitle: "CO2 Uptake Experiment"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Application_Activities/AA_Data_Summaries.qmd" download="AA_Data_Summaries.qmd" type="text/markdown" class="button-download">
-    Download QMD
-</a>
 
 
 

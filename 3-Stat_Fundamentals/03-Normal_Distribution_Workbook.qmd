@@ -4,13 +4,11 @@ title: "The Normal Distribution"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Workbooks/Normal_Distribution.qmd" download="Normal_Distribution.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
+
 
 # The Normal Distribution
 
-In your [reading](../docs/Textbook/The_Normal_Distribution.html), you learned about the normal distribution which is a probability model that can calculate probabilities for certain types of events that follow a normal distribution.  
+In your [reading](../docs/3-Stat_Fundamentals/02-The_Normal_Distribution.html), you learned about the normal distribution which is a probability model that can calculate probabilities for certain types of events that follow a normal distribution.  
 
 # Stanford Admissions
 

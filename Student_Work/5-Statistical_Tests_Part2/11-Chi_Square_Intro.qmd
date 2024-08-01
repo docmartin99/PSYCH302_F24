@@ -10,6 +10,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 #  Comparing Categorical Data with Multiple Categories
 
 When working through statistical inference for means, we progressed from learning 1-sample t-tests to 2-sample t-tests.  When we wanted to compare a quantitative variable between multiple groups, we introduced ANOVA.  The hypothesis test changed and we introduced the F-statistic.

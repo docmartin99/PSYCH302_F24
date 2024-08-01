@@ -8,6 +8,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 So far in class, we have encountered only fairly clean data examples carefully managed and stored in an easy to access location.  We have been able to use the `import()` function from the `rio` library with a link to a well-contained data resource.  

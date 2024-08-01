@@ -8,9 +8,10 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # The Normal Distribution
 
-In your [reading](../docs/Textbook/The_Normal_Distribution.html), you learned about the normal distribution which is a probability model that can calculate probabilities for certain types of events that follow a normal distribution.  
+In your [reading](../docs/3-Stat_Fundamentals/02-The_Normal_Distribution.html), you learned about the normal distribution which is a probability model that can calculate probabilities for certain types of events that follow a normal distribution.  
 
 # Stanford Admissions
 

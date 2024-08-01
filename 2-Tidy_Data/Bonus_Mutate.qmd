@@ -4,9 +4,6 @@ title: "mutate()"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Mutate.qmd" download="Mutate.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
 
 
 # Adding Columns
@@ -36,7 +33,7 @@ clean <- survey %>%
 mean(clean$ht_to_span)
 ```
 
-Notice that the mean is `Inf` which means infinity, or undefined.  This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero.  This is where [`filter()`](../R_Resources/Filter.qmd) comes in handy.  We can filter out the rows where Armspan_cm is 0:
+Notice that the mean is `Inf` which means infinity, or undefined.  This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero.  This is where [`filter()`](../2-Tidy_Data/02-Filter.qmd) comes in handy.  We can filter out the rows where Armspan_cm is 0:
 
 ```{r}
 clean <- survey %>%
@@ -63,7 +60,7 @@ clean <- survey %>%
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../R_Resources/Filter.qmd) outliers of ht_to_wt ratio and [select](../R_Resources/Select.qmd) only the columns of interest.
+1. Click to see how to [filter](../2-Tidy_Data/02-Filter.qmd) outliers of ht_to_wt ratio and [select](../2-Tidy_Data/03-Select.qmd) only the columns of interest.
 
 <details>
 <summary>Click to see</summary>

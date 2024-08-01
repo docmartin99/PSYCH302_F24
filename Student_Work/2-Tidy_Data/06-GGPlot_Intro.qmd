@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 GGPlot is a data visualization library that follows Leland Wilkinson's Grammar of Graphics.  The Grammar of Graphics is a systematic approach to how we think about connecting raw data to visual elements.  

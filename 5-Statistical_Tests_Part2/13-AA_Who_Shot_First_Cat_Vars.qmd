@@ -5,9 +5,6 @@ subtitle: "Categorical Data Application Activity"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Application_Activities/AA_Who_Shot_First_Cat_Vars.qmd" download="AA_Who_Shot_First_Cat_Vars.qmd" type="text/markdown" class="button-download">
-    Download QMD
-</a>
 
 
 # Introduction

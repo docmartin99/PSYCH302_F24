@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Installing R and RStudio
 
 In this course, we will use R and RStudio to perform necessary calculations. This will allow us to focus on the statistical principles.

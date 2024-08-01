@@ -10,6 +10,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Cleaning Messy Data
 
 In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease.  This is a terrible disservice to anyone who will deal with data outside of the classroom. 

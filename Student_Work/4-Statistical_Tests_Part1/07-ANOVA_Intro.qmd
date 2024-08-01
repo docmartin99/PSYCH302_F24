@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. The formula for the new test statistic, `F`, is messy, but we can get a sense for what it's doing visually.
