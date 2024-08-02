@@ -73,16 +73,22 @@ website:
         - href: ./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/03-Regression_Practice.qmd
+        - href: ./5-Statistical_Tests_Part2/Summarizing_Categorical_Data.qmd
         - href: ./5-Statistical_Tests_Part2/05-Distribution_of_Phat.qmd
+        - href: ./5-Statistical_Tests_Part2/06-Distribution_of_Phat_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/07-One_Sample_Proportion_Ztest.qmd
+        - href: ./5-Statistical_Tests_Part2/08-One_Sample_Proportion_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/09-Two_Sample_Proportion_Ztest.qmd
+        - href: ./5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
+        - href: ./5-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
 
     - text: "Semester Project"
       menu:
-        - href: ./6-Semester_Project/Importing_Data.qmd
         - href: ./6-Semester_Project/Semester_Project_Instructions.qmd
+        - href: ./6-Semester_Project/Semester_Project_Template.qmd
+        - href: ./6-Semester_Project/Importing_Data.qmd
 
     - text: "R Help"
       menu:

@@ -1,0 +1,126 @@
+---
+title: "Summarizing Categorical Data"
+warning: false
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Summarizing Categorical Data
+
+In this section we will show how to summarize data numerically and visually.  
+
+Counts and proportions withing each category is the primary method to summarize categorical data.  Visually, an ordered bar chart is the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
+
+Let's look at [survey](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/) carried out by FiveThirtyEight about the first 6 Star Wars films.  
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(ggplot2)
+
+sw <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv')
+
+
+```
+
+## Numerical Summaries
+
+Use the `table()` function to tabulate counts for a categorical variable.  For example, if we want to tabulate the favorability of Han Solo
+
+
+```{r}
+
+table(sw$`Favorability_Han Solo`)
+
+```
+
+calculate how many males and females responded to the survey, we can:
+
+```{r}
+
+table(sw$Gender, sw$who_shot_first)
+
+```
+
+If we want to include row and column totals, we can input our table into the `addmargins()` function as follows:
+
+```{r}
+
+addmargins(table(sw$Gender, sw$who_shot_first))
+
+```
+
+
+It's slightly more complicated to get R to make a list of proportions. The function `prop.table()` cannot take a column of categorical data directly, but if we give it a summarized table, it will calculate proportions.
+
+```{r}
+
+fav_solo <- table(sw$`Favorability_Han Solo`)
+
+prop.table(fav_solo)
+
+```
+
+## Visual Summaries
+
+We can use `ggplot()` with categorical variables.
+
+```{r}
+
+ggplot(sw, aes(x = who_shot_first)) + geom_bar()
+
+```
+
+We can add another variable to the mix to look at things by gender:
+
+```{r}
+
+ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar()
+
+```
+
+The default for geom_bar() is to stack bars.  If we want side-by-side bars we can add a "position = 'dodge'" to the geom_bar() function:
+
+```{r}
+
+ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar(position = "dodge")
+
+```
+
+
+### Dealing with missing values
+
+The graphs above include missing values as its own category.  The easiest way to deal with missing values is to create a subset of the data that is prepared for the graph we are interested in creating. 
+
+We first select only the columns that we will use in the visualization, then drop out all the missing values:
+
+```{r}
+
+shot_first <- sw %>%
+  select(who_shot_first, Gender) %>%
+  drop_na()
+
+ggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar(position = "dodge")
+
+```
+
+### Cleaning up the Graph
+
+The default visualization elements in ggplot() can always be improved.  Here are some options for making the chart more readable:
+
+
+```{r}
+
+ggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar(position = "dodge") +
+  theme_bw() +
+  labs(
+    x = "Which Character Shot First?",
+    y = "Count",
+    title = "Comparing response to the Question 'Who Shot First' by Gender" 
+  )
+
+```
