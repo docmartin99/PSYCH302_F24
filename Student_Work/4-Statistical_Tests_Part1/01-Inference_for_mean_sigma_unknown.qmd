@@ -1,5 +1,5 @@
 ---
-title: Inference for a Mean - Sigma Unknown
+title: Inference for a Mean
 subtitle: Hypothesis Testing and Confidence Intervals
 format:
   html:
@@ -9,7 +9,6 @@ format:
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-
 
 
 # Review
@@ -95,12 +94,11 @@ The T-distribution is very similar to the standard normal.  It is symmetrical ar
 
 ![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/T_dist.png)
 
-
-Because $t$ is not normally distributed, we can't use pnorm().  However, R is fully capable of calculating probabilities for many different probability distributions including the t-distribution.  We just have to give it a t-value and the degrees of freedom.
-
+Because $t$ is not normally distributed, we can't use `pnorm()` to calculate probabilities.  However, R is fully capable of calculating probabilities for many different distributions including the t-distribution.  We have to tell R the t-value *and* the degrees of freedom.
 
 
-## Calculating P-values by hand with the T Distribution (NOT RECOMMENDED)
+
+## Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)
 
 Suppose we have 25 test scores defined as "data" in the code chunk below.  We can calculate the t-statistic just like we did with the z-score.  
 

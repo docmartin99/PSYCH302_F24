@@ -1,5 +1,5 @@
 ---
-title: Calculating Probabilities involving the Sample Mean
+title: Probability Calculations for Means (Reading)
 warning: no
 format:
   html:

@@ -1,5 +1,5 @@
 ---
-title: Normal Probability Calculations for Means
+title: Probability Calculations for Means (Class)
 format:
   html:
     self_contained: yes

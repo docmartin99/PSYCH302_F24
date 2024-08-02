@@ -1,5 +1,5 @@
 ---
-title: The Normal Distribution
+title: The Normal Distribution (Reading)
 warning: no
 format:
   html:

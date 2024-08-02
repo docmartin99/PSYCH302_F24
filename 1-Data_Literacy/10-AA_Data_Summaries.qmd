@@ -1,5 +1,5 @@
 ---
-title: "Summarizing Data AA"
+title: "Summarizing Data Activity"
 subtitle: "CO2 Uptake Experiment"
 ---
 ```{r setup, include=FALSE}

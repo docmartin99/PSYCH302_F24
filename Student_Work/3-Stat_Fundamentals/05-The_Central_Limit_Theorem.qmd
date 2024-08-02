@@ -1,6 +1,6 @@
 ---
-title: The Distribution of Sample Means
-subtitle: And the Central Limit Theorem
+title: The Distribution of Sample Means (Reading)
+subtitle: The Central Limit Theorem
 warning: no
 format:
   html:

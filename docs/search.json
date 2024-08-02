@@ -667,7 +667,7 @@
   {
     "objectID": "1-Data_Literacy/9-Summarizing_Data_Practice.html",
     "href": "1-Data_Literacy/9-Summarizing_Data_Practice.html",
-    "title": "Summarizing Data Part 2",
+    "title": "Summarizing Data Practice",
     "section": "",
     "text": "Introduction\nIn this assignment, you will use several datasets to summarize data numerically and visually.\n\n# Load the libraries and the datasets\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nwrong_patient &lt;- import('https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx') %&gt;% tibble()\n\nwordle &lt;- read_csv(\"https://github.com/byuistats/Math221D_Course/raw/main/Data/Wordle.csv\")\n\n#wordle &lt;- read_csv('Data/Wordle.csv')\n\n\n\n1 - Whoopsies!\nOn rare occasions, a medical procedure is performed on the wrong body part of a patient’s body or on the wrong patient. These are called wrong-site and wrong-patient mistakes. Such errors occur hundreds of times each year across the United States. The medical community is trying to eliminate these errors but have had difficulty reducing their frequency. In a small percentage of these cases, the patient files a lawsuit against the hospital. Philip Stahel et al. conducted a study on these mistakes and the lawsuits that follow.\nThe data in the file WrongSiteWrongPatient.xlsx represent the amount (in US dollars) hospitals have been required to pay in wrong-site and wrong-patient lawsuits sourced from JAMA Surgery. Some of the values equal zero, indicating that the hospital won the legal battle.\nQuestion: Find the mean and median amount hospitals had to pay in Wrong-Site lawsuits. Round your answer to the nearest whole dollar.\nMean Wrong-Site:\nMedian Wrong-Site:\nCreate a histogram of the Wrong-Site data and describe its shape:\nShape of Wrong-Site:\nQuestion: Find the mean and median amount hospitals had to pay in Wrong-Patient lawsuits. Round your answer to the nearest whole dollar.\nMean Wrong-Patient:\nMedian Wrong-Patient:\nCreate a histogram of the Wrong-Patient data and describe its shape:\nShape of Wrong-Patient:\nQuestion: Which error is the most costly for the medical community?\n\n\n2 - A la Mode\nThe mode is mostly used for low frequency count data or for tallying the most frequently occurring category in categorical data analysis.\nQuestion: Give 3 examples of situations where the mode might be useful:\n\n\n\n\n\n\n\nWorldle you like to know!\nBrother Cannon’s family plays the New York Times Wordle every day. Brother Cannon and his son, Ben, are the most competitive. The dataset wordle.csv contains the number of guesses for the last few months of Wordles for Brother Cannon and his son.\nUsing favstats() function, create a table of summary statistics for each player:\nQuestion: Which player has the lowest standard deviation?\nAnswer:\nUsing the table() function, create a table of frequencies for each player and score:\nQuestion: What is the mode for each player?\nAnswer:\nQuestion: Who is the better player, and why?\nAnswer:"
   },
@@ -751,56 +751,56 @@
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "",
     "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nIgnoring the Plant ID for a moment, there are three factors that possibly effect the uptake of a plant. These include Type, Treatment, and conc. The factor Type has two levels, Quebec and Mississippi. The factor Treatment has two levels chilled and nonchilled and the factor conc has seven levels 95, 175, 250, 350, 500, 675, and 1000.\nConc is related to the ambient concentration of CO2."
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#univariate-analysis",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#univariate-analysis",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "Univariate Analysis",
     "text": "Univariate Analysis\nCreate a table with the overall summary statistics for uptake:\n\n# This is NEW!  if you tell R to knit the favstats output using the \"kable\" function, it will look a lot nicer when the document is rendered.\n\nknitr::kable(favstats(CO2$uptake))\n\n\n\n\n\nmin\nQ1\nmedian\nQ3\nmax\nmean\nsd\nn\nmissing\n\n\n\n\n\n7.7\n17.9\n28.3\n37.125\n45.5\n27.2131\n10.81441\n84\n0\n\n\n\n\n\nCreate a histogram of the uptake data:"
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-plant-type-on-uptake",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "Impact of Plant Type on Uptake",
     "text": "Impact of Plant Type on Uptake\nCreate a table of summary statistics of uptake for each type of plants used in the experiment.\nCreate a side-by-side boxplot of uptake for each type of plants used in the experiment."
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-treatment-on-uptake",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-treatment-on-uptake",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "Impact of Treatment on Uptake",
     "text": "Impact of Treatment on Uptake\nCreate a table of summary statistics of uptake for each treatment used in the experiment.\nCreate a side-by-side boxplot of uptake for each treatment used in the experiment."
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#impact-of-ambient-co2-concentration-on-uptake",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "Impact of Ambient CO2 Concentration on Uptake",
     "text": "Impact of Ambient CO2 Concentration on Uptake\nCreate a table of summary statistics of uptake for each level of CO2 found in the experiment.\nCreate a side-by-side boxplot of uptake for each level of CO2 found used in the experiment."
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#what-makes-this-an-experiment",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#what-makes-this-an-experiment",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "What makes this an experiment?",
     "text": "What makes this an experiment?\nThe background suggests this study was an experiment. In your own words, describe the difference between an experiment and an observational study.\nWhat would this study have looked like if it had been an observational study?"
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#what-is-the-population-of-this-study",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#what-is-the-population-of-this-study",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "What is the Population of this study?",
     "text": "What is the Population of this study?\nDescribe in your own words what the population of this study could be. How broad can we make our conclusions?"
   },
   {
     "objectID": "1-Data_Literacy/10-AA_Data_Summaries.html#what-are-your-recommendations",
     "href": "1-Data_Literacy/10-AA_Data_Summaries.html#what-are-your-recommendations",
-    "title": "Summarizing Data AA",
+    "title": "Summarizing Data Activity",
     "section": "What are your recommendations?",
     "text": "What are your recommendations?\nIf you were to recommend a planting scenario to maximize CO2 uptake, what would you recommend based on the summaries provided?"
   },
@@ -961,35 +961,35 @@
   {
     "objectID": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html",
     "href": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html",
-    "title": "Summarizing Data Part 1",
+    "title": "Summarizing Data",
     "section": "",
     "text": "In this document, we will demonstrate how to summarize quantitative data for multiple groups in a dataset.\n\n\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
   },
   {
     "objectID": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#load-the-data-and-libraries",
     "href": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#load-the-data-and-libraries",
-    "title": "Summarizing Data Part 1",
+    "title": "Summarizing Data",
     "section": "",
     "text": "library(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
   },
   {
     "objectID": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#summary-statistics",
     "href": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#summary-statistics",
-    "title": "Summarizing Data Part 1",
+    "title": "Summarizing Data",
     "section": "Summary Statistics",
     "text": "Summary Statistics\nWe can easily extend favstats() to output our favorite statistics for multiple groups. We first must identify the quantitative factor we want to compare. For example, we could compare agreeableness between the sexes.\n\n# This gives us the summary statistics for Agreeableness across all groups\nfavstats(big5$Agreeableness)\n\n min Q1 median Q3 max     mean       sd   n missing\n  21 67     75 81 100 73.43457 13.24909 405       0\n\n# Adding the '~' tells R to break the data into groups (determined by the right side of the '~') and calculate the means of the variable on the left\nfavstats(big5$Agreeableness ~ big5$`Sex(M/F)`)\n\n  big5$`Sex(M/F)` min Q1 median Q3 max     mean       sd   n missing\n1               F  21 69     77 85 100 75.92035 12.94640 226       0\n2               M  25 63     73 79  94 70.29609 12.99218 179       0"
   },
   {
     "objectID": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#visual-summaries-by-group",
     "href": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#visual-summaries-by-group",
-    "title": "Summarizing Data Part 1",
+    "title": "Summarizing Data",
     "section": "Visual Summaries by Group",
     "text": "Visual Summaries by Group\nWe can use the exact same format as we used for favstats() for boxplot():\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`)"
   },
   {
     "objectID": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#improving-graphs",
     "href": "1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html#improving-graphs",
-    "title": "Summarizing Data Part 1",
+    "title": "Summarizing Data",
     "section": "Improving Graphs",
     "text": "Improving Graphs\nThroughout this course, we will ease into making better visualizations. For now, here are some basic techniques that will usually apply to all graphing functions in R:\n\n# Changing color by sepecifying the `col = c()`\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(\"red\", \"blue\"))\n\n\n\n\n\n\n\n# R also assigns a numerical value to `col = `.  Try different numbers\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(2,3))\n\n\n\n\n\n\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(4,6))\n\n\n\n\n\n\n\n# Adding better axis labels using `xlab = ` and `ylab = `:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, xlab = \"Biosex\", ylab = \"Trait Agreeableness\")\n\n\n\n\n\n\n\n# Adding a title:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, main = \"Comparing Agreeableness by Biosex\")\n\n\n\n\n\n\n\n# Putting it all together:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`,main = \"Comparing Agreeableness by Biosex\", xlab = \"Biosex\", ylab = \"Trait Agreeableness\", col = c(3, 4))"
   },

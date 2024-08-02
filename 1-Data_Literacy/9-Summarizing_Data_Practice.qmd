@@ -1,5 +1,5 @@
 ---
-title: "Summarizing Data Part 2"
+title: "Summarizing Data Practice"
 ---
 ```{r setup, include=FALSE}
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
