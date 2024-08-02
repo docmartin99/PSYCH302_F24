@@ -1,5 +1,5 @@
 ---
-title: Semester Project
+title: Semester Project Instructions
 format:
   html:
     self_contained: yes

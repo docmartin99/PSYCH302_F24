@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Inference for a Mean - Sigma Unknown</title>
+<title>Math221 Notebook - Inference for a Mean</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -250,39 +250,39 @@ window.Quarto = {
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
- <span class="dropdown-text">Intro to Probability</span></a>
+ <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
- <span class="dropdown-text">Normal Probability Homework</span></a>
+ <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
- <span class="dropdown-text">The Distribution of Sample Means</span></a>
+ <span class="dropdown-text">The Distribution of Sample Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
- <span class="dropdown-text">Central Limit Theorem</span></a>
+ <span class="dropdown-text">CLT Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
- <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
- <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
- <span class="dropdown-text">Calculating Probabilities with Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
@@ -298,7 +298,7 @@ window.Quarto = {
         <li class="dropdown-header">Statistical Tests - Part 1</li>
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
- <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
+ <span class="dropdown-text">Inference for a Mean</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
@@ -484,7 +484,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#students-t-distribution-sigma-unkown" id="toc-students-t-distribution-sigma-unkown" class="nav-link" data-scroll-target="#students-t-distribution-sigma-unkown">Student’s T-Distribution (sigma unkown)</a>
   <ul class="collapse">
-  <li><a href="#calculating-p-values-by-hand-with-the-t-distribution-not-recommended" id="toc-calculating-p-values-by-hand-with-the-t-distribution-not-recommended" class="nav-link" data-scroll-target="#calculating-p-values-by-hand-with-the-t-distribution-not-recommended">Calculating P-values by hand with the T Distribution (NOT RECOMMENDED)</a></li>
+  <li><a href="#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" id="toc-calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="nav-link" data-scroll-target="#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)</a></li>
   </ul></li>
   <li><a href="#the-new-hotness" id="toc-the-new-hotness" class="nav-link" data-scroll-target="#the-new-hotness">The New Hotness</a>
   <ul class="collapse">
@@ -515,7 +515,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Inference for a Mean - Sigma Unknown</h1>
+<h1 class="title">Inference for a Mean</h1>
 <p class="subtitle lead">Hypothesis Testing and Confidence Intervals</p>
 </div>
 
@@ -533,7 +533,6 @@ window.Quarto = {
 </header>
 
 
-<p><a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/Workbooks/Inference_for_mean_sigma_unknown.qmd" download="Inference_for_mean_sigma_unknown.qmd" type="text/markdown" class="button-download"> Download QMD </a></p>
 <section id="review" class="level1">
 <h1>Review</h1>
 <p>When we know what the population standard deviation, <span class="math inline">\(\sigma\)</span>, for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. We can think of Z as having a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.</p>
@@ -599,9 +598,9 @@ window.Quarto = {
 <p><span class="math display">\[ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}\]</span></p>
 <p>The T-distribution is very similar to the standard normal. It is symmetrical around zero. However, the shape depends on how much data you have. The more data you have, the closer the <span class="math inline">\(t\)</span> is to the standard normal. This is illustrated in the graph below:</p>
 <p><img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/T_dist.png" class="img-fluid"></p>
-<p>Because <span class="math inline">\(t\)</span> is not normally distributed, we can’t use pnorm(). However, R is fully capable of calculating probabilities for many different probability distributions including the t-distribution. We just have to give it a t-value and the degrees of freedom.</p>
-<section id="calculating-p-values-by-hand-with-the-t-distribution-not-recommended" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-p-values-by-hand-with-the-t-distribution-not-recommended">Calculating P-values by hand with the T Distribution (NOT RECOMMENDED)</h2>
+<p>Because <span class="math inline">\(t\)</span> is not normally distributed, we can’t use <code>pnorm()</code> to calculate probabilities. However, R is fully capable of calculating probabilities for many different distributions including the t-distribution. We have to tell R the t-value <em>and</em> the degrees of freedom.</p>
+<section id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)</h2>
 <p>Suppose we have 25 test scores defined as “data” in the code chunk below. We can calculate the t-statistic just like we did with the z-score.</p>
 <p>Suppose we believe that the mean score of these 25 students is significantly higher than 50. Our null and alternative hypothesis are as follows:</p>
 <p><span class="math display">\[ H_0:  \mu = 50 \]</span> <span class="math display">\[ H_a: \mu &gt; 50 \]</span></p>

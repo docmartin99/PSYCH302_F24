@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - The Normal Distribution</title>
+<title>Math221 Notebook - The Normal Distribution (Class)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -250,39 +250,39 @@ window.Quarto = {
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
- <span class="dropdown-text">Intro to Probability</span></a>
+ <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
- <span class="dropdown-text">Normal Probability Homework</span></a>
+ <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
- <span class="dropdown-text">The Distribution of Sample Means</span></a>
+ <span class="dropdown-text">The Distribution of Sample Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
- <span class="dropdown-text">Central Limit Theorem</span></a>
+ <span class="dropdown-text">CLT Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
- <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
- <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
- <span class="dropdown-text">Calculating Probabilities with Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
@@ -298,7 +298,7 @@ window.Quarto = {
         <li class="dropdown-header">Statistical Tests - Part 1</li>
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
- <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
+ <span class="dropdown-text">Inference for a Mean</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
@@ -486,8 +486,6 @@ window.Quarto = {
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
   <li><a href="#iq-scores" id="toc-iq-scores" class="nav-link" data-scroll-target="#iq-scores">IQ Scores</a></li>
-  <li><a href="#brisket-competition" id="toc-brisket-competition" class="nav-link" data-scroll-target="#brisket-competition">Brisket Competition</a></li>
-  <li><a href="#prbability-of-a-false-start" id="toc-prbability-of-a-false-start" class="nav-link" data-scroll-target="#prbability-of-a-false-start">Prbability of a “False Start”</a></li>
   </ul></li>
   <li><a href="#area-between-2-points" id="toc-area-between-2-points" class="nav-link" data-scroll-target="#area-between-2-points">Area BETWEEN 2 Points</a></li>
   <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles">Percentiles</a></li>
@@ -499,7 +497,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Normal Distribution</h1>
+<h1 class="title">The Normal Distribution (Class)</h1>
 </div>
 
 
@@ -614,63 +612,20 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="brisket-competition" class="level2">
-<h2 class="anchored" data-anchor-id="brisket-competition">Brisket Competition</h2>
-<p>Competition was tight at a Saint Louis BBQ competition. Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.</p>
-<p>What’s the probability of getting a score GREATER than 6?</p>
-<p>What’s the probability of getting a score LESS than 4?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)  <span class="co"># LESS THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="co"># GREATER THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5</code></pre>
-</div>
-</div>
-</section>
-<section id="prbability-of-a-false-start" class="level2">
-<h2 class="anchored" data-anchor-id="prbability-of-a-false-start">Prbability of a “False Start”</h2>
-<p>“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter’s pistol to reach the runners’ ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) Let’s suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.</p>
-<p>What’s the probability of a false start? (that is a reaction time LESS than 0.1)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)  <span class="co"># LESS THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NaN</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="co"># GREATER THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NaN</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section id="area-between-2-points" class="level1">
 <h1>Area BETWEEN 2 Points</h1>
 <p>If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number.</p>
 <p>What is the probability that a randomly selected individual will have an IQ between 84 and 109?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>LowerPoint <span class="ot">&lt;-</span> </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>UpperPoint <span class="ot">&lt;-</span> </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area Between:</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(UpperPoint, mu, stdev) <span class="sc">-</span> <span class="fu">pnorm</span>(LowerPoint, mu, stdev) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>LowerPoint <span class="ot">&lt;-</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>UpperPoint <span class="ot">&lt;-</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area Between:</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(UpperPoint, mu, stdev) <span class="sc">-</span> <span class="fu">pnorm</span>(LowerPoint, mu, stdev) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in eval(expr, envir, enclos): object 'UpperPoint' not found</code></pre>
 </div>
@@ -679,15 +634,15 @@ window.Quarto = {
 <section id="percentiles" class="level1">
 <h1>Percentiles</h1>
 <p>Finding percentiles of a normal distribution is easy in R! Remember that a percentile is the percent of the population below a given value. So someone who scores in the 92nd-percentile scores above 92% of the population.</p>
-<p>In R, we use the “qnorm()”. The “Q” in qnorm() stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).</p>
+<p>In R, we use the <code>qnorm()</code>. The “Q” in <code>qnorm()</code> stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a normal distribution with mean, mu, and standard deviation, stdev, we can find a percentile using the following code:</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>percentile <span class="ot">&lt;-</span> </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(percentile, mu, stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a normal distribution with mean, mu, and standard deviation, stdev, we can find a percentile using the following code:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>percentile <span class="ot">&lt;-</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(percentile, mu, stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in eval(expr, envir, enclos): object 'percentile' not found</code></pre>
 </div>

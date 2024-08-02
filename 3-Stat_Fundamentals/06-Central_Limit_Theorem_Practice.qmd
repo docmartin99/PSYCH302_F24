@@ -1,5 +1,5 @@
 ---
-title: "Central Limit Theorem"
+title: "CLT Practice"
 subtitle: "Practice Problems"
 ---
 ```{r setup, include=FALSE}

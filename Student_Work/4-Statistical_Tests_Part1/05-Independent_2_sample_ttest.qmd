@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Introduction
 
 In many situations we would like to compare averages from different populations.  In these situations, we take 2 random samples from each population and perform statistical tests to see determine if the populations are significantly different. Because these two groups of individuals are sampled independently, we call this analysis __Independent 2-Sample t-test__.  

@@ -1,5 +1,5 @@
 ---
-title: "Normal Probability Homework"
+title: "Normal Probability Practice"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -10,22 +10,23 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 Recall that the normal distribution is a probability distribution defined by its center ($\mu$) and its spread ($\sigma$).  
 
-[Insert examples of normal distributions with different means and standard deviations]
 
 # Normal Probability Calculator
 
-Use the calculator below to calculate the probabilities using the normal distribution.
+The code below can serve as a template for any calculations involving the normal distribution.  Feel free to copy and paste this into the code chunks 
+
+__NOTE__:  R saves any objects that are named.  This means that if you run `mu <- 12`, R keeps track of x until you change it.  When doing multiple problems that all use `mu`, be sure to run the whole code chunk, which will overwrite the names from previous examples.  
 
 ```{r}
 
 # Value
-x <- 161
+x <- 
 
-# Hypothesized Mean
-mu <- 150.8
+# Population Mean
+mu <- 
 
 # Population Standard deviation
-sigma <- 8.8
+sigma <- 
 
 # Z-score:  number of standard deviations above the mean
 z <- (x-mu) / sigma
@@ -40,8 +41,8 @@ pnorm(z)
 
 
 # For calculating the area between 2 numbers
-A <- 61.5
-B <- 68.5
+A <- 
+B <- 
 pnorm(B, mu, sigma) - pnorm(A, mu, sigma)
 
 # Find the X_bar associated with a spceific percentile
@@ -50,12 +51,61 @@ qnorm(.25, mu, sigma)
 ```
 
 
+## Brisket Competition
 
-::: {.quiz}
-What is the capital of France?
+Competition was tight at a Saint Louis BBQ competition.  Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.  
 
-1. ( ) London
-2. [ ] Berlin
-3. [x] Paris
-4. [ ] Madrid
-:::
+```{r}
+
+```
+
+__Question__: What's the probability of getting a score GREATER than 6?  
+__Answer__:  
+
+
+__Question__: What's the probability of getting a score LESS than 4?  
+__Answer__:  
+
+__Question__:  What is the 99th percentile of this Brisket Competition?  
+__Answer__:  
+
+
+## Prbability of a "False Start"
+
+“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter's pistol to reach the runners' ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) 
+Let's suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.  
+
+What's the probability of a false start? (that is a reaction time LESS than 0.1)
+
+```{r}
+
+```
+
+
+# Law School Admissions Test (LSAT)
+
+The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen's School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.
+
+```{r}
+
+```
+
+__Question__:  What is the z-score for a score of 157?  
+__Answer__:  
+
+
+__Question__: What is the probability that a randomly selected person who took the LSAT would score above 157?  
+__Answer__:  
+
+
+__Question__:  What is the probability that a randomly selected test taker will have a score between 155 and 170?  
+__Answer__:  
+
+
+__Question__:  What is the 97.4th percentile of LSAT scores?  
+__Answer__:  
+
+
+
+
+

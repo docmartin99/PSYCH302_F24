@@ -1,5 +1,5 @@
 ---
-title: "Calculating Probabilities with Means"
+title: "Probability Calculations for Means (Practice)"
 subtitle: "Applying the CLT"
 warning: false
 ---

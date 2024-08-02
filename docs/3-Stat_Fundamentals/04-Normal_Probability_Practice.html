@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Normal Probability Homework</title>
+<title>Math221 Notebook - Normal Probability Practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -250,39 +250,39 @@ window.Quarto = {
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
- <span class="dropdown-text">Intro to Probability</span></a>
+ <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/03-Normal_Distribution_Workbook.html">
- <span class="dropdown-text">The Normal Distribution</span></a>
+ <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/04-Normal_Probability_Practice.html">
- <span class="dropdown-text">Normal Probability Homework</span></a>
+ <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
- <span class="dropdown-text">The Distribution of Sample Means</span></a>
+ <span class="dropdown-text">The Distribution of Sample Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
- <span class="dropdown-text">Central Limit Theorem</span></a>
+ <span class="dropdown-text">CLT Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/07-Prob_Calculations_for_Means.html">
- <span class="dropdown-text">Calculating Probabilities involving the Sample Mean</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.html">
- <span class="dropdown-text">Normal Probability Calculations for Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.html">
- <span class="dropdown-text">Calculating Probabilities with Means</span></a>
+ <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/10-Assessing_Normality.html">
@@ -298,7 +298,7 @@ window.Quarto = {
         <li class="dropdown-header">Statistical Tests - Part 1</li>
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
- <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
+ <span class="dropdown-text">Inference for a Mean</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
@@ -478,7 +478,12 @@ window.Quarto = {
    
   <ul>
   <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link active" data-scroll-target="#the-normal-distribution">The Normal Distribution</a></li>
-  <li><a href="#normal-probability-calculator" id="toc-normal-probability-calculator" class="nav-link" data-scroll-target="#normal-probability-calculator">Normal Probability Calculator</a></li>
+  <li><a href="#normal-probability-calculator" id="toc-normal-probability-calculator" class="nav-link" data-scroll-target="#normal-probability-calculator">Normal Probability Calculator</a>
+  <ul class="collapse">
+  <li><a href="#brisket-competition" id="toc-brisket-competition" class="nav-link" data-scroll-target="#brisket-competition">Brisket Competition</a></li>
+  <li><a href="#prbability-of-a-false-start" id="toc-prbability-of-a-false-start" class="nav-link" data-scroll-target="#prbability-of-a-false-start">Prbability of a “False Start”</a></li>
+  </ul></li>
+  <li><a href="#law-school-admissions-test-lsat" id="toc-law-school-admissions-test-lsat" class="nav-link" data-scroll-target="#law-school-admissions-test-lsat">Law School Admissions Test (LSAT)</a></li>
   </ul>
 </nav>
     </div>
@@ -487,7 +492,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Normal Probability Homework</h1>
+<h1 class="title">Normal Probability Practice</h1>
 </div>
 
 
@@ -507,59 +512,80 @@ window.Quarto = {
 <section id="the-normal-distribution" class="level1">
 <h1>The Normal Distribution</h1>
 <p>Recall that the normal distribution is a probability distribution defined by its center (<span class="math inline">\(\mu\)</span>) and its spread (<span class="math inline">\(\sigma\)</span>).</p>
-<p>[Insert examples of normal distributions with different means and standard deviations]</p>
 </section>
 <section id="normal-probability-calculator" class="level1">
 <h1>Normal Probability Calculator</h1>
-<p>Use the calculator below to calculate the probabilities using the normal distribution.</p>
+<p>The code below can serve as a template for any calculations involving the normal distribution. Feel free to copy and paste this into the code chunks</p>
+<p><strong>NOTE</strong>: R saves any objects that are named. This means that if you run <code>mu &lt;- 12</code>, R keeps track of x until you change it. When doing multiple problems that all use <code>mu</code>, be sure to run the whole code chunk, which will overwrite the names from previous examples.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Value</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">161</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesized Mean</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">150.8</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Mean</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Standard deviation</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">8.8</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score:  number of standard deviations above the mean</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> sigma</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.159091</code></pre>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'x' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score LESS THAN the one we observed (left tail)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8767904</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score GREATER THAN the one we observed (Right Tail)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1232096</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score LESS THAN the one we observed (left tail)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For calculating the area between 2 numbers</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fl">61.5</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">68.5</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.287516e-21</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score GREATER THAN the one we observed (Right Tail)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'z' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the X_bar associated with a spceific percentile</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 144.8645</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For calculating the area between 2 numbers</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'B' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the X_bar associated with a spceific percentile</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'mu' not found</code></pre>
 </div>
 </div>
-<div class="quiz">
-<p>What is the capital of France?</p>
-<ol type="1">
-<li>( ) London</li>
-<li><label><input type="checkbox">Berlin</label></li>
-<li><label><input type="checkbox" checked="">Paris</label></li>
-<li><label><input type="checkbox">Madrid</label></li>
-</ol>
-</div>
+<section id="brisket-competition" class="level2">
+<h2 class="anchored" data-anchor-id="brisket-competition">Brisket Competition</h2>
+<p>Competition was tight at a Saint Louis BBQ competition. Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.</p>
+<p><strong>Question</strong>: What’s the probability of getting a score GREATER than 6?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What’s the probability of getting a score LESS than 4?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the 99th percentile of this Brisket Competition?<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="prbability-of-a-false-start" class="level2">
+<h2 class="anchored" data-anchor-id="prbability-of-a-false-start">Prbability of a “False Start”</h2>
+<p>“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter’s pistol to reach the runners’ ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) Let’s suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.</p>
+<p>What’s the probability of a false start? (that is a reaction time LESS than 0.1)</p>
+</section>
+</section>
+<section id="law-school-admissions-test-lsat" class="level1">
+<h1>Law School Admissions Test (LSAT)</h1>
+<p>The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen’s School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.</p>
+<p><strong>Question</strong>: What is the z-score for a score of 157?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that a randomly selected person who took the LSAT would score above 157?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability that a randomly selected test taker will have a score between 155 and 170?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the 97.4th percentile of LSAT scores?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

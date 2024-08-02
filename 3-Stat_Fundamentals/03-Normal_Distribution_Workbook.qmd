@@ -1,5 +1,5 @@
 ---
-title: "The Normal Distribution"
+title: "The Normal Distribution (Class)"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -110,49 +110,6 @@ pnorm(z)  # LESS THAN
 ```
 
 
-## Brisket Competition
-
-Competition was tight at a Saint Louis BBQ competition.  Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.  
-
-What's the probability of getting a score GREATER than 6?
-
-What's the probability of getting a score LESS than 4?
-
-
-```{r}
-
-x <- 
-mu <- 
-stdev <- 
-
-z <- (x-mu) / stdev
-  
-pnorm(z)  # LESS THAN
-1-pnorm(z) # GREATER THAN
-
-```
-
-
-## Prbability of a "False Start"
-
-“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter's pistol to reach the runners' ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) 
-Let's suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.  
-
-What's the probability of a false start? (that is a reaction time LESS than 0.1)
-
-```{r}
-
-x <- 
-mu <- 
-stdev <- 
-
-z <- (x-mu) / stdev
-  
-pnorm(z)  # LESS THAN
-1-pnorm(z) # GREATER THAN
-
-```
-
 
 # Area BETWEEN 2 Points
 
@@ -174,12 +131,11 @@ pnorm(UpperPoint, mu, stdev) - pnorm(LowerPoint, mu, stdev)
 ```
 
 
-
 # Percentiles
 
 Finding percentiles of a normal distribution is easy in R!  Remember that a percentile is the percent of the population below a given value.  So someone who scores in the 92nd-percentile scores above 92% of the population. 
 
-In R, we use the "qnorm()".  The "Q" in qnorm() stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).
+In R, we use the `qnorm()`.  The "Q" in `qnorm()` stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).
 
 ```{r}
 
