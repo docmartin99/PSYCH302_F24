@@ -23,6 +23,10 @@ Run the following commands to read the data into R:
 ```{r}
 # This script will flip the summary data table to be easily used with geom_col()
 library(rio)
+library(tidyverse)
+library(mosaic)
+library(car)
+
 bp_alcohol <- import("https://byuistats.github.io/M221R/Data/quiz/R/bp_alcohol.csv") 
 
 bp_alcohol_graph <- bp_alcohol %>% 

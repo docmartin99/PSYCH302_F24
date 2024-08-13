@@ -9,6 +9,8 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
+
 # Introduction to Matched Pairs
 
 A matched pairs design is used in statistics to compare 2 treatments or conditions measured on subjects that are logically connected in a meaningful way.  In the simplest case, measurements are collected on the same subject as in a before-and-after evaluation.
