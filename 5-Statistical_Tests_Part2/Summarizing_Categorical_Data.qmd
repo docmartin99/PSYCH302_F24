@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 In this section we will show how to summarize data numerically and visually.  
 
-Counts and proportions withing each category is the primary method to summarize categorical data.  Visually, an ordered bar chart is the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
+We typically summarize categorical variables with counts and proportions.  Visually, an ordered bar chart is the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
 
 Let's look at [survey](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/) carried out by FiveThirtyEight about the first 6 Star Wars films.  
 
@@ -36,44 +36,80 @@ table(sw$`Favorability_Han Solo`)
 
 ```
 
-calculate how many males and females responded to the survey, we can:
+You can also get proportions by inputting a table into the `prop.table()` function:
 
 ```{r}
-
-table(sw$Gender, sw$who_shot_first)
+prop.table(table(sw$`Favorability_Han Solo`))
 
 ```
 
-If we want to include row and column totals, we can input our table into the `addmargins()` function as follows:
+__Question__:  What percent of respondents are "Very favorable" towards Han Solo?  
+__Answer__:  
+
+
+
+### Multiple Groups
+
+The `table()` function can make a "cross table" of 2 categorical variables.  The resulting table will have rows and columns which correspond to the order of input `table(row, column)`.
+
+Let's contrast gender with whether or not a respondent is a fan of Star Wars (`Are You a Fan of SW`):  
 
 ```{r}
 
-addmargins(table(sw$Gender, sw$who_shot_first))
+table(sw$Gender, sw$`Are You a Fan of SW?`)
 
 ```
 
-
-It's slightly more complicated to get R to make a list of proportions. The function `prop.table()` cannot take a column of categorical data directly, but if we give it a summarized table, it will calculate proportions.
+We can include row and column totals by wrapping our table in the `addmargins()` function as follows:
 
 ```{r}
 
-fav_solo <- table(sw$`Favorability_Han Solo`)
-
-prop.table(fav_solo)
+addmargins(table(sw$Gender, sw$`Are You a Fan of SW?`))
 
 ```
+
+This can be used to get row or column percentages.  Alternatively we can use the `prop.table()` function to get proportions.  
+
+```{r}
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`))
+```
+
+The default for `prop.table()` is to give the overall percentages (counts / table total).  So the proportions add to 1 across the whole table.    
+
+We can specify row or column percentages by specifying a "margin."  In R, `margin=1` corresponds to *rows* and `margin = 1` corresponds to *columns*.  
+
+Compare the difference:  
+
+```{r}
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 1)
+```
+
+This table sums to 1 across the rows, meaning that about 60% of Females are fans of Star Wars and about 72% of Males are fans.
+
+Now look at `margin = 2`
+
+```{r}
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 2)
+```
+
+__Question__:  What does this table show?  
+__Answer__:  
+
+
+__NOTE__:  Which margin we choose to evaluate depends on the order we input columns into the `table()` function.  Be sure to double check that you calculate the correct percentages.  
+
 
 ## Visual Summaries
 
-We can use `ggplot()` with categorical variables.
+We can use `ggplot()` with categorical variables to get summaries of counts using the `geom_bar()` geometry.  
 
 ```{r}
 
-ggplot(sw, aes(x = who_shot_first)) + geom_bar()
+ggplot(sw, aes(x = `Are You a Fan of SW?`)) + geom_bar()
 
 ```
 
-We can add another variable to the mix to look at things by gender:
+We can add another variable to the mix to look at things by gender using the `fill=` argument inside the aesthetics:
 
 ```{r}
 
@@ -81,7 +117,7 @@ ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar()
 
 ```
 
-The default for geom_bar() is to stack bars.  If we want side-by-side bars we can add a "position = 'dodge'" to the geom_bar() function:
+The default for `geom_bar()` is to stack bars.  If we want side-by-side bars we can add a "position = 'dodge'" to the geom_bar() function:
 
 ```{r}
 
@@ -90,11 +126,14 @@ ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar(position = "dodge"
 ```
 
 
+
 ### Dealing with missing values
 
 The graphs above include missing values as its own category.  The easiest way to deal with missing values is to create a subset of the data that is prepared for the graph we are interested in creating. 
 
-We first select only the columns that we will use in the visualization, then drop out all the missing values:
+We first select only the columns that we will use in the visualization, then drop out all the missing values using `drop_na()` in the tidy fashion.  
+
+__NOTE__: The `drop_na()` function drops all rows with *ANY* missing values.  If we use this function on the dataset with all the columns, we may end up losing information on the analysis of interest.  This is why we do a `select()` first.  that way we only delete rows missing relevant information.    
 
 ```{r}
 
@@ -124,3 +163,58 @@ ggplot(shot_first, aes(x = who_shot_first, fill = Gender)) +
   )
 
 ```
+
+### A Certain Point of View
+
+With categorical variables, we can group differently depending on which comparisons we would like to emphasize.  Above, we grouped by responses to "who shot first" and colored by gender.  If we swap the x variable and the color, we get the same bars, but arranged differently.  
+
+```{r}
+
+ggplot(shot_first, aes(x = Gender, fill = who_shot_first)) + 
+  geom_bar(position = "dodge") +
+  theme_bw() +
+  labs(
+    x = "",
+    y = "Count",
+    title = "Comparing response to the Question 'Who Shot First' by Gender" 
+  )
+
+```
+
+This different point of view makes it easier to see the breakdown of responses for each gender separately.  We can see more clearly that the frequency of Females who do not understand the question is much more pronounced than on the Male side.  Males, it seems largely agree that Han shot first.
+
+# Your Turn
+
+## Visualization  
+
+Create a bar chart for favorability of Han Solo by whether or not they are fans of Star Trek (`fan_of_star_trek`).
+
+Start by making a new dataset called `trekky` that only includes the 2 relevant columns and drops the missing values.
+
+```{r}
+
+trekky <- sw %>%
+
+```
+
+__Question__: What observations can you make based on the visualization?  
+__Answer__:  
+
+
+## Proportion Table
+
+We would like to compare what percent of female respondents do not understand the question compared to the percent of males who do not understand the question.  
+
+Create a proportion table that can answer this question:
+
+```{r}
+prop.table(table(sw$who_shot_first, sw$Gender), margin = 2)
+```
+
+__Question__:  What percent of female respondents do not understand the question?  
+__Answer__:  
+
+__Question__:  What percent of male respondents do not understand the question?  
+__Answer__:  
+
+
