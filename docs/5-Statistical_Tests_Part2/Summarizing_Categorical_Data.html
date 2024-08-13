@@ -732,16 +732,6 @@ Neither favorably nor unfavorably (neutral)
 <h2 class="anchored" data-anchor-id="proportion-table">Proportion Table</h2>
 <p>We would like to compare what percent of female respondents do not understand the question compared to the percent of males who do not understand the question.</p>
 <p>Create a proportion table that can answer this question:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>who_shot_first, sw<span class="sc">$</span>Gender), <span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                  
-                                      Female      Male
-  Greedo                           0.2272727 0.2440758
-  Han                              0.3080808 0.4715640
-  I don't understand this question 0.4646465 0.2843602</code></pre>
-</div>
-</div>
 <p><strong>Question</strong>: What percent of female respondents do not understand the question?<br>
 <strong>Answer</strong>:</p>
 <p><strong>Question</strong>: What percent of male respondents do not understand the question?<br>

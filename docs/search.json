@@ -84,6 +84,20 @@
     "text": "We can use ggplot() with categorical variables to get summaries of counts using the geom_bar() geometry.\n\nggplot(sw, aes(x = `Are You a Fan of SW?`)) + geom_bar()\n\n\n\n\n\n\n\n\nWe can add another variable to the mix to look at things by gender using the fill= argument inside the aesthetics:\n\nggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar()\n\n\n\n\n\n\n\n\nThe default for geom_bar() is to stack bars. If we want side-by-side bars we can add a “position = ‘dodge’” to the geom_bar() function:\n\nggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar(position = \"dodge\")\n\n\n\n\n\n\n\n\n\n\nThe graphs above include missing values as its own category. The easiest way to deal with missing values is to create a subset of the data that is prepared for the graph we are interested in creating.\nWe first select only the columns that we will use in the visualization, then drop out all the missing values using drop_na() in the tidy fashion.\nNOTE: The drop_na() function drops all rows with ANY missing values. If we use this function on the dataset with all the columns, we may end up losing information on the analysis of interest. This is why we do a select() first. that way we only delete rows missing relevant information.\n\nshot_first &lt;- sw %&gt;%\n  select(who_shot_first, Gender) %&gt;%\n  drop_na()\n\nggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + \n  geom_bar(position = \"dodge\")\n\n\n\n\n\n\n\n\n\n\n\nThe default visualization elements in ggplot() can always be improved. Here are some options for making the chart more readable:\n\nggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + \n  geom_bar(position = \"dodge\") +\n  theme_bw() +\n  labs(\n    x = \"Which Character Shot First?\",\n    y = \"Count\",\n    title = \"Comparing response to the Question 'Who Shot First' by Gender\" \n  )\n\n\n\n\n\n\n\n\n\n\n\nWith categorical variables, we can group differently depending on which comparisons we would like to emphasize. Above, we grouped by responses to “who shot first” and colored by gender. If we swap the x variable and the color, we get the same bars, but arranged differently.\n\nggplot(shot_first, aes(x = Gender, fill = who_shot_first)) + \n  geom_bar(position = \"dodge\") +\n  theme_bw() +\n  labs(\n    x = \"\",\n    y = \"Count\",\n    title = \"Comparing response to the Question 'Who Shot First' by Gender\" \n  )\n\n\n\n\n\n\n\n\nThis different point of view makes it easier to see the breakdown of responses for each gender separately. We can see more clearly that the frequency of Females who do not understand the question is much more pronounced than on the Male side. Males, it seems largely agree that Han shot first."
   },
   {
+    "objectID": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#visualization",
+    "href": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#visualization",
+    "title": "Summarizing Categorical Data",
+    "section": "Visualization",
+    "text": "Visualization\nCreate a bar chart for favorability of Han Solo by whether or not they are fans of Star Trek (fan_of_star_trek).\nStart by making a new dataset called trekky that only includes the 2 relevant columns and drops the missing values.\n\n\ntrekky &lt;- sw %&gt;%\n\nError: &lt;text&gt;:4:0: unexpected end of input\n2: trekky &lt;- sw %&gt;%\n3: \n  ^\n\n\nQuestion: What observations can you make based on the visualization?\nAnswer:"
+  },
+  {
+    "objectID": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#proportion-table",
+    "href": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#proportion-table",
+    "title": "Summarizing Categorical Data",
+    "section": "Proportion Table",
+    "text": "Proportion Table\nWe would like to compare what percent of female respondents do not understand the question compared to the percent of males who do not understand the question.\nCreate a proportion table that can answer this question:\nQuestion: What percent of female respondents do not understand the question?\nAnswer:\nQuestion: What percent of male respondents do not understand the question?\nAnswer:"
+  },
+  {
     "objectID": "5-Statistical_Tests_Part2/12-Chi_Square_Practice.html",
     "href": "5-Statistical_Tests_Part2/12-Chi_Square_Practice.html",
     "title": "Chi-Square Practice",
@@ -1895,19 +1909,5 @@
     "title": "Semester Project",
     "section": "",
     "text": "Introduction\n\n\nDesign the Study\n\n\nCollect the Data\n\n\nDescribe/Summarize the Data\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()\n\n\n\nMake Inference\n\n# Perform the appropriate test for the data selected\n\n\n\nConclusion (Take Action)"
-  },
-  {
-    "objectID": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#visualization",
-    "href": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#visualization",
-    "title": "Summarizing Categorical Data",
-    "section": "Visualization",
-    "text": "Visualization\nCreate a bar chart for favorability of Han Solo by whether or not they are fans of Star Trek (fan_of_star_trek).\nStart by making a new dataset called trekky that only includes the 2 relevant columns and drops the missing values.\n\n\ntrekky &lt;- sw %&gt;%\n\nError: &lt;text&gt;:4:0: unexpected end of input\n2: trekky &lt;- sw %&gt;%\n3: \n  ^\n\n\nQuestion: What observations can you make based on the visualization?\nAnswer:"
-  },
-  {
-    "objectID": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#proportion-table",
-    "href": "5-Statistical_Tests_Part2/Summarizing_Categorical_Data.html#proportion-table",
-    "title": "Summarizing Categorical Data",
-    "section": "Proportion Table",
-    "text": "Proportion Table\nWe would like to compare what percent of female respondents do not understand the question compared to the percent of males who do not understand the question.\nCreate a proportion table that can answer this question:\n\nprop.table(table(sw$who_shot_first, sw$Gender), margin = 2)\n\n                                  \n                                      Female      Male\n  Greedo                           0.2272727 0.2440758\n  Han                              0.3080808 0.4715640\n  I don't understand this question 0.4646465 0.2843602\n\n\nQuestion: What percent of female respondents do not understand the question?\nAnswer:\nQuestion: What percent of male respondents do not understand the question?\nAnswer:"
   }
 ]

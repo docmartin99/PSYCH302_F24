@@ -208,7 +208,7 @@ We would like to compare what percent of female respondents do not understand th
 Create a proportion table that can answer this question:
 
 ```{r}
-prop.table(table(sw$who_shot_first, sw$Gender), margin = 2)
+
 ```
 
 __Question__:  What percent of female respondents do not understand the question?  
