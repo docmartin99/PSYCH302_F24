@@ -480,7 +480,7 @@
     "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html",
     "title": "Don’t Take it Personally",
     "section": "",
-    "text": "Download QMD"
+    "text": "In this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Brother Cannon’s Math 221 students.\nBegin by describing the population of this analysis. This will determine how broad our conclusions can be. Also include a table of the summary statistics and any visualizations that might tell a story about the data.\nThen, for each personality trait, include:\n\nA statement of the null and alternative hypotheses and why you chose the alternative you did.\nChoose alpha $= $\nCheck that your test requirements are satisfied (n &gt; 30 or qqPlot(respons_variable))\nRun the one-sample t-test and state your conclusion\nCalculate a \\(1-\\alpha\\) level confidence interval and describe in words what it means\n\nRecall that we can use “favstats()” to get summary statistics, boxplot() and histogram() to get visualizations, and the t.test() function to get hypothesis tests and confidence intervals. Be sure to label your plots’ axes and include a title.\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
   },
   {
     "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion",
@@ -1397,28 +1397,28 @@
     "href": "4-Statistical_Tests_Part1/03-Paired_ttest.html",
     "title": "Paired T-test Class Notes",
     "section": "",
-    "text": "Download QMD"
+    "text": "A matched pairs design is used in statistics to compare 2 treatments or conditions measured on subjects that are logically connected in a meaningful way. In the simplest case, measurements are collected on the same subject as in a before-and-after evaluation.\nMatched pairs designs are often called “dependent samples” because knowing who or what is in the first treatment group determines who will be in the second. In the case of a before-and-after situation, if you are selected to be in the “pre” group, then you will also be in the “post” group. But pairs are not always the same subjects.\n\n\n\nYou want to study the difference in salaries between husbands and wives. If one spouse is selected for the study it automatically determines that the other spouse will be in the other group.\nAn ACT preparation course gives you a test before you take the course and after to see if the course improved test score\nA weight loss program takes your weight at the beginning and after the 12 weeks in the program to see if the program reduced weight.\nComparing prices of a specific set of items between Walmart and Dierbergs. Because we are comparing the same items, we can take the difference between prices for each item.\n\n\n\n\nAs with the one-sample t-test, we have to make sure that the either the pairs are normally distributed or we have a large enough sample size.\nWith smaller sample sizes, create a qqPlot() using the car library to check for normality.\n\n\n\nWhen we perform a matched pairs analysis, we will be doing a 1-sample t-test based on the differences between the connected observations. One challenge is that we can define the difference either way: before - after or after - before.\nA good convention for defining differences so that a negative number means “loss” and a positive number means “gain”.\nFor example, if we believe our weight loss program reduces weight, then defining post_weight - pre_weight should give a negative number, meaning weight lost during the program.\nIf you believe Walmart is cheaper than Dierbergs, defining the difference Dierbergs - Walmart gives a positive number, meaning how much you can save, on average, for shopping at Walmart.\nMathematically, it doesn’t matter which way we define the difference as long as we keep track of what a negative number and a postive number mean. This will define which alternative hypothesis we use."
   },
   {
     "objectID": "4-Statistical_Tests_Part1/03-Paired_ttest.html#examples",
     "href": "4-Statistical_Tests_Part1/03-Paired_ttest.html#examples",
     "title": "Paired T-test Class Notes",
-    "section": "Examples",
-    "text": "Examples\n\nYou want to study the difference in salaries between husbands and wives. If one spouse is selected for the study it automatically determines that the other spouse will be in the other group.\nAn ACT preparation course gives you a test before you take the course and after to see if the course improved test score\nA weight loss program takes your weight at the beginning and after the 12 weeks in the program to see if the program reduced weight.\nComparing prices of a specific set of items between Walmart and Dierbergs. Because we are comparing the same items, we can take the difference between prices for each item."
+    "section": "",
+    "text": "You want to study the difference in salaries between husbands and wives. If one spouse is selected for the study it automatically determines that the other spouse will be in the other group.\nAn ACT preparation course gives you a test before you take the course and after to see if the course improved test score\nA weight loss program takes your weight at the beginning and after the 12 weeks in the program to see if the program reduced weight.\nComparing prices of a specific set of items between Walmart and Dierbergs. Because we are comparing the same items, we can take the difference between prices for each item."
   },
   {
     "objectID": "4-Statistical_Tests_Part1/03-Paired_ttest.html#requirements-for-a-matched-pairs-analysis",
     "href": "4-Statistical_Tests_Part1/03-Paired_ttest.html#requirements-for-a-matched-pairs-analysis",
     "title": "Paired T-test Class Notes",
-    "section": "Requirements for a Matched Pairs Analysis",
-    "text": "Requirements for a Matched Pairs Analysis\nAs with the one-sample t-test, we have to make sure that the either the pairs are normally distributed or we have a large enough sample size.\nWith smaller sample sizes, create a qqPlot() using the car library to check for normality."
+    "section": "",
+    "text": "As with the one-sample t-test, we have to make sure that the either the pairs are normally distributed or we have a large enough sample size.\nWith smaller sample sizes, create a qqPlot() using the car library to check for normality."
   },
   {
     "objectID": "4-Statistical_Tests_Part1/03-Paired_ttest.html#watchouts",
     "href": "4-Statistical_Tests_Part1/03-Paired_ttest.html#watchouts",
     "title": "Paired T-test Class Notes",
-    "section": "Watchouts",
-    "text": "Watchouts\nWhen we perform a matched pairs analysis, we will be doing a 1-sample t-test based on the differences between the connected observations. One challenge is that we can define the difference either way: before - after or after - before.\nA good convention for defining differences so that a negative number means “loss” and a positive number means “gain”.\nFor example, if we believe our weight loss program reduces weight, then defining post_weight - pre_weight should give a negative number, meaning weight lost during the program.\nIf you believe Walmart is cheaper than Dierbergs, defining the difference Dierbergs - Walmart gives a positive number, meaning how much you can save, on average, for shopping at Walmart.\nMathematically, it doesn’t matter which way we define the difference as long as we keep track of what a negative number and a postive number mean. This will define which alternative hypothesis we use."
+    "section": "",
+    "text": "When we perform a matched pairs analysis, we will be doing a 1-sample t-test based on the differences between the connected observations. One challenge is that we can define the difference either way: before - after or after - before.\nA good convention for defining differences so that a negative number means “loss” and a positive number means “gain”.\nFor example, if we believe our weight loss program reduces weight, then defining post_weight - pre_weight should give a negative number, meaning weight lost during the program.\nIf you believe Walmart is cheaper than Dierbergs, defining the difference Dierbergs - Walmart gives a positive number, meaning how much you can save, on average, for shopping at Walmart.\nMathematically, it doesn’t matter which way we define the difference as long as we keep track of what a negative number and a postive number mean. This will define which alternative hypothesis we use."
   },
   {
     "objectID": "4-Statistical_Tests_Part1/03-Paired_ttest.html#step-1-read-in-data",
