@@ -9,19 +9,20 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Assessing Normality
 
-When we use either the normal distribution or the t-distribution, we must confirm that the distribution of sample means is normally distributed.  This is true when:
+In practice, we must confirm that the distribution of sample means is normally distributed.  This is true when:
 
   1. The population is normally distributed
   2. $n > 30$ because of the Central Limit Theorem
   
 But how do you know if a population is normally distributed?  In the real world, there is no teacher to tell you when to assume a population is normal.  
+
 If our sample size is large enough, we don't have to worry.  We can trust the Central Limit Theorem.
 
 If our sample size is < 30, we can assess the normality of our *sample* to decide if we can still trust output of our hypothesis tests and confidence intervals.  
 
 [Previously](https://byuistats.github.io/Math221D_Course/Textbook/The_Normal_Distribution.html), we've used histograms to help visualize the distribution of a sample.  However, when sample sizes are small, even samples from a standard normal distribution can look skewed.
 
-All of the examples below are histograms of random samples from actual normal distributions:
+All of the examples below are histograms of random samples from actual standard normal distributions:
 
 ![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/small_sample_normal.png)
 

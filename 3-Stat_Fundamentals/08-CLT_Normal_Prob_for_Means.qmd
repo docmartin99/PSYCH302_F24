@@ -82,7 +82,9 @@ pnorm(z)
 
 # Practice Together
 
-Use the following calculator to answer the questions below.  __REMEMBER__: Whenever you update information, it is useful to run the whole code chunk.  
+Use the following calculator to answer the questions below.  
+
+__REMEMBER__: Whenever you update information, it is useful to run the whole code chunk.  
 
 ```{r, include=FALSE, echo=FALSE, eval=FALSE}
 
@@ -117,15 +119,19 @@ qnorm(.25, mu, sigma_xbar)
 
 Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 45 students will be drawn.
 
-_Question 1_: What is the mean of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population of GPAs? 
+__Question__: What is the mean of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population of GPAs?  
+__Answer__:  
 
-_Question 2_:  What is the standard deviation of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population?
+__Question__:  What is the standard deviation of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population?  
+__Answer__:  
 
 
-_Question 3_:  What is the probability that the mean GPA for 45 randomly selected BYU-Idaho students will be less than 3.3?
+__Question__:  What is the probability that the mean GPA for 45 randomly selected BYU-Idaho students will be less than 3.3?  
+__Answer__:  
 
 
-_Question 4_:  What is the shape of the distribution of sample means, $\bar{x}$, 45 students are selected in each of the possible random samples?
+__Question__:  What is the shape of the distribution of sample means, $\bar{x}$, when 45 students are selected?  
+__Answer__:  
 
 
 ## GRE Scores
@@ -133,16 +139,20 @@ _Question 4_:  What is the shape of the distribution of sample means, $\bar{x}$,
 Scores on the quantitative portion of the GRE are approximately normally distributed with mean, $\mu=150.8$,
  and standard deviation $\sigma = 8.8$.
  
-_Question 1_:  Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score? 
+__Question__:  Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score?  
+__Answer__:  
 
 
-_Question 2_:  What is the probability that a randomly selected student will score above 160 on the quantitative portion of the GRE?
+__Question__:  What is the probability that a randomly selected student will score above 160 on the quantitative portion of the GRE?  
+__Answer__:  
 
 
-_Question 3_: What is the probability that a randomly selected group of 18 students will have an *average* less than 160 on the quantitative portion of the GRE?
+__Question__: What is the probability that a randomly selected *group* of 18 students will have an *average* less than 160 on the quantitative portion of the GRE?  
+__Answer__:  
 
 
-_Question 4_: What is the probability that a randomly selected group of 18 students will have an *average* between 145 and 160 on the quantitative portion of the GRE?
+__Question__: What is the probability that a randomly selected group of 18 students will have an *average* between 145 and 160 on the quantitative portion of the GRE?  
+__Answer__:  
 
 
 

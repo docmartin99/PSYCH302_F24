@@ -40,16 +40,17 @@ z
 ```
 
 __Question__: What is the mean of the distribution of the sample means ($\mu_{\bar{x}}$) for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__:
+__Answer__:  
 
 __Question__: What is the standard deviation  of the distribution of the sample means ($\sigma_{\bar{x}}$) for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__:
+__Answer__:  
 
 __Question__: What is the shape of the distribution of the sample means for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__: 
+__Answer__:  
 
 
-__Question__: What is the probability that the mean GPA for 81 randomly selected BYU-Idaho students will be less than 3.3? 
+__Question__: What is the probability that the mean GPA for 81 randomly selected BYU-Idaho students will be less than 3.3?  
+__Answer__:  
 
 
 ## GRE

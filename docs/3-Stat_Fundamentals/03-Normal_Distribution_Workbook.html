@@ -533,56 +533,57 @@ window.Quarto = {
 <p>We can calculate a Z-score using the formula</p>
 <p><span class="math display">\[Z = \frac{x - \mu}{\sigma} \]</span></p>
 <p>where <span class="math inline">\(\mu\)</span> is the mean of the normal distribution and <span class="math inline">\(\sigma\)</span> is the standard deviation.</p>
-<p><strong>NOTE</strong>: Z-scores follow what is called a <strong>standard normal distribution</strong> which means it is centered at <span class="math inline">\(mu = 0\)</span> with a standard deviation <span class="math inline">\(\sigma=1\)</span>.</p>
+<p><strong>NOTE</strong>: Z-scores follow what is called a <strong>standard normal distribution</strong> which means it is centered at <span class="math inline">\(\mu = 0\)</span> with a standard deviation <span class="math inline">\(\sigma=1\)</span>.</p>
 <p>Recall that to get an area under the curve, we need the calculus. Fortunately, we have computers to do the heavy lifting for us.</p>
 </section>
 <section id="pnorm" class="level2">
 <h2 class="anchored" data-anchor-id="pnorm">pnorm()</h2>
-<p>We will use the function <code>pnorm()</code> to calculate the areas under the curve of interest. The <code>p</code> in <code>pnorm()</code> stands for probability and <code>norm</code> obviously stands for the normal distribution.</p>
-<p>The <code>pnorm(x, mu, sigma)</code> function takes the value, <code>x</code>, we wish to evaluate, the mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>. We can use <code>pnorm()</code> in the original units of the data and put in <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Sticking with our example of Stanford admissions, we can calculate the probability of getting a value greater than</p>
+<p>We will use the function <code>pnorm()</code> to calculate the areas under the curve for specified values. The <code>p</code> in <code>pnorm()</code> stands for probability and <code>norm</code> obviously stands for the normal distribution.</p>
+<p>The <code>pnorm(x, mu, sigma)</code> function takes the value, <code>x</code>, we wish to evaluate, the mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>. We can use <code>pnorm()</code> in the original units of the data and put in <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Sticking with our example of Stanford admissions, we can calculate the probability of getting a value greater than 33.</p>
+<p>By default, <code>pnorm()</code> gives the area to the <em>LEFT</em> of the given value. If we want the area to the right, we can use the <code>lower.tail = FALSE</code> or equivalently <code>1-pnorm(33,21,4)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">33</span>, <span class="dv">21</span>,<span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">33</span>,<span class="dv">21</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001349898</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalently:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">33</span>, <span class="dv">21</span>,<span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.001349898</code></pre>
 </div>
 </div>
-<p>By default, <code>pnorm()</code> gives the area to the left of the given value. We can use the <code>lower.tail = FALSE</code> or equivalently <code>1-pnorm(33,21,4)</code>.</p>
 <p>Equivalently, we can put the z-score into <code>pnorm()</code></p>
 <p>It’s easy to create a calculator in R that will calculate Z for us and probabilities automatically.</p>
+<p><strong>NOTE</strong>: <code>Z</code> is what we call the Standard Normal Distribution. It has a mean of 0 and a SD of 1. If X is normally distributed, subtracting the mean and dividing by the standard deviation gives the standard normal distribution with a mean of 0 and an SD = 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To calculate a z-score, you can use R like a calculator:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">33</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">21</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To calculate a z-score, you can use R like a calculator:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">33</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">21</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, pnorm() gives us the area to the LEFT of our observation</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>prob_less_than_x <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> stdev)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>prob_greater_than_x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> prob_less_than_x</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>prob_less_than_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, pnorm() gives us the area to the LEFT of our observation</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9986501</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prob_greater_than_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.001349898</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Z is what we call the Standard Normal Distribution. It has a mean of 0 and a SD of 1.  No matter what our original distribution is, if we subtract the mean and divide by the SD we get a distribution with a mean of 0 and an SD = 1.  </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If X is normally distributed, then (X-Mu)/SD is normally distributed with a mean of 0 and SD = 1.  So we can use:</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z) <span class="do">## Left Tail</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalently:  </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z) <span class="do">## Left Tail</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9986501</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="do">## Right Tail</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="do">## Right Tail</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.001349898</code></pre>
 </div>
@@ -596,17 +597,17 @@ window.Quarto = {
 <p>If IQ is normally distributed with a mean of 100 and a Standard Deviation of 11, what’s the probability of a randomly selected person having an IQ GREATER than 127?</p>
 <p>What about the probability of a randomly selected person having an IQ LESS than 85?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)  <span class="co"># LESS THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> stdev</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)  <span class="co"># LESS THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9986501</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="co"># GREATER THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z) <span class="co"># GREATER THAN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.001349898</code></pre>
 </div>
@@ -615,17 +616,17 @@ window.Quarto = {
 </section>
 <section id="area-between-2-points" class="level1">
 <h1>Area BETWEEN 2 Points</h1>
-<p>If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number.</p>
+<p>If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number, leaving the area between.</p>
 <p>What is the probability that a randomly selected individual will have an IQ between 84 and 109?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>LowerPoint <span class="ot">&lt;-</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>UpperPoint <span class="ot">&lt;-</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area Between:</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(UpperPoint, mu, stdev) <span class="sc">-</span> <span class="fu">pnorm</span>(LowerPoint, mu, stdev) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>LowerPoint <span class="ot">&lt;-</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>UpperPoint <span class="ot">&lt;-</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area Between:</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(UpperPoint, mu, stdev) <span class="sc">-</span> <span class="fu">pnorm</span>(LowerPoint, mu, stdev) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in eval(expr, envir, enclos): object 'UpperPoint' not found</code></pre>
 </div>
@@ -633,16 +634,18 @@ window.Quarto = {
 </section>
 <section id="percentiles" class="level1">
 <h1>Percentiles</h1>
-<p>Finding percentiles of a normal distribution is easy in R! Remember that a percentile is the percent of the population below a given value. So someone who scores in the 92nd-percentile scores above 92% of the population.</p>
-<p>In R, we use the <code>qnorm()</code>. The “Q” in <code>qnorm()</code> stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).</p>
+<p>Finding percentiles of a normal distribution is easy in R! Remember that a percentile is the value <em>below</em> which a given percentage of observations fall. So someone who scores in the 92nd-percentile scores above 92% of the population.</p>
+<p><strong>NOTE</strong>: We calculated the percentile <strong>from a set of data</strong> using the function <code>quantile()</code>. This can be used on data regardless of the distribution of the data.</p>
+<p>To get percentiles <strong>for a normal distribution</strong> with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, we use the <code>qnorm()</code> function.</p>
+<p>The <code>q</code> in <code>qnorm()</code> stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a normal distribution with mean, mu, and standard deviation, stdev, we can find a percentile using the following code:</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>percentile <span class="ot">&lt;-</span> </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(percentile, mu, stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for a normal distribution with mean, mu, and standard deviation, stdev, we can find a percentile using the following code:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>stdev <span class="ot">&lt;-</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>percentile <span class="ot">&lt;-</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(percentile, mu, stdev)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in eval(expr, envir, enclos): object 'percentile' not found</code></pre>
 </div>

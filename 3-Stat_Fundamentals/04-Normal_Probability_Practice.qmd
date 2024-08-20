@@ -13,9 +13,9 @@ Recall that the normal distribution is a probability distribution defined by its
 
 # Normal Probability Calculator
 
-The code below can serve as a template for any calculations involving the normal distribution.  Feel free to copy and paste this into the code chunks 
+The code below can serve as a template for any calculations involving the normal distribution.  Feel free to copy and paste this into the subsequent code chunks.  
 
-__NOTE__:  R saves any objects that are named.  This means that if you run `mu <- 12`, R keeps track of x until you change it.  When doing multiple problems that all use `mu`, be sure to run the whole code chunk, which will overwrite the names from previous examples.  
+__NOTE__:  R saves any objects that are named.  This means that if you run `mu <- 12`, R keeps track of `mu` until you change it.  When doing multiple problems that all use `mu`, be sure to run the whole code chunk, which will overwrite the names from previous examples.  
 
 ```{r}
 
@@ -75,7 +75,7 @@ __Answer__:
 “At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter's pistol to reach the runners' ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) 
 Let's suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.  
 
-What's the probability of a false start? (that is a reaction time LESS than 0.1)
+What's the probability of a false start? (meaning a reaction time LESS than 0.1)
 
 ```{r}
 

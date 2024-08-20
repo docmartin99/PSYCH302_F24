@@ -1,6 +1,5 @@
 ---
 title: Probability Calculations for Means (Reading)
-warning: no
 format:
   html:
     self_contained: yes
@@ -16,7 +15,7 @@ When is the sample mean normally distributed?  This happens when either of the t
 For the mean of draws from a random variable with mean $\mu$ and standard deviation $\sigma$, the following are true:
 
 - The mean of the random variable  $\bar X$ is $\mu$.
-- The standard deviation of the random variable $\bar X$ is $\displaystyle{\frac{\sigma}{\sqrt{n}}}$.
+- The standard deviation of the random variable $\bar X$ is $\displaystyle{\frac{\sigma}{\sqrt{n}}}$.  
 
 Previously, you learned how to use the normal probability applet and R to convert a $z$-score to a corresponding area under the curve.  These skills will be applied again in this activity.  The following questions will help you brush up on how to calculate probabilities for a normal distribution.
 

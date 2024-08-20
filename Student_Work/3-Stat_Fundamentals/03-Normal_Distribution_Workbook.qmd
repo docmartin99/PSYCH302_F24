@@ -39,25 +39,30 @@ $$Z = \frac{x - \mu}{\sigma} $$
 
 where $\mu$ is the mean of the normal distribution and $\sigma$ is the standard deviation.  
 
-__NOTE__: Z-scores follow what is called a __standard normal distribution__ which means it is centered at $mu = 0$ with a standard deviation $\sigma=1$.
+__NOTE__: Z-scores follow what is called a __standard normal distribution__ which means it is centered at $\mu = 0$ with a standard deviation $\sigma=1$.
 
 Recall that to get an area under the curve, we need the calculus.  Fortunately, we have computers to do the heavy lifting for us. 
 
 ## pnorm()
 
-We will use the function `pnorm()` to calculate the areas under the curve of interest. The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
+We will use the function `pnorm()` to calculate the areas under the curve for specified values. The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
 
-The `pnorm(x, mu, sigma)` function takes the value, `x`, we wish to evaluate, the mean, $\mu$, and standard deviation, $\sigma$.  We can use `pnorm()` in the original units of the data and put in $\mu$ and $\sigma$.  Sticking with our example of Stanford admissions, we can calculate the probability of getting a value greater than   
+The `pnorm(x, mu, sigma)` function takes the value, `x`, we wish to evaluate, the mean, $\mu$, and standard deviation, $\sigma$.  We can use `pnorm()` in the original units of the data and put in $\mu$ and $\sigma$.  Sticking with our example of Stanford admissions, we can calculate the probability of getting a value greater than 33.  
+
+By default, `pnorm()` gives the area to the *LEFT* of the given value.  If we want the area to the right, we can use the `lower.tail = FALSE` or equivalently `1-pnorm(33,21,4)`.
 
 ```{r}
+1-pnorm(33,21,4)
+
+# Equivalently:
 pnorm(33, 21,4, lower.tail = FALSE)
 ```
-
-By default, `pnorm()` gives the area to the left of the given value.  We can use the `lower.tail = FALSE` or equivalently `1-pnorm(33,21,4)`.
 
 Equivalently, we can put the z-score into `pnorm()`
 
 It's easy to create a calculator in R that will calculate Z for us and probabilities automatically.  
+
+__NOTE__:  `Z` is what we call the Standard Normal Distribution. It has a mean of 0 and a SD of 1.  If X is normally distributed, subtracting the mean and dividing by the standard deviation gives the standard normal distribution with a mean of 0 and an SD = 1.  
 
 ```{r}
 
@@ -72,16 +77,10 @@ z
 
 # By default, pnorm() gives us the area to the LEFT of our observation
 
-prob_less_than_x <- pnorm(x, mean = mu, sd = stdev)
-prob_greater_than_x <- 1 - prob_less_than_x
+pnorm(x, mean = mu, sd = stdev)
+1 - pnorm(x, mean = mu, sd = stdev)
 
-prob_less_than_x
-prob_greater_than_x
-
-
-# Z is what we call the Standard Normal Distribution. It has a mean of 0 and a SD of 1.  No matter what our original distribution is, if we subtract the mean and divide by the SD we get a distribution with a mean of 0 and an SD = 1.  
-
-# If X is normally distributed, then (X-Mu)/SD is normally distributed with a mean of 0 and SD = 1.  So we can use:
+# Equivalently:  
 
 pnorm(z) ## Left Tail
 1-pnorm(z) ## Right Tail
@@ -116,7 +115,7 @@ pnorm(z)  # LESS THAN
 
 # Area BETWEEN 2 Points
 
-If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number.  
+If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number, leaving the area between.  
 
 What is the probability that a randomly selected individual will have an IQ between 84 and 109?
 
@@ -136,9 +135,13 @@ pnorm(UpperPoint, mu, stdev) - pnorm(LowerPoint, mu, stdev)
 
 # Percentiles
 
-Finding percentiles of a normal distribution is easy in R!  Remember that a percentile is the percent of the population below a given value.  So someone who scores in the 92nd-percentile scores above 92% of the population. 
+Finding percentiles of a normal distribution is easy in R!  Remember that a percentile is the value *below* which a given percentage of observations fall.  So someone who scores in the 92nd-percentile scores above 92% of the population. 
 
-In R, we use the `qnorm()`.  The "Q" in `qnorm()` stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).
+__NOTE__:  We calculated the percentile __from a set of data__ using the function `quantile()`.  This can be used on data regardless of the distribution of the data.  
+
+To get percentiles **for a normal distribution** with mean, $\mu$, and standard deviation, $\sigma$, we use the `qnorm()` function.  
+
+The `q` in `qnorm()` stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).
 
 ```{r}
 
