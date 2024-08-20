@@ -12,14 +12,14 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Installing R and RStudio
 
-In this course, we will use R and RStudio to perform necessary calculations. This will allow us to focus on the statistical principles.
+In this course, we will use R and RStudio to perform necessary visualizations, analyses and to create web-based reports. 
 
 If you have not already installed R and RStudio on your computer, please follow these instructions to do so.
 
   1. Install R: Install the latest version of R [link](https://cran.r-project.org/)
   2. Install RStudio:	([Mac OS X](https://download1.rstudio.org/desktop/macos/RStudio-1.4.1106.dmg) | [PC](https://download1.rstudio.org/desktop/windows/RStudio-1.4.1106.exe))
 
-If you are using a Chromebook or other “web browsing only” computer that will not allow you to install software, then set up an account at [RStudio Cloud](https://rstudio.cloud/) instead of installing R and RStudio as shown here.  Use your BYU-I
+If you are using a Chromebook or other “web browsing only” computer that will not allow you to install software locally, then set up an account at [RStudio Cloud](https://rstudio.cloud/) instead of installing R and RStudio as shown here.  Use your BYU-I email and user ID.  
 
 Just accept all of the default options when installing.
 
@@ -42,7 +42,6 @@ Now that R is properly installed on your computer, we need to install RStudio. R
 Install the RStudio app by clicking here:	([Mac OS X](https://download1.rstudio.org/desktop/macos/RStudio-1.4.1106.dmg) | [Windows](https://download1.rstudio.org/electron/windows/RStudio-2024.04.2-764.exe)).
 
 
-
 Once the RStudio installer downloads, open the resulting file.
 
 Again, work through the installation process, agreeing with all the defaults and terms of conditions.
@@ -55,7 +54,7 @@ Throughout this course, you will download many files. The collection of files wi
 
   1. Create a folder somewhere that is easy to find. Consider naming it "M221D" or another descriptive name
   2. Download the [TestingTesting.qmd](https://github.com/byuistats/Math221D_Course/raw/main/Textbook/TestingTesting.qmd) file and save it into your folder. 
-  3. Click the "Knit" or "Render" button at the top of the file that opens up
+  3. Click the "Render" button at the top of the file that opens up
 
 This should open up a browser window with some text and a chart. If it runs, you're technology is set up for success in this class. If not, ask Bracken or Brother Cannon for help.
 

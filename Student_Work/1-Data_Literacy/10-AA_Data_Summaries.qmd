@@ -32,7 +32,7 @@ library(tidyverse)
 
 head(CO2)
 
-?CO2
+#?CO2
 
 ```
 
@@ -57,7 +57,7 @@ knitr::kable(favstats(CO2$uptake))
 ```
 
 
-Create a histogram of the uptake data:
+Create a histogram of the CO2 uptake across all groups:
 
 ```{r}
 
@@ -70,14 +70,14 @@ We will now look at how other factors might impact CO2 uptake.
 
 ## Impact of Plant Type on Uptake
 
-Create a table of summary statistics of uptake for each type of plants used in the experiment.
+Create a table of summary statistics of uptake for each `Type` of plants used in the experiment.
 
 ```{r}
 
 
 ```
 
-Create a side-by-side boxplot of uptake for each type of plants used in the experiment.
+Create a side-by-side boxplot of uptake for each `Type` of plants used in the experiment.
 
 ```{r}
 
@@ -88,14 +88,14 @@ Create a side-by-side boxplot of uptake for each type of plants used in the expe
 
 ## Impact of Treatment on Uptake
 
-Create a table of summary statistics of uptake for each treatment used in the experiment.
+Create a table of summary statistics of uptake for each `Treatment` used in the experiment.
 
 ```{r}
 
 
 ```
 
-Create a side-by-side boxplot of uptake for each treatment used in the experiment.
+Create a side-by-side boxplot of uptake for each `Treatment` used in the experiment.
 
 ```{r}
 
@@ -105,14 +105,14 @@ Create a side-by-side boxplot of uptake for each treatment used in the experimen
 
 ## Impact of Ambient CO2 Concentration on Uptake
 
-Create a table of summary statistics of uptake for each level of CO2 found in the experiment.
+Create a table of summary statistics of uptake for each level of ambient CO2, `conc`, found in the experiment.
 
 ```{r}
 
 
 ```
 
-Create a side-by-side boxplot of uptake for each level of CO2 found used in the experiment.
+Create a side-by-side boxplot of uptake for each level of ambient CO2, `conc`, found used in the experiment.
 
 ```{r}
 
@@ -126,7 +126,7 @@ Create a side-by-side boxplot of uptake for each level of CO2 found used in the 
 
 The background suggests this study was an experiment.  In your own words, describe the difference between an experiment and an observational study. 
 
-What would this study have looked like if it had been an observational study?
+What might this study have looked like if it had been an observational study?  
 
 
 ## What is the Population of this study?  

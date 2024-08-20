@@ -21,7 +21,7 @@ By the end of this lesson, you should be able to:
 
 ## Welcome to the Course!
 
-In this course, you will explore important connections between the academic discipline of Statistics and the world around us. By pondering these ideas, your understanding of statistics will increase, as will your knowledge and testimony of the restored Gospel of Jesus Christ. In addition, that which you learn in this course will increase your ability to serve others as a disciple of Jesus Christ and help build Zion.
+In this course, you will explore important connections between the academic discipline of Statistics and the world around us. By pondering these ideas, your understanding of statistics will increase, as will your knowledge and testimony of the restored Gospel of Jesus Christ. 
 
 This course has been designed to help you slowly build up a knowledge base of ideas and skills. Not all of these ideas and skills will come easily. It takes a lot of work and practice before some things will even start to make sense, so you should not be surprised to find that it may take you a little time to comprehend these ideas. Just __be patient__. Once you're far enough into the course, the ideas will start to come together, and you will see how much progress you have really made. You will understand what this course is all about, and you will be glad you persisted in your efforts to learn.
 
@@ -86,7 +86,7 @@ In a spirit of love and service, please reach out to others. You are not graded 
 
 ## Course Structure
 
-This course consists of 24 lessons. They are presented in a topical order in which concepts and skills learned in the earlier lessons provide the requisite knowledge to succeed in later lessons. If the general order of the lessons doesn’t make sense at first, don’t worry. It will all come together in the end, and you’ll see the reasoning behind why the lessons have been presented in this particular order.
+This course consists of lessons presented in a topical order in which concepts and skills learned in the earlier lessons provide the requisite knowledge to succeed in later lessons. If the general order of the lessons doesn’t make sense at first, don’t worry. It will all come together in the end, and you’ll see the reasoning behind why the lessons have been presented in this particular order.
 
 Your main goal as a student will be to complete all of the learning activities within each lesson by their due dates every week. These activities follow a consistent weekly schedule, and it will be up to you to make sure that you keep on pace with all your assignments. These weekly activities may include the following:
 
@@ -96,7 +96,7 @@ Your main goal as a student will be to complete all of the learning activities w
 -   Writing papers and/or developing presentations
 -   Participating in meetings with the instructor, teaching assistants, and other students
 
-The lessons in this course have a similar structure and contain similar basic elements. A typical lesson will contain a preparation reading, class notes and practice applications.  Because not all material is equally challenging, some lessons will span for multiple days.  But expect to cover 2-3 lessons a week.  
+A typical lesson will contain a preparation reading, class notes and practice applications.  Because not all material is equally challenging, some lessons will span multiple days.  But expect to cover 2-3 lessons a week.  
 
 While a general flow of reading, classwork and practice will be the typical lesson flow, there may be adjustments to the schedule from time to time.  Changes are typically due to adjusting the pace of the material to support student learning. Please be flexible as we adapt the pace to suit the needs of the class.  
 
@@ -108,13 +108,15 @@ This course has been designed with the student in mind. Every effort has been ma
 
 **Textbook**
 
-To keep costs as low as possible for students and their families, no physical textbook is required for this class. The readings for this course are provided on this website and will continue to be available to you after the course is completed. Please report any problems with the textbook (links not working, loading slowly, inability to view images, etc.) to your instructor. A link to the textbook is found in the Quick Links module. It is highly recommended you bookmark the textbook so that you can easily reference each lesson's reading.
+To keep costs as low as possible for students and their families, no physical textbook is required for this class. The readings for this course are provided on this website and will continue to be available to you after the course is completed. Please report any problems with the textbook (links not working, loading slowly, inability to view images, etc.) to your instructor. 
+
+You may also download all coursework at the main page.  This includes all class notes, practice problems and application activities.  
 
 **Computer Equipment**
 
 You will need a laptop with the ability to install software locally.  
 
-__NOTE__: It is *possible* to complete the material with a Chromebook or MacBook, but it adds significant complications and stress. For those who are new to programming and statistics, this can be the difference between success and failure in the class. 
+__NOTE__: It is *possible* to complete this course with a Chromebook or other cloud-based device, but it adds significant complications and stress. For those who are new to programming and statistics, this can be the difference between success and failure in the class. 
 
 ## Course Resources
 

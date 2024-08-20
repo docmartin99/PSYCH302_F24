@@ -21,17 +21,15 @@ Group 1 would be asked to review for ten minutes at three specific times: fiftee
 Group 2 would not be asked to review the material at all.
 Use the above information for all parts.
 
-__Question__:  Which treatment group would be considered the control and why?
-
+__Question__:  Which treatment group would be considered the control and why?  
 __Answer__:
 
-__Question__:  Before participating, your teacher gives you a short quiz and records your score out of 10.  What type of data (quantitative or categorical) is being recorded? 
-
+__Question__:  Before participating, your teacher gives you a short quiz and records your score out of 10.  What type of data (quantitative or categorical) is being recorded?  
 __Answer__:
 
 # 2 - "You see, but you do not observe"
 
-For each of the following scenarios, which are observational studies and which are experiments:
+For each of the following scenarios, explain which are observational studies and which are experiments and why:
 
 1. A Telephone Poll asking people about whether or not they vaccinate their children
 
@@ -58,18 +56,15 @@ __Study Type__:
 
 You want to become the next Jonas Salk and produce a vaccine that will help cure children of Respiratory Syncytial Virus (RSV).  You test the vaccine and compare it to a placebo and randomly choose one group of children to take the vaccine and one group to take the placebo.  
 
-__Question__: What (or who) are the experimental units or subjects?
-
+__Question__: What (or who) are the experimental units or subjects?  
 __Answer__:  
 
 
-__Question__: What are the treatments?
-
+__Question__: What are the treatments?  
 __Answer__:  
 
 
-__Question__: What is the population of this study?
-
+__Question__: What is the population of this study?  
 __Answer__:  
 
 
@@ -98,12 +93,10 @@ __Data Type__:
 
 In a recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate.  From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses. 
 
-__Question__:  What is the population of the study?
-
+__Question__:  What is the population of the study?  
 __Answer__:  
 
-__Question__:  What is the sample of the study?
-
+__Question__:  What is the sample of the study?  
 __Answer__:  
 
 
@@ -113,21 +106,18 @@ For each scenario, state which type of sampling scheme was used and explain why:
 
 __Scenario 1__:  A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class. 
 
-__Sampling Scheme__:
-
+__Sampling Scheme__:  
 __Explanation__:  
 
 
 __Scenario 2__: Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson's and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample. 
 
-__Sampling Scheme__:
-
-__Explanation__:    
+__Sampling Scheme__:  
+__Explanation__:  
 
 
 __Scenario 3__: A study is being planned in order to estimate the parts per million of a particular pollutant in a lake's water. 
 
-__Question__:  How would you sample from the lake to get a representative sample?
-
-__Answer__:
+__Question__:  How would you sample from the lake to get a representative sample?  
+__Answer__:  
 

@@ -464,7 +464,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="basic-tidyverse-functions" class="level1">
 <h1>Basic Tidyverse Functions</h1>
-<p>The most frequently used actions used for wrangling data are:</p>
+<p>The most frequently used actions for wrangling data are:</p>
 <ol type="1">
 <li><strong>Filtering rows</strong> - select rows based on certain user-defined criteria. This is done using the <code>filter()</code> operator.</li>
 <li><strong>Selecting columns</strong> - narrow the dataset to include specific <em>columns</em> required for the analysis or visualization. This is done using the <code>select()</code> operator.</li>
@@ -479,10 +479,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-pipe-in-action" class="level2">
 <h2 class="anchored" data-anchor-id="the-pipe-in-action">The Pipe in Action</h2>
 <p>Suppose we have a dataset, <code>marital_status_data</code>, with 2 columns: <code>age</code> and <code>marital_status</code>. We expect the <code>marital_status</code> to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.</p>
-<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell are what I want to keep or what I want to discard (more <a href="../2-Tidy_Data/02-Filter.html">here</a>):</p>
+<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell R what I want to keep or what I want to exclude (more <a href="../2-Tidy_Data/02-Filter.html">here</a>):</p>
 <pre><code>marital_Status_data %&gt;% filter(marital_status != "It's complicated")</code></pre>
 <p><strong>NOTE</strong>: The <code>!=</code> is read “not equal to”, and is a common <a href="../2-Tidy_Data/02-Filter.html#choosing-rows---filter##logical-operators">logical operator</a> used in computer programming. So the above code returns a subset of the original data omitting the rows.</p>
-<p>I can use pipes sequentially to do quite complicated data wrangling in a very short few lines of code.</p>
+<p>I can use pipes sequentially to do complicated data wrangling in very few lines of code.</p>
 </section>
 </section>
 <section id="resources" class="level1">

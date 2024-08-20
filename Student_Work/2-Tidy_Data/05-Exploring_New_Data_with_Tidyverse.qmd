@@ -81,7 +81,7 @@ __PRO TIP__: Ask a ton of questions throughout this process! You are not always 
 
 As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response.  Start to **mentally rank** which factors you think might be most impactful.  
 
-__QUESTIONS__: For our data, what do you think will be our response variable? 
+__QUESTIONS__: For our data, what do you think is our response variable?  
 
 What other factors do you think might impact the response variable? 
 
@@ -138,13 +138,13 @@ Are there any values we may need to filter out?
 
 Excel uses `#N/A` as a missing value, but in R, this is treated like another level of a categorical variable.  
 
-Pick 2 more *categorical* variables and list their unique values:
+Pick 2 more *categorical* variables and list their distinct values:
 
 ```{r}
 
-unique(happiness$Education)
+unique(happiness$)
 
-unique(happiness$Dominant_hand)
+unique(happiness$)
 
 ```
 
@@ -156,7 +156,11 @@ __NOTE__: For now, we are focusing on categorical explanatory variables. Later i
 
 Now that we've spent time with the data, we can formalize our hypotheses and get ready to prepare the data to perform the proper analysis.
 
-__QUESTION__: Which explanatory variables do you think have the biggest impact on happiness?
+__QUESTION__: Which 3 explanatory variables do you think have the biggest impact on happiness?  
+__Answer__:  
+  1. 
+  2. 
+  3. 
 
 # 3. Prepare the Data
 

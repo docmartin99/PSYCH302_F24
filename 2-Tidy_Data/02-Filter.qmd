@@ -46,7 +46,7 @@ favstats(survey$Height_cm)
 ```
 
 
-We can create a new dataset, `clean`, that omits responses of people who are taller than 250cm (about 8 feet):
+We can create a new dataset, `clean`, that excludes responses of people who are taller than 250cm (about 8 feet):
 
 ```{r}
 
@@ -87,7 +87,7 @@ survey %>%
 
 ```
 
-__NOTE__: The `%in%` and the `!=` will not always give you the same results.  If there are misspellings or other options, using `%in%` will limit the data to only those with the exact spelling in the list provided. For example, someone responding "left handed", would not be included in the clean data.  Misspellings would, however, be included if I use `!= "Ambitextrous"` because that only removes rows written exactly that way.  Things like, `ambidextrious` or `RightHanded` would still be included.  
+__NOTE__: The `%in%` and the `!=` will not always give you the same results.  If there are misspellings or other options, using `%in%` will limit the data to only those with the exact spelling in the list provided. For example, someone responding "left handed" (all lower case), would not be included in the clean data.  Misspellings would, however, be included if I use `!= "Ambitextrous"` because that only removes rows written exactly that way.  Things like, `ambidextrious` or `RightHanded` would still be included.  
 
 I could further limit my data to students from Florida and Missouri:
 

@@ -519,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
 </div>
 </div>
-<p>We can create a new dataset, <code>clean</code>, that omits responses of people who are taller than 250cm (about 8 feet):</p>
+<p>We can create a new dataset, <code>clean</code>, that excludes responses of people who are taller than 250cm (about 8 feet):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>)</span>
@@ -599,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 #   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
 </div>
 </div>
-<p><strong>NOTE</strong>: The <code>%in%</code> and the <code>!=</code> will not always give you the same results. If there are misspellings or other options, using <code>%in%</code> will limit the data to only those with the exact spelling in the list provided. For example, someone responding “left handed”, would not be included in the clean data. Misspellings would, however, be included if I use <code>!= "Ambitextrous"</code> because that only removes rows written exactly that way. Things like, <code>ambidextrious</code> or <code>RightHanded</code> would still be included.</p>
+<p><strong>NOTE</strong>: The <code>%in%</code> and the <code>!=</code> will not always give you the same results. If there are misspellings or other options, using <code>%in%</code> will limit the data to only those with the exact spelling in the list provided. For example, someone responding “left handed” (all lower case), would not be included in the clean data. Misspellings would, however, be included if I use <code>!= "Ambitextrous"</code> because that only removes rows written exactly that way. Things like, <code>ambidextrious</code> or <code>RightHanded</code> would still be included.</p>
 <p>I could further limit my data to students from Florida and Missouri:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>

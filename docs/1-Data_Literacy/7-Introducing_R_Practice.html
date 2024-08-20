@@ -448,15 +448,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#load-the-libraries" id="toc-load-the-libraries" class="nav-link active" data-scroll-target="#load-the-libraries">Load the libraries</a></li>
-  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in Data</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#load-libraries-and-data" id="toc-load-libraries-and-data" class="nav-link" data-scroll-target="#load-libraries-and-data">Load libraries and Data</a></li>
   <li><a href="#old-faithful" id="toc-old-faithful" class="nav-link" data-scroll-target="#old-faithful">Old Faithful</a>
   <ul class="collapse">
   <li><a href="#calculate-the-summary-statistics-for-duration" id="toc-calculate-the-summary-statistics-for-duration" class="nav-link" data-scroll-target="#calculate-the-summary-statistics-for-duration">Calculate the Summary Statistics for Duration</a></li>
   <li><a href="#create-a-historgram-for-duration" id="toc-create-a-historgram-for-duration" class="nav-link" data-scroll-target="#create-a-historgram-for-duration">Create a Historgram for Duration</a></li>
   <li><a href="#calculate-summary-statistics-for-wait-time" id="toc-calculate-summary-statistics-for-wait-time" class="nav-link" data-scroll-target="#calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</a></li>
   </ul></li>
-  <li><a href="#gratitude" id="toc-gratitude" class="nav-link" data-scroll-target="#gratitude">Gratitude</a></li>
+  <li><a href="#gratitude" id="toc-gratitude" class="nav-link" data-scroll-target="#gratitude">Gratitude</a>
+  <ul class="collapse">
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -483,15 +486,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="load-the-libraries" class="level1">
-<h1>Load the libraries</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In these document, we explore 2 datasets. The first is data collected on the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park. The second is data collected about expressions of gratitude and their impact on subjective well-being.</p>
+<p>For each dataset, you will create numerical and visual summaries of the data.</p>
 </section>
-<section id="read-in-data" class="level1">
-<h1>Read in Data</h1>
+<section id="load-libraries-and-data" class="level1">
+<h1>Load libraries and Data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>gratitude <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/gratitude.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>gratitude <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/gratitude.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="old-faithful" class="level1">
@@ -507,20 +518,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="calculate-summary-statistics-for-wait-time" class="level2">
 <h2 class="anchored" data-anchor-id="calculate-summary-statistics-for-wait-time">Calculate Summary Statistics for Wait time</h2>
-<p>What is the mean wait time between eruptions?</p>
-<p>What is the maximum wait time between eruptions?</p>
-<p>The middle 50% of wait times will be between what 2 numbers?</p>
+<p><strong>Question</strong>: What is the mean wait time between eruptions?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the maximum wait time between eruptions?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: The middle 50% of wait times will be between what 2 numbers?<br>
+<strong>Answer</strong>:</p>
 </section>
 </section>
 <section id="gratitude" class="level1">
 <h1>Gratitude</h1>
-<p>Calculate the summary statistics for both groups:</p>
-<p>Which treatment group has the highest mean?</p>
-<p>Which treatment group has the largest spread of happiness scores?</p>
-<p>Create a graph with boxplots for each group:</p>
-<p>Which group has the lowest first quartile?</p>
+<p>In this dataset, there is a column called <code>treatment</code> which has the group designation, and a single column called <code>happiness</code> which is the self-reported happiness score for the participants in the sample.</p>
+<p>Data are often organized this way. In the <a href="https://byuistats.github.io/Math221D_Course/1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">next lesson</a>, we will learn how to break down data summaries for different groups. For now, let’s get a sense for the distribution of self-reported happiness scores for everyone in the study, regardless of treatment group.</p>
+<p>Create a summary statistics table and answer the questions below:</p>
+<p><strong>Question</strong>: What is the maximum self-reported happiness score?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the standard deviation of happiness scores?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: In your own words, explain what the standard deviation means in context of this problem:<br>
+<strong>Answer</strong>:</p>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
+<p>Create a histogram of happiness scores:</p>
+<p><strong>Question</strong>: What is the general shape of the distribution?<br>
+<strong>Answer</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

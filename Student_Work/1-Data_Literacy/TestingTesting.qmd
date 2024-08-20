@@ -12,15 +12,17 @@ editor_options:
 
 # Introduction
 
-This type of file is called a "markdown" file.  Markdown is like Microsoft Word but much more powerful.  This file is made specific for R, and has a file type `.Rmd` meaning "R Markdown".  
+This type of file is called a "markdown" file.  Markdown is like Microsoft Word but much more powerful.  This file is made specifically for creating fancy reports and has a file type `.qmd` meaning "Quarto Markdown".  
 
 You will become very familiar with these files throughout the semester.  For now, it's only necessary to download this file, save it in a sensible folder on your computer or OneDrive, and "run" it. 
 
-Clicking on the "knit" button above (depending on your computer setup it may show up shows up "Render") will create an `.html` document that should open up in your default browser.  
+Clicking on the "Render" button above will create an `.html` document that should open up in your default browser.  This `.html` document will be created and saved in the same location as this `TestingTesting.qmd` document.  
 
-As you see, we can make section headers and type regular text.  But the power of `.Rmd` files is that we can also code inside these documents and present our output directly within the document.
+__NOTE__:  If this document is in your `Downloads` folder, that is also where the `html` file will appear.  
 
-Click "Knit" or "Render" to test to see if your software is set up.  
+As you see, we can make section headers and type regular text.  But the power of `.qmd` files is that we can code inside these documents and present our output directly within the document.
+
+Click "Render" to test to see if your software is set up.  
 
 When coding, we have to tell the computer when we're writing text and when we expect it to compile code.  Below is an example of a "code chunk" that creates a made up graph.
 

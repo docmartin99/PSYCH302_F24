@@ -22,8 +22,6 @@ wrong_patient <- import('https://github.com/byuistats/Math221D_Course/raw/main/D
 
 wordle <- read_csv("https://github.com/byuistats/Math221D_Course/raw/main/Data/Wordle.csv")
 
-#wordle <- read_csv('Data/Wordle.csv')
-
 ```
 
 
@@ -101,8 +99,7 @@ Using `favstats()` function, create a table of summary statistics for each playe
 ```
 
 
-__Question__:  Which player has the lowest standard deviation?
-
+__Question__:  Which player has the lowest standard deviation?  
 __Answer__:  
 
 Using the `table()` function, create a table of frequencies for each player and score:
@@ -112,12 +109,10 @@ Using the `table()` function, create a table of frequencies for each player and 
 ```
 
 
-__Question__: What is the mode for each player?
-
+__Question__: What is the mode for each player?  
 __Answer__:  
 
 
-__Question__:  Who is the better player, and why?
-
+__Question__:  Who is the better player, and why?  
 __Answer__:
 

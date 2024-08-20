@@ -27,7 +27,7 @@ Hadley Wickham designed a [philosophy](https://vita.had.co.nz/papers/tidy-data.p
 
 # Basic Tidyverse Functions
 
-The most frequently used actions used for wrangling data are:
+The most frequently used actions for wrangling data are:
 
   1. **Filtering rows** - select rows based on certain user-defined criteria.  This is done using the `filter()` operator.
   2. **Selecting columns** - narrow the dataset to include specific _columns_ required for the analysis or visualization.  This is done using the `select()` operator.
@@ -44,14 +44,14 @@ Tidyverse operations typically consist of a sequential series of commands to res
 
 Suppose we have a dataset, `marital_status_data`, with 2 columns:  `age` and `marital_status`.  We expect the `marital_status` to be one of 4 options:  "Single", "Married", "Divorced", "Widowed", but some joker input, "It's complicated".  Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with "It's complicated" as the status.  
 
-We would begin with the raw data, "pipe" it into the `filter()` function and tell R what I want it to do.  I can either tell are what I want to keep or what I want to discard (more [here](../2-Tidy_Data/02-Filter.qmd)):
+We would begin with the raw data, "pipe" it into the `filter()` function and tell R what I want it to do.  I can either tell R what I want to keep or what I want to exclude (more [here](../2-Tidy_Data/02-Filter.qmd)):
 
 ```
 marital_Status_data %>% filter(marital_status != "It's complicated")
 ```
 __NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../2-Tidy_Data/02-Filter.qmd#choosing-rows---filter##logical-operators) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
 
-I can use pipes sequentially to do quite complicated data wrangling in a very short few lines of code.  
+I can use pipes sequentially to do complicated data wrangling in very few lines of code.  
 
 # Resources
 

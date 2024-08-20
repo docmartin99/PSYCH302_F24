@@ -786,7 +786,7 @@ We have now learned some statistics that can be used to estimate population para
 </table>
 </center>
 
-Unless otherwise specified, we will always use Rto find the sample variance and sample mean.
+Unless otherwise specified, we will always use R to find the sample variance and sample mean.
 In each case, the sample statistic estimates the population parameter.  The ellipses $\vdots$ in this table hint that we will add rows in the future.
 
 <br>

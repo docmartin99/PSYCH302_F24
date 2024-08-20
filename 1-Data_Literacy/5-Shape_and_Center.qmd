@@ -173,7 +173,7 @@ To create this histogram in R, you can copy and paste the following code into R:
 data <- c(15100, 19000, 4800, 6500, 14900, 600, 23500, 11500,12900, 32200)
 
 # Create a histogram. We add x-axis labels using `xlab = ""` and a title `main = ""`
-hist(c(15100, 19000, 4800, 6500, 14900, 600, 23500, 11500,12900, 32200), xlab="Treatment Costs", main = "Tuberculosis Costs in India")
+hist(data, xlab="Treatment Costs", main = "Tuberculosis Costs in India")
 
 
 ```
