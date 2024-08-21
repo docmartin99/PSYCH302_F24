@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-In this activity, you will use everything we've covered in Unit 2 including:
+In this activity, you will use everything we've covered up to this point including:
 
 * Data manipulation using tidyverse functions
 * Hypothesis tests
@@ -84,13 +84,16 @@ Calculate summary statistics for the response variable.
 
 ```
 
-What is the minimum?
+__Question__:  What is the minimum?  
+__Answer__:  
 
-What is the maximum?
+__Question__:  What is the maximum?  
+__Answer__:  
 
-How many students participated in the survey? 
+__Question__:  How many students participated in the survey?  
+__Answer__:  
 
-Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:
+__Question__:  Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:
 
   1. 
   2. 
@@ -163,12 +166,11 @@ Create a clean dataset called, `clean`, that excludes zeros for G3.  This will b
 ```
 
 
-
 # Perform the Appropriate Analysis
 
 ## Comparing Schools
 
-Suppose the Gabriel Pereira school (GP) has more stringent admissions requirements.  We suspect this would lead to higher grades, on average. 
+Suppose the Gabriel Pereira school (GP) has more stringent admissions requirements.  We suspect this would lead to higher grades, on average.  
 
 Create a side-by-side boxplot of the final grades for each school.  Change the y-axis label to read "Final Grade out of 20", the x-axis label to read "School", and add a title.
 
@@ -177,7 +179,8 @@ Create a side-by-side boxplot of the final grades for each school.  Change the y
 
 ```
 
-What do you notice?
+__Question__:  What do you notice?  
+__Answer__:  
 
 Create a table of summary statistics of final grade for each school:
 
@@ -196,27 +199,33 @@ Create a qqPlot to look at the normality of both groups:
 
 ```
 
-Do the grades look normally distributed for both groups?  If not, should we be concerned?  Can we trust the P-value?
+__Question__:  Do the grades look normally distributed for both groups?  If not, should we be concerned?  
+__Answer__:  
+
+__Question__:  Can we trust the P-value?  
+__Answer__:  
 
 State your null and alternative hypotheses and significance level.
 
 __NOTE__: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.  
 
-Ho:  
+$$H_o: $$ 
 
-Ha:  
+$$H_a: $$  
 
-$\alpha = 0.$
-
+$$\alpha = 0.$$  
+Perform the appropriate statistical test:  
 
 ```{r}
 
 
 ```
 
-What is the P-value?
+__Question__:  What is the P-value?  
+__Answer__:  
 
-What is your conclusion in context of the research question?
+__Question__:  What is your conclusion in context of the research question?  
+__Answer__:  
 
 ### Confidence Interval
   
@@ -227,6 +236,7 @@ Create a $(1-\alpha)$% confidence interval and explain it in context of the rese
 
 ```
 
+__Explanation__:  
 
 ## Comparing Second Period Grade with Final Grade
 
@@ -237,27 +247,32 @@ We suspect there is a difference between the second period and the final grade, 
 Choose how you will define the difference between final grade and second period grade, and create a new object called `diff`:
 
 ```{r}
-# diff <- 
+diff <- 
 ```
 
-What does a negative number mean?
+__Question__:  What does a negative number mean?  
+__Answer__:  
 
-Create a qqPlot of `diff` and check for normality:
+Create a `qqPlot()` of `diff` and check for normality:
 
 ```{r}
 
 
 ```
 
-Do the grade differences look normally distributed?  If not, should we be concerned?  Can we trust the P-value?
+__Question__:  Do the grade differences look normally distributed?  If not, should we be concerned?  
+__Answer__:  
+
+__Question__:  Can we trust the P-value?  
+__Answer__:  
 
 State your null and alternative hypothesis and choose a significance level:
 
-Ho:  
+$$H_o: $$  
 
-Ha:  
+$$Ha:  $$    
 
-$\alpha = 0.$
+$$\alpha = 0.$$  
 
 Perform the appropriate analysis.
 
@@ -267,9 +282,11 @@ Perform the appropriate analysis.
 ```
 
 
-What is the P-value?
+__Question__:  What is the P-value?  
+__Answer__:  
 
-What conclusion do you make in context of this research question?
+__Question__:  What conclusion do you make in context of this research question?  
+__Answer__:  
 
 ### Confidence Interval
   
@@ -280,6 +297,8 @@ Create a $(1-\alpha)$% confidence interval for the differences and explain it in
 
 ```
 
+__Explanation__:  
+
 
 ## Absenteeism in Portugal
 
@@ -287,7 +306,7 @@ In 2021, Portugal [reported](https://ec.europa.eu/eurostat/statistics-explained/
 
 ### Hypothesis Test
 
-Create a qqPlot for absences.
+Create a `qqPlot()` for absences.
 
 ```{r}
 
@@ -295,15 +314,19 @@ Create a qqPlot for absences.
 ```
 
 
-Do absences look normally distributed?  If not, should we be concerned?  Can we trust the P-value?
+__Question__:  Do absences look normally distributed?  If not, should we be concerned?  
+__Answer__:  
+
+__Question__:  Can we trust the P-value?  
+__Answer__:  
 
 State your null and alternative hypotheses and choose a significance level:
 
-Ho:
+$$H_o: $$  
 
-Ha: 
+$$H_a: $$  
 
-$\alpha = 0.$
+$$\alpha = 0.$$  
 
 Perform the appropriate analysis.
 
@@ -312,7 +335,12 @@ Perform the appropriate analysis.
 
 ```
 
-State your conclusion in context of the research question.
+__Question__:  What is the P-value?  
+__Answer__:  
+
+__Question__:  What conclusion do you make in context of this research question?  
+__Answer__:  
+
 
 ### Confidence Interval
 
@@ -322,6 +350,10 @@ Create a $(1-\alpha)$% confidence interval for average absences and interpret it
 
 
 ```
+
+__Explanation__:  
+
+
 
 ## The Impact of Mother's Education Level
 
@@ -341,13 +373,14 @@ Create a table of summary statistics of final grades for each level of mother's 
 
 ```
 
-How many respondents have a mother with no formal education (level 0)?
+__Question__:  How many respondents have a mother with no formal education (level 0)?  
+__Answer__:  
 
 Create a new dataset, `clean_medu`, that does not include mother's education level 0.
 
 ```{r}
 
-# clean_medu <- clean %>%
+clean_medu <- clean %>% 
 
 ```
 
@@ -365,22 +398,25 @@ Create a summary table of final grades for each level of a mother's education wi
 
 ```
 
-What is the maximum standard deviation?
+__Question__:  What is the maximum standard deviation?  
+__Answer__:  
 
-What is the minimum standard deviation?
+__Question__:  What is the minimum standard deviation?  
+__Answer__:  
 
-Verify that the maximum is less than twice as large as the minimum to check the "equality of standard deviations".  
+__Question__:  Verify that the maximum is less than twice as large as the minimum to check the "equality of standard deviations".  
+__Answer__:  
 
 
 ### Hypothesis Test
 
 State your null and alternative hypotheses and pick alpha:
 
-Ho: 
+$$H_o: $$  
 
-Ha: 
+$$H_a: $$  
 
-$\alpha = 0.$
+$$\alpha = 0.$$  
 
 Perform the appropriate statistical test.
 
@@ -389,9 +425,11 @@ Perform the appropriate statistical test.
 
 ```
 
-What is the test statistic?
+__Question__:  What is the test statistic?  
+__Answer__:  
 
-What is the P-value?
+__Question__:  What is the P-value?  
+__Answer__:  
 
 Check the normality of the residuals.
 
@@ -400,9 +438,11 @@ Check the normality of the residuals.
 
 ```
 
-Do the residuals appear roughly normally distributed?
+__Question__:  Do the residuals appear roughly normally distributed?  
+__Answer__:  
 
-Can we trust the P-value.
+__Question__:  Can we trust the P-value.  
+__Answer__:  
 
 State your conclusion.  
 

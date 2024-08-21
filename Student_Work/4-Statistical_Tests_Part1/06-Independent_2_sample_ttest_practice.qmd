@@ -6,7 +6,6 @@ format:
     self_contained: yes
 ---
 ```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
@@ -40,7 +39,7 @@ library(car)
 
 Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates.  In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).  
 
-The researchers want to determine if  males report to value attractiveness more than females.  Use a level of significance of 0.05.
+The researchers want to determine if males report to value attractiveness more than females.  Use a level of significance of 0.05.
 
 ## Load the Data
 
@@ -88,7 +87,7 @@ __NOTE__: The default for R is to set group order alphabetically.  This means Gr
 
 Check that the samples for both groups are normally distributed
 ```{r}
-qqPlot(dating$Importance, groups = dating$Biosex)
+qqPlot(dating$Importance~dating$Biosex)
 ```
 
 Do the data for each group appear normally distributed?
@@ -102,13 +101,17 @@ Perform a t-test.
 
 ```
 
-What is the value of the test statistic?
+__Question__:  What is the value of the test statistic?  
+__Answer__:  
 
-How many degrees of freedom for this test?
+__Question__:  How many degrees of freedom for this test?  
+__Answer__:  
 
-What is the p-value?
+__Question__:  What is the p-value?  
+__Answer__:  
 
-What do you conclude?
+__Question__:  What do you conclude?  
+__Answer__:  
 
 ### Confidence Interval
 

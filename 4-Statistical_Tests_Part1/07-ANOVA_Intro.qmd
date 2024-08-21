@@ -2,14 +2,13 @@
 title: "Analysis of Variance (ANOVA)"
 ---
 ```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
 
 # Introduction
 
-When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. The formula for the new test statistic, `F`, is messy, but we can get a sense for what it's doing visually.
+When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. The formula for the new test statistic, $F$, is messy, but we can get a sense for what it's doing visually.
 
 
 ![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/one-way-anova-basics.png)
@@ -18,7 +17,7 @@ The test statistic is the ratio of the variation between groups and the average 
 
 ## The F-Distribution
 
-Recall that the shape of the t-distribution depended on how much data was in the sample.  The t-distribution was fatter tailed than the standard normal distribution when n was small.  The F-statistic also changes shape. Its shape depends on how many data points are in the sample *and* how many groups we are comparing.  This means the F-distribution has 2 sets of degrees of freedom.  
+Recall that the shape of the $t$-distribution depended on how much data was in the sample.  The t-distribution was fatter tailed than the standard normal distribution when n was small.  The F-statistic also changes shape. Its shape depends on how many data points are in the sample *and* how many groups we are comparing.  This means the F-distribution has 2 sets of degrees of freedom.  
 
 The numerator, or __between groups degrees of freedom__ is $df_{between}=k-1$, where k is the number of groups you are comparing.  
 
@@ -26,18 +25,18 @@ The denominator, or __within groups degrees of freedom__ is $df_{within}=n-k$ wh
 
 We can get these degrees of freedom directly from the R output.  
 
-Unlike the t-distribution, the F-distribution is not centered around zero and can never be negative.  F is the ratio of 2 positive numbers and is, therefore, always positive.  
+Unlike the $t$-distribution, the $F$-distribution is not centered around zero and can never be negative.  $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
 
 To summarize:
 
-  1. F is always positive because it is the ratio of 2 positive numbers
-  2. F is always right skewed
-  3. F changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)
+  1. $F$ is always positive because it is the ratio of 2 positive numbers
+  2. $F$ is always right skewed
+  3. $F$ changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)
 
 
 ![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/F_distribution.png)
 
-The P-value for an F-statistic is always one-tailed.  The probability of observing a test statistic, F, if the null hypothesis is true can be visualized:
+The P-value for an F-statistic is always one-tailed.  The probability of observing a test statistic, $F$, if the null hypothesis is true can be visualized:
 
 ![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Fdistr_pvalue.png)
 
@@ -52,12 +51,12 @@ $$H_o: \mu_1 = \mu_2 = ...\mu_k$$
 where k is the number of groups in the data.
 
 $$H_a: \text{at least one } \mu_k \text{ is different}$$
-__Note__:  The F-test does not tell us *which* group is different or how many are different from each other.  The F-test only tells us that something is different.  
+__Note__:  The $F$-test does not tell us *which* group is different or how many are different from each other.  The $F$-test only tells us that something is different.  
 
 
 ## Test Requirements
 
-Just as with other statistical tests we've done so far, the F-test has certain requirements we must check to validate our P-values.  Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.  
+Just as with other statistical tests we've done so far, the $F$-test has certain requirements we must check to validate our P-values.  Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.  
 
 What to check:
 
@@ -106,8 +105,7 @@ summary(output)
 
 We can use `favstats()` to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.  
 
-```
-
+```{r}
 # extract only the standard deviations from favstats using th `$`:
 
 sds <- favstats(data$response_variable ~ data$categorical_variable)$sd
@@ -119,11 +117,12 @@ max(sds) / min(sds)
 # if max/min < 2, then we're ok
 
 ```
+
 #### Assessing Normality of the Residuals
 
 We can assess normality of the residuals with a `qqPlot()`.  We first need to extract the residuals from our output:
 
-```
+```{r}
 output <- aov(data$response_variable ~ data$categorical_variable)
 
 qqPlot(output$residuals)
@@ -211,29 +210,35 @@ max(sds) / min(sds)
 ```
 
 
-What is the F-statistics?
+__Question__:  What is the F-statistics?  
+__Answer__:  
 
-What are the between-groups degrees of freedom?
+__Question__:  What are the between-groups degrees of freedom?  
+__Answer__:  
 
-What are the within-groups degrees of freedom?
+__Question__:  What are the within-groups degrees of freedom?  
+__Answer__:  
 
-What is the P-value?
+__Question__:  What is the P-value?  
+__Answer__:  
 
-What is your conclusion?
+__Question__:  What is your conclusion?  
+__Answer__:  
 
 
 # Your turn!
 
 Let's go through the same steps but compare Petal Length. 
 
-__1__:  Make a side-by-side boxplot of Petal Length for each species.
+Make a side-by-side boxplot of Petal Length for each species.
 
 ```{r}
 
 ```
 
 
-__2__:  State your null and alternative hypotheses:
+State your null and alternative hypotheses:
+
 
 
 ```{r}
@@ -241,7 +246,7 @@ __2__:  State your null and alternative hypotheses:
 
 ```
 
-__3__:  Perform an ANOVA:
+Perform an ANOVA:
 
 ```{r}
 
@@ -251,14 +256,24 @@ __3__:  Perform an ANOVA:
 
 ```
 
-__4__:  Check ANOVA requirements (max_sd/min_sd < 2, normal residuals)
+__Question__:  What is the F-statistics?  
+__Answer__:  
+
+__Question__:  What are the between-groups degrees of freedom?  
+__Answer__:  
+
+__Question__:  What are the within-groups degrees of freedom?  
+__Answer__:  
+
+__Question__:  What is the P-value?  
+__Answer__:  
+
+
+Check ANOVA requirements (max_sd/min_sd < 2, normal residuals)
 
 ```{r}
 
 ```
 
-Can we trust the Test Statistic and P-value (are the requirements met?)
-
-What is your conclusion?
-
-
+__Question__:  What is your conclusion?  
+__Answer__:  

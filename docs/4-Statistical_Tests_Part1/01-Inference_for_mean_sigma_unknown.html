@@ -535,12 +535,12 @@ window.Quarto = {
 
 <section id="review" class="level1">
 <h1>Review</h1>
-<p>When we know what the population standard deviation, <span class="math inline">\(\sigma\)</span>, for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. We can think of Z as having a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.</p>
+<p>When we know what the population standard deviation, <span class="math inline">\(\sigma\)</span>, for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. Z has a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.</p>
 <p><span class="math display">\[ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}\]</span></p>
-<p>Though rare, there are situations where we might know the population standard deviation from published research or census data. Standardized tests, for example, publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.</p>
+<p>Though rare, there are situations where we might know the population standard deviation from published research or census data. For example, Standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.</p>
 <section id="hypothesis-testing" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h2>
-<p>When testing a null hypothesis, the <span class="math inline">\(\mu\)</span> in the z-score formula becomes the hypothesized population mean. Our z-score is then interpreted as the number of standard deviations away from the <em>hypothesized</em> mean. If we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, then we can calculate the probability of getting a sample mean more extreme than the one we observed if the null hypothesis is true.</p>
+<p>When testing a null hypothesis, the <span class="math inline">\(\mu\)</span> in the z-score formula becomes the <strong>hypothesized population mean</strong>. The <span class="math inline">\(z\)</span>-score is then interpreted as the number of standard deviations away from the hypothesized mean. If we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, then we can calculate the probability of getting a sample mean more extreme than the one we observed <em>if the null hypothesis is true</em>.</p>
 <p><strong>KEY DEFINITION</strong>: A <strong>P-value</strong> is the probability of observing a test statistic as extreme, or more extreme than the one we observed in our sample, <em>if the null hypothesis is true</em>.</p>
 <p>We use “as or more extreme” because the direction (greater than or less than) depends on our alternative hypothesis. In the above example, if I believe that my students scored higher than the general population average, I can say, there is only a 0.0011 chance of getting a test statistic higher than the one I observed if the null hypothesis is true. Because that probability is very low, I am willing to reject the null hypothesis in favor of the alternative that my students scored higher, on average, than the general population.</p>
 <p><strong>EXAMPLE</strong>: A factory claims its light bulbs last, on average, <span class="math inline">\(\mu = 800\)</span> hours with a standard deviation, <span class="math inline">\(\sigma = 40\)</span>. We randomly select 40 light bulbs to test to see if the life expectancy is actually less than that.</p>
@@ -552,9 +552,9 @@ window.Quarto = {
 </section>
 <section id="confidence-interval" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>We can also calculate a confidence interval for the above example. Recall the formula for a confidence interval is, for a given z* associated with a desired level of confidence:</p>
+<p>We can also calculate a confidence interval for the above example. Recall the formula for a confidence interval is, for a given <span class="math inline">\(z^*\)</span> associated with a desired level of confidence:</p>
 <p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Recall the z* for common confidence levels:</p>
+<p>Recall the <span class="math inline">\(z^*\)</span> for common confidence levels:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
@@ -592,16 +592,16 @@ window.Quarto = {
 </section>
 <section id="students-t-distribution-sigma-unkown" class="level1">
 <h1>Student’s T-Distribution (sigma unkown)</h1>
-<p>In most cases, we are performing statistical analyses on data collected and do not know the population standard deviation <span class="math inline">\(\sigma\)</span>. In this situation, we can no longer use the Standard Normal Distribution. We use a distribution that is similar to the Normal distribution but whose shape depends on how much data we have. The Student’s t-distribution requires a t-value (like a z-score) and something called degrees of freedom. Degrees of Freedom for a t-distribution are defined:</p>
+<p>In most cases, we perform statistical analyses on samples from a population where we don’t know the population standard deviation, <span class="math inline">\(\sigma\)</span>. In this situation, we can no longer use the Standard Normal Distribution. We use a distribution that is similar to the Normal distribution but whose shape depends on how much data we have. The Student’s t-distribution requires a t-value (like a z-score) and something called degrees of freedom. Degrees of Freedom for a t-distribution are defined:</p>
 <p><span class="math display">\[df  = n-1 \]</span></p>
 <p>We calculate test statistics very similarly, but we replace the population standard deviation with the sample standard deviation.</p>
 <p><span class="math display">\[ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}\]</span></p>
 <p>The T-distribution is very similar to the standard normal. It is symmetrical around zero. However, the shape depends on how much data you have. The more data you have, the closer the <span class="math inline">\(t\)</span> is to the standard normal. This is illustrated in the graph below:</p>
 <p><img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/T_dist.png" class="img-fluid"></p>
-<p>Because <span class="math inline">\(t\)</span> is not normally distributed, we can’t use <code>pnorm()</code> to calculate probabilities. However, R is fully capable of calculating probabilities for many different distributions including the t-distribution. We have to tell R the t-value <em>and</em> the degrees of freedom.</p>
+<p>Because <span class="math inline">\(t\)</span> is not normally distributed, we can’t use <code>pnorm()</code> to calculate probabilities. However, R is fully capable of calculating probabilities for many probability distributions including the t-distribution. We have to tell R the t-value <em>and</em> the degrees of freedom.</p>
 <section id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)</h2>
-<p>Suppose we have 25 test scores defined as “data” in the code chunk below. We can calculate the t-statistic just like we did with the z-score.</p>
+<p>Suppose we have 25 test scores defined as “data” in the code chunk below. We can calculate the <span class="math inline">\(t\)</span>-statistic just like we did with the <span class="math inline">\(z\)</span>-score.</p>
 <p>Suppose we believe that the mean score of these 25 students is significantly higher than 50. Our null and alternative hypothesis are as follows:</p>
 <p><span class="math display">\[ H_0:  \mu = 50 \]</span> <span class="math display">\[ H_a: \mu &gt; 50 \]</span></p>
 <div class="cell">
@@ -629,7 +629,7 @@ window.Quarto = {
 </div>
 </div>
 <p>This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (<strong>P-value</strong>).</p>
-<p>The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate z or t scores and calculating probabilities “by hand” (using <code>pnorm()</code> or <code>pt()</code>), we can use R functions on the data directly and get much more useful output.</p>
+<p>The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span>-scores and calculating probabilities “by hand” (using <code>pnorm()</code> or <code>pt()</code>), we can use R functions with the data directly and get much more useful output.</p>
 </section>
 </section>
 <section id="the-new-hotness" class="level1">
@@ -659,7 +659,8 @@ window.Quarto = {
 </section>
 <section id="step-2-review-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-review-the-data">Step 2: Review the Data</h2>
-<p>In this step, we are looking to see if the data are as expected. Are the columns we’re interested in numeric? Categorical? and do these match expectations. We can also start to look for strange data and outliers. Visualizations can assist with that as well. Other common issues to look for include: negative numbers that should only be positive, date values that shouldn’t exist, missing values, character variables inside what should be a number.</p>
+<p>In this step, we are looking to see if the data are as expected. Are the columns we’re interested in numeric? Categorical? and do these match expectations. We can also start to look for strange data and outliers. Visualizations can help.</p>
+<p>Other common issues to look for include: negative numbers that should only be positive, date values that shouldn’t exist, missing values, character variables inside what should be a number.</p>
 <p>In the real world, data are messy. Reviewing the data is a critical part of an analysis.</p>
 <p>Take a look through the personality dataset and see if there are any anomalies that might need to be addressed.</p>
 </section>
@@ -698,6 +699,8 @@ window.Quarto = {
 <p><span class="math display">\[ H_A: \mu_{extroversion}  &gt; 50\]</span></p>
 <p><span class="math display">\[\alpha = 0.05\]</span></p>
 <p>Perform the one-sample t-test using the “t.test()” function in R. If you ever get stuck remembering how to use a function in R, you can run <code>?t.test</code> to see documentation. The question mark will open up the help files for any given function in R.</p>
+<p>The <code>t.test()</code> function takes as input, the data, the hypothesized mean, mu, and the direction of the alternative hypothesis.</p>
+<p>The default parameters for the <code>t.test()</code> function are: <code>t.test(data, mu = 0, alternative = "two.sided")</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?t.test</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -717,8 +720,10 @@ mean of x
  56.98267 </code></pre>
 </div>
 </div>
-<p><strong>Q</strong>: What is the P-value?</p>
-<p><strong>Q</strong>: How do we explain our conclusion in context of our research question?</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How do we explain our conclusion in context of our research question?<br>
+<strong>Answer</strong>:</p>
 <p><strong>Technical Conclusion</strong>:</p>
 <p><strong>Contextual Conclusion</strong>:</p>
 </section>
@@ -743,17 +748,20 @@ sample estimates:
 mean of x 
  56.98267 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If we only want the output to show the confidence interval and not the hypothesis test, we can use a `$` to select specific output:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Because the default option for the `alternative =`  in the t.test fucntion is "two.sided", we don't actually need to include it</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(big5<span class="sc">$</span>Extroversion, <span class="at">mu =</span> <span class="dv">50</span>, <span class="at">conf.level =</span> .<span class="dv">99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To get only the output for the confidence interval to be shown, we can use a <code>$</code> to select specific output. Much like when pulling a specific column from a dataset, the <code>$</code> can pull specific output from an analysis.</p>
+<p>Because the option for the <code>alternative =</code> in the t.test function is “two.sided”, we don’t actually need to include it when getting confidence intervals.</p>
+<p>Also, confidence intervals do not require an assumed mu value. So a more efficient way to get a confidence interval for a given set of data is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(big5<span class="sc">$</span>Extroversion, <span class="at">conf.level =</span> .<span class="dv">99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 54.26631 59.69903
 attr(,"conf.level")
 [1] 0.99</code></pre>
 </div>
 </div>
-<p>Describe in words the interpretation of the confidence interval in context of Extroversion.</p>
+<p><strong>Question</strong>: Describe in words the interpretation of the confidence interval in context of Extroversion.<br>
+<strong>Answer</strong>:</p>
 </section>
 </section>
 </section>
@@ -761,7 +769,7 @@ attr(,"conf.level")
 <h1>Your Turn</h1>
 <section id="body-temperature-data" class="level2">
 <h2 class="anchored" data-anchor-id="body-temperature-data">Body Temperature Data</h2>
-<p>The data below contains information about body temperatures of healthy adults.</p>
+<p>The dataset below contains information about body temperatures of healthy adults.</p>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data:</h3>
 <div class="cell">
@@ -772,22 +780,28 @@ attr(,"conf.level")
 </section>
 <section id="review-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="review-the-data">Review the Data</h3>
-<p>What is the mean and standard deviation of the body temperatures in our data set?</p>
+<p>Create a table of summary statistics:</p>
 </section>
 <section id="visualize-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-the-data">Visualize the Data</h3>
-<p>Create a histogram to visualize the body temperature data. Which of the following best describes the distribution of the data?</p>
+<p>Create a histogram to visualize the body temperature data.</p>
+<p><strong>Question</strong>: Describe the general shape of the distribution.<br>
+<strong>Answer</strong>:</p>
 </section>
 <section id="analyze-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="analyze-the-data">Analyze the Data</h3>
 <p>It’s widely accepted that normal body temperature for healthy adults is 98.6 degrees Fahrenheit.</p>
 <p>Suppose we suspect that the average temperature is different than 98.6</p>
 <p>Use a significance level of <span class="math inline">\(\alpha = 0.01\)</span> to test whether the mean body temperature of healthy adults is equal to 98.6 degrees Fahrenheit.</p>
-<p>What is the P-value?</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
 <p>Explain our conclusion.</p>
+<section id="confidence-interval-1" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h4>
 <p>Create a 99% confidence interval for the true population average temperature of healthy adults.</p>
 
 
+</section>
 </section>
 </section>
 </section>

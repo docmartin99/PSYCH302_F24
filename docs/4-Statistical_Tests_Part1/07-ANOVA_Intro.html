@@ -526,24 +526,24 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>When we want to compare 3 or more groups, the math get’s more complicated. Analysis of Variance (ANOVA) compares how spread out the means are relative to the average <em>within</em> group variation. The formula for the new test statistic, <code>F</code>, is messy, but we can get a sense for what it’s doing visually.</p>
+<p>When we want to compare 3 or more groups, the math get’s more complicated. Analysis of Variance (ANOVA) compares how spread out the means are relative to the average <em>within</em> group variation. The formula for the new test statistic, <span class="math inline">\(F\)</span>, is messy, but we can get a sense for what it’s doing visually.</p>
 <p><img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/one-way-anova-basics.png" class="img-fluid"></p>
 <p>The test statistic is the ratio of the variation between groups and the average variation within groups. The further spread out the sample means are relative to the noise within the groups, the more significant the result.</p>
 <section id="the-f-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="the-f-distribution">The F-Distribution</h2>
-<p>Recall that the shape of the t-distribution depended on how much data was in the sample. The t-distribution was fatter tailed than the standard normal distribution when n was small. The F-statistic also changes shape. Its shape depends on how many data points are in the sample <em>and</em> how many groups we are comparing. This means the F-distribution has 2 sets of degrees of freedom.</p>
+<p>Recall that the shape of the <span class="math inline">\(t\)</span>-distribution depended on how much data was in the sample. The t-distribution was fatter tailed than the standard normal distribution when n was small. The F-statistic also changes shape. Its shape depends on how many data points are in the sample <em>and</em> how many groups we are comparing. This means the F-distribution has 2 sets of degrees of freedom.</p>
 <p>The numerator, or <strong>between groups degrees of freedom</strong> is <span class="math inline">\(df_{between}=k-1\)</span>, where k is the number of groups you are comparing.</p>
 <p>The denominator, or <strong>within groups degrees of freedom</strong> is <span class="math inline">\(df_{within}=n-k\)</span> where n is the total number of data points and k is the number of groups.</p>
 <p>We can get these degrees of freedom directly from the R output.</p>
-<p>Unlike the t-distribution, the F-distribution is not centered around zero and can never be negative. F is the ratio of 2 positive numbers and is, therefore, always positive.</p>
+<p>Unlike the <span class="math inline">\(t\)</span>-distribution, the <span class="math inline">\(F\)</span>-distribution is not centered around zero and can never be negative. <span class="math inline">\(F\)</span> is the ratio of 2 positive numbers and is, therefore, always positive.</p>
 <p>To summarize:</p>
 <ol type="1">
-<li>F is always positive because it is the ratio of 2 positive numbers</li>
-<li>F is always right skewed</li>
-<li>F changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)</li>
+<li><span class="math inline">\(F\)</span> is always positive because it is the ratio of 2 positive numbers</li>
+<li><span class="math inline">\(F\)</span> is always right skewed</li>
+<li><span class="math inline">\(F\)</span> changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)</li>
 </ol>
 <p><img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/F_distribution.png" class="img-fluid"></p>
-<p>The P-value for an F-statistic is always one-tailed. The probability of observing a test statistic, F, if the null hypothesis is true can be visualized:</p>
+<p>The P-value for an F-statistic is always one-tailed. The probability of observing a test statistic, <span class="math inline">\(F\)</span>, if the null hypothesis is true can be visualized:</p>
 <p><img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Fdistr_pvalue.png" class="img-fluid"></p>
 <p>In practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests.</p>
 </section>
@@ -551,11 +551,11 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
 <p>The null and alternative hypotheses are always the same for an ANOVA:</p>
 <p><span class="math display">\[H_o: \mu_1 = \mu_2 = ...\mu_k\]</span> where k is the number of groups in the data.</p>
-<p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span> <strong>Note</strong>: The F-test does not tell us <em>which</em> group is different or how many are different from each other. The F-test only tells us that something is different.</p>
+<p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span> <strong>Note</strong>: The <span class="math inline">\(F\)</span>-test does not tell us <em>which</em> group is different or how many are different from each other. The <span class="math inline">\(F\)</span>-test only tells us that something is different.</p>
 </section>
 <section id="test-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="test-requirements">Test Requirements</h2>
-<p>Just as with other statistical tests we’ve done so far, the F-test has certain requirements we must check to validate our P-values. Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.</p>
+<p>Just as with other statistical tests we’ve done so far, the <span class="math inline">\(F\)</span>-test has certain requirements we must check to validate our P-values. Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.</p>
 <p>What to check:</p>
 <ol type="1">
 <li>Are the standard deviations of each group “equal”?</li>
@@ -591,25 +591,35 @@ summary(output)
 <section id="checking-equal-standard-deviations" class="level4">
 <h4 class="anchored" data-anchor-id="checking-equal-standard-deviations">Checking Equal Standard Deviations:</h4>
 <p>We can use <code>favstats()</code> to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.</p>
-<pre><code>
-# extract only the standard deviations from favstats using th `$`:
-
-sds &lt;- favstats(data$response_variable ~ data$categorical_variable)$sd
-
-# Compare the max/min to 2
-
-max(sds) / min(sds)
-
-# if max/min &lt; 2, then we're ok
-</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract only the standard deviations from favstats using th `$`:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(data<span class="sc">$</span>response_variable <span class="sc">~</span> data<span class="sc">$</span>categorical_variable)<span class="sc">$</span>sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in favstats(data$response_variable ~ data$categorical_variable): could not find function "favstats"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the max/min to 2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'sds' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if max/min &lt; 2, then we're ok</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="assessing-normality-of-the-residuals" class="level4">
 <h4 class="anchored" data-anchor-id="assessing-normality-of-the-residuals">Assessing Normality of the Residuals</h4>
 <p>We can assess normality of the residuals with a <code>qqPlot()</code>. We first need to extract the residuals from our output:</p>
-<pre><code>output &lt;- aov(data$response_variable ~ data$categorical_variable)
-
-qqPlot(output$residuals)
-</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">aov</span>(data<span class="sc">$</span>response_variable <span class="sc">~</span> data<span class="sc">$</span>categorical_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in data$response_variable: object of type 'closure' is not subsettable</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(output<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in qqPlot(output$residuals): could not find function "qqPlot"</code></pre>
+</div>
+</div>
 <p>If most of the points fall within the blue zone, we can be confident that the residuals are normally distributed.</p>
 </section>
 </section>
@@ -630,7 +640,7 @@ qqPlot(output$residuals)
 <h2 class="anchored" data-anchor-id="step-2-explore-the-data">Step 2: Explore the Data</h2>
 <p>How many species do we have in our dataset?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     setosa versicolor  virginica 
@@ -639,11 +649,11 @@ qqPlot(output$residuals)
 </div>
 <p>Create a side-by-side boxplot of species and Sepal Length.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -652,8 +662,8 @@ qqPlot(output$residuals)
 <section id="step-4-perform-the-appropriate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 Species       2  63.21  31.606   119.3 &lt;2e-16 ***
@@ -665,50 +675,63 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Before we make a conclusion, we want to check that we can trust our output. Every statistical test has requirements that must be satisfied if we are to trust our conclusions. For ANOVA, we need to check the normality and that the variation within groups is roughly the same.</p>
 <p>We use a QQ-plot to check for normality and the ratio of the largest to the smallest standard deviation to check “equal” variation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107 132</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.803967</code></pre>
 </div>
 </div>
-<p>What is the F-statistics?</p>
-<p>What are the between-groups degrees of freedom?</p>
-<p>What are the within-groups degrees of freedom?</p>
-<p>What is the P-value?</p>
-<p>What is your conclusion?</p>
+<p><strong>Question</strong>: What is the F-statistics?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the between-groups degrees of freedom?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the within-groups degrees of freedom?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is your conclusion?<br>
+<strong>Answer</strong>:</p>
 </section>
 </section>
 <section id="your-turn" class="level1">
 <h1>Your turn!</h1>
 <p>Let’s go through the same steps but compare Petal Length.</p>
-<p><strong>1</strong>: Make a side-by-side boxplot of Petal Length for each species.</p>
-<p><strong>2</strong>: State your null and alternative hypotheses:</p>
-<p><strong>3</strong>: Perform an ANOVA:</p>
+<p>Make a side-by-side boxplot of Petal Length for each species.</p>
+<p>State your null and alternative hypotheses:</p>
+<p>Perform an ANOVA:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>4</strong>: Check ANOVA requirements (max_sd/min_sd &lt; 2, normal residuals)</p>
-<p>Can we trust the Test Statistic and P-value (are the requirements met?)</p>
-<p>What is your conclusion?</p>
+<p><strong>Question</strong>: What is the F-statistics?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the between-groups degrees of freedom?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the within-groups degrees of freedom?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p>Check ANOVA requirements (max_sd/min_sd &lt; 2, normal residuals)</p>
+<p><strong>Question</strong>: What is your conclusion?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

@@ -543,7 +543,7 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this activity, you will use everything we’ve covered in Unit 2 including:</p>
+<p>In this activity, you will use everything we’ve covered up to this point including:</p>
 <ul>
 <li>Data manipulation using tidyverse functions</li>
 <li>Hypothesis tests
@@ -591,10 +591,13 @@ window.Quarto = {
 <p>What do you notice about the shape of the distribution?</p>
 <p>What anomalies, if any, do you notice?</p>
 <p>Calculate summary statistics for the response variable.</p>
-<p>What is the minimum?</p>
-<p>What is the maximum?</p>
-<p>How many students participated in the survey?</p>
-<p>Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:</p>
+<p><strong>Question</strong>: What is the minimum?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the maximum?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How many students participated in the survey?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Rank order the top 5 explanatory variables you think most influence the response and identify each as a categorical or quantitative variable:</p>
 <ol type="1">
 <li></li>
 <li></li>
@@ -661,23 +664,31 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2 class="anchored" data-anchor-id="comparing-schools">Comparing Schools</h2>
 <p>Suppose the Gabriel Pereira school (GP) has more stringent admissions requirements. We suspect this would lead to higher grades, on average.</p>
 <p>Create a side-by-side boxplot of the final grades for each school. Change the y-axis label to read “Final Grade out of 20”, the x-axis label to read “School”, and add a title.</p>
-<p>What do you notice?</p>
+<p><strong>Question</strong>: What do you notice?<br>
+<strong>Answer</strong>:</p>
 <p>Create a table of summary statistics of final grade for each school:</p>
 <section id="hypothesis-test" class="level3">
 <h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
 <p>Create a qqPlot to look at the normality of both groups:</p>
-<p>Do the grades look normally distributed for both groups? If not, should we be concerned? Can we trust the P-value?</p>
+<p><strong>Question</strong>: Do the grades look normally distributed for both groups? If not, should we be concerned?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the P-value?<br>
+<strong>Answer</strong>:</p>
 <p>State your null and alternative hypotheses and significance level.</p>
 <p><strong>NOTE</strong>: Recall that R uses alphabetical order to determine which group is the reference group. It is useful to put this group on the left side of the null hypothesis and set your alternative hypothesis accordingly.</p>
-<p>Ho:</p>
-<p>Ha:</p>
-<p><span class="math inline">\(\alpha = 0.\)</span></p>
-<p>What is the P-value?</p>
-<p>What is your conclusion in context of the research question?</p>
+<p><span class="math display">\[H_o: \]</span></p>
+<p><span class="math display">\[H_a: \]</span></p>
+<p><span class="math display">\[\alpha = 0.\]</span><br>
+Perform the appropriate statistical test:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is your conclusion in context of the research question?<br>
+<strong>Answer</strong>:</p>
 </section>
 <section id="confidence-interval" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
 <p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval and explain it in context of the research question.</p>
+<p><strong>Explanation</strong>:</p>
 </section>
 </section>
 <section id="comparing-second-period-grade-with-final-grade" class="level2">
@@ -687,22 +698,34 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
 <p>Choose how you will define the difference between final grade and second period grade, and create a new object called <code>diff</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># diff &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:2:0: unexpected end of input
+1: diff &lt;- 
+   ^</code></pre>
 </div>
-<p>What does a negative number mean?</p>
-<p>Create a qqPlot of <code>diff</code> and check for normality:</p>
-<p>Do the grade differences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+</div>
+<p><strong>Question</strong>: What does a negative number mean?<br>
+<strong>Answer</strong>:</p>
+<p>Create a <code>qqPlot()</code> of <code>diff</code> and check for normality:</p>
+<p><strong>Question</strong>: Do the grade differences look normally distributed? If not, should we be concerned?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the P-value?<br>
+<strong>Answer</strong>:</p>
 <p>State your null and alternative hypothesis and choose a significance level:</p>
-<p>Ho:</p>
-<p>Ha:</p>
-<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p><span class="math display">\[H_o: \]</span></p>
+<p><span class="math display">\[Ha:  \]</span></p>
+<p><span class="math display">\[\alpha = 0.\]</span></p>
 <p>Perform the appropriate analysis.</p>
-<p>What is the P-value?</p>
-<p>What conclusion do you make in context of this research question?</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What conclusion do you make in context of this research question?<br>
+<strong>Answer</strong>:</p>
 </section>
 <section id="confidence-interval-1" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h3>
 <p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the differences and explain it in context of the research question.</p>
+<p><strong>Explanation</strong>:</p>
 </section>
 </section>
 <section id="absenteeism-in-portugal" class="level2">
@@ -710,18 +733,25 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>In 2021, Portugal <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Secondary_education_statistics#Out-of-school_rates">reported</a> having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).</p>
 <section id="hypothesis-test-2" class="level3">
 <h3 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h3>
-<p>Create a qqPlot for absences.</p>
-<p>Do absences look normally distributed? If not, should we be concerned? Can we trust the P-value?</p>
+<p>Create a <code>qqPlot()</code> for absences.</p>
+<p><strong>Question</strong>: Do absences look normally distributed? If not, should we be concerned?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the P-value?<br>
+<strong>Answer</strong>:</p>
 <p>State your null and alternative hypotheses and choose a significance level:</p>
-<p>Ho:</p>
-<p>Ha:</p>
-<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p><span class="math display">\[H_o: \]</span></p>
+<p><span class="math display">\[H_a: \]</span></p>
+<p><span class="math display">\[\alpha = 0.\]</span></p>
 <p>Perform the appropriate analysis.</p>
-<p>State your conclusion in context of the research question.</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What conclusion do you make in context of this research question?<br>
+<strong>Answer</strong>:</p>
 </section>
 <section id="confidence-interval-2" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h3>
 <p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for average absences and interpret it in context of the problem.</p>
+<p><strong>Explanation</strong>:</p>
 </section>
 </section>
 <section id="the-impact-of-mothers-education-level" class="level2">
@@ -729,28 +759,43 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>The level of education of the mother in the home is thought to have a significant impact on student success.</p>
 <p>Create a side-by-side boxplot of final grades for each level of mother’s education.</p>
 <p>Create a table of summary statistics of final grades for each level of mother’s education.</p>
-<p>How many respondents have a mother with no formal education (level 0)?</p>
+<p><strong>Question</strong>: How many respondents have a mother with no formal education (level 0)?<br>
+<strong>Answer</strong>:</p>
 <p>Create a new dataset, <code>clean_medu</code>, that does not include mother’s education level 0.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean_medu &lt;- clean %&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean_medu <span class="ot">&lt;-</span> clean <span class="sc">%&gt;%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:4:0: unexpected end of input
+2: clean_medu &lt;- clean %&gt;% 
+3: 
+  ^</code></pre>
+</div>
 </div>
 <p>Create another boxplot with the new dataset that excludes level 0.</p>
 <p>Create a summary table of final grades for each level of a mother’s education with the new dataset.</p>
-<p>What is the maximum standard deviation?</p>
-<p>What is the minimum standard deviation?</p>
-<p>Verify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.</p>
+<p><strong>Question</strong>: What is the maximum standard deviation?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the minimum standard deviation?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Verify that the maximum is less than twice as large as the minimum to check the “equality of standard deviations”.<br>
+<strong>Answer</strong>:</p>
 <section id="hypothesis-test-3" class="level3">
 <h3 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis Test</h3>
 <p>State your null and alternative hypotheses and pick alpha:</p>
-<p>Ho:</p>
-<p>Ha:</p>
-<p><span class="math inline">\(\alpha = 0.\)</span></p>
+<p><span class="math display">\[H_o: \]</span></p>
+<p><span class="math display">\[H_a: \]</span></p>
+<p><span class="math display">\[\alpha = 0.\]</span></p>
 <p>Perform the appropriate statistical test.</p>
-<p>What is the test statistic?</p>
-<p>What is the P-value?</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
 <p>Check the normality of the residuals.</p>
-<p>Do the residuals appear roughly normally distributed?</p>
-<p>Can we trust the P-value.</p>
+<p><strong>Question</strong>: Do the residuals appear roughly normally distributed?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the P-value.<br>
+<strong>Answer</strong>:</p>
 <p>State your conclusion.</p>
 </section>
 </section>

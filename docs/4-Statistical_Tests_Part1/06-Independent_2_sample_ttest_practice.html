@@ -575,7 +575,7 @@ window.Quarto = {
 <p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
 <p>Check that the samples for both groups are normally distributed</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance, <span class="at">groups =</span> dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance<span class="sc">~</span>dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -587,10 +587,14 @@ window.Quarto = {
 <p>Do the data for each group appear normally distributed?</p>
 <p>Why is it OK to continue with the analysis?</p>
 <p>Perform a t-test.</p>
-<p>What is the value of the test statistic?</p>
-<p>How many degrees of freedom for this test?</p>
-<p>What is the p-value?</p>
-<p>What do you conclude?</p>
+<p><strong>Question</strong>: What is the value of the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How many degrees of freedom for this test?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the p-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What do you conclude?<br>
+<strong>Answer</strong>:</p>
 <section id="confidence-interval" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
 <p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
