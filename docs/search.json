@@ -497,41 +497,6 @@
     "text": "Introduction\nIn this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Brother Cannon’s Math 221 students.\nQuestion: What is the population of this analysis?\nAnswer:\nFor each personality trait, include:\n\nA statement of the null and alternative hypotheses and why you chose the alternative you did.\nChoose alpha, $= $\nCheck that you can trust the normality of the mean (n &gt; 30 or qqPlot(respons_variable))\nRun the one-sample t-test and state your conclusion (technical and contextual explanation)\nCalculate a \\(1-\\alpha\\) level confidence interval and describe in words what it means in context of the research question\n\nRecall that we can use favstats() to get summary statistics, boxplot() and histogram() to get visualizations, and the t.test() function to get hypothesis tests and confidence intervals. Be sure to label your plots’ axes and include a title.\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')\n\n\n\nExtroversion\nState your null and alternative hypotheses:\n\\[H_o:  \\mu = 50\\]\n\\[H_a:  \\mu &gt; 50\\]\n\\[\\alpha = 0.025 \\]\n1. Create a table of summary statistics:\n\n# Extroversion\n\nfavstats(big5$Extroversion) %&gt;% knitr::kable()\n\n\n\n\n\nmin\nQ1\nmedian\nQ3\nmax\nmean\nsd\nn\nmissing\n\n\n\n\n\n1\n42\n58\n73\n100\n56.98267\n21.09599\n404\n1\n\n\n\n\n\n\nCreate a histogram of Extroversion:\n\n\n### I'm making a single variable called \"extrov\" that drops the missing values.  You can do the same thing with the other traits to make analysis a little easier\nextrov &lt;- na.omit(big5$Extroversion) \n\nhistogram(extrov, xlab = \"Extroversion\", main = \"Histogram of Extroversion Percentiles\")\n\n\n\n\n\n\n\n\n\nPerform the one-sample t.test:\n\n\n# For Hypothesis Test:\nt.test(extrov, mu = 50, alternative = \"greater\")\n\n\n    One Sample t-test\n\ndata:  extrov\nt = 6.6529, df = 403, p-value = 4.697e-11\nalternative hypothesis: true mean is greater than 50\n95 percent confidence interval:\n 55.25232      Inf\nsample estimates:\nmean of x \n 56.98267 \n\n\n\nExplain your conclusion:\n\nTechnical: Because the p-value is less than \\(\\alpha\\), I reject the null hypothesis.\nContextual: I have sufficient evidence to suggest that Brother Cannon’s students are, on average, more Extroverted than the general population.\n\nCreate a Confidence Interval for the average extroversion of Brother Cannon’s students:\n\n\n# For a Confidence Interval:\nt.test(extrov, conf.level = 1-.025)$conf.int\n\n[1] 54.62135 59.34399\nattr(,\"conf.level\")\n[1] 0.975\n\n\n\nExplain your confidence interval:\n\nI am 97.5% confident that the true average extroversion of Brother Cannon’s students is somewhere between the 54.62 and 59.34 percentiles.\n\n\nAgreeableness\nState your null and alternative hypotheses. For example, do you think Brother Cannon’s students are more, less, or just different than the general population?\n\\[H_o:  \\mu  \\]\n\\[H_a:  \\mu \\]\n\\[\\alpha =  \\]\n1. Create a table of summary statistics for Agreeableness:\n\nCreate a histogram of Agreeableness:\n\n\nPerform the one-sample t.test:\n\n\nExplain your conclusion:\n\nTechnical:\nContextual:\n\nCreate a Confidence Interval for the average agreeableness of Brother Cannon’s students:\n\n\n# For a Confidence Interval:\nt.test()$conf.int\n\nError in t_test.default(): argument \"x\" is missing, with no default\n\n\n\nExplain your confidence interval:\n\n\n\nOpenness\nState your null and alternative hypotheses:\n\\[H_o:  \\mu \\]\n\\[H_a:  \\mu \\]\n\\[\\alpha = \\]\n\nCreate a table of summary statistics for Openness:\n\n\nCreate a histogram of Openness:\n\n\nPerform the one-sample t.test:\n\n\nExplain your conclusion:\n\nTechnical:\nContextual:\n\nCreate a Confidence Interval for the average openness of Brother Cannon’s students:\n\n\n# For a Confidence Interval:\nt.test()$conf.int\n\nError in t_test.default(): argument \"x\" is missing, with no default\n\n\n\nExplain your confidence interval:\n\n\n\nNeuroticism\nState your null and alternative hypotheses:\n\\[H_o:  \\mu \\]\n\\[H_a:  \\mu \\]\n\\[\\alpha =  \\]\n1. Create a table of summary statistics for Neuroticism:\n\nCreate a histogram of Neuroticism:\n\n\nPerform the one-sample t.test:\n\n\nExplain your conclusion:\n\nTechnical:\nContextual:\n\nCreate a Confidence Interval for the average neuroticism of Brother Cannon’s students:\n\n\n# For a Confidence Interval:\nt.test()$conf.int\n\nError in t_test.default(): argument \"x\" is missing, with no default\n\n\n\nExplain your confidence interval:\n\n\n\nConscientiousness\nState your null and alternative hypotheses:\n\\[H_o:  \\mu \\]\n\\[H_a:  \\mu \\]\n\\[\\alpha = \\]\n1. Create a table of summary statistics:\n\nCreate a histogram of Conscientiousness:\n\n\nPerform the one-sample t.test:\n\n\nExplain your conclusion:\n\nTechnical:\nContextual:\n\nCreate a Confidence Interval for the average conscientiousness of Brother Cannon’s students:\n\n\n# For a Confidence Interval:\nt.test()$conf.int\n\nError in t_test.default(): argument \"x\" is missing, with no default\n\n\n\nExplain your confidence interval:"
   },
   {
-    "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion",
-    "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion",
-    "title": "Don’t Take it Personally",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-1",
-    "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-1",
-    "title": "Don’t Take it Personally",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-2",
-    "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-2",
-    "title": "Don’t Take it Personally",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-3",
-    "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-3",
-    "title": "Don’t Take it Personally",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
-    "objectID": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-4",
-    "href": "4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html#conclusion-4",
-    "title": "Don’t Take it Personally",
-    "section": "Conclusion",
-    "text": "Conclusion\n[Write a concluding paragraph that states your conclusion about the hypothesis test and includes an interpretation of the confidence interval in context of the research question.]"
-  },
-  {
     "objectID": "3-Stat_Fundamentals/10-Assessing_Normality.html",
     "href": "3-Stat_Fundamentals/10-Assessing_Normality.html",
     "title": "Assessing Normality",
