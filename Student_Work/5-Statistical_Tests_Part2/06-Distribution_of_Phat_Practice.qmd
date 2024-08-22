@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Instructions
 
-Complete the following questions about the sampling distibution of $\hat{p}$.  When completed, Render the `qmd` file and submit the `html`.
+Complete the following questions about the sampling distribution of $\hat{p}$.  When completed, Render the `qmd` file and submit the `html`.
 
 # Questions
 
@@ -58,7 +58,5 @@ __Answer__:
 __Question__:  What is the probability of a sample of size $n=1000$ suggesting that the candidate will lose even if the true population support, $p=0.52$?  
 __Answer__:  
 
-
-## Sample Size Calculation
 
 

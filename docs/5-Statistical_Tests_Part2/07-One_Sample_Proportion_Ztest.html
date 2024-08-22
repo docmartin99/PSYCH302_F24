@@ -520,7 +520,7 @@ window.Quarto = {
 </section>
 <section id="one-sample-proportion-test" class="level1">
 <h1>One Sample Proportion Test</h1>
-<p>The one sample proportion test is used to determine whether the proportion of successes in a single sample differs significantly from a hypothesized value.</p>
+<p>The one sample proportion test is used to determine whether the proportion of successes based on a single sample differs significantly from a hypothesized value.</p>
 <section id="example-1-one-sample-proportion-test" class="level2">
 <h2 class="anchored" data-anchor-id="example-1-one-sample-proportion-test">Example 1: One Sample Proportion Test</h2>
 <p>Suppose we want to test whether the proportion of students who passed an exam is significantly less than 0.75. We have a sample of 100 students, of which 72 passed.</p>
@@ -559,7 +559,7 @@ attr(,"conf.level")
 <p>Recall that the sampling distribution for <span class="math inline">\(\hat{p}\)</span> is approximately normally distributed when our sample has more than 10 expeted “successes” and more than 10 expected “failures”. We test this by looking at</p>
 <p><strong>Hypothesis Test Requirements:</strong></p>
 <p><span class="math display">\[np \geq 10\]</span> <span class="math display">\[n(1-p) \geq 10\]</span></p>
-<p>We use p, not <span class="math inline">\(\hat{p}\)</span> for hypothesis testing because hypothesis testing always assumes the null hypothesis is true. Confidence intervals, on the other hand, make no such assumption.</p>
+<p>We use p, not <span class="math inline">\(\hat{p}\)</span> for hypothesis testing because hypothesis testing always <em>assumes the null hypothesis is true</em>. Confidence intervals, on the other hand, make no such assumption.</p>
 <p>To see if the calculated confidence interval is appropriate, we use <span class="math inline">\(\hat{p}\)</span>.</p>
 <p><strong>Confidence Interval Requirements:</strong> <span class="math display">\[n\hat{p} \geq 10\]</span> <span class="math display">\[n(1-\hat{p}) \geq 10\]</span> Can we trust the p-value and confidence interval?</p>
 <p>You can use a calculator for this, or simply use R as a calculator:</p>
@@ -596,9 +596,19 @@ attr(,"conf.level")
 <p>Perform a one-sample proportion to see if visual arts majors are significantly more left-handed than the general population.</p>
 <p>State the null and alternative hypotheses and your significance level.</p>
 <p><span class="math display">\[H_0: p = \]</span> <span class="math display">\[H_a: p \]</span> <span class="math display">\[\alpha = \]</span></p>
+<p><strong>Question</strong>: What is the value of the test statistics for this test?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-Value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of this problem:<br>
+<strong>Answer</strong>:</p>
 <p>Make a <span class="math inline">\((1-\alpha)\)</span> level confidence interval for the true population proportion.</p>
-<p>Are the test requirments for the normlity of <span class="math inline">\(\hat{p}\)</span> satisfied?</p>
-<p>Are the requirements for a confidence interval for <span class="math inline">\(p\)</span> satisfied?</p>
+<p><strong>Question</strong>: Interpret the confidence interval in context of the question:<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Are the test requirements for the normality of <span class="math inline">\(\hat{p}\)</span> satisfied?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Are the requirements for a confidence interval for <span class="math inline">\(p\)</span> satisfied?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

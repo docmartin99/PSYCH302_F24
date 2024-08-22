@@ -2,7 +2,6 @@
 title: "One-sample Proportion Practice"
 ---
 ```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
@@ -44,13 +43,14 @@ $$\alpha = 0.$$
 
 ```
 
-__Question__:  What is the test statistic?  
+__Question__:  What is the value of the test statistic?  
 __Answer__:  
 
 __Question__:  What is the P-value?  
 __Answer__:  
 
-Based on your selected $\alpha$ and P-value, what is your conclusion?  
+__Question__:  Based on your selected $\alpha$ and P-value, what is your conclusion?  
+__Answer__:  
 
 ## Confidence Interval
 
@@ -63,6 +63,32 @@ Create a 99\% confidence interval for the true population proportion of teenager
 
 # Sample Size Calculations
 
+During the design phase of the statistical process, we need to determine how much data will need to be collected to get "good" results.  This is often a messy process and requires some assumptions.  First, we need to know what "good enough" means.  This can be determined by deciding how big we want our Margin of Error to be.  For example, we may want to be within 3\% of the truth.  
+
+Recall that the margin of error is equal to some $z^*$ multiplied by standard error of the test statistic:  
+
+$$ME = z^* \sqrt{\frac{p(1-p)}{n}}$$  
+
+Solving for $n$ after some algebra we get:  
+
+$$n=\left(\frac{z^*}{ME}\right)^2p(1-p)$$  
+
+This means that how much data we need actually depends on what the population proportion is and how small we would like the Marge in Error (ME) to be.  
+
+But how are we supposed to know $p$ before we do the study?  
+
+### Situation 1:  Prior Estimate
+
+We can use prior estimates from former studies or a subject matter expert's estimate of $p$ during the design phase of the study.  
+
+### Situation 2:  No Prior Estimate
+
+If we have no idea what $p$ is prior to the study, we can safely use $p=0.5$ which makes $p(1-p)$ as large as possible.  This will give a conservative estimate of how much data we need.  
+
+You can also think of it is that if you don't have a clue what the population proportion, $p$, is ahead of time, treat it like a coin toss:  50/50.  
+
+Use this information to answer the questions below.  
+
 ## Perscription Use
 
 A survey of doctors is planned to see what percentage prescribe a certain medication. Find the sample size required to achieve a 2% margin of error if the confidence level is 95%. Assume there are no prior estimates for p.
@@ -71,10 +97,8 @@ A survey of doctors is planned to see what percentage prescribe a certain medica
 
 ```
 
-
-__Question__:  How doctors would we need to survey?   
-__Answer__: 
-
+__Question__:  How many doctors would we need to survey?   
+__Answer__:  
 
 ## Proportion of Left-handed Artists
 

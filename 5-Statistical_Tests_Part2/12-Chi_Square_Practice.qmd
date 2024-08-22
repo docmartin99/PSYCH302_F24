@@ -26,6 +26,8 @@ library(car)
 
 bp_alcohol <- import("https://byuistats.github.io/M221R/Data/quiz/R/bp_alcohol.csv") 
 
+## Note:  the following code transforms a table into a tidy dataset
+
 bp_alcohol_graph <- bp_alcohol %>% 
   pivot_longer(cols = c( "zero", "one_two", "three_four_five", "six_or_more" ), values_to = "Counts", names_to = "Frequency_of_Drink") %>%
   mutate(Frequency_of_Drink = factor(Frequency_of_Drink, levels=c("zero", "one_two","three_four_five", "six_or_more"))) %>%
@@ -35,7 +37,7 @@ bp_alcohol_graph <- bp_alcohol %>%
 Create a side-by-side bar chart (`ggplot()`) to illustrate the counts. 
 
 ```{r}
-ggplot(bp_alcohol_graph, aes(x=Frequency_of_Drink, y=Counts, fill=Hypertension)) + geom_col(position='dodge')
+
 ```
 
 __Question__:  Which group appears to be most likely to have hypertension?  

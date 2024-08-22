@@ -524,22 +524,14 @@ window.Quarto = {
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>bp_alcohol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/bp_alcohol.csv"</span>) </span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>bp_alcohol_graph <span class="ot">&lt;-</span> bp_alcohol <span class="sc">%&gt;%</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>( <span class="st">"zero"</span>, <span class="st">"one_two"</span>, <span class="st">"three_four_five"</span>, <span class="st">"six_or_more"</span> ), <span class="at">values_to =</span> <span class="st">"Counts"</span>, <span class="at">names_to =</span> <span class="st">"Frequency_of_Drink"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Frequency_of_Drink =</span> <span class="fu">factor</span>(Frequency_of_Drink, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"zero"</span>, <span class="st">"one_two"</span>,<span class="st">"three_four_five"</span>, <span class="st">"six_or_more"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"Hypertension"</span><span class="ot">=</span>V1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Note:  the following code transforms a table into a tidy dataset</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bp_alcohol_graph <span class="ot">&lt;-</span> bp_alcohol <span class="sc">%&gt;%</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>( <span class="st">"zero"</span>, <span class="st">"one_two"</span>, <span class="st">"three_four_five"</span>, <span class="st">"six_or_more"</span> ), <span class="at">values_to =</span> <span class="st">"Counts"</span>, <span class="at">names_to =</span> <span class="st">"Frequency_of_Drink"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Frequency_of_Drink =</span> <span class="fu">factor</span>(Frequency_of_Drink, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"zero"</span>, <span class="st">"one_two"</span>,<span class="st">"three_four_five"</span>, <span class="st">"six_or_more"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"Hypertension"</span><span class="ot">=</span>V1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create a side-by-side bar chart (<code>ggplot()</code>) to illustrate the counts.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bp_alcohol_graph, <span class="fu">aes</span>(<span class="at">x=</span>Frequency_of_Drink, <span class="at">y=</span>Counts, <span class="at">fill=</span>Hypertension)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">'dodge'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="12-Chi_Square_Practice_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
 <p><strong>Question</strong>: Which group appears to be most likely to have hypertension?<br>
 <strong>Answer</strong>:</p>
 <p>State the Null and Alternative Hypotheses:</p>

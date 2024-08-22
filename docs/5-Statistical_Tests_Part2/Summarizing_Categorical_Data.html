@@ -581,7 +581,7 @@ Neither favorably nor unfavorably (neutral)
 </div>
 </div>
 <p>The default for <code>prop.table()</code> is to give the overall percentages (counts / table total). So the proportions add to 1 across the whole table.</p>
-<p>We can specify row or column percentages by specifying a “margin.” In R, <code>margin=1</code> corresponds to <em>rows</em> and <code>margin = 1</code> corresponds to <em>columns</em>.</p>
+<p>We can specify row or column percentages by specifying a “margin.” In R, <code>margin=1</code> corresponds to <em>rows</em> and <code>margin = 2</code> corresponds to <em>columns</em>.</p>
 <p>Compare the difference:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>), <span class="at">margin =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

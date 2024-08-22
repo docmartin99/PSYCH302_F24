@@ -78,7 +78,7 @@ prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`))
 
 The default for `prop.table()` is to give the overall percentages (counts / table total).  So the proportions add to 1 across the whole table.    
 
-We can specify row or column percentages by specifying a "margin."  In R, `margin=1` corresponds to *rows* and `margin = 1` corresponds to *columns*.  
+We can specify row or column percentages by specifying a "margin."  In R, `margin=1` corresponds to *rows* and `margin = 2` corresponds to *columns*.  
 
 Compare the difference:  
 

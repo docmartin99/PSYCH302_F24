@@ -2,7 +2,6 @@
 title: "One-sample Proportion Tests"
 ---
 ```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
@@ -21,7 +20,7 @@ So far, we have been using Greek letters to represent population parameters.  We
 
 # One Sample Proportion Test
 
-The one sample proportion test is used to determine whether the proportion of successes in a single sample differs significantly from a hypothesized value.
+The one sample proportion test is used to determine whether the proportion of successes based on a single sample differs significantly from a hypothesized value.
 
 ## Example 1: One Sample Proportion Test
 
@@ -56,7 +55,7 @@ __Hypothesis \sp Test Requirements:__
 $$np \geq 10$$
 $$n(1-p) \geq 10$$
 
-We use p, not $\hat{p}$ for hypothesis testing because hypothesis testing always assumes the null hypothesis is true.  Confidence intervals, on the other hand, make no such assumption.
+We use p, not $\hat{p}$ for hypothesis testing because hypothesis testing always *assumes the null hypothesis is true*.  Confidence intervals, on the other hand, make no such assumption.
 
 To see if the calculated confidence interval is appropriate, we use $\hat{p}$.
 
@@ -99,13 +98,28 @@ $$\alpha = $$
 
 ```
 
+__Question__:  What is the value of the test statistics for this test?  
+__Answer__:  
+
+__Question__:  What is the P-Value?  
+__Answer__:  
+
+__Question__:  State your conclusion in context of this problem:  
+__Answer__:  
+
+
 Make a $(1-\alpha)$ level confidence interval for the true population proportion.
 
 ```{r}
 
 ```
 
-Are the test requirments for the normlity of $\hat{p}$ satisfied?
+__Question__:  Interpret the confidence interval in context of the question:  
+__Answer__:  
 
-Are the requirements for a confidence interval for $p$ satisfied?
+__Question__:  Are the test requirements for the normality of $\hat{p}$ satisfied?  
+__Answer__:  
+
+__Question__:  Are the requirements for a confidence interval for $p$ satisfied?  
+__Answer__:  
 

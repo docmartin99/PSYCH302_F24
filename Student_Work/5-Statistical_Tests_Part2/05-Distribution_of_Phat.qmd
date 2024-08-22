@@ -10,9 +10,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 ```
 
 
-# The Distribution of Sample Means
+# The Distribution of Sample Statistics
 
-Categorical data is often summarized as a percent.  If we randomly select 500 students and find black hair 276 have brown hair, we can estimate the population proportion using $\hat{p} = \frac{X}{N}$ where X is the number with brown hair and N is the number in our sample.  We often interchange percents and proportions, but strictly speaking, a proportion is a number between zero and 1.  This can be interpreted as a probability as well.
+Categorical data is often summarized as a percent.  If we randomly select 500 students and find 276 have brown hair, we can estimate the *population* proportion using $\hat{p} = \frac{X}{N}$ where $X$ is the number with brown hair and N is the number in our sample.  We often interchange percents and proportions, but strictly speaking, a proportion is a number between 0 and 1.  This can be interpreted as a probability as well.
 
 If another researcher were to collect a different sample of 500 from the same population, they would almost certainly get a different number of people with brown hair than the first study.  We can imagine taking many samples of 500 students and imagine the theoretical distribution of all possible $\hat{p}$.  If we are taking good samples, most of these $\hat{p}$'s should be near the population proportion, $p$. 
 
@@ -23,7 +23,7 @@ $$\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{N}}$$
 
 That is to say, the mean of all sample proportions is the population proportion.  
 
-Just as it was with a sample mean, $\bar{x}$, we have to check certain conditions to assume the distribution is approximately normal.  For $\bar{x}$, we needed the population to be normally distributed or to have a sample size greater than 30.  The principle of having a large enough sample applies, but it's a different for a proportion. 
+Just as it was with a sample mean, $\bar{x}$, we have to check certain conditions to assume the distribution is approximately normal.  For $\bar{x}$, we needed the population to be normally distributed or to have a sample size greater than 30.  The principle of having a large enough sample applies, but it's different for a proportion. 
 
 We can assume the distribution is approximately normal if:
 
@@ -56,10 +56,10 @@ p_hat <- x/n
 p <- 0.6
 
 # Calculate standard deviation
-sigma <- sqrt(p * (1 - p) / n)
+sigma_phat <- sqrt(p * (1 - p) / n)
 
 # Calculate z-score
-z <- (p_hat - p) / sigma
+z <- (p_hat - p) / sigma_phat
 
 # Left Tail (lower than p)
 pnorm(z)

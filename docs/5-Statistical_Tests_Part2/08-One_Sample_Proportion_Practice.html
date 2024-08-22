@@ -451,6 +451,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sample-size-calculations" id="toc-sample-size-calculations" class="nav-link" data-scroll-target="#sample-size-calculations">Sample Size Calculations</a>
   <ul class="collapse">
+  <li><a href="#situation-1-prior-estimate" id="toc-situation-1-prior-estimate" class="nav-link" data-scroll-target="#situation-1-prior-estimate">Situation 1: Prior Estimate</a></li>
+  <li><a href="#situation-2-no-prior-estimate" id="toc-situation-2-no-prior-estimate" class="nav-link" data-scroll-target="#situation-2-no-prior-estimate">Situation 2: No Prior Estimate</a></li>
   <li><a href="#perscription-use" id="toc-perscription-use" class="nav-link" data-scroll-target="#perscription-use">Perscription Use</a></li>
   <li><a href="#proportion-of-left-handed-artists" id="toc-proportion-of-left-handed-artists" class="nav-link" data-scroll-target="#proportion-of-left-handed-artists">Proportion of Left-handed Artists</a></li>
   </ul></li>
@@ -500,11 +502,12 @@ window.Quarto = {
 <p><span class="math display">\[H_0: p=???\]</span><br>
 <span class="math display">\[H_a: p???0.15\]</span> Choose your confidence level:</p>
 <p><span class="math display">\[\alpha = 0.\]</span></p>
-<p><strong>Question</strong>: What is the test statistic?<br>
+<p><strong>Question</strong>: What is the value of the test statistic?<br>
 <strong>Answer</strong>:</p>
 <p><strong>Question</strong>: What is the P-value?<br>
 <strong>Answer</strong>:</p>
-<p>Based on your selected <span class="math inline">\(\alpha\)</span> and P-value, what is your conclusion?</p>
+<p><strong>Question</strong>: Based on your selected <span class="math inline">\(\alpha\)</span> and P-value, what is your conclusion?<br>
+<strong>Answer</strong>:</p>
 </section>
 <section id="confidence-interval" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
@@ -513,10 +516,27 @@ window.Quarto = {
 </section>
 <section id="sample-size-calculations" class="level1">
 <h1>Sample Size Calculations</h1>
+<p>During the design phase of the statistical process, we need to determine how much data will need to be collected to get “good” results. This is often a messy process and requires some assumptions. First, we need to know what “good enough” means. This can be determined by deciding how big we want our Margin of Error to be. For example, we may want to be within 3% of the truth.</p>
+<p>Recall that the margin of error is equal to some <span class="math inline">\(z^*\)</span> multiplied by standard error of the test statistic:</p>
+<p><span class="math display">\[ME = z^* \sqrt{\frac{p(1-p)}{n}}\]</span></p>
+<p>Solving for <span class="math inline">\(n\)</span> after some algebra we get:</p>
+<p><span class="math display">\[n=\left(\frac{z^*}{ME}\right)^2p(1-p)\]</span></p>
+<p>This means that how much data we need actually depends on what the population proportion is and how small we would like the Marge in Error (ME) to be.</p>
+<p>But how are we supposed to know <span class="math inline">\(p\)</span> before we do the study?</p>
+<section id="situation-1-prior-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="situation-1-prior-estimate">Situation 1: Prior Estimate</h3>
+<p>We can use prior estimates from former studies or a subject matter expert’s estimate of <span class="math inline">\(p\)</span> during the design phase of the study.</p>
+</section>
+<section id="situation-2-no-prior-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="situation-2-no-prior-estimate">Situation 2: No Prior Estimate</h3>
+<p>If we have no idea what <span class="math inline">\(p\)</span> is prior to the study, we can safely use <span class="math inline">\(p=0.5\)</span> which makes <span class="math inline">\(p(1-p)\)</span> as large as possible. This will give a conservative estimate of how much data we need.</p>
+<p>You can also think of it is that if you don’t have a clue what the population proportion, <span class="math inline">\(p\)</span>, is ahead of time, treat it like a coin toss: 50/50.</p>
+<p>Use this information to answer the questions below.</p>
+</section>
 <section id="perscription-use" class="level2">
 <h2 class="anchored" data-anchor-id="perscription-use">Perscription Use</h2>
 <p>A survey of doctors is planned to see what percentage prescribe a certain medication. Find the sample size required to achieve a 2% margin of error if the confidence level is 95%. Assume there are no prior estimates for p.</p>
-<p><strong>Question</strong>: How doctors would we need to survey?<br>
+<p><strong>Question</strong>: How many doctors would we need to survey?<br>
 <strong>Answer</strong>:</p>
 </section>
 <section id="proportion-of-left-handed-artists" class="level2">

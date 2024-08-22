@@ -525,12 +525,12 @@ window.Quarto = {
 <h1>Comparing Categorical Data with Multiple Categories</h1>
 <p>When working through statistical inference for means, we progressed from learning 1-sample t-tests to 2-sample t-tests. When we wanted to compare a quantitative variable between multiple groups, we introduced ANOVA. The hypothesis test changed and we introduced the F-statistic.</p>
 <p>Recall that the F-statistics was based on a ratio of squared quantities and was therefore always positive and skewed right.</p>
-<p>Similarly, when we want to compare a <em>categorical</em> variable across multiple groups, we must modify the hypothesis test from the 2-sample proportion z-test and introduce a new test statistic: <span class="math inline">\(\chi^2\)</span>. The Greek letter, <span class="math inline">\(\chi\)</span>, is pronounced like “ki” in “kite”, <strong>not</strong> like “chi” in “tai chi”.</p>
+<p>Similarly, when we want to compare a <em>categorical</em> variable across multiple groups, we must modify the hypothesis test from the 2-sample proportion test and introduce a new test statistic: <span class="math inline">\(\chi^2\)</span>. The Greek letter, <span class="math inline">\(\chi\)</span>, is pronounced like “ki” in “kite”, <strong>not</strong> like “chi” in “tai chi”.</p>
 <p>As can be seen from its name, <span class="math inline">\(\chi^2\)</span> is a squared value and is thus always positive and right skewed like the F-statistic.</p>
 <section id="degrees-of-freedom" class="level2">
 <h2 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h2>
 <p>The <span class="math inline">\(\chi^2\)</span> distribution also has degrees of freedom that determine its shape.</p>
-<p><span class="math display">\[df = (r-1)*(c-1)\]</span> Where r is the number of rows and c is the number of columns in a summary table.</p>
+<p><span class="math display">\[df = (r-1)(c-1)\]</span> Where <span class="math inline">\(r\)</span> is the number of rows and <span class="math inline">\(c\)</span> is the number of columns in a summary table.</p>
 </section>
 <section id="hypothesis-test" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
@@ -789,16 +789,17 @@ X-squared = 49.743, df = 8, p-value = 4.58e-08</code></pre>
 </div>
 <p>Create a Bar Chart using ggplot()</p>
 <p>Perform the <span class="math inline">\(\chi^2\)</span> test of independence.</p>
-<p>Are the requirements for a <span class="math inline">\(\chi^2\)</span> test satisfied?</p>
-<p>What are the null and alternative hypotheses?</p>
-<p>What is the test statistic, <span class="math inline">\(\chi^2\)</span>?</p>
-<p>How many degrees of freedom does this test have?</p>
-<p>What is the P-value?</p>
+<p><strong>Question</strong>: Are the requirements for a <span class="math inline">\(\chi^2\)</span> test satisfied?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the null and alternative hypotheses?</p>
+<p><strong>Question</strong>: What is the test statistic, <span class="math inline">\(\chi^2\)</span>?</p>
+<p><strong>Question</strong>: How many degrees of freedom does this test have?</p>
+<p><strong>Question</strong>: What is the P-value?</p>
 </section>
 </section>
 <section id="bonus" class="level1">
 <h1>BONUS</h1>
-<p>Categorical data analysis and visualization is usually easier to work with raw data. We can input <code>table()</code> into <code>chisq.test()</code> and use <code>ggplot()</code> directly.</p>
+<p>Categorical data analysis and visualization is usually easier to work with raw data. It’s easier to create the table and use <code>chisq.test()</code>, and we can also use <code>ggplot()</code> directly.</p>
 <p>Sometimes we only have a summary table. Below you will find a few new functions that might help if the imported data are shaped as a summary table.</p>
 <section id="heart-disease-among-australian-women-and-men" class="level2">
 <h2 class="anchored" data-anchor-id="heart-disease-among-australian-women-and-men">Heart Disease among Australian Women and Men</h2>
@@ -849,7 +850,7 @@ X-squared = 49.743, df = 8, p-value = 4.58e-08</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="11-Chi_Square_Intro_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="11-Chi_Square_Intro_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

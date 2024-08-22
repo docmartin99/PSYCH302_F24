@@ -5,14 +5,13 @@ format:
     self_contained: yes
 ---
 ```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
 
 # Introduction
 
-In statistics, two sample proportion tests are used to compare proportions or percentages between groups. These tests are useful when dealing with categorical data between two groups. We here discuss these tests and provide examples of their application in R.
+In statistics, two sample proportion tests are used to compare proportions or percentages between two independent groups.  We here discuss these tests and provide examples of their application in R.
 
 The hypothesis test should not be surprising:
 

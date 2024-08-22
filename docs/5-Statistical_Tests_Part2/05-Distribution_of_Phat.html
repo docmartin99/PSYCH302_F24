@@ -477,7 +477,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-distribution-of-sample-means" id="toc-the-distribution-of-sample-means" class="nav-link active" data-scroll-target="#the-distribution-of-sample-means">The Distribution of Sample Means</a></li>
+  <li><a href="#the-distribution-of-sample-statistics" id="toc-the-distribution-of-sample-statistics" class="nav-link active" data-scroll-target="#the-distribution-of-sample-statistics">The Distribution of Sample Statistics</a></li>
   <li><a href="#calculating-normal-probabilities-for-proportion-in-r" id="toc-calculating-normal-probabilities-for-proportion-in-r" class="nav-link" data-scroll-target="#calculating-normal-probabilities-for-proportion-in-r">Calculating Normal Probabilities for Proportion in R</a>
   <ul class="collapse">
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
@@ -508,14 +508,14 @@ window.Quarto = {
 </header>
 
 
-<section id="the-distribution-of-sample-means" class="level1">
-<h1>The Distribution of Sample Means</h1>
-<p>Categorical data is often summarized as a percent. If we randomly select 500 students and find black hair 276 have brown hair, we can estimate the population proportion using <span class="math inline">\(\hat{p} = \frac{X}{N}\)</span> where X is the number with brown hair and N is the number in our sample. We often interchange percents and proportions, but strictly speaking, a proportion is a number between zero and 1. This can be interpreted as a probability as well.</p>
+<section id="the-distribution-of-sample-statistics" class="level1">
+<h1>The Distribution of Sample Statistics</h1>
+<p>Categorical data is often summarized as a percent. If we randomly select 500 students and find 276 have brown hair, we can estimate the <em>population</em> proportion using <span class="math inline">\(\hat{p} = \frac{X}{N}\)</span> where <span class="math inline">\(X\)</span> is the number with brown hair and N is the number in our sample. We often interchange percents and proportions, but strictly speaking, a proportion is a number between 0 and 1. This can be interpreted as a probability as well.</p>
 <p>If another researcher were to collect a different sample of 500 from the same population, they would almost certainly get a different number of people with brown hair than the first study. We can imagine taking many samples of 500 students and imagine the theoretical distribution of all possible <span class="math inline">\(\hat{p}\)</span>. If we are taking good samples, most of these <span class="math inline">\(\hat{p}\)</span>’s should be near the population proportion, <span class="math inline">\(p\)</span>.</p>
 <p>In fact, under certain conditions we can know the distribution of <span class="math inline">\(\hat{p}\)</span>. As you probably guessed, the distribution of <span class="math inline">\(\hat{p}\)</span> is approximately normal with:</p>
 <p><span class="math display">\[\mu_{\hat{p}} = p\]</span> <span class="math display">\[\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{N}}\]</span></p>
 <p>That is to say, the mean of all sample proportions is the population proportion.</p>
-<p>Just as it was with a sample mean, <span class="math inline">\(\bar{x}\)</span>, we have to check certain conditions to assume the distribution is approximately normal. For <span class="math inline">\(\bar{x}\)</span>, we needed the population to be normally distributed or to have a sample size greater than 30. The principle of having a large enough sample applies, but it’s a different for a proportion.</p>
+<p>Just as it was with a sample mean, <span class="math inline">\(\bar{x}\)</span>, we have to check certain conditions to assume the distribution is approximately normal. For <span class="math inline">\(\bar{x}\)</span>, we needed the population to be normally distributed or to have a sample size greater than 30. The principle of having a large enough sample applies, but it’s different for a proportion.</p>
 <p>We can assume the distribution is approximately normal if:</p>
 <p><span class="math display">\[np \geq 10\]</span> <span class="math display">\[n(1-p) \geq 10\]</span></p>
 <p>In plain English, this means our sample size has to be big enough to have at least 10 “successes” and 10 “failures”. For example, if we’re estimating the proportion of left handed people, we would need a sample size large enough to have at least 10 left handed people and 10 right handed people.</p>
@@ -539,10 +539,10 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviation</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> n)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>sigma_phat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> n)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate z-score</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (p_hat <span class="sc">-</span> p) <span class="sc">/</span> sigma</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (p_hat <span class="sc">-</span> p) <span class="sc">/</span> sigma_phat</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Left Tail (lower than p)</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

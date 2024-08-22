@@ -21,7 +21,7 @@ __Question__:  Are the requirements satisfied for assuming normality?  Explain.
 __Answer__:  
 
 
-Regardless of whether or not the requirements are satisfied, complete the following:
+Regardless of whether or not the requirements are satisfied, complete the following:  
 
 ## Confidence Interval
 
@@ -31,7 +31,8 @@ Create a 95\% confidence interval for the difference in the proportion of female
 
 ```
 
-Interpret the confidence interval in context of the question:  
+__Question__:  Interpret the confidence interval in context of the question:  
+__Answer__:  
 
 
 ## Hypothesis Test
@@ -51,16 +52,48 @@ __Question__:  What is the P-value?
 __Answer__:  
 
 
-Based on your decision rule, state your conclusion in context of the problem:  
+__Question__:  Based on your decision rule, state your conclusion in context of the problem:  
+__Answer__:  
 
 
-## Couples Retreat?
+# Couples Retreat?
 
 A marriage counselor conducted a study of couples, categorizing each of the couples as "communicative" or "non-communicative". Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was the same as the percentage of non-communicative couples whose marriage ended in separation or divorce. 
+
+## Hypothesis Test
 
 Construct a null and alternative hypothesis for the study:
 
 $$H_0: $$  
 $$H_a: $$  
 
+Perform the appropriate analysis:  
+
+```{r}
+
+```
+
+
+__Question__:  What is the test statistic?  
+__Answer__:  
+
+
+__Question__:  What is the P-value?  
+__Answer__:  
+
+
+__Question__:  Based on your decision rule, state your conclusion in context of the problem:  
+__Answer__:  
+
+
+## Confidence Interval
+
+Create a 95\% confidence interval for the difference in the proportion of divorces between communicative and non-communicative couples:
+
+```{r}
+
+```
+
+__Question__:  Interpret the confidence interval in context of the question:  
+__Answer__:  
 
