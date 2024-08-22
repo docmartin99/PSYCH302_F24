@@ -51,11 +51,16 @@ Before you begin:
 
 __What is the response/dependent variable?__
 
+
 __What is the explanatory variable__
+
 
 __What do you think is the nature of the relationship between the two?__
 
+
 __How strong do you think the relationship is?__
+
+
 
 ## Plot the Data and calculate r
 
@@ -67,7 +72,9 @@ __How strong do you think the relationship is?__
 
 __Does the relationship look linear?__
 
+
 __What is the correlation coefficient, r?__
+
 
 __What does this r show?__
 
