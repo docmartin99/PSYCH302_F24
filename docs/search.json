@@ -133,11 +133,18 @@
     "text": "Hypothesis Test\nYou also want to see if there is a difference between the proportion of women who want to keep the penny and the proportion of men who want to keep the penny. Use a level of significance of \\(\\alpha = 0.05\\).\nState your null and alternative hypotheses:\n\\[H_0: p_{female}???p_{male}\\]\n\\[H_a: p_{female}???p_{male}\\]\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Based on your decision rule, state your conclusion in context of the problem:\nAnswer:"
   },
   {
-    "objectID": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#couples-retreat",
-    "href": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#couples-retreat",
+    "objectID": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#hypothesis-test-1",
+    "href": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#hypothesis-test-1",
     "title": "2-Sample Proportion Practice",
-    "section": "Couples Retreat?",
-    "text": "Couples Retreat?\nA marriage counselor conducted a study of couples, categorizing each of the couples as “communicative” or “non-communicative”. Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was the same as the percentage of non-communicative couples whose marriage ended in separation or divorce.\nConstruct a null and alternative hypothesis for the study:\n\\[H_0: \\]\n\\[H_a: \\]\nPerform the appropriate analysis:\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Based on your decision rule, state your conclusion in context of the problem:\nAnswer:"
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nConstruct a null and alternative hypothesis for the study:\n\\[H_0: \\]\n\\[H_a: \\]\nPerform the appropriate analysis:\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Based on your decision rule, state your conclusion in context of the problem:\nAnswer:"
+  },
+  {
+    "objectID": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#confidence-interval-1",
+    "href": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#confidence-interval-1",
+    "title": "2-Sample Proportion Practice",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nCreate a 95% confidence interval for the difference in the proportion of divorces between communicative and non-communicative couples:\nQuestion: Interpret the confidence interval in context of the question:\nAnswer:"
   },
   {
     "objectID": "5-Statistical_Tests_Part2/08-One_Sample_Proportion_Practice.html",
@@ -180,13 +187,6 @@
     "title": "Distribution of P-hat Practice",
     "section": "",
     "text": "Instructions\nComplete the following questions about the sampling distribution of \\(\\hat{p}\\). When completed, Render the qmd file and submit the html.\n\n\nQuestions\nQuestion: When can we use the normal distribution to approximate the sampling distribution of \\(\\hat{p}\\)?\nAnswer:\nQuestion: What is the mean of the sampling distribution of \\(\\hat{p}\\)?\nAnswer:\nQuestion: What is the standard deviation of the sampling distribution of \\(\\hat{p}\\)?\nAnswer:\nSuppose the true population proportion, \\(p\\), of people who support a candidate for office is 52%. We would like to learn something about a sample proportion, \\(\\hat{p}\\), with a sample size \\(n=1000\\) suggesting that the candidate will lose the election (\\(\\hat{p}&lt;0.50\\)).\nUse the following R code to answer the questions below:\n\nphat &lt;- \np &lt;-\nn &lt;- \n\nsigma_phat &lt;- sqrt(p*(1-p)/n)  \n\nError in eval(expr, envir, enclos): object 'p' not found\n\nz &lt;- (phat-p) / sigma_phat\n\nError in eval(expr, envir, enclos): object 'phat' not found\n\n# Left Tail:\npnorm()\n\nError in pnorm(): argument \"q\" is missing, with no default\n\n# Right tail\n1-pnorm()\n\nError in pnorm(): argument \"q\" is missing, with no default\n\n\nQuestion: What is the \\(z\\)-score associated with \\(\\hat{p}&lt;0.5\\)?\nAnswer:\nQuestion: What is the standard deviation of \\(\\hat{p}\\)?\nAnswer:\nQuestion: What is the probability of a sample of size \\(n=1000\\) suggesting that the candidate will lose even if the true population support, \\(p=0.52\\)?\nAnswer:"
-  },
-  {
-    "objectID": "5-Statistical_Tests_Part2/06-Distribution_of_Phat_Practice.html#sample-size-calculation",
-    "href": "5-Statistical_Tests_Part2/06-Distribution_of_Phat_Practice.html#sample-size-calculation",
-    "title": "Distribution of P-hat Practice",
-    "section": "Sample Size Calculation",
-    "text": "Sample Size Calculation"
   },
   {
     "objectID": "5-Statistical_Tests_Part2/03-Regression_Practice.html",
@@ -1895,19 +1895,5 @@
     "title": "Semester Project",
     "section": "",
     "text": "Introduction\n\n\nDesign the Study\n\n\nCollect the Data\n\n\nDescribe/Summarize the Data\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()\n\n\n\nMake Inference\n\n# Perform the appropriate test for the data selected\n\n\n\nConclusion (Take Action)"
-  },
-  {
-    "objectID": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#confidence-interval-1",
-    "href": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#confidence-interval-1",
-    "title": "2-Sample Proportion Practice",
-    "section": "Confidence Interval",
-    "text": "Confidence Interval\nCreate a 95% confidence interval for the difference in the proportion of divorces between communicative and non-communicative couples:\nQuestion: Interpret the confidence interval in context of the question:\nAnswer:"
-  },
-  {
-    "objectID": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#hypothesis-test-1",
-    "href": "5-Statistical_Tests_Part2/10-Two_Sample_Proportion_Practice.html#hypothesis-test-1",
-    "title": "2-Sample Proportion Practice",
-    "section": "Hypothesis Test",
-    "text": "Hypothesis Test\nConstruct a null and alternative hypothesis for the study:\n\\[H_0: \\]\n\\[H_a: \\]\nPerform the appropriate analysis:\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Based on your decision rule, state your conclusion in context of the problem:\nAnswer:"
   }
 ]
