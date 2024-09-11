@@ -1,5 +1,5 @@
 ---
-title: 'Introducing R'
+title: 'Summarizing Data - One Group'
 subtitle: 'Summarizing Quantitative Data'
 ---
 ```{r setup, include=FALSE}

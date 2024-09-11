@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.543">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math221 Notebook - Describing Quantitative Data (Shape &amp; Center)</title>
+<title>Describing Quantitative Data (Shape &amp; Center) – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -148,13 +148,13 @@ window.Quarto = {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Unit 1</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-1">    
@@ -164,16 +164,16 @@ window.Quarto = {
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+ <span class="dropdown-text">Installing R</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
  <span class="dropdown-text">The Statistical Process - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
- <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
@@ -185,11 +185,11 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
- <span class="dropdown-text">Introducing R</span></a>
+ <span class="dropdown-text">Summarizing Data - One Group</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
- <span class="dropdown-text">Summarizing Data</span></a>
+ <span class="dropdown-text">Summarzing Data - Multiple Groups</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
@@ -202,7 +202,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Unit 2</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-2">    
@@ -243,7 +243,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Unit 3</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-3">    
@@ -291,7 +291,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-4" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Unit 4</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-4">    
@@ -335,7 +335,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-unit-5" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Unit 5</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-5">    
@@ -395,7 +395,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-semester-project" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-semester-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Semester Project</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-semester-project">    
@@ -414,7 +414,7 @@ window.Quarto = {
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-help" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">R Help</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
@@ -462,7 +462,7 @@ window.Quarto = {
   </li>
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -487,9 +487,7 @@ window.Quarto = {
   <li><a href="#center-of-a-distribution" id="toc-center-of-a-distribution" class="nav-link" data-scroll-target="#center-of-a-distribution">Center of a Distribution</a>
   <ul class="collapse">
   <li><a href="#measuring-the-center-of-a-distribution" id="toc-measuring-the-center-of-a-distribution" class="nav-link" data-scroll-target="#measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</a></li>
-  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -888,7 +886,7 @@ Mean is to the left of the median.
 <p>When we talk about the “typical” or “average” value, we are essentially describing the center of a population. If we want to estimate the “average” costs to treat a tuberculosis patient, there are several ways we can do it.</p>
 <p><br></p>
 <section id="measuring-the-center-of-a-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</h3>
+<h3 class="anchored">Measuring the Center of a Distribution</h3>
 <section id="mean" class="level4">
 <h4 class="anchored" data-anchor-id="mean">Mean</h4>
 <p>The sample mean or sample arithmetic mean is the most common tool to estimate the center of a distribution. It is referred to simply as the mean. It is computed by adding up the observed data and dividing by the number of observations in the data set.</p>
@@ -1013,12 +1011,11 @@ Show/Hide Solution
 <p><br></p>
 </section>
 <section id="excel-instructions-for-mean-median-and-mode" class="level4">
-<h4 class="anchored" data-anchor-id="excel-instructions-for-mean-median-and-mode">Excel Instructions for Mean, Median, and Mode</h4>
+<h4 class="anchored">Excel Instructions for Mean, Median, and Mode</h4>
 <div class="SoftwareHeading">
 R Instructions
 </div>
 <div class="Software" style="padding:10px;">
-
 <p><strong>To calculate most numerical summaries</strong> (such as the mean, median, and mode) in Excel, follow these general steps:</p>
 <ol type="1">
 <li>Open R.</li>
@@ -1074,8 +1071,6 @@ R Instructions
 </div>
 </div>
 <p>The rows are the same as before but are sorted in ascending order. We can now easily see that 2 occurred 8 times making 2 the mode.</p>
-</div></section>
-</section>
 <section id="parameters-and-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="parameters-and-statistics">Parameters and Statistics</h3>
 <p>We only have data on the cost to treat ten randomly selected tuberculosis patients. This represents a random sample from the population. The sample obtained by the researchers depends on random chance. If the study was repeated and a new sample of ten patients was randomly drawn from all cases of tuberculosis in India, would we observe the same data values? Certainly not!</p>
@@ -1095,14 +1090,12 @@ R Instructions
 <p>Even though measures of center are important, we need to consider the shape, center and spread of a distribution of data. When evaluating data, it is sometimes tempting to compute a mean but to avoid creating a histogram. This can lead to errant decisions based on a misunderstanding or incorrect transcription of data. If there is a transcription error in the data, it is sometimes easiest to detect it as an outlier in a histogram.</p>
 <p><br> <br></p>
 </section>
-</section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <div class="SummaryHeading">
 Remember…
 </div>
 <div class="Summary">
-
 <ol type="1">
 <li><p>Histograms are created by dividing the number line into several equal parts, starting at or below the minimum value occurring in the data and ending at or above the maximum value in the data. The number of data points occurring in each interval (called a bin) are counted. A bar is then drawn for each bin so that the height of the bar shows the number of data points contained in that bin.</p></li>
 <li><p>A <strong>histogram</strong> allows us to visually interpret data to quickly recognize which values are most common and which values are least common in the data.</p></li>
@@ -1159,9 +1152,14 @@ Mean is to the left of the median.
 <p><br></p>
 
 
+</section></div>
 </section>
+</section></section></main></div>
 
-</main> <!-- /main -->
+
+
+
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1341,18 +1339,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1384,7 +1371,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1419,7 +1446,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1693,7 +1724,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 
