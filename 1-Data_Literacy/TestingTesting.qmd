@@ -1,12 +1,6 @@
 ---
 title: "Testing...Testing...1...2...3"
 author: "[your name]"
-format:
-  html:
-    self-contained: true
-    code-fold: true
-editor_options: 
-  chunk_output_type: console
 ---
 
 # Introduction
