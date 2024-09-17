@@ -3,10 +3,7 @@ title: Testing...Testing...1...2...3
 author: '[your name]'
 format:
   html:
-    code_fold: yes
     self_contained: yes
-editor_options:
-  chunk_output_type: console
 ---
 
 # Introduction
