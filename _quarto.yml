@@ -23,6 +23,8 @@ website:
           href: ./1-Data_Literacy/5-Shape_and_Center.qmd
         - text: "Describing Data - Spread"
           href: ./1-Data_Literacy/6-Spread.qmd
+        - text: "Introducing R - Class Notes"
+          href: ./1-Data_Literacy/6b-Introducing_R_Class_Notes.qmd
         - text: "Summarizing Data - One Group"
           href: ./1-Data_Literacy/7-Introducing_R_Practice.qmd
         - text: "Summarzing Data - Multiple Groups"
