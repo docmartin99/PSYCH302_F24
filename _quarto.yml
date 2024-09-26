@@ -110,6 +110,8 @@ website:
           href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
         - text: "R for Data Science"
           href: https://r4ds.had.co.nz/transform.html
+        - text: "Statistics Notebook - R Commands
+          href: https://byuistats.github.io/Statistics-Notebook/RCommands.html
         - href: ./1-Data_Literacy/4-Installing_R.qmd
         - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
         - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
