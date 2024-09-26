@@ -1,4 +1,4 @@
-Year,Semester,YearTaken,Course Section,BirthMonth,Sex(M/F),Height in Inches,In how Many Languages are you proficient?,Extroversion,Agreeableness,Openness,Conscientiousness,Neuroticism
+Semester_Year,Semester,YearTaken,Section,BirthMonth,Biosex(M/F),Height_in_Inches,Number_of_Languages_Spoken,Extroversion,Agreeableness,Openness,Conscientiousness,Neuroticism
 Spring 2022,SPR,2022,B,March,M,76,1,88,63,54,81,19
 Spring 2022,SPR,2022,B,February,M,70,2,81,83,77,81,25
 Spring 2022,SPR,2022,B,August,M,71,1,27,63,81,65,67
