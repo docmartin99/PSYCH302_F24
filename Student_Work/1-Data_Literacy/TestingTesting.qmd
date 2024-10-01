@@ -4,6 +4,7 @@ author: '[your name]'
 format:
   html:
     self_contained: yes
+    embed_resources: yes
 ---
 
 # Introduction
