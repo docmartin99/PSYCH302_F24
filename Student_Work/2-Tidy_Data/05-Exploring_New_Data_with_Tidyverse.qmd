@@ -2,8 +2,8 @@
 title: Into The Tidyverse
 format:
   html:
-    self_contained: yes
-    embed_resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 
 ```{r, echo=FALSE}
