@@ -41,6 +41,7 @@ website:
         #- href: ./2-Tidy_Data/04-Tidyverse_Fundamentals.qmd
         - href: ./2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.qmd
         - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
+        - href: ./2-Tidy_Data/07-Unit1_Unit2_AA.qmd
         - text: "Bonus Material"
         - href: ./2-Tidy_Data/Bonus_More_Tidy_Practice.qmd
         - href: ./2-Tidy_Data/Bonus_Mutate.qmd
