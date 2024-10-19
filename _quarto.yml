@@ -4,7 +4,9 @@ project:
   render:
     - "*.qmd"
     - "!Student_Work/"
-
+  resources:
+    - "Images/**"
+    
 website:
   title: "Math221 Notebook"
   navbar:
