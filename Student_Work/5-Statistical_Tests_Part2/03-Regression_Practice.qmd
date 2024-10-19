@@ -34,7 +34,7 @@ library(car)
 # Car Prices and Mileage
 
 <p align="center">
-<img src="/Images/Accura_MDX.png" width="310" height="200">
+![](../Images/Accura_MDX.png)
 </p>
 
 
@@ -137,7 +137,7 @@ Lastly, the car you're interested in buying has around 100,000 miles and costs $
 
 # Manatee Deaths and Motorboat Registrations in Florida
 <p align="center">
-<img src="/Images/manatees1.png" width="300" height="300">
+![](../Images/manatees1.png)
 </p>
 
 Florida is a fabulous place for experiencing wildlife and recreation.  Unfortunately, sometimes those two activities conflict.
@@ -226,7 +226,7 @@ Check for constant variance (Residual by Predicted plot):
 
 # MCAT Score and GPA
 <p align="center">
-<img src="/Images/MCAT_official_logo.png" width="300" height="200">
+![](../Images/MCAT_official_logo.png)
 </p>
 
 
