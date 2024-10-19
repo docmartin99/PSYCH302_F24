@@ -22,6 +22,7 @@ By the end of this lesson, you should be able to:
 
 <img src="../Images/Baseball.jpg">
 
+
 In baseball, a player called the "pitcher" throws a ball to a player called the "batter." The batter swings a wooden or metal bat and tries to hit the ball. A "hit" is made when the batter successfully hits the ball and runs to a point in the field called first base. A player's batting average is calculated as the ratio of the number of hits a player makes divided by the number of times the player has attempted to hit the ball or in other words, been "at bat." Sean Lahman reported the batting averages of several professional baseball players in the United States. (Lahman, 2010) The file [BattingAverages.xlsx](../Data/BattingAverages.xlsx) contains his data.
 
 The following histogram summarizes the batting averages for these professional baseball players:

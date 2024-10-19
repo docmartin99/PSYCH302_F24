@@ -19,7 +19,7 @@ By the end of this lesson, you should be able to:
 
 
 
-<img src="../Images/StepsAll.png">
+<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png">
 <br>
 
 ## Introduction
@@ -35,9 +35,9 @@ In practice, a single sample of data is obtained from a population of interest i
 ## Case Study: DDT's Negative Impact on Pregnant Women
 
 
-<img src="../Images/Cropduster_spraying_pesticides.jpg">
+<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Cropduster_spraying_pesticides.jpg">
 
-<img src="../Images/Step1.png"> 
+<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png"> 
 
 **Step 1: Design the Study**
 
@@ -223,6 +223,9 @@ How many observations are required so that the Central Limit Theorem will assure
   + If the parent population is heavily skewed, then it will require a larger sample size to be assured that $\bar x$ will be normally distributed. For most moderately skewed distributions, a sample size of around 30 is traditionally thought to be sufficiently large to assure that $\bar x$ will be approximately normally distributed.  This is not a definitive number but is a rule of thumb.
   + For tremendously skewed distributions (e.g., the distribution of lottery payouts), a much larger sample will be required before the distribution of sample means is approximately normal. This may require billions of observations. Simulation can be used to determine if a particular sample size is sufficient. For this course, if the sample size is at least 30, we will conclude that the sampling distribution of $\bar x$ will be approximately normal.
 
+<br>
+
+
 <div class="QuestionsHeading">Answer the following question:</div>
 <div class="Questions">
 1. There are two ways that $\bar x$ can be (approximately) normally distributed.  What are they?  
@@ -231,8 +234,11 @@ How many observations are required so that the Central Limit Theorem will assure
 <summary>Show/Hide Solution</summary>
 - $\bar x$ will be normally distributed if the data were drawn from a normal population.
 - $\bar x$ will be approximately normally distributed if the sample size is sufficiently large.
-</details>
 
+</details>
+</div>
+
+<br>
 
 ## Mean and Standard Deviation of the Distribution of Sample Means
 
@@ -245,8 +251,10 @@ Remember, these facts are always true.  They do not depend on normality or the s
 
 Think about the simulations you have observed.  The mean of the sample means was always aligned with $\mu$.  Also, if you took samples larger than $n = 1$, the standard deviation of sample means was always smaller than $\sigma$.
 
+
 <div class="QuestionsHeading">Answer the following questions:</div>
 <div class="Questions">
+
 2. The amount of time passengers spend waiting for a bus on a particular urban route follows a distribution that has a mean of 8.7 minutes with a standard deviation of 2.2 minutes.  Transportation officials observed the waiting times for a random sample of $n=121$ individual passengers and recorded the sample mean, $\bar x$.  We can think of this sample mean as one value observed out of all the possible sample means that could have been observed.  What is the mean of the distribution of all possible sample means?  
 
 <details>

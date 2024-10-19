@@ -59,7 +59,7 @@ We will use the five steps in the Statistical Process throughout the course. Rec
 
 
 
-<img src="/Images/StepsAll.png">
+<img src../Images/StepsAll.png">
 
 <br>
 
@@ -67,9 +67,9 @@ We will use the five steps in the Statistical Process throughout the course. Rec
 
 **Cost to Treat Tuberculosis in India**
 
-<img src="/Images/Market_rural-India_-Tamilword22.jpg">
+<img src../Images/Market_rural-India_-Tamilword22.jpg">
 
-<img src="/Images/Step1.png">
+<img src../Images/Step1.png">
 <br>
 **Step 1: Design the study.** 
 
@@ -78,7 +78,7 @@ Tuberculosis (TB) is the deadliest bacterial disease in the world. In 2009, nine
 In this activity, you will compare the average costs of treating a person who contracts tuberculosis to the costs of preventing a case of tuberculosis in India.
 
 
-<img src="/Images/Step2.png">
+<img src../Images/Step2.png">
 <br>
 **Step 2: Collect data.** 
 
@@ -89,7 +89,7 @@ Health Care records of tuberculosis patients in India were surveyed to estimate 
 These costs include health care treatment, time missed from work, and in some cases utility lost due to death.
 
 
-<img src="/Images/Step3.png">
+<img src../Images/Step3.png">
 <br>
 **Step 3: Describe the data.**
 
@@ -159,7 +159,7 @@ showing that the *center* of the histogram (or average) is at \$14,100.
 |- align="center" 
 ! This is a histogram created using statistical software:
 |- align="center" 
-| <img src="/Images/IndianTBcosts.png">
+| <img src../Images/IndianTBcosts.png">
 |}
 </center>
 </div>
@@ -188,7 +188,7 @@ hist(data, xlab="Treatment Costs", main = "Tuberculosis Costs in India")
 After summarizing the data from our sample of the populations both numerically and graphically, we can use this information to make inference about the full population. 
 <br>
 
-<img src="/Images/Step4.png">
+<img src../Images/Step4.png">
 <br>
 **Step 4: Make inferences.** 
 
@@ -196,7 +196,7 @@ In the past, the total average cost to society to treat a case of tuberculosis i
 
 <br>
 
-<img src="/Images/Step5.png">
+<img src../Images/Step5.png">
 <br>
 **Step 5: Take action.** 
 
@@ -245,11 +245,11 @@ A distribution is right-skewed if a histogram of the distribution shows a long r
   </th>
 </tr><tr>
   <td>
-    <img src="/Images/Lesson03_shape_wageshist.png" width=130%>
+    <img src../Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src="/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img src../Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src="/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img src../Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>
@@ -281,14 +281,14 @@ If a distribution has only one peak, it is said to be **unimodal**. The three di
 
 Some distributions have no distinct peak, others have more than one peak. When there is no distinct peak, and the histogram shows a relatively flat shape, we might say the data follow a **uniform** distribution. If there are two distinct peaks, a distribution is called bimodal. If there are more than two peaks, we refer to the distribution as **multimodal**.
 
-<img src="/Images/Modal_distributions.jpg" width=50%>
+<img src../Images/Modal_distributions.jpg" width=50%>
 <br>
 <br>
 
 ## Center of a Distribution
 
 
-<img src="/Images/Step3.png">
+<img src../Images/Step3.png">
 
 **Step 3: Describe the data.** 
 
@@ -537,11 +537,11 @@ Even though measures of center are important, we need to consider the shape, cen
   </th>
 </tr><tr>
   <td>
-    <img src="/Images/Lesson03_shape_wageshist.png" width=130%>
+    <img src../Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src="/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img src../Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src="/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img src../Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>

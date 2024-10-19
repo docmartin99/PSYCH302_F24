@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Probability Calculations for Means (Class) – Math221 Notebook</title>
+<title>Level up your Tidy-ness – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -489,14 +460,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link active" data-scroll-target="#the-central-limit-theorem">The Central Limit Theorem</a></li>
-  <li><a href="#probability-calculations-for-the-sampling-distribution-of-barx" id="toc-probability-calculations-for-the-sampling-distribution-of-barx" class="nav-link" data-scroll-target="#probability-calculations-for-the-sampling-distribution-of-barx">Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></a></li>
-  <li><a href="#one-z-formula-to-rule-them-all" id="toc-one-z-formula-to-rule-them-all" class="nav-link" data-scroll-target="#one-z-formula-to-rule-them-all">One Z Formula to Rule Them All</a></li>
-  <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a>
-  <ul class="collapse">
-  <li><a href="#gpas" id="toc-gpas" class="nav-link" data-scroll-target="#gpas">GPA’s</a></li>
-  <li><a href="#gre-scores" id="toc-gre-scores" class="nav-link" data-scroll-target="#gre-scores">GRE Scores</a></li>
-  </ul></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link active" data-scroll-target="#putting-it-all-together">Putting it All Together</a></li>
+  <li><a href="#telepaths-gender-and-sleep" id="toc-telepaths-gender-and-sleep" class="nav-link" data-scroll-target="#telepaths-gender-and-sleep">Telepaths, Gender and Sleep</a></li>
+  <li><a href="#vegetarians-and-height" id="toc-vegetarians-and-height" class="nav-link" data-scroll-target="#vegetarians-and-height">Vegetarians and Height</a></li>
   </ul>
 </nav>
     </div>
@@ -505,7 +471,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Probability Calculations for Means (Class)</h1>
+<h1 class="title">Level up your Tidy-ness</h1>
 </div>
 
 
@@ -522,116 +488,251 @@ window.Quarto = {
 </header>
 
 
-<section id="the-central-limit-theorem" class="level1">
-<h1>The Central Limit Theorem</h1>
-<p>The Central Limit Theorem states that for a large enough sample size (<span class="math inline">\(n&gt;30\)</span>) the distribution of <em>sample means</em> is approximately normal with mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> regardless of the distribution of the population.</p>
-<p>We can assume the distribution of sample means is approximately normal if:</p>
+<section id="putting-it-all-together" class="level1">
+<h1>Putting it All Together</h1>
+<p>Here are two more data wrangling questions to test your skills. Try as best you can to work each step on your own before checking solutions.</p>
+<p>The questions relate to the High School survey used in other examples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="telepaths-gender-and-sleep" class="level1">
+<h1>Telepaths, Gender and Sleep</h1>
+<p>Suppose we want to see who gets more sleep on non-school nights, males or females whose chosen superpower would be telepathy. Also, create a column that is the ratio of sleep hours on non-school nights to 8. This calculates the percent of recommended sleep on non-school nights.</p>
 <ol type="1">
-<li>The population is normally distributed</li>
-<li>n &gt; 30</li>
+<li>Create a dataset that includes columns Gender, Superpower, Sleep_Hours_Non-Schoolnight, and the ratio of non-schoolnight sleep hours divided by 8, for Males and Females who choose Telepathy as their superpower.</li>
 </ol>
-<p>Don’t forget, that if the population is normally distributed, so is the distribution of sample means <strong>regardless of sample size</strong>.</p>
-</section>
-<section id="probability-calculations-for-the-sampling-distribution-of-barx" class="level1">
-<h1>Probability Calculations for the Sampling Distribution of <span class="math inline">\(\bar{x}\)</span></h1>
-<p>When we are confident that the sampling distribution of <span class="math inline">\(\bar{x}\)</span> is normal, we can use the <code>pnorm()</code> function just as we did before. We simply input the mean, <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span> and <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\)</span> into the Z-score formula as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">33</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The probability of a sample mean being between A and B</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma_xbar) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02774293</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating Percentiles: What is the sample mean below which a certain percent is found? </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma_xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18.2388</code></pre>
-</div>
-</div>
-</section>
-<section id="one-z-formula-to-rule-them-all" class="level1">
-<h1>One Z Formula to Rule Them All</h1>
-<p>We do not have to worry about choosing between two different Z-score formulas (one for individuals and a separate one for means).</p>
-<p>If we are calculating probabilities for a normal population and we want to calculate the probability of a single individual, we can simply set <span class="math inline">\(n=1\)</span>.</p>
-<p><em>WARNING</em>: Using sample size of 1 only works if the population is already normally distributed. But if we confident that it is, we can use the following calculations:</p>
+<details>
+<summary>
+Solution
+</summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fl">13.5</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma_xbar <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu) <span class="sc">/</span> (sigma_xbar)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Superpower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.48931</code></pre>
+<pre><code>[1] "Telepathy"      "Invisibility"   "Fly"            "Freeze time"   
+[5] "Super strength"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left tail [Prob(some sample mean LESS THAN xbar)]</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Superpower, Sleep_Hours_Non_Schoolnight) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower<span class="sc">==</span><span class="st">"Telepathy"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_of_recommended =</span> Sleep_Hours_Non_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>telepaths</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.006399557</code></pre>
+<pre><code># A tibble: 81 × 4
+   Gender Superpower Sleep_Hours_Non_Schoolnight percent_of_recommended
+   &lt;chr&gt;  &lt;chr&gt;                            &lt;dbl&gt;                  &lt;dbl&gt;
+ 1 Male   Telepathy                            7                  0.875
+ 2 Female Telepathy                            9                  1.12 
+ 3 Male   Telepathy                            9                  1.12 
+ 4 Female Telepathy                            8                  1    
+ 5 Female Telepathy                            9                  1.12 
+ 6 Male   Telepathy                           11                  1.38 
+ 7 Female Telepathy                           11                  1.38 
+ 8 Female Telepathy                            9                  1.12 
+ 9 Female Telepathy                            9                  1.12 
+10 Female Telepathy                           10                  1.25 
+# ℹ 71 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right tail [Prob(some sample mean GREATER THAN xbar)]</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<ol start="2" type="1">
+<li>Create a summary table comparing males and females whose preferred super power is telepathy that includes:</li>
+</ol>
+<pre><code>a. Mean, standard deviation, and sample size of Sleep Hours on non-school nights 
+b. Mean, standard deviation, and sample size of the percent of recommended sleep</code></pre>
+<p><strong>HINT</strong>: Use the <code>unique()</code> function to see what the options are for a given categorical variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_hrs =</span> <span class="fu">mean</span>(Sleep_Hours_Non_Schoolnight),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_percent_recommended =</span> <span class="fu">mean</span>(percent_of_recommended),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9936004</code></pre>
+<pre><code># A tibble: 2 × 4
+  Gender mn_hrs mn_percent_recommended count
+  &lt;chr&gt;   &lt;dbl&gt;                  &lt;dbl&gt; &lt;int&gt;
+1 Female   8.73                   1.09    60
+2 Male     8.19                   1.02    21</code></pre>
 </div>
 </div>
+</details>
 </section>
-<section id="practice-together" class="level1">
-<h1>Practice Together</h1>
-<p>Use the following calculator to answer the questions below.</p>
-<p><strong>REMEMBER</strong>: Whenever you update information, it is useful to run the whole code chunk.</p>
-<section id="gpas" class="level2">
-<h2 class="anchored" data-anchor-id="gpas">GPA’s</h2>
-<p>Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 45 students will be drawn.</p>
-<p><strong>Question</strong>: What is the mean of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population of GPAs?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the standard deviation of the distribution of the sample means (sampling distribution) for all possible samples of size 45 that could be drawn from the parent population?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that the mean GPA for 45 randomly selected BYU-Idaho students will be less than 3.3?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the shape of the distribution of sample means, <span class="math inline">\(\bar{x}\)</span>, when 45 students are selected?<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="gre-scores" class="level2">
-<h2 class="anchored" data-anchor-id="gre-scores">GRE Scores</h2>
-<p>Scores on the quantitative portion of the GRE are approximately normally distributed with mean, <span class="math inline">\(\mu=150.8\)</span>, and standard deviation <span class="math inline">\(\sigma = 8.8\)</span>.</p>
-<p><strong>Question</strong>: Dianne earned a score of 160 on the quantitative portion of the GRE. What is the z-score corresponding to Dianne’s score?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that a randomly selected student will score above 160 on the quantitative portion of the GRE?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that a randomly selected <em>group</em> of 18 students will have an <em>average</em> less than 160 on the quantitative portion of the GRE?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that a randomly selected group of 18 students will have an <em>average</em> between 145 and 160 on the quantitative portion of the GRE?<br>
-<strong>Answer</strong>:</p>
+<section id="vegetarians-and-height" class="level1">
+<h1>Vegetarians and Height</h1>
+<ol type="1">
+<li>How many vegetarians say meat is their favorite food?</li>
+</ol>
+<p><strong>HINT</strong>: This can be done with a single filter statement</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Favorite_Food <span class="sc">==</span> <span class="st">"Meat"</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         Vegetarian <span class="sc">==</span> <span class="st">"Yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 60
+  Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+1 USA     NC         2022         11 Male         16 Right-Handed       178
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;,
+#   Imprtance_wning_cmputer &lt;int&gt;, Imprtance_Internet_access &lt;int&gt;, …</code></pre>
+</div>
+</div>
+</details>
+<ol start="2" type="1">
+<li>Compare mean, and standard deviation of heights between those who are vegetarian and those who aren’t. Include the number of respondents in your analysis.</li>
+</ol>
+<p>Be sure to filter out any major outliers in heights first.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Height_cm, Vegetarian) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         Height_cm <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Vegetarian) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_ht =</span> <span class="fu">median</span>(Height_cm),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ht =</span> <span class="fu">mean</span>(Height_cm),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ht =</span> <span class="fu">sd</span>(Height_cm),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  Vegetarian med_ht mean_ht sd_ht count
+  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+1 No           170.    171.  10.8   285
+2 Yes          163     162.  17.1    15</code></pre>
+</div>
+</div>
+<p>After removing outliers, it looks like vegetarians are shorter, on average.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonus Boxplot:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>veg <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Height_cm, Vegetarian) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>         Height_cm <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(veg<span class="sc">$</span>Height_cm <span class="sc">~</span> veg<span class="sc">$</span>Vegetarian, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">main =</span> <span class="st">"Heights (cm) of Vegetarians and Non-Vegetarians"</span>, <span class="at">xlab=</span><span class="st">"vegetarian"</span>, <span class="at">ylab =</span> <span class="st">"Height (cm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<ol start="3" type="1">
+<li>Create a dataset that:
+<ol type="a">
+<li><p>Includes a column that is percent of recommended sleep (Sleep_Hours_Schoolnight divided by 8 using a mutate statement)</p></li>
+<li><p>Includes only columns for Favourite_physical_activity, Reaction_time, percent_recommended_sleep (part a)</p></li>
+<li><p>Includes only students whose favorite physical activity is Walking/Hiking, Basketball, Swimming, Soccer</p></li>
+<li><p>Filters Reaction Times to be less than 1 second</p></li>
+</ol></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>phys_act <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_recommended_sleep =</span> Sleep_Hours_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Favourite_physical_activity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Walking/Hiking'</span>, <span class="st">"Basketball"</span>, <span class="st">"Swimming"</span>, <span class="st">"Soccer"</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Favourite_physical_activity, Reaction_time, pct_recommended_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</details>
+<p>Use the clean dataset to:</p>
+<ol start="4" type="1">
+<li>Create a side-by-side boxplot for the percent of recommended sleep comparing favourite physical activity</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(phys_act<span class="sc">$</span>pct_recommended_sleep <span class="sc">~</span> phys_act<span class="sc">$</span>Favourite_physical_activity, <span class="at">xlab =</span> <span class="st">"Favorite Physical Activity"</span>, <span class="at">ylab =</span> <span class="st">"% Recommended Sleep on School Nights"</span>, <span class="at">main =</span> <span class="st">"School Night Sleep by Favorite Physical Activity"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<ol start="5" type="1">
+<li>Create a side-by-side boxplot for the reaction times comparing favourite physical activity</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(phys_act<span class="sc">$</span>Reaction_time <span class="sc">~</span> phys_act<span class="sc">$</span>Favourite_physical_activity, <span class="at">xlab =</span> <span class="st">"Favorite Physical Activity"</span>, <span class="at">ylab =</span> <span class="st">"Reaction Time"</span>, <span class="at">main =</span> <span class="st">"Reaction Time Results by Favorite Physical Activity"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<p><strong>Which physical activity group has the quickest reaction time?</strong></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
