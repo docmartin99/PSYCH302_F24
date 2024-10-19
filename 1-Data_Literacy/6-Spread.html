@@ -545,13 +545,13 @@ window.Quarto = {
 <section id="standard-deviation-and-variance" class="level3">
 <h3 class="anchored" data-anchor-id="standard-deviation-and-variance">Standard Deviation and Variance</h3>
 <p>This activity introduces two measures of spread: the standard deviation and the variance.</p>
-<p>&lt;img src/Images/StepsAll.png”&gt;</p>
+<p><img src="../Images/StepsAll.png" class="img-fluid"></p>
 <p><strong>Bird Flu Fever </strong></p>
-<p>&lt;img src/Images/Peuquito.jpg”&gt;</p>
+<p><img src="../Images/Peuquito.jpg" class="img-fluid"></p>
 <p>Avian Influenza A H5N1, commonly called the bird flu, is a deadly illness that is currently only passed to humans from infected birds. This illness is particularly dangerous because at some point it is likely to mutate to allow human-to-human transmission. Health officials worldwide are preparing for the possibility of a bird flu pandemic.</p>
-<p>&lt;img src/Images/Step1.png”&gt;</p>
+<p><img src="../Images/Step1.png" class="img-fluid"></p>
 <p>Dr.&nbsp;K. Y. Yuen led a team of researchers who reported the body temperatures of people admitted to Chinese hospitals with confirmed cases of Avian Influenza. Their research team collected data on the body temperature at the time that people with the bird flu were admitted to the hospital. In the article, they reported on two groups of people, those with relatively uncomplicated cases of the bird flu and those with severe cases.</p>
-<p>&lt;img src/Images/Step2.png”&gt;</p>
+<p><img src="../Images/Step2.png" class="img-fluid"></p>
 <p>The table below presents the data representative of the body temperatures for the two groups of bird flu patients:</p>
 <table class="caption-top table">
 <thead>
@@ -611,7 +611,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>&lt;img src/Images/Step3.png”&gt;</p>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
 <p>Let us focus on the relatively uncomplicated cases. Creating a histogram of such a small dataset does not provide much benefit. With only a handful of values, there is not much shape to the distribution.</p>
 <p>We can, however, use numerical summaries to give an indication of the center of the distribution.</p>
 <div class="QuestionsHeading">
@@ -673,9 +673,9 @@ R Instructions
 <p>How is the standard deviation computed? Where does this “magic” number come from? How does one number include the information about the spread of all the points?</p>
 <p>It is a little tedious to compute the standard deviation by hand. You will usually compute standard deviation with a computer. However, the process is very instructive and will help you understand conceptually what the statistic represents. As you work through the following steps, please remember the goal is to find a measure of the spread in a data set. We want one number that describes how spread out the data are.</p>
 <p>First, observe the number line below, where each x represents the temperature of a patient with a relatively uncomplicated case of bird flu. As mentioned earlier, there is not a huge spread in the temperatures.</p>
-<p>&lt;img src/Images/BirdFlu-DotPlotAnswer.png”&gt;</p>
+<p><img src="../Images/BirdFlu-DotPlotAnswer.png" class="img-fluid"></p>
 <p>On your sketch of the number line, we draw a vertical line at 38.8 degrees, the sample mean. Now, draw horizontal lines from the mean to each of your <span class="math inline">\(\times\)</span>’s. These horizontal line segments represent the spread of the data about the mean. Your plot should look something like this:</p>
-<p>&lt;img src/Images/BirdFlu-DotPlotAnswer-Lines.png”&gt;</p>
+<p><img src="../Images/BirdFlu-DotPlotAnswer-Lines.png" class="img-fluid"></p>
 <p>The length of each of the line segments represents how far each observation is from the mean. If the data are close together, these lines will be fairly short. If the distribution has a large spread, the line segments will be longer. The standard deviation is a measure of how long these lines are, as a whole.</p>
 <p>The distance between the mean and an observation is referred to as a deviation. In other words, deviations are the lengths of the line segments drawn in the image above.</p>
 <p><span class="math display">\[
@@ -929,7 +929,7 @@ Option 4: Do something entirely different
 </div>
 <p><br></p>
 <center>
-“Piled Higher and Deeper” by Jorge Cham <br> &lt;img src/Images/Phd062307s.png”&gt;
+“Piled Higher and Deeper” by Jorge Cham <br> <img src="../Images/Phd062307s.png" class="img-fluid">
 </center>
 <p><strong>Step 03</strong>: Add a third column to your table. To get the values in this column, square the deviations from the mean that you found in Column 2.</p>
 <table>
@@ -2001,7 +2001,7 @@ Step 5:
 &lt;img src/Images/StepsAll.png”&gt;
 </center>
 <p><strong>Step 3</strong> of this process is “<strong>Describe the data</strong>.” You have already learned about the mean, median, mode, standard deviation, variance and histograms. These can be good ways to describe the data. The following information on percentiles, quartiles, 5-number summaries, and boxplots will help you learn other common ways to describe data, especially if the data are skewed or contain outliers.</p>
-<p>&lt;img src/Images/Step3.png”&gt;</p>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
 <p>For symmetric, bell-shaped data, the mean and standard deviation provide a good description of the center and shape of the distribution. The mean and standard deviation are not sufficient to describe a distribution that is skewed or has outliers. An <strong>outlier</strong> is any observation that is very far from the others. The mean is pulled in the direction of the outlier. Also, the standard deviation is inflated by points that are very far from the mean.</p>
 <p>Now, you have probably had some experience with percentiles in the past especially when you received a score on a standardized test such as the ACT. Even though percentiles are commonly used, they are generally misunderstood. Before examining the wrong site/wrong patient data, let’s review percentiles. Even if you think you understand percentiles, please study this section carefully.</p>
 <p><br></p>
@@ -2380,17 +2380,17 @@ Some students mistakenly include the mean in the five-number summary. The third 
 <p>A <strong>boxplot</strong> is a graphical representation of the five-number summary. Unlike the mean or standard deviation, a boxplot is resistant to outliers. That means that it won’t be “pulled” one way or the other by extraordinarily large or small values in the data as will a mean, for instance. We will illustrate the process of making a boxplot using the wrong-site data.</p>
 <p>Follow the steps below to learn how a boxplot relates to the five-number summary. Learning what each part of the boxplot represents will enable you to interpret the plot correctly.</p>
 <p><strong>Step 01:</strong> To draw a boxplot, start with a number line.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_1.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_1.jpg" class="img-fluid"></p>
 <p><strong>Step 02:</strong> Draw a vertical line segment above each of the quartiles.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_2.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_2.jpg" class="img-fluid"></p>
 <p><strong>Step 03:</strong> Connect the tops and bottoms of the line segments, making a box.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_3.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_3.jpg" class="img-fluid"></p>
 <p><strong>Step 04:</strong> Make a smaller mark above the values corresponding to the minimum and the maximum.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_4.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_4.jpg" class="img-fluid"></p>
 <p><strong>Step 05:</strong> Draw a line from the left side of the box to the minimum, and draw another line from the right side of the box the maximum.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_5.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_5.jpg" class="img-fluid"></p>
 <p><strong>Step 06:</strong> These last two lines look like whiskers, so this is sometimes called a box-and-whisker plot.</p>
-<p>&lt;img src/Images/Lesson_2_Activity_6_BoxPlot_6.jpg”&gt;</p>
+<p><img src="../Images/Lesson_2_Activity_6_BoxPlot_6.jpg" class="img-fluid"></p>
 <p><br></p>
 <div class="SoftwareHeading">
 R Instructions

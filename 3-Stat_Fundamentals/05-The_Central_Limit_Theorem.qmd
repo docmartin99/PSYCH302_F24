@@ -19,7 +19,7 @@ By the end of this lesson, you should be able to:
 
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png)
+![](../Images/StepsAll.png)
 <br>
 
 ## Introduction
@@ -35,9 +35,9 @@ In practice, a single sample of data is obtained from a population of interest i
 ## Case Study: DDT's Negative Impact on Pregnant Women
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Cropduster_spraying_pesticides.jpg)
+![](../Images/Cropduster_spraying_pesticides.jpg)
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png) 
+![](../Images/Step1.png) 
 
 **Step 1: Design the Study**
 

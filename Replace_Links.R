@@ -47,8 +47,8 @@ dir_path <- getwd()
 qmd_files <- dir_ls(dir_path, recurse = TRUE, regexp = "\\.qmd$")
 
 # Define the old and new image paths
-old_path <- "https://github.com/byuistats/Math221D_Course/blob/main"
-new_path <- ".."
+old_path <- "../Images"
+new_path <- "/Images"
 
 # Function to replace the image path in a file
 replace_image_path <- function(file_path) {
@@ -72,3 +72,48 @@ replace_image_path <- function(file_path) {
 lapply(qmd_files, replace_image_path)
 
 cat("All .qmd files have been processed.\n")
+
+
+###############################33
+################################  Take 3
+#################################
+
+library(stringr)
+library(fs)
+
+convert_image_tags <- function(directory = ".") {
+  # Get all .qmd files in the directory and subdirectories
+  qmd_files <- dir_ls(path = directory, recurse = TRUE, glob = "*.qmd")
+  
+  # Function to process each file
+  process_file <- function(file_path) {
+    # Read the content of the file
+    content <- readLines(file_path, warn = FALSE)
+    
+    # Join all lines into a single string
+    full_content <- paste(content, collapse = "\n")
+    
+    # Replace image tags
+    new_content <- str_replace_all(full_content, 
+                                   '<img\\s+src="([^"]+)"[^>]*>', 
+                                   function(match) {
+                                     src <- str_extract(match, '(?<=src=")[^"]+')
+                                     # Replace "/Images/" with "../Images/" if it starts with "/Images/"
+                                     if (str_starts(src, "/Images/")) {
+                                       src <- str_replace(src, "^/Images/", "../Images/")
+                                     }
+                                     sprintf("![](%s)", src)
+                                   })
+    
+    # Write the modified content back to the file
+    writeLines(new_content, file_path)
+    
+    cat("Processed:", file_path, "\n")
+  }
+  
+  # Apply the process_file function to each .qmd file
+  lapply(qmd_files, process_file)
+}
+
+# Usage
+convert_image_tags(".") 
