@@ -316,7 +316,7 @@ $$\bar x=\frac{15100 + 19000 + 4800 + 6500 + 14900 + 600 + 23500 + 11500 + 12900
 
 <details>
 <summary>Show/Hide Solution</summary>
-* The mean cost to treat the 10 TB patients in India is:  $\bar x = \$14,100$. To see how to calculate the mean in Excel, see the "Excel Instructions" below.
+* The mean cost to treat the 10 TB patients in India is:  $\bar x = \$14,100$. To see how to calculate the mean in R, see the "R Instructions" below.
 </details>
 </div>
 <br>
@@ -405,7 +405,7 @@ e. A, B, and C can all occur.
 </div>
 <br>
 
-#### Excel Instructions for Mean, Median, and Mode
+#### R Instructions for Mean, Median, and Mode
 
 <div class="SoftwareHeading">R Instructions</div>
 <div class="Software" style="padding:10px;">
@@ -466,7 +466,7 @@ The first row of the `table()` output is the *value* being counted.  The second 
 
 Which value is most frequently occurring?  
 
-If there are lots of occuring values, we can use R to `sort()` the table output to make it easier to see which is the mode:
+If there are lots of occurring values, we can use R to `sort()` the table output to make it easier to see which is the mode:
 
 ```{r}
 
@@ -475,6 +475,8 @@ sort(table(data2))
 ```
 
 The rows are the same as before but are sorted in ascending order.  We can now easily see that 2 occurred 8 times making 2 the mode.  
+
+</div>
 
 ### Parameters and Statistics
 

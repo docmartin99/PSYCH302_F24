@@ -499,7 +499,9 @@ window.Quarto = {
   <li><a href="#center-of-a-distribution" id="toc-center-of-a-distribution" class="nav-link" data-scroll-target="#center-of-a-distribution">Center of a Distribution</a>
   <ul class="collapse">
   <li><a href="#measuring-the-center-of-a-distribution" id="toc-measuring-the-center-of-a-distribution" class="nav-link" data-scroll-target="#measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</a></li>
+  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
   </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -899,7 +901,7 @@ Mean is to the left of the median.
 <p>When we talk about the “typical” or “average” value, we are essentially describing the center of a population. If we want to estimate the “average” costs to treat a tuberculosis patient, there are several ways we can do it.</p>
 <p><br></p>
 <section id="measuring-the-center-of-a-distribution" class="level3">
-<h3 class="anchored">Measuring the Center of a Distribution</h3>
+<h3 class="anchored" data-anchor-id="measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</h3>
 <section id="mean" class="level4">
 <h4 class="anchored" data-anchor-id="mean">Mean</h4>
 <p>The sample mean or sample arithmetic mean is the most common tool to estimate the center of a distribution. It is referred to simply as the mean. It is computed by adding up the observed data and dividing by the number of observations in the data set.</p>
@@ -920,7 +922,7 @@ Answer the following question:
 Show/Hide Solution
 </summary>
 <ul>
-<li>The mean cost to treat the 10 TB patients in India is: <span class="math inline">\(\bar x = \$14,100\)</span>. To see how to calculate the mean in Excel, see the “Excel Instructions” below.</li>
+<li>The mean cost to treat the 10 TB patients in India is: <span class="math inline">\(\bar x = \$14,100\)</span>. To see how to calculate the mean in R, see the “R Instructions” below.</li>
 </ul>
 </details>
 </div>
@@ -1023,8 +1025,8 @@ Show/Hide Solution
 </div>
 <p><br></p>
 </section>
-<section id="excel-instructions-for-mean-median-and-mode" class="level4">
-<h4 class="anchored">Excel Instructions for Mean, Median, and Mode</h4>
+<section id="r-instructions-for-mean-median-and-mode" class="level4">
+<h4 class="anchored" data-anchor-id="r-instructions-for-mean-median-and-mode">R Instructions for Mean, Median, and Mode</h4>
 <div class="SoftwareHeading">
 R Instructions
 </div>
@@ -1074,7 +1076,7 @@ R Instructions
 </div>
 <p>The first row of the <code>table()</code> output is the <em>value</em> being counted. The second row is the frequency of occurrence.</p>
 <p>Which value is most frequently occurring?</p>
-<p>If there are lots of occuring values, we can use R to <code>sort()</code> the table output to make it easier to see which is the mode:</p>
+<p>If there are lots of occurring values, we can use R to <code>sort()</code> the table output to make it easier to see which is the mode:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(data2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1084,6 +1086,9 @@ R Instructions
 </div>
 </div>
 <p>The rows are the same as before but are sorted in ascending order. We can now easily see that 2 occurred 8 times making 2 the mode.</p>
+</div>
+</section>
+</section>
 <section id="parameters-and-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="parameters-and-statistics">Parameters and Statistics</h3>
 <p>We only have data on the cost to treat ten randomly selected tuberculosis patients. This represents a random sample from the population. The sample obtained by the researchers depends on random chance. If the study was repeated and a new sample of ten patients was randomly drawn from all cases of tuberculosis in India, would we observe the same data values? Certainly not!</p>
@@ -1102,6 +1107,7 @@ R Instructions
 <p><span class="math display">\[\bar x=\frac{14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100}{10} =14,100\]</span></p>
 <p>Even though measures of center are important, we need to consider the shape, center and spread of a distribution of data. When evaluating data, it is sometimes tempting to compute a mean but to avoid creating a histogram. This can lead to errant decisions based on a misunderstanding or incorrect transcription of data. If there is a transcription error in the data, it is sometimes easiest to detect it as an outlier in a histogram.</p>
 <p><br> <br></p>
+</section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -1165,11 +1171,7 @@ Mean is to the left of the median.
 <p><br></p>
 
 
-</section></div>
-</section>
-</section></section></main></div>
-
-
+</section></main></div>
 
 
  <!-- /main -->
