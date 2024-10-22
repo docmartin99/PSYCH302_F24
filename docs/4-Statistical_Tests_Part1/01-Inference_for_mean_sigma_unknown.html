@@ -609,7 +609,7 @@ window.Quarto = {
 <p>We calculate test statistics very similarly, but we replace the population standard deviation with the sample standard deviation.</p>
 <p><span class="math display">\[ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}\]</span></p>
 <p>The T-distribution is very similar to the standard normal. It is symmetrical around zero. However, the shape depends on how much data you have. The more data you have, the closer the <span class="math inline">\(t\)</span> is to the standard normal. This is illustrated in the graph below:</p>
-<p><img src="..\Images/T_dist.png" class="img-fluid"></p>
+<p><img src="../Images/T_dist.png" class="img-fluid"></p>
 <p>Because <span class="math inline">\(t\)</span> is not normally distributed, we can’t use <code>pnorm()</code> to calculate probabilities. However, R is fully capable of calculating probabilities for many probability distributions including the t-distribution. We have to tell R the t-value <em>and</em> the degrees of freedom.</p>
 <section id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)</h2>
