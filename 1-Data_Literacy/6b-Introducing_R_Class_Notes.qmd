@@ -1,6 +1,10 @@
 ---
 title: "Introducing R - Class Notes"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
 
 # Introducing Markdown
 
@@ -105,7 +109,7 @@ Let's try:
 ```{r}
 
 #big5
-View(big5)
+#View(big5)
 glimpse(big5)
 
 ```

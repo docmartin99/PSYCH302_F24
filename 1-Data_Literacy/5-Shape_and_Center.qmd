@@ -242,11 +242,11 @@ A distribution is right-skewed if a histogram of the distribution shows a long r
   </th>
 </tr><tr>
   <td>
-    <img src/Images/Lesson03_shape_wageshist.png" width=130%>
+    <img src= "/Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img src="/Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img src="/Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>
@@ -535,13 +535,15 @@ Even though measures of center are important, we need to consider the shape, cen
     Left-skewed
   </th>
 </tr><tr>
-  <td>
-    <img src/Images/Lesson03_shape_wageshist.png" width=130%>
-  </td><td>
-    <img src/Images/Lesson03_shape_maleheightshist.png" width=130%>
-  <td>
-    <img src/Images/Lesson03_shape_gpahist.png" width=130%>
-  </td>
+    <td>
+      <img src="/Images/Lesson03_shape_wageshist.png" width="130%" alt="Right-skewed distribution">
+    </td>
+    <td>
+      <img src="/Images/Lesson03_shape_maleheightshist.png" width="130%" alt="Symmetric bell-shaped distribution">
+    </td>
+    <td>
+      <img src="/Images/Lesson03_shape_gpahist.png" width="130%" alt="Left-skewed distribution">
+    </td>
 </tr><tr>
   <td>
     Mean: \$10.45
