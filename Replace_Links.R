@@ -41,14 +41,14 @@ cat("Term replacement complete.\n")
 library(fs)
 
 # Set the directory path (current working directory by default)
-dir_path <- getwd()
+dir_path <- "C:/Users/paulccannon/OneDrive - BYU-Idaho/Math221D/Math221D_Course/Student_Work"
 
 # Find all .qmd files in the directory
 qmd_files <- dir_ls(dir_path, recurse = TRUE, regexp = "\\.qmd$")
 
 # Define the old and new image paths
-old_path <- "../Images"
-new_path <- "/Images"
+old_path <- "/Images"
+new_path <- "https://github.com/byuistats/Math221D_Course/raw/main/Images"
 
 # Function to replace the image path in a file
 replace_image_path <- function(file_path) {

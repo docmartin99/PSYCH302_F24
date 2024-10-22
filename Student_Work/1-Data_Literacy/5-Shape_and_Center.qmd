@@ -59,7 +59,7 @@ We will use the five steps in the Statistical Process throughout the course. Rec
 
 
 
-<img src/Images/StepsAll.png">
+<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png">
 
 <br>
 
@@ -67,10 +67,12 @@ We will use the five steps in the Statistical Process throughout the course. Rec
 
 **Cost to Treat Tuberculosis in India**
 
-<img src/Images/Market_rural-India_-Tamilword22.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Market_rural-India_-Tamilword22.jpg)
 
-<img src/Images/Step1.png">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png)
+
 <br>
+
 **Step 1: Design the study.** 
 
 Tuberculosis (TB) is the deadliest bacterial disease in the world. In 2009, nine million new cases of tuberculosis were diagnosed, leading to almost 2 million deaths worldwide. Currently, the principal vaccine used to prevent tuberculosis is Bacille Calmette Guerin (BCG). Unfortunately, BCG is only moderately effective at preventing tuberculosis. Historically, India has had a high number of tuberculosis cases. The Indian Government wants to reduce the prevalence of this disease.
@@ -78,7 +80,8 @@ Tuberculosis (TB) is the deadliest bacterial disease in the world. In 2009, nine
 In this activity, you will compare the average costs of treating a person who contracts tuberculosis to the costs of preventing a case of tuberculosis in India.
 
 
-<img src/Images/Step2.png">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png) 
+
 <br>
 **Step 2: Collect data.** 
 
@@ -89,8 +92,10 @@ Health Care records of tuberculosis patients in India were surveyed to estimate 
 These costs include health care treatment, time missed from work, and in some cases utility lost due to death.
 
 
-<img src/Images/Step3.png">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)
+
 <br>
+
 **Step 3: Describe the data.**
 
 ### Visualizing Quantitative Data: Histograms {.tabset .tabset-fade}  
@@ -159,7 +164,7 @@ showing that the *center* of the histogram (or average) is at \$14,100.
 |- align="center" 
 ! This is a histogram created using statistical software:
 |- align="center" 
-| <img src/Images/IndianTBcosts.png">
+| <img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/IndianTBcosts.png">
 |}
 </center>
 </div>
@@ -188,15 +193,18 @@ hist(data, xlab="Treatment Costs", main = "Tuberculosis Costs in India")
 After summarizing the data from our sample of the populations both numerically and graphically, we can use this information to make inference about the full population. 
 <br>
 
-<img src/Images/Step4.png">
-<br>
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)  
+
+
+
 **Step 4: Make inferences.** 
 
 In the past, the total average cost to society to treat a case of tuberculosis in India was known to be \$13,800. As shown in our Step 3 calculations, the 10 randomly selected patients showed an average cost that was higher than the historic value at \$14,100. This might make us believe that the *actual* total average cost to society is also \$14,100. However, in depth statistical calculations (that you will be taught how to do later this semestr) show that there is a 46% chance that our sample had an average of \$14,100 just by random chance. This isn't too hard to believe since we only had a sample size of 10 people, and \$14,100 is only $300 above \$13,800, so it turns out to be fairly likely (46% chance) that because of random chance our sample had an average that was a little higher than the actual value from the population. So we will conclude that the total average cost to society is still essentially the same as it has been in the past.
 
 <br>
 
-<img src/Images/Step5.png">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)
+
 <br>
 **Step 5: Take action.** 
 
@@ -245,11 +253,11 @@ A distribution is right-skewed if a histogram of the distribution shows a long r
   </th>
 </tr><tr>
   <td>
-    <img src/Images/Lesson03_shape_wageshist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>
@@ -281,14 +289,14 @@ If a distribution has only one peak, it is said to be **unimodal**. The three di
 
 Some distributions have no distinct peak, others have more than one peak. When there is no distinct peak, and the histogram shows a relatively flat shape, we might say the data follow a **uniform** distribution. If there are two distinct peaks, a distribution is called bimodal. If there are more than two peaks, we refer to the distribution as **multimodal**.
 
-<img src/Images/Modal_distributions.jpg" width=50%>
+<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Modal_distributions.jpg" width=50%>
 <br>
 <br>
 
 ## Center of a Distribution
 
 
-<img src/Images/Step3.png">
+![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)  
 
 **Step 3: Describe the data.** 
 
@@ -408,12 +416,12 @@ e. A, B, and C can all occur.
 </div>
 <br>
 
-#### Excel Instructions for Mean, Median, and Mode
+#### R Instructions for Mean, Median, and Mode
 
 <div class="SoftwareHeading">R Instructions</div>
 <div class="Software" style="padding:10px;">
 
-**To calculate most numerical summaries** (such as the mean, median, and mode) in Excel, follow these general steps:
+**To calculate most numerical summaries** (such as the mean, median, and mode) in R, follow these general steps:
 
 1. Open R. 
 2. Enter the data using the "assignment operator", `<-`, and `c()` which establishes a "collection" of things, in this case numbers.   
@@ -537,11 +545,11 @@ Even though measures of center are important, we need to consider the shape, cen
   </th>
 </tr><tr>
   <td>
-    <img src/Images/Lesson03_shape_wageshist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img src="https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>
