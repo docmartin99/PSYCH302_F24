@@ -1,0 +1,12 @@
+PartID,Attractself,Attractfrnd,Brave1,Brave2,Brave3,Success,Age,Biosex,Minority
+11,10,10,0,0,0,MONEY,90,1,1
+1,10,10,1,0,0,"Rich, Family, Kind",21,2,0
+4,7,7,0,1,0,"Rich, Happy, Generous",18,1,0
+6,2,6,1,0,0,"Thoughtful, Wise, friendly",30,1,0
+7,9,8,0,1,1,"Wealthy, published, known",26,1,1
+10,8,8,1,0,1,"Attrractive, popular, Rich",20,1,0
+2,6,7,1,1,1,"Wise, kind, thoughtful",20,2,0
+3,3,1,1,1,1,"Family, children, comfortable",19,2,0
+5,9,6,1,1,1,"Generous, Kind, Helpful",27,1,0
+8,6,7,1,1,1,"Famous, Rich, Popular",24,2,1
+9,7,10,1,1,1,"Popular, Rich, Friendly",20,1,0
